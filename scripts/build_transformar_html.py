@@ -545,6 +545,29 @@ def content_page(lines: list[Line], page_no: int) -> str:
 """
 
 
+PDF_CONTENT_H = 648.0
+
+
+def _is_overview_page(lines: list[Line]) -> bool:
+    return sum(1 for ln in lines if is_numbered_label(ln.text)) >= 2
+
+
+def _try_merge_sparse_next(
+    lines: list[Line], page_no: int, next_lines: list[Line]
+) -> tuple[list[Line], bool]:
+    """PDF deja hueco abajo y la siguiente es liviana → un solo HTML."""
+    if page_no < 8 or not lines or not next_lines:
+        return lines, False
+    if not _is_overview_page(lines) or not _is_overview_page(next_lines):
+        return lines, False
+    room = PDF_CONTENT_H - max(ln.y for ln in lines)
+    if room < 100:
+        return lines, False
+    if max(ln.y for ln in next_lines) > 400:
+        return lines, False
+    return lines + next_lines, True
+
+
 def _split_dense_tail(
     lines: list[Line], page_no: int, next_lines: list[Line] | None
 ) -> tuple[list[Line], list[Line]]:
@@ -567,13 +590,24 @@ def build() -> str:
     doc = fitz.open(PDF)
     pages_html: list[str] = [cover_page(), legal_page()]
     carry: list[Line] = []
+    skip_indices: set[int] = set()
 
     for i in range(2, doc.page_count):
+        if i in skip_indices:
+            continue
         page_no = i + 1
         raw = extract_lines(doc[i])
         next_raw = extract_lines(doc[i + 1]) if i + 1 < doc.page_count else None
-        lines = carry + raw
-        carry = []
+        if carry:
+            lines = carry + raw
+            carry = []
+        else:
+            lines = raw
+            if next_raw is not None and page_no not in (3, 10):
+                merged, skip = _try_merge_sparse_next(raw, page_no, next_raw)
+                if skip:
+                    lines = merged
+                    skip_indices.add(i + 1)
         if page_no == 3:
             pages_html.append(dedicatoria_page(lines))
         elif page_no == 10:
