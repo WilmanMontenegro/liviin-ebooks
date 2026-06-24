@@ -13,6 +13,7 @@ import fitz
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ebook_style import ebook_head_links
 from html_blocks import (
+    continues_pull_quote,
     is_opening_lead,
     is_pull_quote_group,
     is_section_subtitle,
@@ -226,9 +227,10 @@ def _group_prose(lines: list[Line]) -> list[str]:
                     groups.append(cur)
                     cur = []
             elif ln.y - prev_bottom > gap:
-                if cur:
-                    groups.append(cur)
-                    cur = []
+                if not (cur and continues_pull_quote(cur[-1], ln)):
+                    if cur:
+                        groups.append(cur)
+                        cur = []
         cur.append(ln)
         prev_bottom = ln.y + max(ln.size * 0.35, 8)
     if cur:
@@ -430,7 +432,7 @@ def parse_index_items(lines: list[Line]) -> tuple[list[tuple[str, str]], str]:
 
 
 def render_index_page(
-    items: list[tuple[str, str]], section_pages: dict[str, int], note: str
+    items: list[tuple[str, str]], section_pages: dict[str, int], note: str, folio: int
 ) -> str:
     items_html = "\n    ".join(
         index_item_html(n, t, section_pages.get(n)) for n, t in items
@@ -446,7 +448,7 @@ def render_index_page(
     <div class="spacer-md"></div>
     <p class="body">{esc(note)}</p>
   </div>
-  {banda("ÍNDICE", 10)}
+  {banda("ÍNDICE", folio)}
 </div>
 """
 
@@ -469,25 +471,25 @@ def _mov_num_from_cover(lines: list[Line]) -> str | None:
 
 def _note_section_start(
     lines: list[Line],
-    page_no: int,
+    folio: int,
     section_pages: dict[str, int],
     pending_mov: str | None,
 ) -> str | None:
     if _is_iniciacion_00(lines):
-        section_pages.setdefault("00", page_no)
+        section_pages.setdefault("00", folio)
     if pending_mov is not None:
-        section_pages.setdefault(pending_mov, page_no)
+        section_pages.setdefault(pending_mov, folio)
         return None
     return pending_mov
 
 
-def mov_cover_page(lines: list[Line], page_no: int) -> str:
+def mov_cover_page(lines: list[Line], pdf_page_no: int) -> str:
     tag = mov_tag_text(lines)
     titles = [ln for ln in lines if ln.size >= 18 and not is_tag_line(ln.text, ln.size)]
     subs = [ln for ln in lines if 10 <= ln.size <= 14 and not is_tag_line(ln.text, ln.size)]
     title_html = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
     sub = esc(collapse_spaced(subs[-1].text)) if subs else ""
-    return f"""<!-- p{page_no} movimiento -->
+    return f"""<!-- pdf p{pdf_page_no} movimiento -->
 <div class="page">
   <div class="content movimiento-cover">
     <span class="tag">{esc(tag)}</span>
@@ -500,10 +502,10 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 """
 
 
-def content_page(lines: list[Line], page_no: int) -> str:
+def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     page_h = max((ln.y for ln in lines), default=0) + 25
-    lines = [ln for ln in lines if not is_margin_noise(ln, page_h, page_no)]
-    sec = section_for(page_no)
+    lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
+    sec = section_for(pdf_page_no)
     sigue = parse_sigue_lines(lines)
     tokens: list[tuple] = []
     i = 0
@@ -575,12 +577,12 @@ def content_page(lines: list[Line], page_no: int) -> str:
     </div>""")
 
     inner = "\n    ".join(parts)
-    return f"""<!-- p{page_no} -->
+    return f"""<!-- folio {folio} pdf p{pdf_page_no} -->
 <div class="page">
   <div class="content">
     {inner}
   </div>
-  {banda(sec, page_no)}
+  {banda(sec, folio)}
 </div>
 """
 
@@ -607,9 +609,41 @@ def _is_sparse_continuation(next_lines: list[Line]) -> bool:
     """PDF siguiente muy liviana, mismo hilo — sin tag/título nuevo arriba."""
     if not next_lines or _starts_new_section(next_lines):
         return False
-    if max(ln.y for ln in next_lines) > 200:
+    ymax = max(ln.y for ln in next_lines)
+    if ymax > 220:
         return False
-    return len(next_lines) <= 6
+    # ponytail: pull-quote multi-línea infla len; ymax ≈ altura real en el PDF
+    return len(next_lines) <= 14
+
+
+def _offset_lines(lines: list[Line], dy: float) -> list[Line]:
+    return [
+        Line(ln.text, ln.size, ln.y + dy, ln.x, ln.bold, ln.italic) for ln in lines
+    ]
+
+
+def _paragraph_split_y(lines: list[Line], target: float = 415.0) -> float | None:
+    """Corte en hueco de párrafo cerca de target — nunca a mitad de frase."""
+    split_at: list[float] = []
+    prev_bottom: float | None = None
+    for ln in lines:
+        if prev_bottom is not None and ln.y - prev_bottom > 14:
+            split_at.append(ln.y)
+        prev_bottom = ln.y + max(ln.size * 0.35, 8)
+    best: float | None = None
+    best_dist = float("inf")
+    for y in split_at:
+        early = sum(1 for ln in lines if ln.y < y)
+        late = sum(1 for ln in lines if ln.y >= y)
+        if early < 8 or late < 2:
+            continue
+        if any(is_numbered_label(ln.text) for ln in lines if ln.y >= y):
+            continue
+        dist = abs(y - target)
+        if dist < best_dist:
+            best_dist = dist
+            best = y
+    return best
 
 
 def _try_merge_sparse_next(
@@ -619,12 +653,14 @@ def _try_merge_sparse_next(
     if page_no < 4 or not lines or not next_lines:
         return lines, False
     room = PDF_CONTENT_H - max(ln.y for ln in lines)
+    dy = max(ln.y for ln in lines) - min(ln.y for ln in next_lines) + 28
+    tail = _offset_lines(next_lines, dy)
     if _is_overview_page(lines) and _is_overview_page(next_lines):
         if room >= 100 and max(ln.y for ln in next_lines) <= 400:
-            return lines + next_lines, True
+            return lines + tail, True
         return lines, False
-    if room >= 150 and _is_sparse_continuation(next_lines):
-        return lines + next_lines, True
+    if _is_sparse_continuation(next_lines):
+        return lines + tail, True
     return lines, False
 
 
@@ -634,11 +670,17 @@ def _split_dense_tail(
     """PDF p.4 llena el frame HTML; si la siguiente es liviana, adelanta cola."""
     if not lines or page_no < 4:
         return lines, []
+    if _is_overview_page(lines):
+        return lines, []
+    if next_lines is not None and _is_sparse_continuation(next_lines):
+        return lines, []
     if max(ln.y for ln in lines) < 475:
         return lines, []
     if next_lines is not None and len(next_lines) > 6:
         return lines, []
-    cut = 415.0
+    cut = _paragraph_split_y(lines)
+    if cut is None:
+        return lines, []
     early = [ln for ln in lines if ln.y < cut]
     late = [ln for ln in lines if ln.y >= cut]
     if len(early) < 8 or len(late) < 2:
@@ -657,6 +699,8 @@ def build() -> str:
     index_items: list[tuple[str, str]] = []
     index_note = ""
     past_index_slot = False
+    index_folio: int | None = None
+    folio = 2  # portada + legal
 
     for i in range(2, doc.page_count):
         if i in skip_indices:
@@ -667,18 +711,26 @@ def build() -> str:
         if carry:
             lines = carry + raw
             carry = []
+            merged_this = False
         else:
             lines = raw
+            merged_this = False
             if next_raw is not None and page_no not in (3, 10):
                 merged, skip = _try_merge_sparse_next(raw, page_no, next_raw)
                 if skip:
                     lines = merged
                     skip_indices.add(i + 1)
+                    merged_this = True
+        if page_no == 10:
+            index_items, index_note = parse_index_items(lines)
+            index_folio = len(pages_before) + 1
+            past_index_slot = True
+            continue
+        folio += 1
+        if past_index_slot and index_folio is not None and folio == index_folio:
+            folio += 1
         if page_no == 3:
             pages_before.append(dedicatoria_page(lines))
-        elif page_no == 10:
-            index_items, index_note = parse_index_items(lines)
-            past_index_slot = True
         elif is_pull_page(lines):
             html = pull_page(lines, page_no)
             (pages_after if past_index_slot else pages_before).append(html)
@@ -687,15 +739,18 @@ def build() -> str:
             html = mov_cover_page(lines, page_no)
             (pages_after if past_index_slot else pages_before).append(html)
         else:
-            lines, carry = _split_dense_tail(lines, page_no, next_raw)
-            pending_mov = _note_section_start(lines, page_no, section_pages, pending_mov)
-            html = content_page(lines, page_no)
+            if not merged_this:
+                lines, carry = _split_dense_tail(lines, page_no, next_raw)
+            pending_mov = _note_section_start(lines, folio, section_pages, pending_mov)
+            html = content_page(lines, page_no, folio)
             (pages_after if past_index_slot else pages_before).append(html)
     doc.close()
 
+    if index_folio is None:
+        index_folio = len(pages_before) + 1
     pages_html = (
         pages_before
-        + [render_index_page(index_items, section_pages, index_note)]
+        + [render_index_page(index_items, section_pages, index_note, index_folio)]
         + pages_after
     )
 

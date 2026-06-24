@@ -12,6 +12,7 @@ import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from html_blocks import (
+    continues_pull_quote,
     is_opening_lead,
     is_pull_quote_group,
     is_section_subtitle,
@@ -46,13 +47,13 @@ MOVIMIENTOS = [
 ]
 
 INDEX_ITEMS = [
-    ("00", "Iniciación · De mí para ti", 5),
-    ("01", "La filosofía del hogar bien llevado", 11),
-    ("02", "Conoce tu casa antes de delegarla", 24),
-    ("03", "Construir el equipo", 37),
-    ("04", "Sostener la armonía en el tiempo", 58),
-    ("05", "Bonus · Conversaciones esenciales", 74),
-    ("06", "Cierre · El hogar como reflejo", 87),
+    ("00", "Iniciación · De mí para ti"),
+    ("01", "La filosofía del hogar bien llevado"),
+    ("02", "Conoce tu casa antes de delegarla"),
+    ("03", "Construir el equipo"),
+    ("04", "Sostener la armonía en el tiempo"),
+    ("05", "Bonus · Conversaciones esenciales"),
+    ("06", "Cierre · El hogar como reflejo"),
 ]
 
 SIGUE_TITLES = {
@@ -246,6 +247,40 @@ def is_mov_cover(lines: list[Line]) -> bool:
     return extras <= 5
 
 
+def _is_iniciacion_00(lines: list[Line]) -> bool:
+    for ln in lines:
+        t = collapse_spaced(ln.text).upper()
+        if ln.size <= 10.5 and "INICIACI" in t and "00" in t:
+            return True
+    return False
+
+
+def _mov_key_from_cover(lines: list[Line]) -> str | None:
+    tag = mov_tag_text(lines)
+    if not tag:
+        return None
+    if "CIERRE" in tag.upper():
+        return "06"
+    if "BONUS" in tag.upper():
+        return "05"
+    m = re.search(r"MOVIMIENTO\s+(\d+)", tag, re.I)
+    return f"{int(m.group(1)):02d}" if m else None
+
+
+def _note_section_start(
+    lines: list[Line],
+    folio: int,
+    section_pages: dict[str, int],
+    pending_mov: str | None,
+) -> str | None:
+    if _is_iniciacion_00(lines):
+        section_pages.setdefault("00", folio)
+    if pending_mov is not None:
+        section_pages.setdefault(pending_mov, folio)
+        return None
+    return pending_mov
+
+
 def _render_prose_group(g: list[Line]) -> list[str]:
     if is_opening_lead(g):
         return render_opening_lead(esc, g)
@@ -341,9 +376,10 @@ def _group_prose_plain(lines: list[Line]) -> list[str]:
     for ln in lines:
         gap = 6 if cur and cur[-1].size <= 8.5 else 14
         if prev_bottom is not None and ln.y - prev_bottom > gap:
-            if cur:
-                groups.append(cur)
-                cur = []
+            if not (cur and continues_pull_quote(cur[-1], ln)):
+                if cur:
+                    groups.append(cur)
+                    cur = []
         cur.append(ln)
         prev_bottom = ln.y + max(ln.size * 0.35, 8)
     if cur:
@@ -754,8 +790,10 @@ def pull_page(lines: list[Line], page_no: int) -> str:
 """
 
 
-def index_page_liderar() -> str:
-    items_html = "\n    ".join(index_item_html(n, t, pg) for n, t, pg in INDEX_ITEMS)
+def index_page_liderar(section_pages: dict[str, int], folio: int) -> str:
+    items_html = "\n    ".join(
+        index_item_html(n, t, section_pages.get(n)) for n, t in INDEX_ITEMS
+    )
     return f"""<!-- ÍNDICE -->
 <div class="page">
   <div class="content">
@@ -767,7 +805,7 @@ def index_page_liderar() -> str:
     <div class="spacer-md"></div>
     <p class="body">Lee a tu ritmo. Cada movimiento puede leerse solo.</p>
   </div>
-  {banda("ÍNDICE", 9)}
+  {banda("ÍNDICE", folio)}
 </div>
 """
 
@@ -827,10 +865,10 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 """
 
 
-def content_page(lines: list[Line], page_no: int) -> str:
+def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     page_h = max((ln.y for ln in lines), default=0) + 25
-    lines = [ln for ln in lines if not is_margin_noise(ln, page_h, page_no)]
-    sec = section_for(page_no)
+    lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
+    sec = section_for(pdf_page_no)
     sigue = parse_sigue_lines(lines)
     tokens: list[tuple] = []
     i = 0
@@ -902,34 +940,58 @@ def content_page(lines: list[Line], page_no: int) -> str:
     </div>""")
 
     inner = "\n    ".join(parts)
-    return f"""<!-- p{page_no} -->
+    return f"""<!-- folio {folio} pdf p{pdf_page_no} -->
 <div class="page">
   <div class="content">
     {inner}
   </div>
-  {banda(sec, page_no)}
+  {banda(sec, folio)}
 </div>
 """
 
 
 def build() -> str:
     doc = fitz.open(PDF)
-    pages_html: list[str] = [cover_page(), legal_page()]
+    pages_before: list[str] = [cover_page(), legal_page()]
+    pages_after: list[str] = []
+    section_pages: dict[str, int] = {}
+    pending_mov: str | None = None
+    index_folio: int | None = None
+    past_index_slot = False
+    folio = 2
 
     for i in range(2, doc.page_count):
         page_no = i + 1
         lines = extract_lines(doc[i])
+        if page_no == 9:
+            index_folio = len(pages_before) + 1
+            past_index_slot = True
+            continue
+        folio += 1
+        if past_index_slot and index_folio is not None and folio == index_folio:
+            folio += 1
         if page_no == 3:
-            pages_html.append(dedicatoria_page(lines))
-        elif page_no == 9:
-            pages_html.append(index_page_liderar())
+            pages_before.append(dedicatoria_page(lines))
         elif is_pull_page(lines):
-            pages_html.append(pull_page(lines, page_no))
+            html = pull_page(lines, page_no)
+            (pages_after if past_index_slot else pages_before).append(html)
         elif is_mov_cover(lines):
-            pages_html.append(mov_cover_page(lines, page_no))
+            pending_mov = _mov_key_from_cover(lines)
+            html = mov_cover_page(lines, page_no)
+            (pages_after if past_index_slot else pages_before).append(html)
         else:
-            pages_html.append(content_page(lines, page_no))
+            pending_mov = _note_section_start(lines, folio, section_pages, pending_mov)
+            html = content_page(lines, page_no, folio)
+            (pages_after if past_index_slot else pages_before).append(html)
     doc.close()
+
+    if index_folio is None:
+        index_folio = len(pages_before) + 1
+    pages_html = (
+        pages_before
+        + [index_page_liderar(section_pages, index_folio)]
+        + pages_after
+    )
 
     hub_body = """
 <a class="hub-link hub-home" href="index.html">← Inicio</a>

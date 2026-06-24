@@ -45,6 +45,15 @@ def is_pull_quote_group(g: list[TextLine]) -> bool:
     return False
 
 
+def continues_pull_quote(prev: TextLine, ln: TextLine) -> bool:
+    """Misma cita tras merge de PDF — no cortar aunque el salto en y sea grande."""
+    if not (prev.italic and ln.italic):
+        return False
+    if prev.x < PULL_QUOTE_X_MIN or ln.x < PULL_QUOTE_X_MIN:
+        return False
+    return 9 <= prev.size <= 14.5 and 9 <= ln.size <= 14.5
+
+
 def is_opening_lead(g: list[TextLine]) -> bool:
     """PDF p.4: «Otra vez.» itálica al margen + filete ancho debajo (no pull-quote)."""
     if len(g) != 1:

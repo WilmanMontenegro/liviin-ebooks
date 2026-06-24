@@ -145,7 +145,7 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 
 .numbered-block { margin-bottom: 20px; }
 .numbered-title {
-  font-family: var(--sans); font-size: var(--fs-label); font-weight: 400;
+  font-family: var(--sans); font-size: var(--fs-small); font-weight: 600;
   letter-spacing: var(--track-label); color: var(--texto); text-transform: uppercase;
   line-height: 1.35; margin-bottom: 6px;
 }
