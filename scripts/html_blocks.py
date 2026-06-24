@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from typing import Callable, Protocol
 
-from pdf_text import collapse_spaced, title_digits_html
+from pdf_text import collapse_spaced
 
 _NUMERIC_STEP = re.compile(r"^(\d+)\.\s*(.*)")
 
@@ -31,7 +31,7 @@ def render_title_block(
             f'<div class="h1-italic" style="font-size:38px;">{th}</div>',
             '<div class="rule"></div>',
         ]
-    th = "<br>".join(title_digits_html(t.text) for t in titles)
+    th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
     if subtitle is not None:
         return [
             f'<div class="h2 h2-section">{th}</div>',
