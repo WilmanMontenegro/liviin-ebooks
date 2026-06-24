@@ -14,7 +14,11 @@ ROOT = Path(__file__).resolve().parent
 PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
 COVER_IMAGE = ROOT / "portada ebook 1.png"
 
-COVER_BOTTOM_Y = 391.0
+# Donde empieza "LIVIIN · EBOOK 01" (fijo en el PDF).
+TEXT_START_Y = 391.0
+# Fin de la foto: deja respiro sage antes del texto.
+COVER_GAP_PT = 50.0
+COVER_BOTTOM_Y = TEXT_START_Y - COVER_GAP_PT
 SAGE = (200, 205, 201)
 SAGE_PDF = tuple(c / 255 for c in SAGE)
 
@@ -33,7 +37,7 @@ def prepare_cover(path: Path, width: int, height: int) -> bytes:
     top = (resized.height - height) // 2
     cropped = resized.crop((left, top, left + width, top + height))
 
-    fade_h = min(90, height // 5)
+    fade_h = min(110, height // 4)
     pixels = cropped.load()
     for row in range(height - fade_h, height):
         t = (row - (height - fade_h)) / fade_h
@@ -51,11 +55,11 @@ def prepare_cover(path: Path, width: int, height: int) -> bytes:
 
 
 def replace_cover(page: fitz.Page, jpeg: bytes) -> None:
-    rect = cover_rect(page)
-    page.add_redact_annot(rect, fill=SAGE_PDF)
+    img_rect = cover_rect(page)
+    clear_rect = fitz.Rect(0, 0, page.rect.width, TEXT_START_Y)
+    page.add_redact_annot(clear_rect, fill=SAGE_PDF)
     page.apply_redactions()
-    page.draw_rect(rect, color=SAGE_PDF, fill=SAGE_PDF, overlay=False)
-    page.insert_image(rect, stream=jpeg, keep_proportion=False, overlay=True)
+    page.insert_image(img_rect, stream=jpeg, keep_proportion=False, overlay=True)
 
 
 def main() -> int:
