@@ -100,6 +100,121 @@ def collapse_spaced(s: str) -> str:
     return " ".join(re.sub(r"\s+", "", c) for c in re.split(r"\s{2,}", s) if c.strip())
 
 
+def collapse_letter_spaced_segment(seg: str) -> str:
+    """'E L' → 'EL'; 'LA REGLA' queda igual."""
+    seg = seg.strip()
+    if not seg:
+        return seg
+    if re.search(r"[a-záéíóúñ]", seg):
+        return re.sub(r"\s+", " ", seg)
+    tokens = seg.split()
+    if tokens and all(len(re.sub(r"[^\wÁÉÍÓÚÑáéíóúñ]", "", t)) <= 2 for t in tokens):
+        return "".join(tokens)
+    return re.sub(r"\s+", " ", seg)
+
+
+def collapse_from_raw_spacing(raw: str) -> str:
+    """Usa dobles espacios del PDF como límites de palabra (labels numerados, tags)."""
+    parts = [p.strip() for p in re.split(r"\s{2,}", raw.strip()) if p.strip()]
+    words: list[str] = []
+    for p in parts:
+        if re.fullmatch(r"0\s*\d", p):
+            words.append(re.sub(r"\s+", "", p))
+        elif p in ("·", "•"):
+            if words:
+                words[-1] = f"{words[-1]} ·"
+            else:
+                words.append("·")
+        else:
+            words.append(collapse_letter_spaced_segment(p))
+    return " ".join(words)
+
+
+def extract_line_text(raw: str, chars: list[dict]) -> str:
+    """Texto de línea PDF: letter-spacing vía gaps o dobles espacios."""
+    raw = raw.strip()
+    if not raw:
+        return raw
+    if needs_gap_extract(raw):
+        if re.search(r"\s{2,}", raw):
+            return collapse_from_raw_spacing(raw)
+        return collapse_spaced(chars_to_line_text(chars))
+    return raw
+
+
+def collapse_orphan_caps(text: str) -> str:
+    """Palabra suelta letter-spaced: 'S A L E' / 'I N  M  E  D  I A  T A' → 'SALE' / 'INMEDIATA'."""
+    text = text.strip()
+    if re.search(r"\s{2,}", text):
+        parts = [collapse_letter_spaced_segment(p) for p in re.split(r"\s{2,}", text) if p.strip()]
+        return "".join(parts)
+    tokens = text.split()
+    if tokens and all(len(t) <= 2 for t in tokens):
+        return "".join(tokens)
+    return text
+
+
+def _is_letter_spaced_token(token: str) -> bool:
+    core = re.sub(r"[^\wÁÉÍÓÚÑáéíóúñ]", "", token)
+    return len(core) <= 1
+
+
+def normalize_title_caps(s: str) -> str:
+    """Mezcla palabras normales + tramos letter-spaced: 'MUY P E Q U E Ñ A.' → 'MUY PEQUEÑA.'"""
+    s = re.sub(r"\s+", " ", s.strip())
+    if re.search(r"\s{2,}", s):
+        return collapse_from_raw_spacing(s)
+    tokens = s.split()
+    out: list[str] = []
+    run: list[str] = []
+    for t in tokens:
+        if _is_letter_spaced_token(t):
+            run.append(t)
+        else:
+            if run:
+                out.append("".join(run))
+                run = []
+            out.append(t)
+    if run:
+        out.append("".join(run))
+    return " ".join(out)
+
+
+def normalize_label_part(s: str) -> str:
+    s = s.strip()
+    if re.fullmatch(r"0\s*\d", s):
+        return re.sub(r"\s+", "", s)
+    if re.search(r"\s{2,}", s):
+        return collapse_from_raw_spacing(s)
+    tokens = s.split()
+    if tokens and any(_is_letter_spaced_token(t) for t in tokens):
+        return normalize_title_caps(s)
+    return re.sub(r"\s+", " ", s)
+
+
+def merge_orphan_caps_lines(lines: list, is_numbered_label_fn) -> list:
+    """Une continuaciones en caps bajo la etiqueta numerada (SALE, INMEDIATA…)."""
+    if not lines:
+        return lines
+    out = [lines[0]]
+    for ln in lines[1:]:
+        prev = out[-1]
+        t = ln.text.strip()
+        if (
+            is_numbered_label_fn(prev.text)
+            and t
+            and ln.size <= 10.5
+            and not is_numbered_label_fn(t)
+            and not re.search(r"[a-záéíóúñ]", t)
+            and len(collapse_orphan_caps(t)) <= 24
+        ):
+            merged = f"{prev.text.rstrip()} {collapse_orphan_caps(t)}"
+            out[-1] = type(prev)(**{**prev.__dict__, "text": merged})
+        else:
+            out.append(ln)
+    return out
+
+
 def _digits(s: str | int) -> int:
     if isinstance(s, int):
         return s
@@ -124,7 +239,7 @@ def fmt_prose_step(n: str | int) -> str:
 
 def numbered_caps_html(num: str, title: str) -> str:
     """Label caps PDF: una sola línea sans como '04 · COMUNICACIÓN Y FEEDBACK'."""
-    n, t = collapse_spaced(num), collapse_spaced(title)
+    n, t = normalize_label_part(num), normalize_label_part(title)
     if n:
         return f"{html_escape(fmt_structural(n))} · {html_escape(t)}"
     return html_escape(t)
@@ -133,7 +248,17 @@ def numbered_caps_html(num: str, title: str) -> str:
 if __name__ == "__main__":
     assert collapse_spaced("0 1  ·  L I M P I E Z A  P R O F U N D A") == "01 · LIMPIEZA PROFUNDA"
     assert collapse_spaced("0 1  ·  D I S E Ñ A D O R A  D E L  S I S T E M A") == "01 · DISEÑADORA DEL SISTEMA"
-    assert numbered_caps_html("04", "COMUNICACIÓN Y FEEDBACK") == "04 · COMUNICACIÓN Y FEEDBACK"
+    assert (
+        collapse_from_raw_spacing("0 1  ·  E L  C I E R R E  D E L  D Í A")
+        == "01 · EL CIERRE DEL DÍA"
+    )
+    assert (
+        collapse_from_raw_spacing("0 4  ·  C O M P R A R  ( C O N  A S E R T I V I D A D )")
+        == "04 · COMPRAR (CON ASERTIVIDAD)"
+    )
+    assert collapse_orphan_caps("I N  M  E  D  I A  T A") == "INMEDIATA"
+    assert normalize_title_caps("MUY P E Q U E Ñ A.") == "MUY PEQUEÑA."
+    assert numbered_caps_html("01", "EL MINUTO DE LA ACCIÓN INMEDIATA") == "01 · EL MINUTO DE LA ACCIÓN INMEDIATA"
     assert fmt_structural("0 1") == "01"
     assert fmt_inventory(13) == "13"
     assert fmt_prose_step("2") == "2"

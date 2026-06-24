@@ -28,9 +28,12 @@ from ebook_style import ebook_head_links
 from pdf_text import (
     chars_to_line_text,
     collapse_spaced,
+    extract_line_text,
     fmt_inventory,
     fmt_structural,
+    merge_orphan_caps_lines,
     needs_gap_extract,
+    normalize_label_part,
     numbered_caps_html,
 )
 
@@ -85,8 +88,8 @@ def esc(s: str) -> str:
 def parse_numbered_label(label: str) -> tuple[str, str]:
     if "·" in label:
         left, _, right = label.partition("·")
-        return collapse_spaced(left), collapse_spaced(right)
-    return "", collapse_spaced(label)
+        return normalize_label_part(left), normalize_label_part(right)
+    return "", normalize_label_part(label)
 
 
 def fmt_caps(s: str) -> str:
@@ -187,10 +190,7 @@ def extract_lines(page: fitz.Page) -> list[Line]:
             for sp in spans:
                 chars.extend(sp.get("chars", []))
             raw = "".join(c["c"] for c in chars) if chars else ""
-            if chars and needs_gap_extract(raw):
-                text = collapse_spaced(chars_to_line_text(chars))
-            else:
-                text = raw
+            text = extract_line_text(raw, chars) if chars else raw.strip()
             if not text.strip():
                 continue
             out.append(
@@ -204,7 +204,7 @@ def extract_lines(page: fitz.Page) -> list[Line]:
                 )
             )
     out.sort(key=lambda x: (x.y, x.x))
-    return out
+    return merge_orphan_caps_lines(out, is_numbered_label)
 
 
 def section_for(page_no: int) -> str:
