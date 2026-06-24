@@ -11,7 +11,8 @@ from pathlib import Path
 import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, title_digits_html
+from html_blocks import is_section_subtitle, render_numeric_steps_page, render_title_block, split_numeric_steps
+from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, numbered_caps_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "El_arte_de_transformar_tu_hogar_v11.pdf"
@@ -231,7 +232,8 @@ def _group_prose(lines: list[Line]) -> list[str]:
     cur: list[Line] = []
     prev_bottom: float | None = None
     for ln in lines:
-        if prev_bottom is not None and ln.y - prev_bottom > 14:
+        gap = 6 if cur and cur[-1].size <= 8.5 else 14
+        if prev_bottom is not None and ln.y - prev_bottom > gap:
             if cur:
                 groups.append(cur)
                 cur = []
@@ -272,6 +274,12 @@ def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int
 def group_paragraphs(lines: list[Line]) -> list[str]:
     if not lines:
         return []
+    numeric = split_numeric_steps(lines)
+    if numeric:
+        intro, items, tail = numeric
+        return render_numeric_steps_page(
+            esc, collapse_spaced, intro, items, tail, _is_section_label, _group_prose
+        )
     if not any(ln.text.strip() == "•" for ln in lines):
         return _group_prose(lines)
     parts: list[str] = []
@@ -494,7 +502,10 @@ def content_page(lines: list[Line], page_no: int) -> str:
             while i < len(lines) and lines[i].size >= 16 and not is_tag_line(lines[i].text, lines[i].size):
                 titles.append(lines[i])
                 i += 1
-            tokens.append(("title", titles))
+            subtitle = lines[i] if i < len(lines) and is_section_subtitle(lines[i]) else None
+            if subtitle is not None:
+                i += 1
+            tokens.append(("title", titles, subtitle))
             continue
         if ln.text.startswith("—") and ln.size < 12:
             i += 1
@@ -513,21 +524,13 @@ def content_page(lines: list[Line], page_no: int) -> str:
             if "CIERRE DEL MOVIMIENTO" in tok[1].upper() or "HOME COACH" in tok[1].upper():
                 parts.append('<div class="spacer-sm"></div>')
         elif tok[0] == "title":
-            titles = tok[1]
-            if titles[0].size < 26 or titles[0].italic:
-                th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
-                parts.append(f'<div class="h1-italic" style="font-size:38px;">{th}</div>')
-            else:
-                th = "<br>".join(title_digits_html(t.text) for t in titles)
-                parts.append(f'<div class="h2">{th}</div>')
-            parts.append('<div class="rule"></div>')
+            parts.extend(render_title_block(esc, tok[1], tok[2]))
         elif tok[0] == "numbered":
             label, desc = tok[1], tok[2]
             num, title = parse_numbered_label(label)
             parts.append(
                 f'<div class="numbered-block"><div class="numbered-title">'
-                f'<span class="num">{esc(num)}</span>'
-                f'<span class="numbered-label">{esc(title)}</span></div></div>'
+                f'{numbered_caps_html(num, title)}</div></div>'
             )
             parts.extend(group_paragraphs(desc))
         elif tok[0] == "body":

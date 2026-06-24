@@ -11,7 +11,13 @@ from pathlib import Path
 import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, title_digits_html
+from html_blocks import (
+    is_section_subtitle,
+    render_numeric_steps_page,
+    render_title_block,
+    split_numeric_steps,
+)
+from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, numbered_caps_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
@@ -296,7 +302,8 @@ def _group_prose_plain(lines: list[Line]) -> list[str]:
     cur: list[Line] = []
     prev_bottom: float | None = None
     for ln in lines:
-        if prev_bottom is not None and ln.y - prev_bottom > 14:
+        gap = 6 if cur and cur[-1].size <= 8.5 else 14
+        if prev_bottom is not None and ln.y - prev_bottom > gap:
             if cur:
                 groups.append(cur)
                 cur = []
@@ -553,6 +560,12 @@ def group_paragraphs(lines: list[Line]) -> list[str]:
     if ordinal:
         intro, items = ordinal
         return _render_ordinal_block(intro, items)
+    numeric = split_numeric_steps(lines)
+    if numeric:
+        intro, items, tail = numeric
+        return render_numeric_steps_page(
+            esc, collapse_spaced, intro, items, tail, _is_section_label, _group_prose_plain
+        )
     steps = _split_step_blocks(lines)
     if steps:
         intro, items, tail = steps
@@ -735,7 +748,7 @@ def index_page(lines: list[Line]) -> str:
         elif items:
             note.append(t)
     items_html = "\n    ".join(
-        f'<div class="numbered-block"><div class="numbered-title"><span class="num">{esc(n)}</span> {esc(t)}</div></div>'
+        f'<div class="numbered-block"><div class="numbered-title">{numbered_caps_html(n, t)}</div></div>'
         for n, t in items
     )
     return f"""<!-- ÍNDICE -->
@@ -755,27 +768,7 @@ def index_page(lines: list[Line]) -> str:
 
 
 def _is_section_subtitle(ln: Line) -> bool:
-    """PDF Liderar: línea 15pt itálica tras título display (22pt)."""
-    return 14 <= ln.size <= 16 and ln.italic and not is_tag_line(ln.text, ln.size)
-
-
-def _render_title_block(titles: list[Line], subtitle: Line | None) -> list[str]:
-    # ponytail: orden fijo tag→h2→subtitle→rule→body; cliente revisa esto al pixel
-    t0 = titles[0]
-    if t0.italic or t0.size >= 26:
-        th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
-        return [
-            f'<div class="h1-italic" style="font-size:38px;">{th}</div>',
-            '<div class="rule"></div>',
-        ]
-    th = "<br>".join(title_digits_html(t.text) for t in titles)
-    if subtitle is not None:
-        return [
-            f'<div class="h2 h2-section">{th}</div>',
-            f'<p class="section-subtitle">{esc(collapse_spaced(subtitle.text))}</p>',
-            '<div class="rule"></div>',
-        ]
-    return [f'<div class="h2">{th}</div>', '<div class="rule"></div>']
+    return is_section_subtitle(ln)
 
 
 def mov_cover_page(lines: list[Line], page_no: int) -> str:
@@ -853,14 +846,13 @@ def content_page(lines: list[Line], page_no: int) -> str:
             if "CIERRE DEL MOVIMIENTO" in tok[1].upper():
                 parts.append('<div class="spacer-sm"></div>')
         elif tok[0] == "title":
-            parts.extend(_render_title_block(tok[1], tok[2]))
+            parts.extend(render_title_block(esc, tok[1], tok[2]))
         elif tok[0] == "numbered":
             label, desc = tok[1], tok[2]
             num, title = parse_numbered_label(label)
             parts.append(
                 f'<div class="numbered-block"><div class="numbered-title">'
-                f'<span class="num">{esc(num)}</span>'
-                f'<span class="numbered-label">{esc(title)}</span></div></div>'
+                f'{numbered_caps_html(num, title)}</div></div>'
             )
             parts.extend(group_paragraphs(desc))
         elif tok[0] == "body":

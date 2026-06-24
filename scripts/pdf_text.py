@@ -117,7 +117,16 @@ def title_digits_html(text: str) -> str:
     return "".join(out)
 
 
+def numbered_caps_html(num: str, title: str) -> str:
+    """Label caps PDF: una sola línea sans como '04 · COMUNICACIÓN Y FEEDBACK'."""
+    n, t = collapse_spaced(num), collapse_spaced(title)
+    if n:
+        return f"{html_escape(n)} · {html_escape(t)}"
+    return html_escape(t)
+
+
 if __name__ == "__main__":
     assert collapse_spaced("0 1  ·  L I M P I E Z A  P R O F U N D A") == "01 · LIMPIEZA PROFUNDA"
     assert collapse_spaced("0 1  ·  D I S E Ñ A D O R A  D E L  S I S T E M A") == "01 · DISEÑADORA DEL SISTEMA"
     assert title_digits_html("LOS 4 ACUERDOS") == 'LOS <span class="title-digit">4</span> ACUERDOS'
+    assert numbered_caps_html("04", "COMUNICACIÓN Y FEEDBACK") == "04 · COMUNICACIÓN Y FEEDBACK"

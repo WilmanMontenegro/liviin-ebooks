@@ -64,9 +64,28 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   font-family: var(--serif-text); font-size: 28px; font-weight: 500;
   letter-spacing: 0.01em; margin-bottom: 8px;
 }
-/* PDF: dígito en título ~62% altura letras, baseline */
-.title-digit {
-  font-size: 0.62em; vertical-align: baseline; letter-spacing: 0;
+/* PDF: dígito en título ~55% altura letras, baseline */
+.h2 .title-digit,
+.h2-section .title-digit {
+  font-size: 0.55em; font-weight: 400;
+  vertical-align: baseline; letter-spacing: 0;
+}
+.section-label {
+  font-family: var(--sans); font-size: 8.5px; font-weight: 400;
+  letter-spacing: 0.22em; color: var(--texto); text-transform: uppercase;
+  margin: 18px 0 12px;
+}
+.step-list--prose { margin: 8px 0 20px; }
+.step-item--prose {
+  display: flex; gap: 12px; align-items: baseline;
+  margin-bottom: 16px; padding-left: 4px;
+}
+.step-item--prose:last-child { margin-bottom: 0; }
+.step-item--prose .step-num { min-width: 18px; }
+.step-item--prose .step-prose {
+  flex: 1; min-width: 0;
+  font-family: var(--sans); font-size: 9.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75; margin: 0;
 }
 .rule { width: 52px; height: 1px; background: var(--filete); margin-bottom: 32px; }
 .subtitle {
@@ -122,17 +141,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
 
 .numbered-block { margin-bottom: 20px; }
+/* PDF: 8.5pt LiberationSans, una línea con · (misma voz que .tag) */
 .numbered-title {
-  font-family: var(--sans); font-size: 9px; font-weight: 500;
-  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
-  display: flex; gap: 10px; align-items: baseline; line-height: 1.35;
-  margin-bottom: 6px;
+  font-family: var(--sans); font-size: 8.5px; font-weight: 400;
+  letter-spacing: 0.22em; color: var(--texto); text-transform: uppercase;
+  line-height: 1.35; margin-bottom: 6px;
 }
-.numbered-title .num {
-  flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
-}
-.numbered-title .numbered-label { flex: 1; min-width: 0; }
+.numbered-title .num { font-variant-numeric: tabular-nums; }
 .area-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   column-gap: 36px; row-gap: 14px;
