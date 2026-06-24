@@ -1,0 +1,107 @@
+{
+  "book": {
+    "series": "LIVIIN · EBOOK 02",
+    "title": "El arte de transformar tu hogar",
+    "coverImage": "assets/transformar-cover.jpg"
+  },
+  "pages": [
+    {
+      "id": "cover",
+      "type": "cover",
+      "series": "L I V I I N  ·  E B O O K  0 2",
+      "title": "El arte de transformar tu hogar",
+      "subtitle": "De la lista a la acción.",
+      "logo": "liviin\nfor better living"
+    },
+    {
+      "id": "p4",
+      "type": "content",
+      "label": "I N I C I A C I Ó N  0 0",
+      "title": "De mí para ti",
+      "subtitle": "Otra vez.",
+      "paragraphs": [
+        "Si llegaste hasta aquí, es porque ya leíste el primer libro. Y eso ya dice mucho de ti.",
+        "Significa que hiciste introspección. Que te miraste a los ojos como dueña de tu hogar. Que entendiste — quizás por primera vez — que la armonía no se filtraba desde abajo, sino desde arriba. Que liderar tu casa era una habilidad, no un don.",
+        "Y muy probablemente, también, que te sentaste con tu Home Excel. Que recorriste tu casa con ojos nuevos. Que escribiste lo que la rutina diaria no alcanzaba a cubrir. Que viste, por primera vez en mucho tiempo, el mapa completo de lo que tu hogar te estaba pidiendo.",
+        "Si llegaste hasta ahí, ya eres una ganadora en este proceso. De verdad.",
+        "<strong>Pero te tengo que decir algo con honestidad.</strong>",
+        "Yo también pasé por este punto. Y este punto — el de ya saberlo todo y no haber empezado nada — es uno de los más peligrosos del recorrido."
+      ],
+      "footer": { "section": "I N I C I A C I Ó N", "number": 4 }
+    },
+    {
+      "id": "p5",
+      "type": "content",
+      "paragraphs": [
+        "Porque la lista, sin acción, se vuelve un peso. Lo que antes era invisible y te quitaba energía sin que lo notaras, ahora está nombrado, escrito, mirándote desde una hoja de Excel — y eso pesa distinto. Pesa más.",
+        "Esa es la trampa silenciosa de la primera etapa: creer que entender ya es suficiente. No lo es."
+      ],
+      "footer": { "section": "I N I C I A C I Ó N", "number": 5 }
+    },
+    {
+      "id": "p6",
+      "type": "content",
+      "label": "I N I C I A C I Ó N  ·  C O N T I N Ú A",
+      "title": "Lo que viene ahora.",
+      "paragraphs": [
+        "Este segundo libro nace porque, en mi propio proceso, y en el de muchas mujeres que he acompañado, descubrí que entre tener la lista y tener un hogar transformado hay un abismo. Y ese abismo se llama pereza. Se llama procrastinación. Se llama agobio. Se llama no saber por dónde empezar.",
+        "También se llama miedo. Miedo a ver la pila de ropa que ya no nos representa. Miedo a abrir la bodega. Miedo a confrontar el cajón que llevamos años evitando.",
+        "Yo sentí todos esos miedos. Y los voy a nombrar contigo en estas páginas — porque lo que se nombra deja de tener poder sobre ti.",
+        "<span class=\"callout\">Este libro no es sobre tener una casa perfecta. Es sobre dejar de esperar a que sea perfecta para empezar a vivirla.</span>",
+        "Te leo despacio, otra vez. Tómate tu tiempo. Y prepárate para esta segunda parte del camino — porque aquí es donde, de verdad, todo cambia.",
+        "<span class=\"sig\">— MARÍA TERESA ESPINOSA<br><em>Interiorista y Home Coach · MTE</em></span>"
+      ],
+      "footer": { "section": "I N I C I A C I Ó N", "number": 6 }
+    },
+    {
+      "id": "p7",
+      "type": "quote",
+      "text": "Entender no es transformar. Lo único que transforma es la mano puesta sobre lo que llevas años evitando.",
+      "cite": "—  M T E  ·  L I V I I N"
+    },
+    {
+      "id": "p8",
+      "type": "content",
+      "label": "A N T E S  D E  E M P E Z A R",
+      "title": "Lo que vas a encontrar aquí",
+      "paragraphs": [
+        "Este ebook no te va a dar más teoría. Si leíste el primer libro, ya tienes la filosofía suficiente para una vida entera. Lo que este libro te va a enseñar es algo distinto:"
+      ],
+      "list": [
+        {
+          "label": "0 1  ·  E L  C A M B I O  D E  V I S I Ó N",
+          "text": "Por qué la introspección sincera sobre lo que te molesta en silencio es el verdadero punto de partida — y por qué casi ninguna dueña se atreve a hacerla."
+        },
+        {
+          "label": "0 2  ·  L E J O S  D E  L A  P E R F E C C I Ó N",
+          "text": "La tesis que sostiene este libro entero: tu casa no necesita ser perfecta para empezar a transformarse. Solo necesita ser nombrada, depurada y querida desde donde está hoy."
+        },
+        {
+          "label": "0 3  ·  P O R  D Ó N D E  E M P E Z A R",
+          "text": "El método del menor apego — empezar por el espacio que menos pesa, no por el que más arregla. Y por qué eso lo cambia todo."
+        }
+      ],
+      "footer": { "section": "I N I C I A C I Ó N", "number": 8 }
+    },
+    {
+      "id": "p11",
+      "type": "opener",
+      "label": "M O V I M I E N T O  0 1",
+      "title": "El cambio de visión",
+      "subtitle": "Antes de mover un solo cajón, hay que mirar distinto."
+    },
+    {
+      "id": "p12",
+      "type": "content",
+      "label": "A P E R T U R A",
+      "title": "Lo que te molestaba en silencio.",
+      "paragraphs": [
+        "Hay un fenómeno en casi todas las casas que conozco — incluida la mía durante años. Es esto:",
+        "Hay cosas que te molestan todos los días. La gaveta que cuesta cerrar. El espacio donde nunca encuentras lo que buscas. El rincón de la cocina que evitas mirar. El cuarto de los niños que pospones organizar. La bodega que llevas dos años sin abrir.",
+        "Te molestan todos los días. Pero te molestan en silencio. No las nombras. No las priorizas. Las normalizas. Aprendes a vivir alrededor de ellas — caminas por la cocina sin mirar ese rincón, sacas la ropa del closet sin abrir el cajón de abajo, cierras la puerta de la bodega rápido.",
+        "Eso es lo que yo llamo molestia silenciosa. Y mientras esa molestia siga siendo silenciosa, tu casa nunca va a cambiar."
+      ],
+      "footer": { "section": "0 1  ·  E L  C A M B I O  D E  V I S I Ó N", "number": 12 }
+    }
+  ]
+}

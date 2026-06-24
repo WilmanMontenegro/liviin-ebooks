@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El arte de transformar tu hogar · Liviin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --fondo:     #DFE0DB;
+  --crema:     #FAF7F0;
+  --banda:     #B7BDBB;
+  --texto:     #3A322C;
+  --secundario:#665E53;
+  --filete:    #B5A891;
+  --taupe:     #AB9E95;
+  --serif-display: 'Cormorant SC', 'Cormorant Garamond', serif;
+  --serif-text:    'Cormorant Garamond', serif;
+  --sans:          'Inter', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
+
+.page {
+  width: 576px; min-height: 864px; margin: 0 auto 4px;
+  background: var(--fondo); position: relative;
+  display: flex; flex-direction: column;
+  page-break-after: always; overflow: hidden;
+}
+.page-crema { background: var(--crema); }
+.content { flex: 1; padding: 48px 42px 40px 37px; }
+
+.banda {
+  background: var(--banda); height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 42px 0 37px; flex-shrink: 0;
+}
+.banda-texto {
+  font-family: var(--sans); font-size: 8px; font-weight: 400;
+  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
+}
+
+.tag {
+  font-family: var(--sans); font-size: 8.5px; font-weight: 400;
+  letter-spacing: 0.22em; color: var(--secundario); text-transform: uppercase;
+  margin-bottom: 20px; display: block;
+}
+.h1 {
+  font-family: var(--serif-display); font-size: 52px; font-weight: 500;
+  color: var(--texto); line-height: 1.0; letter-spacing: 0.01em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.h1-italic {
+  font-family: var(--serif-text); font-size: 44px; font-weight: 300;
+  font-style: italic; color: var(--texto); line-height: 1.1; margin-bottom: 20px;
+}
+.h2 {
+  font-family: var(--serif-display); font-size: 28px; font-weight: 500;
+  color: var(--texto); line-height: 1.15; text-transform: uppercase;
+  letter-spacing: 0.02em; margin-bottom: 12px;
+}
+.rule { width: 52px; height: 1px; background: var(--filete); margin-bottom: 32px; }
+.subtitle {
+  font-family: var(--serif-text); font-size: 15px; font-style: italic;
+  color: var(--secundario); line-height: 1.5; margin-top: 8px;
+}
+.body {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.85; margin-bottom: 16px;
+}
+.pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
+.pull-quote p {
+  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
+  color: var(--secundario); line-height: 1.6;
+}
+
+.foto-portada {
+  width: 100%; height: 520px; background: var(--banda);
+  position: relative; flex-shrink: 0; overflow: hidden;
+}
+.foto-portada img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top; display: block;
+}
+
+.foto-placeholder {
+  border: 1.5px dashed var(--filete); min-height: 200px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; margin-bottom: 24px; gap: 10px;
+}
+.foto-diamond { font-family: var(--serif-text); font-size: 16px; color: var(--filete); }
+.foto-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; }
+.foto-caption { font-family: var(--serif-text); font-size: 11px; font-style: italic; color: var(--secundario); text-align: center; max-width: 80%; line-height: 1.5; }
+
+.pull-page { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 52px; flex: 1; }
+.pull-page-quote { font-family: var(--serif-text); font-size: 22px; font-style: italic; color: var(--texto); line-height: 1.55; margin-bottom: 28px; }
+.pull-page-attr { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; }
+
+.movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
+
+.numbered-block { margin-bottom: 20px; }
+.numbered-title { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 8px; align-items: baseline; }
+.numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
+
+.caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
+
+.dedicatoria { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; text-align: center; gap: 4px; }
+.dedicatoria .dash { font-family: var(--sans); font-size: 8px; letter-spacing: 0.25em; color: var(--filete); text-transform: uppercase; margin-bottom: 28px; }
+.dedicatoria p { font-family: var(--serif-text); font-size: 17px; font-style: italic; font-weight: 300; color: var(--texto); line-height: 1.6; }
+
+.agradecimiento-item { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--texto); line-height: 1.75; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--filete); }
+.agradecimiento-item:last-child { border-bottom: none; }
+.agradecimiento-item strong { font-weight: 500; }
+
+.next-link { text-align: right; margin-top: 28px; }
+.next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
+.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--texto); }
+
+.firma { margin-top: 32px; }
+.firma .con-carino { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); margin-bottom: 4px; }
+.firma .nombre { font-family: var(--sans); font-size: 9px; letter-spacing: 0.22em; color: var(--secundario); text-transform: uppercase; font-weight: 400; }
+
+.portada-content {
+  padding: 16px 37px 36px 37px; flex: 1; display: flex;
+  flex-direction: column; justify-content: flex-end;
+}
+.portada-colofon { margin-top: 0; }
+.portada-colofon { font-family: var(--sans); font-size: 8px; letter-spacing: 0.15em; color: var(--secundario); text-transform: uppercase; margin-bottom: 8px; }
+.portada-titulo { font-family: var(--serif-display); font-size: 56px; font-weight: 500; color: var(--texto); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 16px; }
+.portada-subtitulo { font-family: var(--serif-text); font-size: 13.5px; font-style: italic; color: var(--secundario); line-height: 1.5; margin-bottom: 28px; max-width: 320px; }
+.portada-liviin { display: flex; flex-direction: column; align-items: flex-end; }
+.portada-liviin .marca { font-family: var(--serif-text); font-size: 28px; font-weight: 300; color: var(--texto); letter-spacing: 0.02em; }
+.portada-liviin .tagline { font-family: var(--serif-text); font-size: 11px; font-style: italic; color: var(--secundario); }
+
+.spacer-sm { height: 12px; } .spacer-md { height: 24px; } .spacer-lg { height: 40px; } .spacer-xl { height: 64px; }
+.text-center { text-align: center; }
+.frase-cierre { font-family: var(--serif-text); font-size: 19px; font-style: italic; color: var(--texto); line-height: 1.6; text-align: center; margin-bottom: 24px; }
+.liviin-footer-brand { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
+.liviin-footer-brand .marca-final { font-family: var(--serif-text); font-size: 22px; font-weight: 300; color: var(--secundario); }
+.liviin-footer-brand .tagline-final { font-family: var(--serif-text); font-size: 10px; font-style: italic; color: var(--taupe); }
+
+@media print { body { background: white; } .page { margin: 0; page-break-after: always; } }
+.hub-link { position:fixed;top:12px;left:12px;z-index:9;font-family:var(--sans);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:rgba(58,50,44,0.85);color:#fff;padding:8px 12px;text-decoration:none;border-radius:2px; }
+@media print { .hub-link { display:none; } }
+
+
+.hub-link { position:fixed;top:12px;left:12px;z-index:9;font-family:var(--sans);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:rgba(58,50,44,0.85);color:#fff;padding:8px 12px;text-decoration:none;border-radius:2px; }
+@media print { .hub-link { display:none; } }
+
+</style>
+</head>
+<body>
+<a class="hub-link" href="index.html">← Inicio</a>
+<!-- PORTADA -->
+<div class="page">
+  <div class="foto-portada"><img src="assets/transformar-portada.jpg" alt=""></div>
+  <div class="portada-content">
+    <span class="portada-colofon">LIVIIN · EBOOK 02</span>
+    <div class="portada-titulo">El arte de<br>transformar<br>tu hogar</div>
+    <div class="portada-subtitulo">Una guía para dueñas que ya tienen la lista — y están listas para pasar de la idea al hacer.</div>
+    <div class="portada-liviin">
+      <span class="marca">liviin</span>
+      <span class="tagline">for better living</span>
+    </div>
+  </div>
+</div>
+
+<!-- TÍTULO LEGAL -->
+<div class="page">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;">
+    <div class="spacer-xl"></div>
+    <span class="tag">LIVIIN · EBOOK 02</span>
+    <div class="h1" style="font-size:36px;margin-bottom:6px;">El arte de<br>transformar tu hogar</div>
+    <div class="rule"></div>
+    <p class="subtitle">Una guía para dueñas que ya tienen la lista — y que están preparadas para pasar de la idea al hacer, desde lo que ya tienen.</p>
+    <div class="spacer-lg"></div>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">UNA GUÍA DE MARÍA TERESA ESPINOSA</p>
+    <p style="font-family:var(--serif-text);font-size:12px;font-style:italic;color:var(--secundario);">Interiorista y Home Coach · MTE</p>
+    <div class="spacer-lg"></div>
+    <p style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.1em;color:var(--filete);text-transform:uppercase;">© LIVIIN · FOR BETTER LIVING</p>
+    <p style="font-family:var(--serif-text);font-size:11px;font-style:italic;color:var(--filete);margin-top:4px;">Primera edición digital · 2026</p>
+    <div class="spacer-md"></div>
+    <p class="body" style="font-size:10px;color:var(--secundario);">Esta obra es la continuación de <em>El arte de liderar tu hogar</em> (Liviin · Ebook 01). Está pensada para acompañar a la dueña del hogar en el momento más difícil de toda transformación: el de pasar de la idea a la acción.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">LIVIIN · EBOOK 02</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- DEDICATORIA -->
+<div class="page page-crema">
+  <div class="content dedicatoria">
+    <span class="dash">— DEDICATORIA —</span>
+    <p>A la dueña que ya tiene la</p>
+    <p>lista. A la que sabe lo que</p>
+    <p>quiere — pero no sabe por</p>
+    <p>dónde empezar.</p>
+    <p>A la que tiene miedo de</p>
+    <p>mirar la pila de ropa, el</p>
+    <p>cajón cerrado, la bodega</p>
+    <p>olvidada.</p>
+    <p>Y a la que va a descubrir,</p>
+    <p>página por página, que ese</p>
+    <p>miedo era la puerta.</p>
+  </div>
+</div>
+
+<!-- p4 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">I N I C I A C I Ó N  0 0</span>
+    <div class="h2">De mí para ti</div>
+    <div class="rule"></div>
+    <p class="body">Otra vez.</p>
+    <p class="body">Si llegaste hasta aquí, es porque ya leíste el primer libro. Y eso ya dice mucho de ti.</p>
+    <p class="body">Significa que hiciste introspección. Que te miraste a los ojos como dueña de tu hogar. Que entendiste — quizás por primera vez — que la armonía no se filtraba desde abajo, sino desde arriba. Que liderar tu casa era una habilidad, no un don.</p>
+    <p class="body">Y muy probablemente, también, que te sentaste con tu Home Excel. Que recorriste tu casa con ojos nuevos. Que escribiste lo que la rutina diaria no alcanzaba a cubrir. Que viste, por primera vez en mucho tiempo, el mapa completo de lo que tu hogar te estaba pidiendo.</p>
+    <p class="body">Si llegaste hasta ahí, ya eres una ganadora en este proceso. De verdad.</p>
+    <div class="pull-quote"><p>Pero te tengo que decir algo con honestidad.</p></div>
+    <p class="body">Yo también pasé por este punto. Y este punto — el de ya saberlo todo y no haber empezado nada — es uno de los más peligrosos del recorrido.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">4</span></div>
+
+</div>
+
+<!-- p5 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Porque la lista, sin acción, se vuelve un peso. Lo que antes era invisible y te quitaba energía sin que lo notaras, ahora está nombrado, escrito, mirándote desde una hoja de Excel — y eso pesa distinto. Pesa más.</p>
+    <p class="body">Esa es la trampa silenciosa de la primera etapa: creer que entender ya es suficiente. No lo es.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">5</span></div>
+
+</div>
+
+<!-- p6 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">I N I C I A C I Ó N  ·  C O N T I N Ú A</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que viene ahora.</div>
+    <div class="rule"></div>
+    <p class="body">Este segundo libro nace porque, en mi propio proceso, y en el de muchas mujeres que he acompañado, descubrí que entre tener la lista y tener un hogar transformado hay un abismo. Y ese abismo se llama pereza. Se llama procrastinación. Se llama agobio. Se llama no saber por dónde empezar.</p>
+    <p class="body">También se llama miedo. Miedo a ver la pila de ropa que ya no nos representa. Miedo a abrir la bodega. Miedo a confrontar el cajón que llevamos años evitando.</p>
+    <p class="body">Yo sentí todos esos miedos. Y los voy a nombrar contigo en estas páginas — porque lo que se nombra deja de tener poder sobre ti.</p>
+    <div class="pull-quote"><p>Este libro no es sobre tener una casa perfecta. Es sobre dejar de esperar a que sea perfecta para empezar a vivirla.</p></div>
+    <p class="body">Te leo despacio, otra vez. Tómate tu tiempo. Y prepárate para esta segunda parte del camino — porque aquí es donde, de verdad, todo cambia.</p>
+    <div class="firma">
+      <p class="con-carino">— María Teresa Espinosa</p>
+      <p class="nombre">Interiorista y Home Coach · MTE</p>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">6</span></div>
+
+</div>
+
+<!-- p7 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Entender no es transformar. Lo único que transforma es la mano puesta sobre lo que llevas años evitando."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p8 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A N T E S  D E  E M P E Z A R</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que vas a encontrar<br>aquí</div>
+    <div class="rule"></div>
+    <p class="body">Este ebook no te va a dar más teoría. Si leíste el primer libro, ya tienes la filosofía suficiente para una vida entera. Lo que este libro te va a enseñar es algo distinto:</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> EL CAMBIO DE VISIÓN</div></div>
+    <p class="body">Por qué la introspección sincera sobre lo que te molesta en silencio es el verdadero punto de partida — y por qué casi ninguna dueña se atreve a hacerla.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LEJOS DE LA PERFECCIÓN</div></div>
+    <p class="body">La tesis que sostiene este libro entero: tu casa no necesita ser perfecta para empezar a transformarse. Solo necesita ser nombrada, depurada y querida desde donde está hoy.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> POR DÓNDE EMPEZAR</div></div>
+    <p class="body">El método del menor apego — empezar por el espacio que menos pesa, no por el que más arregla. Y por qué eso lo cambia todo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">8</span></div>
+
+</div>
+
+<!-- p9 -->
+<div class="page">
+  <div class="content">
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> EL ORDEN REAL</div></div>
+    <p class="body">La secuencia que casi nadie respeta: depurar, limpiar, organizar — y solo entonces comprar. Por qué hacerlo al revés es la razón por la que nada funciona.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> TU EQUIPO DE TRANSFORMACIÓN</div></div>
+    <p class="body">Los tres momentos donde una asesoría externa transforma tu proceso. Y cómo armar tu propio equipo — sin gastar de más.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span> DE PROYECTO A HÁBITO</div></div>
+    <p class="body">Cómo lo que empezó como tarea se convierte en forma de vida. El Excel que se transforma, los hábitos atómicos, y la familia que también entra en el método.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">07</span> CUANDO TERMINA, EMPIEZA</div></div>
+    <p class="body">Por qué estas metas sí tienen principio y final — y qué se libera adentro de ti cuando tu casa, finalmente, fluye.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">9</span></div>
+
+</div>
+
+<!-- ÍNDICE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">ÍNDICE</span>
+    <div class="h2">El recorrido</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">00</span> Iniciación · De mí para ti, otra vez</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> El cambio de visión</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> Lejos de la perfección</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> Por dónde empezar</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> El orden real</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> Tu equipo de transformación</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span> De proyecto a hábito</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">07</span> Cuando termina, empieza</div></div>
+    <div class="spacer-md"></div>
+    <p class="body">Lee a tu ritmo. Cada movimiento puede leerse solo. Pero esta vez, te invito especialmente a algo: no solo leer. Después de cada movimiento, haz una cosa — aunque sea pequeña — en tu casa. Una sola. Esa es la diferencia entre un libro y un cambio.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">ÍNDICE</span><span class="banda-texto">10</span></div>
+
+</div>
+
+<!-- p11 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 01</span>
+    <div class="h1">El cambio de<br>visión</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">distinto.</p>
+  </div>
+</div>
+
+<!-- p12 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que te molestaba en<br>silencio.</div>
+    <div class="rule"></div>
+    <p class="body">Hay un fenómeno en casi todas las casas que conozco — incluida la mía durante años. Es esto:</p>
+    <p class="body">Hay cosas que te molestan todos los días. La gaveta que cuesta cerrar. El espacio donde nunca encuentras lo que buscas. El rincón de la cocina que evitas mirar. El cuarto de los niños que pospones organizar. La bodega que llevas dos años sin abrir.</p>
+    <p class="body">Te molestan todos los días. Pero te molestan en silencio. No las nombras. No las priorizas. Las normalizas. Aprendes a vivir alrededor de ellas — caminas por la cocina sin mirar ese rincón, sacas la ropa del closet sin abrir el cajón de abajo, cierras la puerta de la bodega rápido.</p>
+    <p class="body">Eso es lo que yo llamo molestia silenciosa. Y mientras esa molestia siga siendo silenciosa, tu casa nunca va a cambiar.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">12</span></div>
+
+</div>
+
+<!-- p13 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  E S E N C I A L</span>
+    <div class="h1-italic" style="font-size:38px;">Antes que la acción, la<br>visión.</div>
+    <div class="rule"></div>
+    <p class="body">En el primer libro hablamos de introspección como el primer pilar del método. Lo nombramos. Pero ahora vamos a hacer algo distinto — vamos a practicarla de verdad.</p>
+    <p class="body">La introspección sincera es esto: mirar las cosas que llevas años evadiendo, y por primera vez nombrarlas como problemas reales. No como inconvenientes. No como detalles. Problemas reales que te están robando energía todos los días.</p>
+    <div class="pull-quote"><p>Lo que se nombra como problema, finalmente puede empezar a tener solución.</p></div>
+    <p class="body">Y aquí va la verdad que me tomó tiempo aceptar a mí misma: por años, me enfoqué en la estética. En lo bonito. En la cereza del pastel — sin haber hecho el pastel. Compraba un jarrón cuando lo que mi casa necesitaba era que yo abriera el cajón que llevaba meses sin tocar.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">13</span></div>
+
+</div>
+
+<!-- p14 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">D E T E N T E  U N  M O M E N T O</span>
+    <div class="h1-italic" style="font-size:38px;">El recorrido silencioso</div>
+    <div class="rule"></div>
+    <p class="body">Hay un ejercicio que cambió mi proceso, y que les pido a todas mis clientas. Lo llamo el recorrido silencioso. Es muy simple, y al mismo tiempo, profundamente revelador.</p>
+    <p class="body">Recorre tu casa. Sola. Sin teléfono. Sin música. En silencio total.</p>
+    <p class="body">Camina despacio por cada espacio. Detente. No para evaluar</p>
+    <div class="pull-quote"><p>¿Qué de esto me molesta sin que yo lo nombre?</p></div>
+    <p class="body">No respondas con la cabeza. Responde con el cuerpo. ¿Dónde se te tensiona el pecho? ¿Dónde te da pereza mirar? ¿Dónde caminas más rápido para no detenerte? ¿Qué cajón evitas abrir? ¿Qué armario te incomoda?</p>
+    <p class="body">Esos lugares — los que tu cuerpo evita — son los que tu casa te está señalando. Esos son los puntos de partida reales.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">14</span></div>
+
+</div>
+
+<!-- p15 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Tu cuerpo conoce tu casa mejor que tu mente. Aprende a escucharlo."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p16 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  Q U E  D E S C U B R E S</span>
+    <div class="h1-italic" style="font-size:38px;">Tres tipos de molestia<br>silenciosa</div>
+    <div class="rule"></div>
+    <p class="body">Cuando hagas el recorrido, vas a encontrar tres tipos de molestia. Las tres son válidas. Las tres tienen solución. Pero cada una pide un camino distinto:</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> MOLESTIA FUNCIONAL</div></div>
+    <p class="body">Algo que no funciona como debería: una gaveta que se traba, una luz que parpadea, una puerta que no cierra. Estas se resuelven con el arreglo estructural del que hablamos en el Ebook 1. Suelen costar poco. Y dan una satisfacción enorme cuando se resuelven.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> MOLESTIA DE SATURACIÓN</div></div>
+    <p class="body">Espacios saturados de cosas que ya no usas, no quieres, o no recuerdas que tienes. El closet que está lleno pero no tienes qué ponerte. La bodega donde ya no cabe nada más. Estas se resuelven con depuración — y son las que más energía liberan cuando finalmente se atienden.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">16</span></div>
+
+</div>
+
+<!-- p17 -->
+<div class="page">
+  <div class="content">
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> MOLESTIA DE DESORDEN CON</div></div>
+    <span class="tag">S E N T I D O</span>
+    <p class="body">Cosas que sí usas, que sí quieres, pero que están en cualquier parte. No tienen casa propia. Estas se resuelven con organización — pero solo después de haber depurado, nunca antes.</p>
+    <p class="body">Casi todas las molestias silenciosas son una mezcla de los tres tipos. Identificar cuál pesa más en cada espacio te dice exactamente por dónde empezar.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">17</span></div>
+
+</div>
+
+<!-- p18 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  V E R D A D  I N C Ó M O D A</span>
+    <div class="h1-italic" style="font-size:38px;">Por qué evitamos verlo</div>
+    <div class="rule"></div>
+    <p class="body">Voy a hablarte con honestidad, otra vez.</p>
+    <p class="body">La razón por la que la mayoría de las dueñas no hace el recorrido silencioso no es la falta de tiempo. Es algo más profundo: es miedo.</p>
+    <p class="body">Miedo a ver el tamaño real del trabajo. Miedo a sentirse abrumada. Miedo a que el problema sea más grande de lo que estaba dispuesta a admitir. Miedo a darse cuenta de que llevaba años posponiendo cosas que no eran tan complicadas</p>
+    <div class="pull-quote"><p>Pero el miedo a ver no protege. El miedo a ver paraliza.</p></div>
+    <p class="body">Lo que sí protege es justamente lo opuesto: ver con claridad, nombrar sin juicio, y entender que la lista que aparezca no es una lista de fallas tuyas. Es una hoja de ruta. Es información. Es, finalmente, el mapa que necesitas para empezar a transformar.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">18</span></div>
+
+</div>
+
+<!-- p19 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">H O M E  C O A C H  ·  E J E R C I C I O  0 1</span>
+    <div class="h1-italic" style="font-size:38px;">Tu primer ejercicio</div>
+    <div class="rule"></div>
+    <p class="body">Antes de pasar al siguiente movimiento, te pido esto:</p>
+    <p class="body">• Esta semana, haz el recorrido silencioso. Sola. Sin teléfono. Mínimo veinte minutos. • Lleva un cuaderno — no el celular. Lo análogo conecta con el cuerpo de otra forma. • Anota solo dos cosas: dónde tu cuerpo se tensiona, y de qué tipo es esa molestia (funcional, saturación, o desorden). • No empieces a resolver nada todavía. Solo nombra. La acción viene en el siguiente movimiento.</p>
+    <p class="body">Cuando termines, vuelve a abrir tu Home Excel. Y cruza lo que escribiste en el cuaderno con lo que ya tenías en el Excel. Vas a descubrir que coinciden — pero que lo del cuaderno tiene una urgencia distinta. Más íntima. Más real.</p>
+    <p class="body">Esa es la diferencia entre saber lo que hay que hacer y saber por dónde empezar a hacerlo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">19</span></div>
+
+</div>
+
+<!-- p20 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"La estética es la cereza del pastel. Pero primero hay que hacer el pastel."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p21 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 1</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que ya tienes ahora.</div>
+    <div class="rule"></div>
+    <p class="body">Si hiciste el recorrido — aunque sea de una sola habitación — ya estás en otro lugar. Ya nombraste lo que tu casa te susurraba en silencio. Ya tienes claridad sobre los tres tipos de molestia que conviven en tu hogar.</p>
+    <p class="body">Y, sobre todo, ya rompiste el primer hechizo: el de creer que la solución estaba en lo nuevo, en lo bonito, en la próxima compra. Ahora sabes que la solución empieza adentro, con lo que ya tienes.</p>
+    <div class="pull-quote"><p>Pero ver no es suficiente. Ahora tenemos que hablar de algo que casi nadie nombra — y que es la verdadera razón por la que muchas casas no cambian.</p></div>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 02 →</span>
+      <span class="arrow-title">Lejos de la perfección</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">21</span></div>
+
+</div>
+
+<!-- p22 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 02</span>
+    <div class="h1">Lejos de la<br>perfección</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">La tesis que sostiene todo lo demás.</p>
+  </div>
+</div>
+
+<!-- p23 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que nos contamos.</div>
+    <div class="rule"></div>
+    <p class="body">Voy a empezar este movimiento nombrando algo que escucho en casi todas las consultas. Es una colección de frases. Las he escuchado tantas veces que las puedo recitar de memoria — y me las dije a mí misma durante años:</p>
+    <p class="body">“Es que mi casa es muy pequeña.”</p>
+    <p class="body">“Es que esta casa no me gusta.”</p>
+    <p class="body">“Es que vivo en casa alquilada.”</p>
+    <p class="body">“Es que estoy en proceso de cambio.”</p>
+    <p class="body">“Es que cuando tenga la casa propia, ahí sí.”</p>
+    <p class="body">“Es que cuando los niños crezcan, ahí sí.”</p>
+    <p class="body">Estas frases tienen algo en común. Todas posponen la transformación de tu casa para un momento futuro — un momento que casi nunca llega. Y mientras tanto, los años pasan, y tú sigues viviendo en un hogar que no te representa, que no te da paz, que no te devuelve la energía.</p>
+    <div class="pull-quote"><p>Estas frases no son razones. Son excusas. Y vale la pena nombrarlas con esa palabra exacta.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">23</span></div>
+
+</div>
+
+<!-- p24 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  V E R D A D  D E  O F I C I O</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que aprendí en veinte<br>años</div>
+    <div class="rule"></div>
+    <p class="body">Te hablo desde mi oficio. He entrado a casas grandes, casas pequeñas, casas alquiladas, casas propias, casas en construcción, casas heredadas, casas recién compradas. He visto cada formato posible.</p>
+    <p class="body">Y esto es lo que descubrí — y que cambió por completo mi forma de trabajar:</p>
+    <div class="pull-quote"><p>Si tus hábitos de cuidado no son buenos, puedes cambiar todos los muebles de tu casa, y el sentimiento de frustración solo se irá por un rato. Y luego volverá. Te lo prometo.</p></div>
+    <p class="body">Lo he visto cien veces. Una clienta cambia todo el mobiliario, hace una renovación completa, invierte una suma importante. Seis meses después, vuelvo, y la casa nueva ya tiene el desorden de la casa anterior. Las cosas otra vez en cualquier parte. Las molestias silenciosas otra vez normalizadas — solo que ahora con muebles más caros.</p>
+    <p class="body">Porque no es la casa. Eres tú con tu casa. Es la relación que tienes con lo que ya tienes.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">24</span></div>
+
+</div>
+
+<!-- p25 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cambiar de muebles sin cambiar de hábitos es la forma más cara de seguir frustrada."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p26 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  T E S I S  D E L  L I B R O</span>
+    <div class="h1-italic" style="font-size:38px;">Darle valor a lo que ya<br>tienes</div>
+    <div class="rule"></div>
+    <p class="body">Aquí está, con todas las palabras, la tesis que sostiene este libro entero:</p>
+    <div class="pull-quote"><p>Tu casa no necesita ser perfecta para empezar a transformarse. No necesita ser propia, ni grande, ni nueva, ni definitiva. Solo necesita una cosa: que empieces a darle valor, sentido, orden y depuración a lo que hoy tienes.</p></div>
+    <p class="body">Cuando empiezas desde ahí — desde el respeto por lo que ya tienes — algo se mueve. La energía de tu casa cambia. Y cuando tu energía cambia, empiezas a atraer todo lo que estabas anhelando.</p>
+    <p class="body">Y aquí va lo más bonito: cuando esas cosas nuevas finalmente lleguen — la casa propia, el sofá soñado, la cocina renovada</p>
+    <p class="body">cuidar mejor. Porque ya aprendiste lo que muchas mujeres nunca aprenden: que el problema nunca fue lo que faltaba. Era cómo te relacionabas con lo que estaba.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">26</span></div>
+
+</div>
+
+<!-- p27 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A S  C U A T R O  E X C U S A S</span>
+    <div class="h1-italic" style="font-size:38px;">Que pospones tu hogar</div>
+    <div class="rule"></div>
+    <p class="body">Vamos a desarmar las cuatro excusas más comunes — una por una. No para juzgarte, sino para que veas que detrás de cada una hay una verdad que puede liberarte:</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> “ES QUE MI CASA ES MUY</div></div>
+    <span class="tag">P E Q U E Ñ A . ”</span>
+    <p class="body">Verdad: una casa pequeña depurada se siente más amplia que una casa grande saturada. La sensación de espacio no la dan los metros cuadrados — la da la cantidad de cosas que conviven contigo en ellos.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> “ES QUE ESTA CASA NO ME</div></div>
+    <span class="tag">G U S T A . ”</span>
+    <p class="body">Verdad: una casa que no te gusta no se transforma evitándola. Se transforma cuidándola. Y muchas veces, después de cuidarla con intención, descubres que sí te gustaba — solo que llevaba años sin recibir tu mirada.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">27</span></div>
+
+</div>
+
+<!-- p28 -->
+<div class="page">
+  <div class="content">
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> “ES QUE VIVO EN CASA</div></div>
+    <span class="tag">A L Q U I L A D A . ”</span>
+    <p class="body">Verdad: la organización, la depuración, la limpieza profunda, los hábitos de cuidado — nada de eso depende de quién es dueño de las paredes. Eso depende de ti. Y se va contigo cuando te mudes — porque se vuelve forma de vivir, no decoración.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> “ES QUE ESTOY EN PROCESO DE</div></div>
+    <span class="tag">C A M B I O . ”</span>
+    <p class="body">Verdad: el proceso de cambio dura años. La vida es lo que pasa mientras tanto. Esperar a que las circunstancias sean ideales para empezar es la receta más confiable para no empezar nunca.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">28</span></div>
+
+</div>
+
+<!-- p29 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"La energía cambia cuando empiezas. No antes. Y a partir de ahí, empieza a llegarte lo que llevabas tiempo anhelando."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p30 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">E L  C A M B I O  I N T E R N O</span>
+    <div class="h1-italic" style="font-size:38px;">De querer cambiar todo a<br>depurar lo que tengo</div>
+    <div class="rule"></div>
+    <p class="body">Hay un momento — pequeño, casi imperceptible — en el que una dueña pasa del modo querer cambiar todo al modo depurar y valorar lo que tengo. Ese momento es el que más transforma.</p>
+    <p class="body">Antes de ese momento, abres revistas, miras Pinterest, sueñas con casas ajenas, sientes que la tuya nunca alcanza. Cada compra es un intento de llenar un vacío. Cada renovación es una promesa de que ahora sí vas a sentirte mejor en tu casa. Y nunca termina de sentirse así.</p>
+    <p class="body">Después de ese momento, la energía se invierte. Empiezas a mirar lo tuyo con otros ojos. Descubres muebles que olvidaste que tenías. Encuentras objetos heredados que te emocionan al limpiarlos. Te das cuenta de que el sofá que tanto criticabas era hermoso — solo necesitaba una manta que lo acompañara, no un reemplazo.</p>
+    <div class="pull-quote"><p>Ese momento no llega solo. Se construye. Y se construye depurando.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">30</span></div>
+
+</div>
+
+<!-- p31 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">H O M E  C O A C H  ·  E J E R C I C I O  0 2</span>
+    <div class="h1-italic" style="font-size:38px;">Las tres cosas</div>
+    <div class="rule"></div>
+    <p class="body">Antes de pasar al método del cómo, te pido un segundo ejercicio — corto, pero profundo. No es una pregunta intelectual. Es un ejercicio de mirada honesta sobre lo que ya tienes.</p>
+    <p class="body">Camina por tu casa, despacio, una vez más. Y esta vez no busques lo que te molesta. Busca lo opuesto. Identifica:</p>
+    <p class="body">• Tres objetos que de verdad te gustan, que usas, que te representan hoy. • Tres rincones de tu casa que ya te dan paz cuando los miras — aunque sean pequeños. • Tres cosas que tienes y que muchas mujeres anhelan tener — y que tú quizás dejaste de ver.</p>
+    <div class="pull-quote"><p>Tu casa no es solo lo que le falta. También es todo lo que ya está bien.</p></div>
+    <p class="body">La mayoría de las dueñas se sorprenden con este ejercicio. Descubren que su casa tenía mucho más a su favor de lo que estaban viendo. Que llevaban meses concentradas en lo que faltaba — y habían dejado de honrar lo que sí estaba.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">31</span></div>
+
+</div>
+
+<!-- p32 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Y ese cambio de mirada — de la carencia a la abundancia — es el verdadero motor de la transformación que viene. Porque solo desde la gratitud por lo que ya tienes, puedes cuidarlo bien. Y solo cuidando bien lo que ya tienes, te llega más.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">32</span></div>
+
+</div>
+
+<!-- p33 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 2</span>
+    <div class="h1-italic" style="font-size:38px;">La nueva mirada.</div>
+    <div class="rule"></div>
+    <p class="body">Si llegaste hasta aquí — y te detuviste, aunque sea por un minuto, en el ejercicio de las tres cosas — ya estás cambiando. No tu casa todavía. A ti misma.</p>
+    <p class="body">Y eso es lo que tenía que pasar primero. Porque toda transformación de espacio empieza con una transformación interna. Sin ella, las casas se mueven por unos meses y vuelven a su estado anterior. Con ella, los cambios se sostienen.</p>
+    <div class="pull-quote"><p>Ya no necesitas comprar para sentirte mejor en tu casa. Necesitas mirar lo que tienes con ojos nuevos. Y a partir del siguiente movimiento, vamos a empezar a hacerlo — con manos, no solo con ojos.</p></div>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 03 →</span>
+      <span class="arrow-title">Por dónde empezar</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">33</span></div>
+
+</div>
+
+<!-- p34 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 03</span>
+    <div class="h1">Por dónde<br>empezar</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">tanto.</p>
+  </div>
+</div>
+
+<!-- p35 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">La pregunta que paraliza.</div>
+    <div class="rule"></div>
+    <p class="body">Ya recorriste tu casa. Ya nombraste lo que te molesta. Ya entendiste que la solución no está en lo nuevo, sino en cómo te relacionas con lo que tienes.</p>
+    <p class="body">Pero ahora viene la pregunta que paraliza más mujeres que cualquier otra:</p>
+    <div class="pull-quote"><p>¿Y por dónde empiezo?</p></div>
+    <p class="body">La cocina porque es donde más tiempo paso. El closet porque es lo que más me molesta. La bodega porque es lo que más pesa. El cuarto de los niños porque es donde hay más caos. La sala porque es lo que primero ven los invitados.</p>
+    <p class="body">Todas son razones válidas. Y todas, en realidad, son trampas</p>
+    <p class="body">empezar por lo más difícil es la forma más confiable de no terminar nunca.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">35</span></div>
+
+</div>
+
+<!-- p36 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  E S E N C I A L</span>
+    <div class="h1-italic" style="font-size:38px;">El método del menor apego</div>
+    <div class="rule"></div>
+    <p class="body">Marie Kondo — una de mis maestras a distancia, como te conté en el primer libro — sugiere algo que en su momento me cambió todo: empezar por las tareas pequeñas. Por los espacios de menos apego. Por lo que más fácilmente puedes soltar.</p>
+    <p class="body">La lógica es profunda. Cuando empiezas por lo difícil, el cuerpo se cansa, el corazón se sobrecarga, la mente se nubla</p>
+    <p class="body">construyendo músculo. Vas viendo resultados. Vas entrenando tu capacidad de soltar. Y cuando llegues a lo difícil, ya no será tan difícil.</p>
+    <div class="pull-quote"><p>El primer espacio no se elige por su importancia. Se elige por su ligereza.</p></div>
+    <p class="body">Eso no significa empezar por algo que no importe. Significa empezar por algo donde el costo emocional de soltar sea bajo</p>
+    <p class="body">combustible para lo que viene después.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">36</span></div>
+
+</div>
+
+<!-- p37 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">D E  M Í  P A R A  T I  ·  Í N T I M O</span>
+    <div class="h1-italic" style="font-size:38px;">Mi historia con el closet</div>
+    <div class="rule"></div>
+    <p class="body">Yo empecé por mi closet. Por mi vestier.</p>
+    <p class="body">No fue una decisión estratégica. Fue una respuesta a algo que descubrí en mi propio recorrido silencioso: todas las mañanas de mi vida, durante años, me confrontaba a un closet lleno — y nunca sabía qué ponerme. Esa frase les suena familiar a casi todas las mujeres que conozco.</p>
+    <p class="body">Cuando me senté con la ropa, hice una catarsis. Saqué todo. Todo. Y empecé a separar.</p>
+    <p class="body">La que hacía mucho no usaba. La que ya no resonaba conmigo. La que no me quedaba por cambio de talla. La que recibí como regalo y me daba dolor regalarla — pero que tampoco usaba. La que guardaba por si alguna vez. La que era de una versión de mí que ya no existía.</p>
+    <div class="pull-quote"><p>Hay muchos sentimientos implícitos en los objetos que nos rodean. Y soltar es, antes que nada, un acto emocional.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">37</span></div>
+
+</div>
+
+<!-- p38 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Y sí — da miedo ver una pila gigante de ropa que ya no debe habitar tu vestier. La primera reacción es de culpa, de vergüenza, de pensar “cómo acumulé tanto”. Pero te voy a decir lo que descubrí ahí, sentada en el piso de mi cuarto, rodeada de ropa:</p>
+    <div class="pull-quote"><p>Esa pila no era el problema. Era la solución.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">38</span></div>
+
+</div>
+
+<!-- p39 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Lo que ya no usas no es tu fracaso. Es el espacio que tu vida nueva está pidiendo."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p40 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  Q U E  P A S Ó  D E S P U É S</span>
+    <div class="h1-italic" style="font-size:38px;">La energía que se mueve</div>
+    <div class="rule"></div>
+    <p class="body">Esa pila se convirtió en algo. Parte la vendí. Parte la doné. Parte la regalé a personas que la iban a usar de verdad — y eso le dio una segunda vida hermosa a ropa que en mi closet llevaba años en pausa.</p>
+    <p class="body">Y aquí va lo que más me sorprendió: la energía se movió. De maneras que no esperaba.</p>
+    <p class="body">El espacio liberado en el closet trajo bienestar — un bienestar muy físico, casi tangible. Abrir las puertas y ver aire, ver lo que sí me representaba, ver solo lo que sí usaba — eso cambió mis mañanas. Dejé de empezar el día con ese roce silencioso de no saber qué ponerme.</p>
+    <p class="body">Pero también pasó algo más sutil, y esto sí no me lo esperaba: cuando soltamos lo que ya no era nuestro, el universo empieza a liberar espacio en otras dimensiones de la vida. Como si solo estuviera esperando que abriéramos lugar — para que entren cosas nuevas, oportunidades nuevas, energía nueva.</p>
+    <div class="pull-quote"><p>Lo que sale, deja entrar.</p></div>
+    <p class="body">Esa frase, simple como suena, se ha convertido en una de las verdades más constantes que he visto en mi oficio. Las dueñas que depuran, atraen. Las que solo acumulan, no.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">40</span></div>
+
+</div>
+
+<!-- p41 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  E L E C C I Ó N</span>
+    <div class="h1-italic" style="font-size:38px;">Cómo elegir tu primer<br>espacio</div>
+    <div class="rule"></div>
+    <p class="body">Tu primer espacio quizás no sea el closet. No tiene que serlo. Cada mujer tiene un punto de inicio distinto — y ese punto se descubre, no se decide desde la cabeza.</p>
+    <p class="body">Para algunas mujeres es la estación de café — ese rincón de la cocina donde tienes tres frascos del mismo condimento, cinco tazas que nunca usas, una bandeja que olvidaste que compraste. Para otras es la zona de los niños — los juguetes, los útiles del año pasado, la ropa que ya no les queda. Para otras es la bodega, el garaje, el cajón de los cables, el rincón donde se acumulan las cosas que no tienen casa.</p>
+    <div class="pull-quote"><p>Solo se trata de caminar con calma, mirar con conciencia, y sentir dónde tu cuerpo está más listo para empezar.</p></div>
+    <p class="body">Pista: no es donde más te molesta. Es donde menos resistencia sientes a empezar.</p>
+    <p class="body">Ese es el regalo del método del menor apego. No te exige enfrentar primero lo más cargado. Te invita a empezar por la puerta más liviana — y desde ahí, ir entrando.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">41</span></div>
+
+</div>
+
+<!-- p42 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  R E G L A  D E  O R O</span>
+    <div class="h1-italic" style="font-size:38px;">Un espacio a la vez</div>
+    <div class="rule"></div>
+    <p class="body">Hay un error que casi todas las dueñas cometemos cuando finalmente nos decidimos a empezar: queremos hacer todo el mismo fin de semana.</p>
+    <p class="body">Contratamos una persona extra, dejamos la agenda libre, y nos lanzamos sobre la casa entera. Domingo en la noche, agotadas, frustradas, y la casa medio hecha por todos lados — pero ningún espacio terminado de verdad.</p>
+    <div class="pull-quote"><p>Mejor un cajón terminado que diez cajones empezados.</p></div>
+    <p class="body">Empezar y terminar un espacio — un solo espacio, completo, depurado, limpio, organizado — te da una sensación de victoria que ningún progreso parcial te puede dar. Y esa sensación es el combustible que te lleva al siguiente espacio.</p>
+    <p class="body">Si puedes ir por áreas completas, mejor todavía. Cuando terminas tu closet completo, después no solo disfrutas del closet — descubres que el cuarto entero se siente distinto. Y entonces es natural pasar al baño que pertenece al mismo cuarto. Y a la alcoba completa. Y de pronto un piso entero de tu casa se siente nuevo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">42</span></div>
+
+</div>
+
+<!-- p43 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"La transformación no es un sprint. Es una procesión paciente — un espacio a la vez, hasta que toda la casa respire."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p44 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">H O M E  C O A C H  ·  E J E R C I C I O  0 3</span>
+    <div class="h1-italic" style="font-size:38px;">Tu primer espacio</div>
+    <div class="rule"></div>
+    <p class="body">Ahora sí, te pido pasar a la acción. Pequeña, pero acción.</p>
+    <p class="body">• Mira tu Home Excel y tus notas del recorrido silencioso. • Identifica tres espacios candidatos a ser el primero — no por su importancia, sino por su ligereza. • Entre esos tres, elige el que sientas que menos resistencia te da empezar. No el que más arregle. El más liviano. • Bloquea en tu calendario una ventana — puede ser de dos horas, de medio día, de un fin de semana, según el tamaño. Pero bloquéalo. Si no está en el calendario, no existe. • Y empieza. Saca todo del espacio, mira cada cosa, decide. La regla simple: ¿esto me sigue representando hoy? Sí, se queda. No, sale.</p>
+    <p class="body">Y antes de comprar un solo organizador — porque sé que te va a dar la tentación — sigue al siguiente movimiento. Porque ahí está la secuencia que casi nadie respeta, y que es la diferencia entre un orden que dura una semana y un orden que dura años.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">44</span></div>
+
+</div>
+
+<!-- p45 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 3</span>
+    <div class="h1-italic" style="font-size:38px;">Empezaste.</div>
+    <div class="rule"></div>
+    <p class="body">Si elegiste tu primer espacio — y aunque sea, lo bloqueaste en el calendario — ya hiciste algo que la mayoría de las mujeres pospone durante años. Esa decisión, por pequeña que parezca, te pone del otro lado del abismo.</p>
+    <p class="body">Pero antes de que abras el cajón, antes de que saques la primera prenda, antes de que empieces a separar — necesitamos hablar del orden de las cosas. De la secuencia exacta. Porque hacerlo en el orden equivocado es la razón por la que muchas mujeres organizan, organizan, organizan — y a los seis meses todo está otra vez en el mismo lugar.</p>
+    <div class="pull-quote"><p>Hay un orden. Y respetarlo es la diferencia entre la transformación que se queda y la que se va.</p></div>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 04 →</span>
+      <span class="arrow-title">El orden real</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">45</span></div>
+
+</div>
+
+<!-- p46 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 04</span>
+    <div class="h1">El orden real</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">comprar.</p>
+  </div>
+</div>
+
+<!-- p47 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">El error más caro.</div>
+    <div class="rule"></div>
+    <p class="body">Voy a contarte el error que más he visto en veinte años — y que me costó muchísimo entender en mi propia casa.</p>
+    <p class="body">Es este: la mayoría de las dueñas, cuando finalmente deciden organizarse, lo primero que hacen es ir a comprar organizadores. Cajas, divisores, separadores, contenedores transparentes hermosos. Llegan a la casa, abren los empaques, los ponen en el closet o en la despensa — y empiezan a meter las cosas adentro.</p>
+    <div class="pull-quote"><p>Y de pronto tienen un caos perfectamente organizado en cajitas bonitas.</p></div>
+    <p class="body">Porque el organizador no resuelve el problema. Solo lo encapsula. Si guardaste tres frascos del mismo condimento — ahora están organizados en una caja transparente, todavía siendo tres frascos del mismo condimento. Si tu closet tenía 200 prendas que no usabas — ahora están dobladas perfectamente, todavía siendo 200 prendas que no usas.</p>
+    <p class="body">El orden visual sin depuración previa es maquillaje. Dura unas semanas, se desarma, vuelve el caos — pero ahora con muchos organizadores que te costaron caro.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">47</span></div>
+
+</div>
+
+<!-- p48 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  S E C U E N C I A  C O R R E C T A</span>
+    <div class="h1-italic" style="font-size:38px;">Las cuatro etapas</div>
+    <div class="rule"></div>
+    <p class="body">En mi proceso, y en el de las clientas que he acompañado, el orden que funciona es siempre el mismo. Y siempre, sin excepción, va en esta secuencia:</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> DEPURAR</div></div>
+    <p class="body">Sacar lo que ya no representa, no usas, no quieres, no recuerdas. Esto es lo emocional. Lo que más cuesta. Pero también lo que más libera. Sin esto, lo demás no funciona.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LIMPIAR</div></div>
+    <p class="body">Una vez vacío el espacio, limpiar a fondo. No con la rutina diaria — con la limpieza profunda que el espacio llevaba meses pidiendo. Marcos de cajón, interior de los muebles, paredes detrás de los objetos. Un espacio depurado y limpio se siente nuevo, sin haber comprado nada.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> ORGANIZAR</div></div>
+    <p class="body">Con lo que se queda — solo con lo que se queda — empezar a darle casa a cada cosa. Por categoría, por uso, por frecuencia. Esto sí se hace antes de comprar organizadores: con lo que ya tienes, con cajitas que ya tenías, con criterio simple.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">48</span></div>
+
+</div>
+
+<!-- p49 -->
+<div class="page">
+  <div class="content">
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> COMPRAR (CON ASERTIVIDAD)</div></div>
+    <p class="body">Y ahora sí — solo ahora — vas a comprar organizadores. Pero esta vez sabiendo exactamente qué necesitas, qué medidas, qué cantidad. Sin sobrar. Sin faltar. Sin gastar de más en cajas que después no caben o no sirven.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">49</span></div>
+
+</div>
+
+<!-- p50 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Si compras antes de depurar, estás organizando un caos. Si compras antes de limpiar, estás cubriendo polvo. El orden es el orden — y el orden importa."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p51 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">E T A P A  0 1  ·  D E P U R A R</span>
+    <div class="h1-italic" style="font-size:38px;">El arte de soltar</div>
+    <div class="rule"></div>
+    <p class="body">Depurar no es botar por botar. Es decidir, con calma, qué se queda — y qué se va a un destino mejor.</p>
+    <p class="body">Para cada objeto, hay solo cuatro destinos posibles:</p>
+    <p class="body">• Se queda. Lo usas, te representa, te da alegría tenerlo. • Se vende. Tiene valor, pero ya no lo usas. Hay quien lo va a aprovechar. • Se dona o regala. Está bien, alguien lo necesita. Le vas a dar segunda vida. • Se descarta. Está dañado, vencido, o ya cumplió su ciclo.</p>
+    <p class="body">La regla — para que no te quedes paralizada — es esta: ningún objeto pasa por tus manos sin destino. No hay categoría tal vez. No hay categoría después decido. Cada cosa, en el momento, va a una de las cuatro pilas.</p>
+    <div class="pull-quote"><p>La duda perpetua es el enemigo de la depuración. Decide y avanza.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">51</span></div>
+
+</div>
+
+<!-- p52 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Y para los objetos cargados de emoción — los regalos, los heredados, los que tienen historia — hay una pregunta que ayuda mucho:</p>
+    <div class="pull-quote"><p>¿Honro mejor este objeto guardándolo en una caja donde nunca lo veo, o dejándolo ir a alguien que lo va a usar de verdad?</p></div>
+    <p class="body">La mayoría de las veces, dejarlo ir es la forma más amorosa de honrarlo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">52</span></div>
+
+</div>
+
+<!-- p53 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">E T A P A  0 2  ·  L I M P I A R</span>
+    <div class="h1-italic" style="font-size:38px;">La limpieza que cambia<br>todo</div>
+    <div class="rule"></div>
+    <p class="body">Cuando el espacio queda vacío después de depurar, ocurre algo mágico — y casi nadie aprovecha el momento.</p>
+    <p class="body">Por primera vez en años, ese espacio está completamente vacío. Puedes ver las paredes interiores. El piso del cajón. El fondo del armario. Los rincones que llevaban años cubiertos.</p>
+    <div class="pull-quote"><p>No vuelvas a meter nada hasta que ese espacio esté impecable.</p></div>
+    <p class="body">Esa limpieza profunda es la que la rutina diaria nunca alcanza a hacer. Marcos de cajón, paredes interiores del armario, parte de atrás de los muebles, herrajes, esquinas. Toma tiempo — pero solo se hace una vez al año, o cada dos años. La inversión vale cada minuto.</p>
+    <p class="body">Y aquí va una recomendación práctica — porque sé lo que es trabajar, ser mamá y tratar de hacer todo a la vez. En esta etapa de limpieza profunda, vale la pena considerar manos extras.</p>
+    <p class="body">Una asistente extra por uno o dos días — alguien que ya conoces o que te recomienden — puede liberarte para que tú te enfoques en la depuración (que solo tú puedes hacer, porque son tus decisiones). Mientras tanto, ella se ocupa de la</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">53</span></div>
+
+</div>
+
+<!-- p54 -->
+<div class="page">
+  <div class="content">
+    <p class="body">limpieza profunda. Ese acompañamiento, breve y puntual, vale por meses de intentos solitarios fallidos.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">54</span></div>
+
+</div>
+
+<!-- p55 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">E T A P A  0 3  ·  O R G A N I Z A R</span>
+    <div class="h1-italic" style="font-size:38px;">Con lo que ya tienes</div>
+    <div class="rule"></div>
+    <p class="body">Ahora — y solo ahora — viene la organización. Pero con una regla que casi nadie respeta:</p>
+    <div class="pull-quote"><p>Antes de comprar un solo organizador, organiza con lo que ya tienes.</p></div>
+    <p class="body">Cajas viejas, frascos vacíos, divisores que tenías guardados, canastas que olvidaste. Usa lo disponible. Da forma al espacio. Define dónde va cada categoría.</p>
+    <p class="body">Esta etapa es de prueba. Vas a descubrir cosas que el papel nunca te enseña: que ese cajón es más profundo de lo que pensabas, que esa repisa cabe mejor con cosas verticales, que ese rincón funciona mejor para lo que más usas a diario.</p>
+    <p class="body">Vive con esa organización por dos o tres semanas. Úsala. Observa qué funciona y qué no. Qué se desorganiza solo. Qué te cuesta mantener. Qué cambiarías.</p>
+    <div class="pull-quote"><p>La organización no se diseña en una tarde. Se descubre con el uso.</p></div>
+    <p class="body">Solo después de esas semanas — cuando ya sabes con certeza qué medidas necesitas, qué cantidad, qué tipo de organizador funciona en cada espacio — pasas a la última etapa.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">55</span></div>
+
+</div>
+
+<!-- p56 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">E T A P A  0 4  ·  C O M P R A R</span>
+    <div class="h1-italic" style="font-size:38px;">Compras asertivas</div>
+    <div class="rule"></div>
+    <p class="body">Esta es la etapa donde la mayoría de las dueñas empieza — y donde más se equivocan. Pero si llegaste aquí después de las tres etapas anteriores, lo vas a hacer distinto.</p>
+    <p class="body">Vas a llegar a la tienda con medidas exactas. Con cantidades exactas. Con criterio exacto. Vas a saber qué tipo de organizador funciona en tu espacio porque ya lo probaste con cajas viejas. Vas a saber cuántos necesitas porque ya viviste el espacio organizado.</p>
+    <div class="pull-quote"><p>Una compra asertiva es la que haces sabiendo exactamente qué necesita tu casa — no qué te seduce en la vitrina.</p></div>
+    <p class="body">Y aquí entra una decisión que sí importa, y a la que vale la pena dedicarle tiempo: el estilo de los organizadores.</p>
+    <p class="body">Cuando ya tienes claridad funcional — qué medidas, qué cantidad, qué tipo — entonces sí, elige un estilo que resuene contigo. Que coordine. Que sume estética al espacio. Materiales naturales, transparentes, en colores neutros, en madera, en tela — el estilo que tu casa pida y que te haga feliz mirar.</p>
+    <div class="pull-quote"><p>Un espacio terminado con organizadores que amas se vuelve un espacio que te inspira a sostenerlo.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">56</span></div>
+
+</div>
+
+<!-- p57 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Esa es la magia de elegir bien al final: no es vanidad ni perfeccionismo. Es funcional. Cuando abres ese closet o esa despensa y lo que ves te da paz visual, mantenerlo deja de ser una tarea — se vuelve casi un placer. Y eso, en el largo plazo, es lo que sostiene la transformación.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">57</span></div>
+
+</div>
+
+<!-- p58 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"La estética sin función es decoración. La función con estética es hogar."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p59 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  Q U E  V I E N E  D E S P U É S</span>
+    <div class="h1-italic" style="font-size:38px;">La capa final</div>
+    <div class="rule"></div>
+    <p class="body">Cuando un espacio queda depurado, limpio, organizado y con sus organizadores asertivos, pasa algo precioso: empieza a pedirte la cereza.</p>
+    <p class="body">Te lo dice de muchas formas. Quieres ponerle una vela aromática a esa repisa que ahora respira. Buscas un jarrón pequeño para el rincón que ahora se ve. Recuerdas que tienes una bandeja que combinaría perfecto con el nuevo orden. Sientes ganas — ganas reales, no de revista — de poner flores frescas un viernes.</p>
+    <div class="pull-quote"><p>La estética llega de forma natural cuando la función ya está resuelta. Y llega más bonita, porque llega desde la abundancia, no desde el vacío.</p></div>
+    <p class="body">Aromas, flores, jarrones, detalles, cuadros, textiles — todo eso que siempre creemos que es lo primero — finalmente encuentra su lugar. Y se queda. Porque ahora forma parte de un espacio que funciona.</p>
+    <p class="body">Esto fue lo que me cambió como interiorista. Por años entregué casas hermosas que se desgastaban porque la base no estaba. Hoy entrego casas que pueden ser menos espectaculares al inicio, pero que se sostienen y florecen — porque la base está.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">59</span></div>
+
+</div>
+
+<!-- p60 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 4</span>
+    <div class="h1-italic" style="font-size:38px;">Tienes la secuencia.</div>
+    <div class="rule"></div>
+    <p class="body">Depurar. Limpiar. Organizar. Comprar. En ese orden. Una y otra vez. Espacio por espacio. Hasta que toda la casa pase por la secuencia.</p>
+    <p class="body">Esa secuencia es el método. Es lo que diferencia una transformación que se queda de un esfuerzo que se desarma. Es la diferencia entre invertir bien tu tiempo y tu dinero, o invertirlos en cajas bonitas que no resuelven nada.</p>
+    <p class="body">Pero te conozco. Sé lo que estás pensando ahora:</p>
+    <div class="pull-quote"><p>Esto es muchísimo trabajo. ¿Tengo que hacerlo todo sola?</p></div>
+    <p class="body">La respuesta es no. Y en el siguiente movimiento te cuento cómo construir tu propio equipo de transformación — sin gastar de más, y aprovechando los tres momentos exactos donde una mirada externa hace toda la diferencia.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 05 →</span>
+      <span class="arrow-title">Tu equipo de transformación</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">60</span></div>
+
+</div>
+
+<!-- p61 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 05</span>
+    <div class="h1">Tu equipo de<br>transformación</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">cambia todo.</p>
+  </div>
+</div>
+
+<!-- p62 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">Pedir ayuda no es<br>debilidad.</div>
+    <div class="rule"></div>
+    <p class="body">Voy a empezar este movimiento desarmando una creencia muy arraigada en muchas mujeres — incluida yo, durante años:</p>
+    <div class="pull-quote"><p>Pedir ayuda en tu propia casa no es debilidad. Es estrategia.</p></div>
+    <p class="body">Pero te entiendo. A las mujeres nos enseñaron — explícita o implícitamente — que ocuparnos de la casa era nuestra responsabilidad, y que pedir ayuda era admitir que no podíamos. Que llegar a un espacio organizado por mérito propio era lo correcto. Que cualquier asistencia externa diluía el valor de tu casa.</p>
+    <p class="body">Es una creencia heredada. Y es una creencia que paraliza a miles de mujeres que tienen la lista hecha, la voluntad lista, pero no las manos suficientes ni el tiempo suficiente.</p>
+    <p class="body">En mi caso, pedir ayuda fue lo que hizo mi proceso posible. Yo trabajaba — y trabajo. Soy mamá de tres. Tengo una empresa. Si hubiera intentado depurar y organizar mi casa entera sola, en mis tiempos libres, todavía estaría empezando.</p>
+    <div class="pull-quote"><p>Yo encontré a alguien que hizo mi proceso mucho más sencillo, amigable y</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">62</span></div>
+
+</div>
+
+<!-- p63 -->
+<div class="page">
+  <div class="content">
+    <div class="pull-quote"><p>satisfactorio. Yo tomaba acción — y cuando estaba agobiada o tenía que ausentarme, ella me ayudaba a continuar.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">63</span></div>
+
+</div>
+
+<!-- p64 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  E S E N C I A L</span>
+    <div class="h1-italic" style="font-size:38px;">Tres momentos, tres<br>ayudas distintas</div>
+    <div class="rule"></div>
+    <p class="body">Después de mi propio proceso y de acompañar muchos otros, descubrí que en una transformación profunda del hogar hay tres momentos donde una asesoría externa cambia el resultado por completo. Y cada uno necesita un perfil distinto de ayuda.</p>
+    <p class="body">No te asustes con la palabra asesoría. No siempre significa pagar honorarios profesionales. A veces significa una amiga con buen ojo. A veces significa una persona contratada por horas. A veces significa contratar a un profesional. Lo importante es entender qué tipo de ayuda corresponde a cada momento — y elegir según tus posibilidades.</p>
+    <div class="pull-quote"><p>Cada etapa pide manos distintas. Saberlo te ahorra dinero, tiempo y frustración.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">64</span></div>
+
+</div>
+
+<!-- p65 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">M O M E N T O  0 1</span>
+    <div class="h1-italic" style="font-size:38px;">La mirada externa al inicio</div>
+    <div class="rule"></div>
+    <p class="body">Antes de empezar a depurar, hay un momento donde una mirada externa con experiencia te puede ahorrar meses de dudas.</p>
+    <p class="body">Esa mirada — sea de una interiorista, de una organizadora profesional, o incluso de una amiga que sabe ver — entra a tu casa y te dice cosas que tú ya sabes pero no has podido verbalizar. Te confirma lo que tu intuición venía señalando. Te da nombre a lo que sentías difuso.</p>
+    <div class="pull-quote"><p>La función de la primera mirada externa no es decirte qué hacer. Es reflejarte lo que ya sabes.</p></div>
+    <p class="body">En mi caso, esa mirada me ayudó a confirmar el orden de prioridades. Yo intuía que el closet era mi punto de partida — pero pensaba que debía empezar por la cocina, porque es donde más se vive en la casa. Esa conversación inicial me liberó de la culpa de empezar por algo más íntimo. Me autorizó.</p>
+    <p class="body">Esta etapa, normalmente, es corta. Una visita, una conversación, una caminada por la casa con los ojos correctos. Y cambia el resto del proceso.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">65</span></div>
+
+</div>
+
+<!-- p66 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">M O M E N T O  0 2</span>
+    <div class="h1-italic" style="font-size:38px;">El acompañamiento en la<br>acción</div>
+    <div class="rule"></div>
+    <p class="body">La segunda etapa donde la ayuda externa transforma el proceso es justo durante la acción — durante la depuración y organización.</p>
+    <p class="body">Aquí, el perfil ideal es el de una organizadora profesional. Una persona entrenada en este oficio específico — no una persona de limpieza, ni una asistente del hogar regular. Es un perfil distinto, con habilidades distintas: te acompaña en las decisiones difíciles, te sugiere sistemas, te ayuda a soltar lo que cuesta soltar.</p>
+    <div class="pull-quote"><p>Hay decisiones que solo tú puedes tomar. Pero hay tareas — etiquetar, doblar, sistematizar, mover — que se hacen mucho mejor con cuatro manos que con dos.</p></div>
+    <p class="body">Lo que me sorprendió de mi propia experiencia con organización profesional fue lo emocional del trabajo. Cuando estaba agobiada, ella me ayudaba a respirar. Cuando me trababa con un objeto cargado de emoción, ella me hacía las preguntas que me faltaba hacerme. Cuando tenía que ausentarme un par de horas, ella seguía avanzando — sin</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">66</span></div>
+
+</div>
+
+<!-- p67 -->
+<div class="page">
+  <div class="content">
+    <p class="body">tomar decisiones por mí, pero ordenando lo que ya estaba decidido.</p>
+    <p class="body">Esa compañía, durante el trabajo más pesado, hace la diferencia entre rendirte a la mitad o terminar el espacio con orgullo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">67</span></div>
+
+</div>
+
+<!-- p68 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"La transformación del hogar es, antes que nada, un trabajo emocional. Hacerlo en compañía cambia su naturaleza."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p69 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">M O M E N T O  0 3</span>
+    <div class="h1-italic" style="font-size:38px;">Las manos extras para la<br>limpieza</div>
+    <div class="rule"></div>
+    <p class="body">La tercera etapa de ayuda — y la más subestimada — es la de las manos extras durante la limpieza profunda.</p>
+    <p class="body">Si ya tienes una asistente del hogar, esto puede significar contratarla por días extras durante la temporada de transformación. Si no la tienes, puede significar contratar a alguien por jornadas puntuales.</p>
+    <p class="body">La razón es simple: mientras tú estás depurando un espacio — que requiere todas tus decisiones — no puedes simultáneamente estar haciendo la limpieza profunda del resto de la casa. Pero la casa sigue. Las comidas siguen. Los niños siguen. La vida no se pausa porque tú decidiste organizarte.</p>
+    <div class="pull-quote"><p>Una jornada extra de manos durante la temporada de transformación es una de las inversiones más rentables que puedes hacer.</p></div>
+    <p class="body">En mi caso, esto fue clave. Mientras yo estaba sentada en el piso del closet decidiendo qué se queda y qué se va, alguien estaba limpiando a fondo el resto de la casa. Para que cuando yo terminara mi labor de depuración, no encontrara una casa colapsada. Para que la energía que ganaba en mi closet no se perdiera al salir y ver el resto en caos.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">69</span></div>
+
+</div>
+
+<!-- p70 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Y aquí se juntan dos cosas hermosas: orden y aseo, en el mismo momento. Ese es uno de los puntos donde, de verdad, sientes que tu casa tomó forma.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">70</span></div>
+
+</div>
+
+<!-- p71 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">M O M E N T O  0 4  ·  O P C I O N A L</span>
+    <div class="h1-italic" style="font-size:38px;">La cereza al final</div>
+    <div class="rule"></div>
+    <p class="body">Y para cerrar — esto es opcional, pero hermoso si tu presupuesto lo permite — hay un cuarto momento donde la mirada de una interiorista entra de nuevo, ahora con una intención completamente distinta.</p>
+    <p class="body">No para resolver caos. Eso ya está resuelto. Sino para sumar belleza.</p>
+    <p class="body">Cuando un espacio ya está depurado, limpio, organizado y funcional, una interiorista te puede ayudar a tomar decisiones de detalle con impacto: qué arte poner en esa pared, qué textil renovar, qué iluminación cambia el ambiente, qué pequeña pieza completa el conjunto.</p>
+    <div class="pull-quote"><p>La cereza del pastel necesita una mano experta para que sume — y no sume solo más cosas.</p></div>
+    <p class="body">Y esto es importante: muchas dueñas contratan interioristas demasiado pronto. Antes de tener su casa depurada y organizada. Y entonces el trabajo de la interiorista se diluye — porque por más bonito que ponga un rincón, si el resto está saturado, el rincón no respira.</p>
+    <p class="body">La interiorista al final tiene tu casa en su mejor versión funcional para trabajar. Sus decisiones de belleza se notan más, duran más, y valen más.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">71</span></div>
+
+</div>
+
+<!-- p72 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  R E A L I D A D  E C O N Ó M I C A</span>
+    <div class="h1-italic" style="font-size:38px;">Cómo armar tu equipo<br>según tu bolsillo</div>
+    <div class="rule"></div>
+    <p class="body">Te quiero hablar con honestidad sobre el dinero. Porque sé que cuando lees ayuda profesional, una parte de ti calcula y se pregunta si esto es para ti.</p>
+    <p class="body">Pero la verdad es que tu equipo de transformación se arma según tus posibilidades. Y los cuatro momentos que acabo de describir tienen versiones de muchos presupuestos:</p>
+    <p class="body">• La mirada externa al inicio puede ser una amiga con buen ojo. Una hermana. Una vecina con experiencia. Café y conversación — sin costo. • El acompañamiento en la acción puede ser por horas, no por proyecto. Hoy hay organizadoras profesionales que cobran por jornada. Una jornada bien aprovechada hace milagros. • Las manos extras pueden ser una persona de limpieza por dos días específicos. No una contratación permanente. • La cereza al final puede ser una consulta puntual con una interiorista — una visita, recomendaciones, no un proyecto completo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">72</span></div>
+
+</div>
+
+<!-- p73 -->
+<div class="page">
+  <div class="content">
+    <div class="pull-quote"><p>La pregunta no es ¿puedo pagarlo? La pregunta es ¿qué versión de cada ayuda cabe en mi presupuesto?</p></div>
+    <p class="body">Y otra cosa: el costo de no pedir ayuda también es real. Es el costo de meses sin avanzar, de proyectos abandonados, de dinero gastado en organizadores que no funcionan, de la frustración acumulada. A veces, la ayuda puntual cuesta menos que la frustración prolongada.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">73</span></div>
+
+</div>
+
+<!-- p74 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 5</span>
+    <div class="h1-italic" style="font-size:38px;">Tu equipo está pensado.</div>
+    <div class="rule"></div>
+    <p class="body">Si llegaste hasta aquí ya tienes claridad sobre quién hace qué, en qué momento, y por qué. Ya no es solo tu casa contra ti. Ahora es tu casa con un equipo — pequeño o grande, según tus posibilidades — que la sostiene.</p>
+    <p class="body">Pero hay un último ingrediente que vale más que cualquier ayuda externa. Sin él, todo lo anterior se desarma a los seis meses. Con él, todo se sostiene de por vida.</p>
+    <div class="pull-quote"><p>Ese ingrediente es convertir lo que has hecho en hábito. Y de eso hablamos en el siguiente movimiento.</p></div>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 06 →</span>
+      <span class="arrow-title">De proyecto a hábito</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">74</span></div>
+
+</div>
+
+<!-- p75 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 06</span>
+    <div class="h1">De proyecto a<br>hábito</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">forma de vida.</p>
+  </div>
+</div>
+
+<!-- p76 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">La trampa del proyecto.</div>
+    <div class="rule"></div>
+    <p class="body">Hay una palabra que voy a pedirte que vigiles desde este movimiento en adelante. Es esta: proyecto.</p>
+    <p class="body">Cuando hablamos de transformar la casa como un proyecto, le ponemos un fin implícito. Un día va a terminar. Un día vamos a poder cerrar el cuaderno, archivar el Excel, volver a la vida normal.</p>
+    <div class="pull-quote"><p>Pero un hogar no es un proyecto. Es una práctica.</p></div>
+    <p class="body">Y mientras lo veas como proyecto, vas a hacer lo que casi todas las mujeres hacen: invertirás un esfuerzo enorme durante unas semanas, terminarás extenuada, y luego — lentamente, sin darte cuenta — todo va a empezar a desordenarse otra vez. Hasta que un año después, vuelvas a empezar de cero.</p>
+    <p class="body">Para que la transformación se sostenga, tiene que dejar de ser proyecto. Tiene que volverse hábito. Tiene que volverse forma de vivir.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">76</span></div>
+
+</div>
+
+<!-- p77 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  E S E N C I A L</span>
+    <div class="h1-italic" style="font-size:38px;">Hábitos atómicos</div>
+    <div class="rule"></div>
+    <p class="body">Hay un libro que me marcó muchísimo en este punto del proceso, y que te recomiendo con todo el corazón. Se llama Hábitos atómicos, de James Clear. Si tienes la oportunidad, léelo.</p>
+    <p class="body">La idea central de ese libro es esta — y la traduzco al lenguaje del hogar:</p>
+    <div class="pull-quote"><p>Un medio grado de ajuste en tu rumbo cada día puede llevarte a destinos que jamás imaginaste.</p></div>
+    <p class="body">No se trata de cambiarlo todo cada día. Se trata de pequeños rituales — minúsculos, casi imperceptibles — que repetidos sin falla durante meses, transforman la realidad de tu hogar.</p>
+    <p class="body">Y no son los hábitos espectaculares los que sostienen una casa. Son los aburridos. Los pequeños. Los que nadie aplaude y que casi nadie nota — pero que cuando faltan, todo el sistema empieza a desarmarse.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">77</span></div>
+
+</div>
+
+<!-- p78 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O S  H Á B I T O S  D E L  H O G A R</span>
+    <div class="h1-italic" style="font-size:38px;">Cinco prácticas que<br>sostienen</div>
+    <div class="rule"></div>
+    <p class="body">De todos los hábitos posibles, hay cinco que descubrí — en mi propia casa y en las de mis clientas — que sostienen una transformación lograda. No son glamorosos. No son virales. Pero son los que de verdad importan.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> EL CIERRE DEL DÍA</div></div>
+    <p class="body">Cinco minutos antes de acostarte, una vuelta corta por las áreas comunes para devolver cada cosa a su casa. No para limpiar — para reordenar. Esto evita que el desorden se acumule día tras día.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LA REGLA DE UNO ENTRA, UNO</div></div>
+    <span class="tag">S A L E</span>
+    <p class="body">Cada vez que algo nuevo entra a tu casa — una prenda, un libro, un objeto — algo equivalente sale. No siempre el mismo día. Pero sí dentro de la misma semana. Esto previene que la depuración se desarme con el tiempo.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">78</span></div>
+
+</div>
+
+<!-- p79 -->
+<div class="page">
+  <div class="content">
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> EL MINUTO DE LA ACCIÓN</div></div>
+    <span class="tag">I N M E D I A T A</span>
+    <p class="body">Si una tarea toma menos de un minuto, se hace en el momento. No se agenda, no se posterga. Colgar el abrigo. Lavar la taza. Doblar la manta. Es lo que evita que las micro- tareas se conviertan en montañas.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> LA REVISIÓN SEMANAL DEL EXCEL</div></div>
+    <p class="body">Una vez por semana — quince minutos — abres tu Home Excel y lo actualizas. Tachas lo hecho. Anotas lo nuevo. Esto mantiene viva la herramienta y evita que se vuelva un documento muerto.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> LA GRATITUD DEL ESPACIO</div></div>
+    <p class="body">Una práctica que parece tonta pero que cambia tu relación con tu casa: una vez por semana, agradece en voz baja un espacio específico de tu hogar. Le da un alma a la casa que ningún sistema te puede dar.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">79</span></div>
+
+</div>
+
+<!-- p80 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Los hábitos pequeños no se notan — hasta el día en que te das cuenta de que tu casa entera ya cambió."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p81 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  T R A N S F O R M A C I Ó N  D E L  E X C E L</span>
+    <div class="h1-italic" style="font-size:38px;">De pendientes a vida</div>
+    <div class="rule"></div>
+    <p class="body">Cuando los hábitos se asientan, algo precioso empieza a pasar con tu Home Excel. Recuerdo el momento exacto en mi propia casa — en que abrí el archivo y noté algo distinto.</p>
+    <p class="body">La columna de pendientes — esa que al inicio era larguísima y abrumadora — se había encogido. Ya no era una lista de cosas urgentes. Era una lista pequeña de mantenimientos. De refresh. De mejoras opcionales.</p>
+    <p class="body">Y aparecieron columnas nuevas, casi sin que yo me diera cuenta:</p>
+    <p class="body">• Mantenimiento — lo que hay que cuidar para que se sostenga lo logrado. • Sostenimiento — los rituales semanales y mensuales que ya no se piensan, se hacen. • Refresh — pequeñas actualizaciones estacionales para que la casa respire nueva. • Deseos a corto plazo — lo que sí me daré este trimestre. • Deseos a mediano plazo — lo que estoy ahorrando o esperando.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">81</span></div>
+
+</div>
+
+<!-- p82 -->
+<div class="page">
+  <div class="content">
+    <p class="body">• Deseos a largo plazo — los sueños grandes que ya no me asustan, porque sé que llegan paso a paso.</p>
+    <div class="pull-quote"><p>Y todas esas columnas, ahora, se llenan desde un lugar distinto. Desde el sentido de valor, de ligereza, de amor y de paz. No desde la urgencia ni la frustración.</p></div>
+    <p class="body">Sí — suena romántico. Pero es real. Y le pasa a casi todas las dueñas que sostienen el método durante un año.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">82</span></div>
+
+</div>
+
+<!-- p83 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  F A M I L I A  E N T R A</span>
+    <div class="h1-italic" style="font-size:38px;">No puedes ser la única que<br>sabe</div>
+    <div class="rule"></div>
+    <p class="body">Hay un punto del proceso — más temprano que tarde — donde tienes que hacer una conversación honesta contigo misma. Y es esta:</p>
+    <div class="pull-quote"><p>Si yo soy la única que sabe dónde está cada cosa, y la única que sostiene cada hábito, mi casa es una enciclopedia que solo yo puedo leer. Y la carga es mía sola.</p></div>
+    <p class="body">Eso no es una transformación. Es una dependencia. Es haber cambiado el caos por ser el cerebro único de un sistema más bonito.</p>
+    <p class="body">Para que la transformación sea real, en algún punto la familia tiene que entrar. Tu pareja. Tus hijos — según la edad. Cualquiera que comparta la casa contigo.</p>
+    <p class="body">No de un día para otro. No con una imposición. Pero sí progresivamente, con conversaciones claras, con sistemas que ellos también puedan navegar:</p>
+    <p class="body">• Etiquetas en los espacios donde el sistema no es obvio.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">83</span></div>
+
+</div>
+
+<!-- p84 -->
+<div class="page">
+  <div class="content">
+    <p class="body">• Conversaciones cortas en familia explicando el por qué</p>
+    <p class="body">• Acuerdos claros sobre qué responsabilidad le corresponde a cada quien. • Y sobre todo, la disposición de tu parte a soltar el control en algunas zonas — para que el sistema sea de la familia, no solo tuyo.</p>
+    <p class="body">Te lo dice una esposa, mamá de tres, que trabaja 24/7: sí se puede. Lleva tiempo. Lleva paciencia. Pero un hogar sostenido en colectivo es exponencialmente más sostenible que uno sostenido en solitario.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">84</span></div>
+
+</div>
+
+<!-- p85 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">H O M E  C O A C H  ·  E J E R C I C I O  0 6</span>
+    <div class="h1-italic" style="font-size:38px;">Tu primer hábito</div>
+    <div class="rule"></div>
+    <p class="body">Antes de pasar al cierre, te pido un último ejercicio. Pequeño, pero clave:</p>
+    <p class="body">• De los cinco hábitos que enumeré, elige UNO. Solo uno. El que sientas más fácil de implementar esta semana. • Comprométete con él durante 21 días seguidos. Sin excepciones. Sin saltarse un día por cansancio. • Anota cada noche, en una hoja simple, si lo hiciste o no. Solo eso. Sí o no. • A los 21 días, revisa. Si lo sostuviste, agrega un segundo hábito. Si no, vuelve a empezar el mismo — sin culpa, con paciencia.</p>
+    <p class="body">21 días no es una fórmula mágica — los estudios serios sobre formación de hábitos muestran que el promedio real es más cercano a 66 días. Pero 21 días es un buen primer marcador. Si llegas ahí, el hábito ya está echando raíz.</p>
+    <div class="pull-quote"><p>La meta no es transformarte en una semana. Es construir, ladrillo por ladrillo, la mujer que sostiene su hogar con calma.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">85</span></div>
+
+</div>
+
+<!-- p86 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  M O V I M I E N T O  0 6</span>
+    <div class="h1-italic" style="font-size:38px;">Ya no es proyecto.</div>
+    <div class="rule"></div>
+    <p class="body">Si llegaste hasta aquí — y elegiste tu primer hábito — entonces algo más profundo acaba de pasar. Tu casa dejó de ser un proyecto que algún día va a terminar.</p>
+    <p class="body">Se convirtió en una práctica. En una forma de habitar. En una expresión cotidiana de cómo decidiste vivir.</p>
+    <p class="body">Y a partir de aquí, ya no hay vuelta atrás. No porque sea perfecto — vamos a fallar muchas veces, vamos a saltarnos hábitos, vamos a tener semanas caóticas. Sino porque ya conoces el camino. Y siempre, después de cada caída, vas a saber cómo volver.</p>
+    <div class="pull-quote"><p>La transformación no es no caer nunca. Es saber cómo levantarse, una y otra vez, con menos esfuerzo cada vez.</p></div>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 07 →</span>
+      <span class="arrow-title">Cuando termina, empieza</span>
+    </div>
+  </div>
+    <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">86</span></div>
+
+</div>
+
+<!-- p87 movimiento -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 07</span>
+    <div class="h1">Cuando termina,<br>empieza</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">finalmente, fluye.</p>
+  </div>
+</div>
+
+<!-- p88 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">A P E R T U R A</span>
+    <div class="h1-italic" style="font-size:38px;">La buena noticia que casi<br>nadie nombra.</div>
+    <div class="rule"></div>
+    <p class="body">Hay algo precioso de transformar tu casa con método. Y es esto — que casi nadie te lo dice antes de empezar:</p>
+    <div class="pull-quote"><p>Estas son metas que tienen principio y final.</p></div>
+    <p class="body">No es como criar a los hijos. No es como cuidar la salud. No es como sostener un trabajo. Esas son prácticas de toda la vida, sin línea de llegada visible.</p>
+    <p class="body">Tu casa, en cambio, sí tiene un punto donde puedes decir: aquí terminé. Cada espacio, una vez depurado, limpio, organizado y con sus hábitos en marcha, queda. Sigue pidiendo mantenimiento — pero no la transformación profunda. La gran cirugía ya pasó.</p>
+    <p class="body">Y cuando la casa entera pasa por ese proceso — habitación por habitación, durante meses o un par de años — llega un momento en que abres los ojos un día cualquiera, recorres tu casa con la mirada, y descubres que ya no hay nada gritándote desde adentro. Que tu hogar está, finalmente, en paz.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">07 · CUANDO TERMINA, EMPIEZA</span><span class="banda-texto">88</span></div>
+
+</div>
+
+<!-- p89 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L O  Q U E  S E  L I B E R A</span>
+    <div class="h1-italic" style="font-size:38px;">La energía que vuelve</div>
+    <div class="rule"></div>
+    <p class="body">Cuando tu casa fluye — cuando dejas de ser la única que sostiene un sistema en silencio, cuando los espacios cooperan contigo en lugar de drenarte — algo se libera adentro de ti. Y esa cosa es enorme.</p>
+    <p class="body">Es energía. La misma energía que durante años se iba en mantener un caos invisible. La misma energía que se gastaba en buscar lo perdido, en pelear con el desorden, en llevar la carga mental de saber dónde está cada cosa.</p>
+    <p class="body">Esa energía vuelve a ti. Y lo más sorprendente es que vuelve disponible — para lo que tú quieras, para lo que llevabas años sin tiempo para atender.</p>
+    <div class="pull-quote"><p>En el agobio diario en que vivimos, atrapadas en tantos roles a la vez, recuperar esa energía no es un lujo. Es una restitución.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">07 · CUANDO TERMINA, EMPIEZA</span><span class="banda-texto">89</span></div>
+
+</div>
+
+<!-- p90 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">D E  M Í  P A R A  T I  ·  Í N T I M O</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que pasó conmigo</div>
+    <div class="rule"></div>
+    <p class="body">Te voy a contar lo que pasó en mi caso. Porque siento que ilustra algo importante.</p>
+    <p class="body">Cuando todo en mi casa empezó a tomar forma — cuando los espacios respiraban, cuando los hábitos se sostenían, cuando ya no era yo cargando todo sola — me di cuenta de que tenía energía nueva. Energía que no sabía cómo usar al principio, porque hacía años que no la sentía libre.</p>
+    <p class="body">Y lo primero que hice fue dedicarme a algo que llevaba años posponiendo: comer mejor. Mejorar la alimentación de mi familia. Cocinar con más conciencia. Enseñarles a mis hijos a tener una mejor relación con la comida.</p>
+    <p class="body">Eso, también, lo siento como un proceso transformador. Y créeme — sé que muchas mujeres tienen el mismo deseo silencioso. Hay un momento de la mesa, de la nutrición, de cómo nutrimos a los que amamos, que pide nuestra atención y casi nunca se la damos.</p>
+    <div class="pull-quote"><p>A esto, en mi caso, le he dedicado tiempo. Y espero, pronto, poder compartirlo contigo en el siguiente libro — una propuesta concreta de menús semanales para nutrir mejor a tu familia.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">07 · CUANDO TERMINA, EMPIEZA</span><span class="banda-texto">90</span></div>
+
+</div>
+
+<!-- p91 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Pero ese es solo mi camino. El tuyo va a ser distinto. Quizás tu energía liberada te lleve a empezar el negocio que llevas años pensando. A reconectar con una pasión olvidada. A profundizar tu relación de pareja. A volver a estudiar. A escribir. A pintar. A salir más, o a quedarte más en casa con calma — porque ahora tu casa, finalmente, te da calma.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">07 · CUANDO TERMINA, EMPIEZA</span><span class="banda-texto">91</span></div>
+
+</div>
+
+<!-- p92 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando tu casa deja de drenarte, descubres todo lo que llevabas años queriendo hacer — y no podías, porque no tenías energía para más."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p93 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">L A  A D V E R T E N C I A  H O N E S T A</span>
+    <div class="h1-italic" style="font-size:38px;">Sobre el ritmo</div>
+    <div class="rule"></div>
+    <p class="body">Antes de cerrar, quiero darte una última advertencia honesta</p>
+    <p class="body">Este proceso lleva tiempo. No semanas. Meses. A veces, dependiendo del estado de tu casa, más de un año.</p>
+    <p class="body">Y eso está bien. Porque no es una carrera. Y porque el resultado se sostiene en el tiempo solo si se construyó con el tiempo.</p>
+    <div class="pull-quote"><p>Traza tiempos según el estado de tu casa. Ponte metas realistas. Cuantifica qué tanta ayuda necesitas.</p></div>
+    <p class="body">Y un recordatorio práctico que mucho me ha ayudado: el Excel aguanta todo. Poner cifras al lado de tus deseos no significa que el dinero ya salió de tu banco. Es solo una hoja de ruta. A veces, al ver los números reales, te sorprendes — y descubres que tus sueños eran más alcanzables de lo que creías.</p>
+    <p class="body">Otras veces descubres lo opuesto: que tu lista de deseos era más cara de lo que pensabas, y eso también es información valiosa, porque te ayuda a priorizar con realidad.</p>
+    <p class="body">Pero en todo caso: ponlo en papel. Cuantifícalo. Visualízalo. Y luego, paso a paso, sin detenerte, ve caminando hacia lo que tu hogar te pide.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">07 · CUANDO TERMINA, EMPIEZA</span><span class="banda-texto">93</span></div>
+
+</div>
+
+<!-- p94 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C I E R R E  D E L  L I B R O</span>
+    <div class="h1-italic" style="font-size:38px;">Tu casa te está esperando.</div>
+    <div class="rule"></div>
+    <p class="body">Hicimos un viaje juntas, otra vez.</p>
+    <p class="body">Empezamos hablando del cambio de visión, y terminamos hablando de la energía que se libera. Empezamos con el miedo a mirar, y terminamos con la práctica que se sostiene. Empezamos con la pregunta que paraliza — ¿por dónde empiezo? — y terminamos con la respuesta más bonita: empiezas por lo más liviano, y desde ahí, todo lo demás se vuelve posible.</p>
+    <p class="body">Pero igual que con el primer libro, lo que aprendiste aquí no era realmente sobre tu casa.</p>
+    <div class="pull-quote"><p>Era sobre la mujer que se vuelve quien transforma su hogar.</p></div>
+    <p class="body">Una mujer que ya no espera el momento perfecto. Que ya no se esconde detrás de excusas. Que ya no compra para llenar lo que solo se llena depurando. Que ya no carga sola, porque entendió que pedir ayuda no es debilidad — es estrategia.</p>
+    <p class="body">Esa mujer eres tú. Y tu casa — tu refugio, el lugar al que llegas cada día, donde se construyen las memorias que más vas a recordar — está esperando que tú llegues.</p>
+    <p class="body">No mañana. No cuando los niños crezcan. No cuando la casa sea propia.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">94</span></div>
+
+</div>
+
+<!-- p95 -->
+<div class="page">
+  <div class="content">
+    <div class="pull-quote"><p>Hoy. Con la pila de ropa. Con el cajón cerrado. Con la lista del Excel. Con lo que ya tienes.</p></div>
+    <p class="body">Empieza.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">95</span></div>
+
+</div>
+
+<!-- p96 cita -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Tu casa no es un proyecto que algún día va a terminar. Es la práctica más cotidiana, más humilde y más amorosa de quien estás aprendiendo a ser."</div>
+      <span class="pull-page-attr">—  M T E  ·  L I V I I N</span>
+    </div>
+  </div>
+</div>
+
+<!-- p97 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">C O N T I N Ú A  E L  C A M I N O</span>
+    <div class="h1-italic" style="font-size:38px;">Lo que viene en Liviin</div>
+    <div class="rule"></div>
+    <p class="body">Este es el segundo libro de la línea editorial Liviin. Si te acompañó, te invito a seguir el recorrido. Esto es lo que viene:</p>
+    <span class="tag">P r ó x i m o  l i b r o  ·  M E N Ú S  P A R A  O C H O</span>
+    <span class="tag">S E M A N A S</span>
+    <p class="body">El siguiente trabajo nace de lo que se liberó después de transformar mi casa: una propuesta concreta de menús semanales — ocho semanas pensadas con cuidado para nutrir mejor a tu familia, sin complicaciones, sin agendas imposibles. La continuación natural de una casa que ya fluye.</p>
+    <span class="tag">C a p a c i t a c i o n e s  L i v i i n  ·  E S P A C I O S</span>
+    <span class="tag">P E Q U E Ñ O S</span>
+    <p class="body">Talleres en grupo o consultorías individuales donde profundizamos cada uno de los pilares — introspección, verdad, acción, sistema, amor — aplicados a tu casa específica, con acompañamiento real.</p>
+    <span class="tag">C o m u n i d a d  ·  P A R A  N O  P E R D E R T E  N A D A</span>
+    <p class="body">Sígueme en mis redes — al final de este libro encuentras dónde. Comparto contenido nuevo cada semana sobre liderazgo del hogar, transformación con sentido, y la mujer que cada una está aprendiendo a ser.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">97</span></div>
+
+</div>
+
+<!-- p98 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">S O B R E  L A  A U T O R A</span>
+    <div class="h1-italic" style="font-size:38px;">María Teresa Espinosa</div>
+    <div class="rule"></div>
+    <p class="body">interiorista y home coach</p>
+    <p class="body">Más de veinte años diseñando interiores en Latinoamérica. Mamá de tres hijos. Fundadora de Liviin — la marca desde la que acompaña a mujeres a transformar sus casas en hogares bien llevados.</p>
+    <p class="body">Su método — introspección, verdad, acción, sistema, amor — nació en su propia casa, durante un quiebre personal en pandemia. Desde entonces lo ha aplicado en decenas de hogares con clientas que pasaron de cargar todo en silencio a liderar con calma.</p>
+    <p class="body">Hoy ofrece capacitaciones y talleres Liviin donde profundiza cada uno de los cinco pilares.</p>
+    <span class="tag">E N C U É N T R A M E  E N</span>
+    <p class="body">• Instagram · @mte_disenointerior • TikTok · @mariateresaespinosa_ • Sitio web · liviin.com</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">98</span></div>
+
+</div>
+
+<!-- p99 -->
+<div class="page">
+  <div class="content">
+    <p class="body">Conversaciones nuevas cada semana sobre liderazgo del hogar, transformación con sentido, y la mujer que cada una está aprendiendo a ser.</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">99</span></div>
+
+</div>
+
+<!-- p100 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">—  G R A C I A S  —</span>
+    <div class="pull-quote"><p>A las dueñas que han confiado en mi acompañamiento durante estos años. Cada una de ustedes me enseñó algo que está en estas páginas.</p></div>
+    <div class="pull-quote"><p>A mis maestras a distancia — que me sostuvieron desde lejos en el momento en que mi propia casa me quedó grande.</p></div>
+    <div class="pull-quote"><p>Y a mi familia — mi esposo, mis tres hijos — que aprendieron este camino conmigo, en tiempo real, dentro de las paredes de la casa donde todo este método nació.</p></div>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">100</span></div>
+
+</div>
+
+<!-- p101 -->
+<div class="page">
+  <div class="content">
+    <div class="h1-italic" style="font-size:38px;">"Que tu casa nunca más<br>sea ese lugar pendiente.<br>Que se vuelva,<br>finalmente, el refugio<br>que siempre estuvo listo<br>para ser."</div>
+    <div class="rule"></div>
+    <p class="body">Con amor,</p>
+    <div class="h1-italic" style="font-size:38px;">M T E</div>
+    <div class="rule"></div>
+    <p class="body">María Teresa Espinosa</p>
+  </div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">101</span></div>
+
+</div>
+
+</body>
+</html>

@@ -18,6 +18,9 @@ Comandos:
   text            Extraer texto (pdftotext)
   png <página>    Render página a PNG (pdftoppm)
   optimize        Comprimir PDF (pikepdf)
+  preview         Servidor web — piloto plantilla Liderar (puerto 8765)
+  extract         PDF → JSON borrador (scripts/pdf_to_content.py)
+  html [libro]    Regenerar HTML (transformar|liderar|all)
   help
 
 Python (venv): pymupdf, pikepdf, pdfplumber, pypdf, reportlab,
@@ -44,7 +47,7 @@ case "$cmd" in
     bash scripts/restore_backup.sh
     ;;
   cover)
-    "$PY" insert_cover.py
+    "$PY" insert_cover.py "$@"
     ;;
   qr)
     "$PY" scripts/insert_qr.py
@@ -73,6 +76,26 @@ case "$cmd" in
     pdftoppm -png -f "$page" -l "$page" -r 200 \
       4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf "$out"
     echo "${out}-$(printf '%02d' "$page").png"
+    ;;
+  preview)
+    port="${1:-8765}"
+    echo "Piloto: http://127.0.0.1:${port}/"
+    exec python3 -m http.server "$port" --directory "$ROOT/web"
+    ;;
+  extract)
+    "$PY" scripts/pdf_to_content.py "$@"
+    ;;
+  html)
+    book="${1:-all}"
+    case "$book" in
+      transformar) "$PY" scripts/build_transformar_html.py ;;
+      liderar)     "$PY" scripts/build_liderar_html.py ;;
+      all)
+        "$PY" scripts/build_transformar_html.py
+        "$PY" scripts/build_liderar_html.py
+        ;;
+      *) echo "Uso: ./pdf html [transformar|liderar|all]" >&2; exit 1 ;;
+    esac
     ;;
   optimize)
     f="${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}"

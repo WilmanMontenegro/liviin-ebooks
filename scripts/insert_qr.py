@@ -15,16 +15,22 @@ PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
 QR_SRC = ROOT / "HOME EXCEL CODIGO QR.png"
 PAGE_INDEX = 88  # página 89
 
-# Caja blanca interior (borde punteado) — coords PyMuPDF
+# Caja blanca interior; marco punteado exterior se elimina al insertar
 QR_RECT = fitz.Rect(276.0, 293.0, 355.5, 372.5)
+FRAME_OUTER = fitz.Rect(274.5, 291.0, 357.0, 373.5)
 WHITE = (1.0, 1.0, 1.0)
 
 
 def prepare_qr(path: Path, size_px: int = 512) -> bytes:
     img = Image.open(path).convert("RGB")
-    gray = img.convert("L")
-    # Recorte al contenido oscuro del QR (sin marcos verdes ni padding)
-    mask = gray.point(lambda p: 255 if p < 210 else 0)
+    # Solo módulos oscuros del QR (sin esquinas verdes ni marco gris del screenshot)
+    mask = Image.new("L", img.size)
+    px = img.load()
+    mp = mask.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            r, g, b = px[x, y]
+            mp[x, y] = 255 if r < 140 and g < 140 and b < 140 else 0
     bbox = mask.getbbox()
     if not bbox:
         raise ValueError(f"QR vacío: {path}")
@@ -47,8 +53,9 @@ def redact_placeholder(page: fitz.Page) -> None:
     page.apply_redactions()
 
 
-def insert_qr(page: fitz.Page, png: bytes) -> None:
-    page.draw_rect(QR_RECT, color=WHITE, fill=WHITE, overlay=False)
+def replace_qr(page: fitz.Page, png: bytes) -> None:
+    page.add_redact_annot(FRAME_OUTER, fill=WHITE)
+    page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_REMOVE)
     page.insert_image(QR_RECT, stream=png, keep_proportion=True, overlay=True)
 
 
@@ -64,7 +71,7 @@ def main() -> int:
     doc = fitz.open(PDF)
     page = doc[PAGE_INDEX]
     redact_placeholder(page)
-    insert_qr(page, png)
+    replace_qr(page, png)
 
     tmp = PDF.with_suffix(".tmp.pdf")
     doc.save(tmp, garbage=4, deflate=True, clean=True)

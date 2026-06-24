@@ -1,0 +1,7110 @@
+[
+  {
+    "page": 4,
+    "blocks": [
+      [
+        [
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              57.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              57.3,
+              55.0,
+              60.3,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              60.3,
+              55.0,
+              66.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              66.1,
+              55.0,
+              69.1,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              69.1,
+              55.0,
+              71.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              71.3,
+              55.0,
+              74.3,
+              66.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              74.3,
+              55.0,
+              80.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              80.1,
+              55.0,
+              83.1,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              83.1,
+              55.0,
+              85.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              85.3,
+              55.0,
+              88.3,
+              66.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              88.3,
+              55.0,
+              93.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              93.6,
+              55.0,
+              96.6,
+              66.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              96.6,
+              55.0,
+              102.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              102.4,
+              55.0,
+              105.4,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              105.4,
+              55.0,
+              107.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              107.6,
+              55.0,
+              110.6,
+              66.5
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              110.6,
+              55.0,
+              116.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              116.8,
+              55.0,
+              119.8,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              119.8,
+              55.0,
+              125.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              125.6,
+              55.0,
+              128.6,
+              66.5
+            ]
+          },
+          {
+            "text": " 0",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              128.6,
+              55.0,
+              138.2,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              138.2,
+              55.0,
+              141.2,
+              66.5
+            ]
+          },
+          {
+            "text": "0",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              141.2,
+              55.0,
+              145.7,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "De mí para ti",
+            "size": 32.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              267.6,
+              109.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Otra vez.",
+            "size": 12.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              121.7,
+              110.4,
+              135.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Si llegaste hasta aquí, es porque ya leíste el primer libro. Y eso ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              179.1,
+              366.3,
+              194.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "ya dice mucho de ti.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              195.1,
+              152.9,
+              210.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Significa que hiciste introspección. Que te miraste a los ojos ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              221.1,
+              351.0,
+              236.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "como dueña de tu hogar. Que entendiste — quizás por primera ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              237.1,
+              366.3,
+              252.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "vez — que la armonía no se filtraba desde abajo, sino desde ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              253.1,
+              354.0,
+              268.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "arriba. Que liderar tu casa era una habilidad, no un don.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              269.1,
+              327.8,
+              284.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Y muy probablemente, también, que te sentaste con tu Home ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              295.1,
+              357.7,
+              310.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Excel. Que recorriste tu casa con ojos nuevos. Que escribiste ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              311.1,
+              358.3,
+              326.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "lo que la rutina diaria no alcanzaba a cubrir. Que viste, por ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              327.1,
+              343.1,
+              342.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "primera vez en mucho tiempo, el mapa completo de lo que tu ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              343.1,
+              356.5,
+              358.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "hogar te estaba pidiendo.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              359.1,
+              179.2,
+              374.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Si llegaste hasta ahí, ya eres una ganadora en este proceso. ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              385.1,
+              354.7,
+              400.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "De verdad.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              401.1,
+              108.9,
+              416.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Pero te tengo que decir algo con ",
+            "size": 13.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              73.1,
+              426.9,
+              292.3,
+              442.1
+            ]
+          }
+        ],
+        [
+          {
+            "text": "honestidad.",
+            "size": 13.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              73.1,
+              442.1,
+              149.9,
+              457.2
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Yo también pasé por este punto. Y este punto — el de ya ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              469.4,
+              337.6,
+              485.2
+            ]
+          }
+        ],
+        [
+          {
+            "text": "saberlo todo y no haber empezado nada — es uno de los más ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              485.4,
+              362.0,
+              501.2
+            ]
+          }
+        ],
+        [
+          {
+            "text": "peligrosos del recorrido.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              501.4,
+              172.4,
+              517.2
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "I N I C I A C I Ó N  0 0\nDe mí para ti\nOtra vez.\nSi llegaste hasta aquí, es porque ya leíste el primer libro. Y eso \nya dice mucho de ti.\nSignifica que hiciste introspección. Que te miraste a los ojos \ncomo dueña de tu hogar. Que entendiste — quizás por primera \nvez — que la armonía no se filtraba desde abajo, sino desde \narriba. Que liderar tu casa era una habilidad, no un don.\nY muy probablemente, también, que te sentaste con tu Home \nExcel. Que recorriste tu casa con ojos nuevos. Que escribiste \nlo que la rutina diaria no alcanzaba a cubrir. Que viste, por \nprimera vez en mucho tiempo, el mapa completo de lo que tu \nhogar te estaba pidiendo.\nSi llegaste hasta ahí, ya eres una ganadora en este proceso. \nDe verdad.\nPero te tengo que decir algo con \nhonestidad.\nYo también pasé por este punto. Y este punto — el de ya \nsaberlo todo y no haber empezado nada — es uno de los más \npeligrosos del recorrido.\n"
+  },
+  {
+    "page": 5,
+    "blocks": [
+      [
+        [
+          {
+            "text": "Porque la lista, sin acción, se vuelve un peso. Lo que antes era ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.2,
+              366.3,
+              70.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "invisible y te quitaba energía sin que lo notaras, ahora está ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              71.2,
+              345.5,
+              86.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "nombrado, escrito, mirándote desde una hoja de Excel — y ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              87.2,
+              347.3,
+              102.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "eso pesa distinto. Pesa más.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              103.2,
+              195.7,
+              118.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Esa es la trampa silenciosa de la primera etapa: creer que ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              129.2,
+              342.4,
+              144.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "entender ya es suficiente. No lo es.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              145.2,
+              226.9,
+              160.9
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "Porque la lista, sin acción, se vuelve un peso. Lo que antes era \ninvisible y te quitaba energía sin que lo notaras, ahora está \nnombrado, escrito, mirándote desde una hoja de Excel — y \neso pesa distinto. Pesa más.\nEsa es la trampa silenciosa de la primera etapa: creer que \nentender ya es suficiente. No lo es.\n"
+  },
+  {
+    "page": 6,
+    "blocks": [
+      [
+        [
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              57.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              57.3,
+              55.0,
+              60.3,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              60.3,
+              55.0,
+              66.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              66.1,
+              55.0,
+              69.1,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              69.1,
+              55.0,
+              71.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              71.3,
+              55.0,
+              74.3,
+              66.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              74.3,
+              55.0,
+              80.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              80.1,
+              55.0,
+              83.1,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              83.1,
+              55.0,
+              85.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              85.3,
+              55.0,
+              88.3,
+              66.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              88.3,
+              55.0,
+              93.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              93.6,
+              55.0,
+              96.6,
+              66.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              96.6,
+              55.0,
+              102.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              102.4,
+              55.0,
+              105.4,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              105.4,
+              55.0,
+              107.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              107.6,
+              55.0,
+              110.6,
+              66.5
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              110.6,
+              55.0,
+              116.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              116.8,
+              55.0,
+              119.8,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              119.8,
+              55.0,
+              125.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              125.6,
+              55.0,
+              128.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              128.6,
+              55.0,
+              136.0,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              136.0,
+              55.0,
+              139.0,
+              66.5
+            ]
+          },
+          {
+            "text": " C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              139.0,
+              55.0,
+              150.0,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              150.0,
+              55.0,
+              153.0,
+              66.5
+            ]
+          },
+          {
+            "text": "O",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              153.0,
+              55.0,
+              159.2,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              159.2,
+              55.0,
+              162.2,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              162.2,
+              55.0,
+              168.0,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              168.0,
+              55.0,
+              171.0,
+              66.5
+            ]
+          },
+          {
+            "text": "T",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              171.0,
+              55.0,
+              175.9,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              175.9,
+              55.0,
+              178.9,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              178.9,
+              55.0,
+              181.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              181.1,
+              55.0,
+              184.1,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              184.1,
+              55.0,
+              189.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              189.8,
+              55.0,
+              192.8,
+              66.5
+            ]
+          },
+          {
+            "text": "Ú",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              192.8,
+              55.0,
+              198.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              198.6,
+              55.0,
+              201.6,
+              66.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              201.6,
+              55.0,
+              206.9,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Lo que viene ahora.",
+            "size": 16.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              215.6,
+              91.1
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Este segundo libro nace porque, en mi propio proceso, y en el ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              128.5,
+              360.8,
+              144.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "de muchas mujeres que he acompañado, descubrí que entre ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              144.5,
+              355.3,
+              160.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "tener la lista y tener un hogar transformado hay un abismo. Y ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              160.5,
+              356.5,
+              176.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "ese abismo se llama pereza. Se llama procrastinación. Se ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              176.5,
+              341.2,
+              192.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "llama agobio. Se llama no saber por dónde empezar.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              192.5,
+              313.7,
+              208.3
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "También se llama miedo. Miedo a ver la pila de ropa que ya no ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              218.5,
+              365.1,
+              234.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "nos representa. Miedo a abrir la bodega. Miedo a confrontar el ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              234.5,
+              362.6,
+              250.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cajón que llevamos años evitando.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              250.5,
+              223.8,
+              266.3
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Yo sentí todos esos miedos. Y los voy a nombrar contigo en ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              276.5,
+              351.0,
+              292.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "estas páginas — porque lo que se nombra deja de tener poder ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              292.5,
+              363.8,
+              308.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "sobre ti.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              308.5,
+              94.2,
+              324.3
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Este libro no es sobre tener una casa ",
+            "size": 13.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              73.1,
+              334.3,
+              322.1,
+              349.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "perfecta. Es sobre dejar de esperar a ",
+            "size": 13.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              73.1,
+              349.5,
+              322.2,
+              364.6
+            ]
+          }
+        ],
+        [
+          {
+            "text": "que sea perfecta para empezar a vivirla.",
+            "size": 13.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              73.1,
+              364.6,
+              339.0,
+              379.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Te leo despacio, otra vez. Tómate tu tiempo. Y prepárate para ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              392.0,
+              361.4,
+              407.7
+            ]
+          }
+        ],
+        [
+          {
+            "text": "esta segunda parte del camino — porque aquí es donde, de ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              408.0,
+              351.0,
+              423.7
+            ]
+          }
+        ],
+        [
+          {
+            "text": "verdad, todo cambia.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              424.0,
+              157.8,
+              439.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "— MARÍA TERESA ESPINOSA",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              450.0,
+              210.4,
+              465.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Interiorista y Home Coach · MTE",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              476.2,
+              214.6,
+              491.7
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "I N I C I A C I Ó N  ·  C O N T I N Ú A\nLo que viene ahora.\nEste segundo libro nace porque, en mi propio proceso, y en el \nde muchas mujeres que he acompañado, descubrí que entre \ntener la lista y tener un hogar transformado hay un abismo. Y \nese abismo se llama pereza. Se llama procrastinación. Se \nllama agobio. Se llama no saber por dónde empezar.\nTambién se llama miedo. Miedo a ver la pila de ropa que ya no \nnos representa. Miedo a abrir la bodega. Miedo a confrontar el \ncajón que llevamos años evitando.\nYo sentí todos esos miedos. Y los voy a nombrar contigo en \nestas páginas — porque lo que se nombra deja de tener poder \nsobre ti.\nEste libro no es sobre tener una casa \nperfecta. Es sobre dejar de esperar a \nque sea perfecta para empezar a vivirla.\nTe leo despacio, otra vez. Tómate tu tiempo. Y prepárate para \nesta segunda parte del camino — porque aquí es donde, de \nverdad, todo cambia.\n— MARÍA TERESA ESPINOSA\nInteriorista y Home Coach · MTE\n"
+  },
+  {
+    "page": 7,
+    "blocks": [
+      [
+        [
+          {
+            "text": "\"Entender no es ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              55.0,
+              331.4,
+              87.6
+            ]
+          }
+        ],
+        [
+          {
+            "text": "transformar. Lo ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              87.6,
+              324.1,
+              120.2
+            ]
+          }
+        ],
+        [
+          {
+            "text": "único que ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              120.2,
+              238.9,
+              152.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "transforma es la ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              152.8,
+              334.6,
+              185.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "mano puesta ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              185.4,
+              281.8,
+              218.0
+            ]
+          }
+        ],
+        [
+          {
+            "text": "sobre lo que ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              218.0,
+              275.1,
+              250.6
+            ]
+          }
+        ],
+        [
+          {
+            "text": "llevas años ",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              250.6,
+              256.0,
+              283.2
+            ]
+          }
+        ],
+        [
+          {
+            "text": "evitando.\"",
+            "size": 28.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              91.1,
+              283.2,
+              234.8,
+              315.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "—",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              91.1,
+              335.8,
+              100.1,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              100.1,
+              335.8,
+              103.1,
+              348.7
+            ]
+          },
+          {
+            "text": " M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              103.1,
+              335.8,
+              116.1,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              116.1,
+              335.8,
+              119.1,
+              348.7
+            ]
+          },
+          {
+            "text": "T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              119.1,
+              335.8,
+              124.6,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              124.6,
+              335.8,
+              127.6,
+              348.7
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              127.6,
+              335.8,
+              133.6,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              133.6,
+              335.8,
+              136.6,
+              348.7
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              136.6,
+              335.8,
+              144.5,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              144.5,
+              335.8,
+              147.5,
+              348.7
+            ]
+          },
+          {
+            "text": " L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              147.5,
+              335.8,
+              158.0,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              158.0,
+              335.8,
+              161.0,
+              348.7
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              161.0,
+              335.8,
+              163.5,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              163.5,
+              335.8,
+              166.5,
+              348.7
+            ]
+          },
+          {
+            "text": "V",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              166.5,
+              335.8,
+              172.5,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              172.5,
+              335.8,
+              175.5,
+              348.7
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              175.5,
+              335.8,
+              178.0,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              178.0,
+              335.8,
+              181.0,
+              348.7
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              181.0,
+              335.8,
+              183.5,
+              348.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              183.5,
+              335.8,
+              186.5,
+              348.7
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              186.5,
+              335.8,
+              193.0,
+              348.7
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "\"Entender no es \ntransformar. Lo \núnico que \ntransforma es la \nmano puesta \nsobre lo que \nllevas años \nevitando.\"\n—  M T E  ·  L I V I I N\n"
+  },
+  {
+    "page": 8,
+    "blocks": [
+      [
+        [
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              60.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              60.4,
+              55.0,
+              63.4,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              63.4,
+              55.0,
+              69.2,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              69.2,
+              55.0,
+              72.2,
+              66.5
+            ]
+          },
+          {
+            "text": "T",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              72.2,
+              55.0,
+              77.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              77.1,
+              55.0,
+              80.1,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              80.1,
+              55.0,
+              85.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              85.4,
+              55.0,
+              88.4,
+              66.5
+            ]
+          },
+          {
+            "text": "S",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              88.4,
+              55.0,
+              93.7,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              93.7,
+              55.0,
+              96.7,
+              66.5
+            ]
+          },
+          {
+            "text": " D",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              96.7,
+              55.0,
+              107.7,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              107.7,
+              55.0,
+              110.7,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              110.7,
+              55.0,
+              116.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              116.1,
+              55.0,
+              119.1,
+              66.5
+            ]
+          },
+          {
+            "text": " E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              119.1,
+              55.0,
+              129.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              129.6,
+              55.0,
+              132.6,
+              66.5
+            ]
+          },
+          {
+            "text": "M",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              132.6,
+              55.0,
+              139.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              139.3,
+              55.0,
+              142.3,
+              66.5
+            ]
+          },
+          {
+            "text": "P",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              142.3,
+              55.0,
+              147.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              147.6,
+              55.0,
+              150.6,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              150.6,
+              55.0,
+              155.9,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              155.9,
+              55.0,
+              158.9,
+              66.5
+            ]
+          },
+          {
+            "text": "Z",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              158.9,
+              55.0,
+              163.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              163.8,
+              55.0,
+              166.8,
+              66.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              166.8,
+              55.0,
+              172.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              172.1,
+              55.0,
+              175.1,
+              66.5
+            ]
+          },
+          {
+            "text": "R",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              175.1,
+              55.0,
+              180.9,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Lo que vas a encontrar ",
+            "size": 22.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              318.9,
+              98.1
+            ]
+          }
+        ],
+        [
+          {
+            "text": "aquí",
+            "size": 22.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              98.1,
+              103.5,
+              123.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Este ebook no te va a dar más teoría. Si leíste el primer libro, ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              163.1,
+              356.5,
+              178.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "ya tienes la filosofía suficiente para una vida entera. Lo que ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              179.1,
+              347.9,
+              194.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "este libro te va a enseñar es algo distinto:",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              195.1,
+              258.0,
+              210.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              250.7,
+              60.1,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              250.7,
+              64.1,
+              263.6
+            ]
+          },
+          {
+            "text": "1",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              250.7,
+              69.1,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              250.7,
+              73.1,
+              263.6
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              250.7,
+              82.1,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              250.7,
+              86.1,
+              263.6
+            ]
+          },
+          {
+            "text": " E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              250.7,
+              98.6,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              98.6,
+              250.7,
+              102.6,
+              263.6
+            ]
+          },
+          {
+            "text": "L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              102.6,
+              250.7,
+              108.1,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              108.1,
+              250.7,
+              112.1,
+              263.6
+            ]
+          },
+          {
+            "text": " C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              112.1,
+              250.7,
+              125.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              125.0,
+              250.7,
+              129.0,
+              263.6
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              129.0,
+              250.7,
+              135.5,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              135.5,
+              250.7,
+              139.5,
+              263.6
+            ]
+          },
+          {
+            "text": "M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              139.5,
+              250.7,
+              147.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              147.0,
+              250.7,
+              151.0,
+              263.6
+            ]
+          },
+          {
+            "text": "B",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              151.0,
+              250.7,
+              157.5,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              157.5,
+              250.7,
+              161.5,
+              263.6
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              161.5,
+              250.7,
+              164.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              164.0,
+              250.7,
+              168.0,
+              263.6
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              168.0,
+              250.7,
+              175.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              175.0,
+              250.7,
+              179.0,
+              263.6
+            ]
+          },
+          {
+            "text": " D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              179.0,
+              250.7,
+              192.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              192.0,
+              250.7,
+              196.0,
+              263.6
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              196.0,
+              250.7,
+              202.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              202.0,
+              250.7,
+              206.0,
+              263.6
+            ]
+          },
+          {
+            "text": " V",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              206.0,
+              250.7,
+              218.5,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              218.5,
+              250.7,
+              222.5,
+              263.6
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              222.5,
+              250.7,
+              225.0,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              225.0,
+              250.7,
+              228.9,
+              263.6
+            ]
+          },
+          {
+            "text": "S",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              228.9,
+              250.7,
+              234.9,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              234.9,
+              250.7,
+              238.9,
+              263.6
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              238.9,
+              250.7,
+              241.4,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              241.4,
+              250.7,
+              245.4,
+              263.6
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              245.4,
+              250.7,
+              252.4,
+              263.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              252.4,
+              250.7,
+              256.4,
+              263.6
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              256.4,
+              250.7,
+              262.9,
+              263.6
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Por qué la introspección sincera sobre lo que te molesta en ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              267.7,
+              347.3,
+              283.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "silencio es el verdadero punto de partida — y por qué casi ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              283.7,
+              341.8,
+              299.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "ninguna dueña se atreve a hacerla.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              299.7,
+              227.5,
+              315.5
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              329.6,
+              60.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              329.6,
+              64.1,
+              342.5
+            ]
+          },
+          {
+            "text": "2",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              329.6,
+              69.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              329.6,
+              73.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              329.6,
+              82.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              329.6,
+              86.1,
+              342.5
+            ]
+          },
+          {
+            "text": " L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              329.6,
+              98.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              98.1,
+              329.6,
+              102.1,
+              342.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              102.1,
+              329.6,
+              108.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              108.1,
+              329.6,
+              112.1,
+              342.5
+            ]
+          },
+          {
+            "text": "J",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              112.1,
+              329.6,
+              117.1,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              117.1,
+              329.6,
+              121.0,
+              342.5
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              121.0,
+              329.6,
+              128.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              128.0,
+              329.6,
+              132.0,
+              342.5
+            ]
+          },
+          {
+            "text": "S",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              132.0,
+              329.6,
+              138.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              138.0,
+              329.6,
+              142.0,
+              342.5
+            ]
+          },
+          {
+            "text": " D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              142.0,
+              329.6,
+              155.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              155.0,
+              329.6,
+              159.0,
+              342.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              159.0,
+              329.6,
+              165.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              165.0,
+              329.6,
+              169.0,
+              342.5
+            ]
+          },
+          {
+            "text": " L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              169.0,
+              329.6,
+              181.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              181.0,
+              329.6,
+              185.0,
+              342.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              185.0,
+              329.6,
+              191.5,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              191.5,
+              329.6,
+              195.5,
+              342.5
+            ]
+          },
+          {
+            "text": " P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              195.5,
+              329.6,
+              208.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              208.0,
+              329.6,
+              212.0,
+              342.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              212.0,
+              329.6,
+              218.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              218.0,
+              329.6,
+              222.0,
+              342.5
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              222.0,
+              329.6,
+              228.5,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              228.5,
+              329.6,
+              232.5,
+              342.5
+            ]
+          },
+          {
+            "text": "F",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              232.5,
+              329.6,
+              238.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              238.0,
+              329.6,
+              241.9,
+              342.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              241.9,
+              329.6,
+              248.0,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              248.0,
+              329.6,
+              251.9,
+              342.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              251.9,
+              329.6,
+              258.4,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              258.4,
+              329.6,
+              262.4,
+              342.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              262.4,
+              329.6,
+              268.9,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              268.9,
+              329.6,
+              272.9,
+              342.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              272.9,
+              329.6,
+              275.4,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              275.4,
+              329.6,
+              279.4,
+              342.5
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              279.4,
+              329.6,
+              286.4,
+              342.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              286.4,
+              329.6,
+              290.4,
+              342.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              290.4,
+              329.6,
+              296.9,
+              342.5
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "La tesis que sostiene este libro entero: tu casa no necesita ser ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              346.6,
+              362.6,
+              362.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "perfecta para empezar a transformarse. Solo necesita ser ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              362.6,
+              339.4,
+              378.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "nombrada, depurada y querida desde donde está hoy.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              378.6,
+              319.8,
+              394.4
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              408.5,
+              60.1,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              408.5,
+              64.1,
+              421.4
+            ]
+          },
+          {
+            "text": "3",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              408.5,
+              69.1,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              408.5,
+              73.1,
+              421.4
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              408.5,
+              82.1,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              408.5,
+              86.1,
+              421.4
+            ]
+          },
+          {
+            "text": " P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              408.5,
+              98.6,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              98.6,
+              408.5,
+              102.6,
+              421.4
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              102.6,
+              408.5,
+              109.6,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              109.6,
+              408.5,
+              113.5,
+              421.4
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              113.5,
+              408.5,
+              120.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              120.0,
+              408.5,
+              124.0,
+              421.4
+            ]
+          },
+          {
+            "text": " D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              124.0,
+              408.5,
+              137.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              137.0,
+              408.5,
+              141.0,
+              421.4
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              141.0,
+              408.5,
+              148.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              148.0,
+              408.5,
+              152.0,
+              421.4
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              152.0,
+              408.5,
+              158.5,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              158.5,
+              408.5,
+              162.5,
+              421.4
+            ]
+          },
+          {
+            "text": "D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              162.5,
+              408.5,
+              169.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              169.0,
+              408.5,
+              173.0,
+              421.4
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              173.0,
+              408.5,
+              179.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              179.0,
+              408.5,
+              183.0,
+              421.4
+            ]
+          },
+          {
+            "text": " E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              183.0,
+              408.5,
+              195.5,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              195.5,
+              408.5,
+              199.5,
+              421.4
+            ]
+          },
+          {
+            "text": "M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              199.5,
+              408.5,
+              207.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              207.0,
+              408.5,
+              211.0,
+              421.4
+            ]
+          },
+          {
+            "text": "P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              211.0,
+              408.5,
+              217.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              217.0,
+              408.5,
+              221.0,
+              421.4
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              221.0,
+              408.5,
+              227.0,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              227.0,
+              408.5,
+              231.0,
+              421.4
+            ]
+          },
+          {
+            "text": "Z",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              231.0,
+              408.5,
+              236.5,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              236.5,
+              408.5,
+              240.4,
+              421.4
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              240.4,
+              408.5,
+              246.9,
+              421.4
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              246.9,
+              408.5,
+              250.9,
+              421.4
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              250.9,
+              408.5,
+              257.4,
+              421.4
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "El método del menor apego — empezar por el espacio que ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              425.5,
+              346.1,
+              441.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "menos pesa, no por el que más arregla. Y por qué eso lo ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              441.5,
+              335.7,
+              457.3
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cambia todo.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              457.5,
+              118.1,
+              473.3
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "A N T E S  D E  E M P E Z A R\nLo que vas a encontrar \naquí\nEste ebook no te va a dar más teoría. Si leíste el primer libro, \nya tienes la filosofía suficiente para una vida entera. Lo que \neste libro te va a enseñar es algo distinto:\n0 1  ·  E L  C A M B I O  D E  V I S I Ó N\nPor qué la introspección sincera sobre lo que te molesta en \nsilencio es el verdadero punto de partida — y por qué casi \nninguna dueña se atreve a hacerla.\n0 2  ·  L E J O S  D E  L A  P E R F E C C I Ó N\nLa tesis que sostiene este libro entero: tu casa no necesita ser \nperfecta para empezar a transformarse. Solo necesita ser \nnombrada, depurada y querida desde donde está hoy.\n0 3  ·  P O R  D Ó N D E  E M P E Z A R\nEl método del menor apego — empezar por el espacio que \nmenos pesa, no por el que más arregla. Y por qué eso lo \ncambia todo.\n"
+  },
+  {
+    "page": 9,
+    "blocks": [
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              55.0,
+              60.1,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              55.0,
+              64.1,
+              67.9
+            ]
+          },
+          {
+            "text": "4",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              55.0,
+              69.1,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              55.0,
+              73.1,
+              67.9
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              55.0,
+              82.1,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              55.0,
+              86.1,
+              67.9
+            ]
+          },
+          {
+            "text": " E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              55.0,
+              98.6,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              98.6,
+              55.0,
+              102.6,
+              67.9
+            ]
+          },
+          {
+            "text": "L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              102.6,
+              55.0,
+              108.1,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              108.1,
+              55.0,
+              112.1,
+              67.9
+            ]
+          },
+          {
+            "text": " O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              112.1,
+              55.0,
+              125.5,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              125.5,
+              55.0,
+              129.5,
+              67.9
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              129.5,
+              55.0,
+              136.0,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              136.0,
+              55.0,
+              140.0,
+              67.9
+            ]
+          },
+          {
+            "text": "D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              140.0,
+              55.0,
+              146.5,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              146.5,
+              55.0,
+              150.5,
+              67.9
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              150.5,
+              55.0,
+              156.5,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              156.5,
+              55.0,
+              160.5,
+              67.9
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              160.5,
+              55.0,
+              167.0,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              167.0,
+              55.0,
+              171.0,
+              67.9
+            ]
+          },
+          {
+            "text": " R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              171.0,
+              55.0,
+              184.0,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              184.0,
+              55.0,
+              188.0,
+              67.9
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              188.0,
+              55.0,
+              194.0,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              194.0,
+              55.0,
+              198.0,
+              67.9
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              198.0,
+              55.0,
+              204.5,
+              67.9
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              204.5,
+              55.0,
+              208.5,
+              67.9
+            ]
+          },
+          {
+            "text": "L",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              208.5,
+              55.0,
+              214.0,
+              67.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "La secuencia que casi nadie respeta: depurar, limpiar, ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.1,
+              322.2,
+              87.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "organizar — y solo entonces comprar. Por qué hacerlo al revés ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              88.1,
+              366.3,
+              103.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "es la razón por la que nada funciona.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              104.1,
+              236.1,
+              119.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              133.9,
+              60.1,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              133.9,
+              64.1,
+              146.8
+            ]
+          },
+          {
+            "text": "5",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              133.9,
+              69.1,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              133.9,
+              73.1,
+              146.8
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              133.9,
+              82.1,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              133.9,
+              86.1,
+              146.8
+            ]
+          },
+          {
+            "text": " T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              133.9,
+              98.1,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              98.1,
+              133.9,
+              102.1,
+              146.8
+            ]
+          },
+          {
+            "text": "U",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              102.1,
+              133.9,
+              108.6,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              108.6,
+              133.9,
+              112.5,
+              146.8
+            ]
+          },
+          {
+            "text": " E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              112.5,
+              133.9,
+              125.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              125.0,
+              133.9,
+              129.0,
+              146.8
+            ]
+          },
+          {
+            "text": "Q",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              129.0,
+              133.9,
+              136.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              136.0,
+              133.9,
+              140.0,
+              146.8
+            ]
+          },
+          {
+            "text": "U",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              140.0,
+              133.9,
+              146.5,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              146.5,
+              133.9,
+              150.5,
+              146.8
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              150.5,
+              133.9,
+              153.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              153.0,
+              133.9,
+              157.0,
+              146.8
+            ]
+          },
+          {
+            "text": "P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              157.0,
+              133.9,
+              163.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              163.0,
+              133.9,
+              167.0,
+              146.8
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              167.0,
+              133.9,
+              174.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              174.0,
+              133.9,
+              178.0,
+              146.8
+            ]
+          },
+          {
+            "text": " D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              178.0,
+              133.9,
+              191.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              191.0,
+              133.9,
+              195.0,
+              146.8
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              195.0,
+              133.9,
+              201.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              201.0,
+              133.9,
+              205.0,
+              146.8
+            ]
+          },
+          {
+            "text": " T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              205.0,
+              133.9,
+              217.0,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              217.0,
+              133.9,
+              221.0,
+              146.8
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              221.0,
+              133.9,
+              227.5,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              227.5,
+              133.9,
+              231.4,
+              146.8
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              231.4,
+              133.9,
+              237.9,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              237.9,
+              133.9,
+              241.9,
+              146.8
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              241.9,
+              133.9,
+              248.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              248.4,
+              133.9,
+              252.4,
+              146.8
+            ]
+          },
+          {
+            "text": "S",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              252.4,
+              133.9,
+              258.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              258.4,
+              133.9,
+              262.4,
+              146.8
+            ]
+          },
+          {
+            "text": "F",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              262.4,
+              133.9,
+              267.9,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              267.9,
+              133.9,
+              271.9,
+              146.8
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              271.9,
+              133.9,
+              278.9,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              278.9,
+              133.9,
+              282.9,
+              146.8
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              282.9,
+              133.9,
+              289.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              289.4,
+              133.9,
+              293.4,
+              146.8
+            ]
+          },
+          {
+            "text": "M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              293.4,
+              133.9,
+              300.9,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              300.9,
+              133.9,
+              304.9,
+              146.8
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              304.9,
+              133.9,
+              311.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              311.4,
+              133.9,
+              315.4,
+              146.8
+            ]
+          },
+          {
+            "text": "C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              315.4,
+              133.9,
+              321.9,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              321.9,
+              133.9,
+              325.9,
+              146.8
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              325.9,
+              133.9,
+              328.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              328.4,
+              133.9,
+              332.4,
+              146.8
+            ]
+          },
+          {
+            "text": "Ó",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              332.4,
+              133.9,
+              339.4,
+              146.8
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              339.4,
+              133.9,
+              343.4,
+              146.8
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              343.4,
+              133.9,
+              349.9,
+              146.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Los tres momentos donde una asesoría externa transforma tu ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              151.0,
+              359.5,
+              166.7
+            ]
+          }
+        ],
+        [
+          {
+            "text": "proceso. Y cómo armar tu propio equipo — sin gastar de más.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              167.0,
+              358.3,
+              182.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              196.8,
+              60.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              196.8,
+              64.1,
+              209.7
+            ]
+          },
+          {
+            "text": "6",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              196.8,
+              69.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              196.8,
+              73.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              196.8,
+              82.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              196.8,
+              86.1,
+              209.7
+            ]
+          },
+          {
+            "text": " D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              196.8,
+              99.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              99.1,
+              196.8,
+              103.1,
+              209.7
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              103.1,
+              196.8,
+              109.1,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              109.1,
+              196.8,
+              113.1,
+              209.7
+            ]
+          },
+          {
+            "text": " P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              113.1,
+              196.8,
+              125.5,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              125.5,
+              196.8,
+              129.5,
+              209.7
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              129.5,
+              196.8,
+              136.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              136.0,
+              196.8,
+              140.0,
+              209.7
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              140.0,
+              196.8,
+              147.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              147.0,
+              196.8,
+              151.0,
+              209.7
+            ]
+          },
+          {
+            "text": "Y",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              151.0,
+              196.8,
+              157.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              157.0,
+              196.8,
+              161.0,
+              209.7
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              161.0,
+              196.8,
+              167.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              167.0,
+              196.8,
+              171.0,
+              209.7
+            ]
+          },
+          {
+            "text": "C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              171.0,
+              196.8,
+              177.5,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              177.5,
+              196.8,
+              181.5,
+              209.7
+            ]
+          },
+          {
+            "text": "T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              181.5,
+              196.8,
+              187.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              187.0,
+              196.8,
+              191.0,
+              209.7
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              191.0,
+              196.8,
+              198.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              198.0,
+              196.8,
+              202.0,
+              209.7
+            ]
+          },
+          {
+            "text": " A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              202.0,
+              196.8,
+              215.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              215.0,
+              196.8,
+              219.0,
+              209.7
+            ]
+          },
+          {
+            "text": " H",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              219.0,
+              196.8,
+              232.0,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              232.0,
+              196.8,
+              235.9,
+              209.7
+            ]
+          },
+          {
+            "text": "Á",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              235.9,
+              196.8,
+              242.4,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              242.4,
+              196.8,
+              246.4,
+              209.7
+            ]
+          },
+          {
+            "text": "B",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              246.4,
+              196.8,
+              252.9,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              252.9,
+              196.8,
+              256.9,
+              209.7
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              256.9,
+              196.8,
+              259.4,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              259.4,
+              196.8,
+              263.4,
+              209.7
+            ]
+          },
+          {
+            "text": "T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              263.4,
+              196.8,
+              268.9,
+              209.7
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              268.9,
+              196.8,
+              272.9,
+              209.7
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              272.9,
+              196.8,
+              279.9,
+              209.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Cómo lo que empezó como tarea se convierte en forma de ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              213.9,
+              344.9,
+              229.6
+            ]
+          }
+        ],
+        [
+          {
+            "text": "vida. El Excel que se transforma, los hábitos atómicos, y la ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              229.9,
+              344.9,
+              245.6
+            ]
+          }
+        ],
+        [
+          {
+            "text": "familia que también entra en el método.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              245.9,
+              248.3,
+              261.6
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              55.1,
+              275.7,
+              60.1,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              60.1,
+              275.7,
+              64.1,
+              288.6
+            ]
+          },
+          {
+            "text": "7",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              64.1,
+              275.7,
+              69.1,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              69.1,
+              275.7,
+              73.1,
+              288.6
+            ]
+          },
+          {
+            "text": " ·",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              73.1,
+              275.7,
+              82.1,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              82.1,
+              275.7,
+              86.1,
+              288.6
+            ]
+          },
+          {
+            "text": " C",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              86.1,
+              275.7,
+              99.1,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              99.1,
+              275.7,
+              103.1,
+              288.6
+            ]
+          },
+          {
+            "text": "U",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              103.1,
+              275.7,
+              109.6,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              109.6,
+              275.7,
+              113.5,
+              288.6
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              113.5,
+              275.7,
+              120.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              120.0,
+              275.7,
+              124.0,
+              288.6
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              124.0,
+              275.7,
+              130.5,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              130.5,
+              275.7,
+              134.5,
+              288.6
+            ]
+          },
+          {
+            "text": "D",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              134.5,
+              275.7,
+              141.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              141.0,
+              275.7,
+              145.0,
+              288.6
+            ]
+          },
+          {
+            "text": "O",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              145.0,
+              275.7,
+              152.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              152.0,
+              275.7,
+              156.0,
+              288.6
+            ]
+          },
+          {
+            "text": " T",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              156.0,
+              275.7,
+              168.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              168.0,
+              275.7,
+              172.0,
+              288.6
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              172.0,
+              275.7,
+              178.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              178.0,
+              275.7,
+              182.0,
+              288.6
+            ]
+          },
+          {
+            "text": "R",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              182.0,
+              275.7,
+              188.5,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              188.5,
+              275.7,
+              192.5,
+              288.6
+            ]
+          },
+          {
+            "text": "M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              192.5,
+              275.7,
+              200.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              200.0,
+              275.7,
+              204.0,
+              288.6
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              204.0,
+              275.7,
+              206.5,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              206.5,
+              275.7,
+              210.5,
+              288.6
+            ]
+          },
+          {
+            "text": "N",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              210.5,
+              275.7,
+              217.0,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              217.0,
+              275.7,
+              221.0,
+              288.6
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              221.0,
+              275.7,
+              227.5,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              227.5,
+              275.7,
+              231.4,
+              288.6
+            ]
+          },
+          {
+            "text": ",",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              231.4,
+              275.7,
+              233.9,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              233.9,
+              275.7,
+              237.9,
+              288.6
+            ]
+          },
+          {
+            "text": " E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              237.9,
+              275.7,
+              250.4,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              250.4,
+              275.7,
+              254.4,
+              288.6
+            ]
+          },
+          {
+            "text": "M",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              254.4,
+              275.7,
+              261.9,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              261.9,
+              275.7,
+              265.9,
+              288.6
+            ]
+          },
+          {
+            "text": "P",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              265.9,
+              275.7,
+              271.9,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              271.9,
+              275.7,
+              275.9,
+              288.6
+            ]
+          },
+          {
+            "text": "I",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              275.9,
+              275.7,
+              278.4,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              278.4,
+              275.7,
+              282.4,
+              288.6
+            ]
+          },
+          {
+            "text": "E",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              282.4,
+              275.7,
+              288.4,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              288.4,
+              275.7,
+              292.4,
+              288.6
+            ]
+          },
+          {
+            "text": "Z",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              292.4,
+              275.7,
+              297.9,
+              288.6
+            ]
+          },
+          {
+            "text": " ",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              297.9,
+              275.7,
+              301.9,
+              288.6
+            ]
+          },
+          {
+            "text": "A",
+            "size": 9.0,
+            "font": "TeXGyreHeros-Bold",
+            "flags": 20,
+            "bbox": [
+              301.9,
+              275.7,
+              308.4,
+              288.6
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Por qué estas metas sí tienen principio y final — y qué se ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              292.8,
+              338.1,
+              308.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "libera adentro de ti cuando tu casa, finalmente, fluye.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              308.8,
+              313.1,
+              324.5
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "0 4  ·  E L  O R D E N  R E A L\nLa secuencia que casi nadie respeta: depurar, limpiar, \norganizar — y solo entonces comprar. Por qué hacerlo al revés \nes la razón por la que nada funciona.\n0 5  ·  T U  E Q U I P O  D E  T R A N S F O R M A C I Ó N\nLos tres momentos donde una asesoría externa transforma tu \nproceso. Y cómo armar tu propio equipo — sin gastar de más.\n0 6  ·  D E  P R O Y E C T O  A  H Á B I T O\nCómo lo que empezó como tarea se convierte en forma de \nvida. El Excel que se transforma, los hábitos atómicos, y la \nfamilia que también entra en el método.\n0 7  ·  C U A N D O  T E R M I N A ,  E M P I E Z A\nPor qué estas metas sí tienen principio y final — y qué se \nlibera adentro de ti cuando tu casa, finalmente, fluye.\n"
+  },
+  {
+    "page": 10,
+    "blocks": [
+      [
+        [
+          {
+            "text": "Í",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              57.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              57.3,
+              55.0,
+              60.3,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              60.3,
+              55.0,
+              66.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              66.1,
+              55.0,
+              69.1,
+              66.5
+            ]
+          },
+          {
+            "text": "D",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              69.1,
+              55.0,
+              74.9,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              74.9,
+              55.0,
+              77.9,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              77.9,
+              55.0,
+              80.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              80.1,
+              55.0,
+              83.1,
+              66.5
+            ]
+          },
+          {
+            "text": "C",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              83.1,
+              55.0,
+              88.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              88.8,
+              55.0,
+              91.8,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              91.8,
+              55.0,
+              97.2,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "El recorrido",
+            "size": 32.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              250.7,
+              109.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 0     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              151.0,
+              94.5,
+              166.7
+            ]
+          },
+          {
+            "text": "Iniciación · De mí para ti, otra vez",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              151.5,
+              321.9,
+              166.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 1     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              174.7,
+              94.5,
+              190.5
+            ]
+          },
+          {
+            "text": "El cambio de visión",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              175.3,
+              225.7,
+              190.4
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 2     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              198.5,
+              94.5,
+              214.2
+            ]
+          },
+          {
+            "text": "Lejos de la perfección",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              199.0,
+              242.3,
+              214.2
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 3     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              222.2,
+              94.5,
+              238.0
+            ]
+          },
+          {
+            "text": "Por dónde empezar",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              222.8,
+              225.9,
+              237.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 4     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              246.0,
+              94.5,
+              261.7
+            ]
+          },
+          {
+            "text": "El orden real",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              246.5,
+              183.6,
+              261.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 5     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              269.7,
+              94.5,
+              285.5
+            ]
+          },
+          {
+            "text": "Tu equipo de transformación",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              270.3,
+              288.4,
+              285.4
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 6     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              293.5,
+              94.5,
+              309.2
+            ]
+          },
+          {
+            "text": "De proyecto a hábito",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              294.0,
+              235.1,
+              309.2
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "0 7     ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              317.2,
+              94.5,
+              333.0
+            ]
+          },
+          {
+            "text": "Cuando termina, empieza",
+            "size": 13.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              97.6,
+              317.8,
+              266.9,
+              332.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Lee a tu ritmo. Cada movimiento puede leerse solo. Pero esta ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              372.9,
+              360.1,
+              388.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "vez, te invito especialmente a algo: no solo leer. Después de ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              388.9,
+              354.1,
+              404.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cada movimiento, haz una cosa — aunque sea pequeña — en ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              404.9,
+              362.6,
+              420.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "tu casa. Una sola. Esa es la diferencia entre un libro y un ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              420.9,
+              336.3,
+              436.4
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cambio.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              436.9,
+              93.6,
+              452.4
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "Í N D I C E\nEl recorrido\n0 0     Iniciación · De mí para ti, otra vez\n0 1     El cambio de visión\n0 2     Lejos de la perfección\n0 3     Por dónde empezar\n0 4     El orden real\n0 5     Tu equipo de transformación\n0 6     De proyecto a hábito\n0 7     Cuando termina, empieza\nLee a tu ritmo. Cada movimiento puede leerse solo. Pero esta \nvez, te invito especialmente a algo: no solo leer. Después de \ncada movimiento, haz una cosa — aunque sea pequeña — en \ntu casa. Una sola. Esa es la diferencia entre un libro y un \ncambio.\n"
+  },
+  {
+    "page": 11,
+    "blocks": [
+      [
+        [
+          {
+            "text": "M",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              61.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              61.8,
+              55.0,
+              64.8,
+              66.5
+            ]
+          },
+          {
+            "text": "O",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              64.8,
+              55.0,
+              71.0,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              71.0,
+              55.0,
+              74.0,
+              66.5
+            ]
+          },
+          {
+            "text": "V",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              74.0,
+              55.0,
+              79.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              79.3,
+              55.0,
+              82.3,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              82.3,
+              55.0,
+              84.5,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              84.5,
+              55.0,
+              87.5,
+              66.5
+            ]
+          },
+          {
+            "text": "M",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              87.5,
+              55.0,
+              94.2,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              94.2,
+              55.0,
+              97.2,
+              66.5
+            ]
+          },
+          {
+            "text": "I",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              97.2,
+              55.0,
+              99.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              99.4,
+              55.0,
+              102.4,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              102.4,
+              55.0,
+              107.7,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              107.7,
+              55.0,
+              110.7,
+              66.5
+            ]
+          },
+          {
+            "text": "N",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              110.7,
+              55.0,
+              116.5,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              116.5,
+              55.0,
+              119.5,
+              66.5
+            ]
+          },
+          {
+            "text": "T",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              119.5,
+              55.0,
+              124.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              124.4,
+              55.0,
+              127.4,
+              66.5
+            ]
+          },
+          {
+            "text": "O",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              127.4,
+              55.0,
+              133.6,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              133.6,
+              55.0,
+              136.6,
+              66.5
+            ]
+          },
+          {
+            "text": " 0",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              136.6,
+              55.0,
+              146.2,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              146.2,
+              55.0,
+              149.2,
+              66.5
+            ]
+          },
+          {
+            "text": "1",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              149.2,
+              55.0,
+              153.7,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "El cambio de ",
+            "size": 32.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              275.7,
+              109.7
+            ]
+          }
+        ],
+        [
+          {
+            "text": "visión",
+            "size": 32.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              109.7,
+              149.9,
+              146.9
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Antes de mover un solo cajón, hay que mirar ",
+            "size": 12.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              159.0,
+              331.0,
+              172.9
+            ]
+          }
+        ],
+        [
+          {
+            "text": "distinto.",
+            "size": 12.0,
+            "font": "DejaVuSerif-Italic",
+            "flags": 6,
+            "bbox": [
+              55.1,
+              173.0,
+              105.0,
+              186.9
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "M O V I M I E N T O  0 1\nEl cambio de \nvisión\nAntes de mover un solo cajón, hay que mirar \ndistinto.\n"
+  },
+  {
+    "page": 12,
+    "blocks": [
+      [
+        [
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              55.0,
+              60.4,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              60.4,
+              55.0,
+              63.4,
+              66.5
+            ]
+          },
+          {
+            "text": "P",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              63.4,
+              55.0,
+              68.8,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              68.8,
+              55.0,
+              71.8,
+              66.5
+            ]
+          },
+          {
+            "text": "E",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              71.8,
+              55.0,
+              77.1,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              77.1,
+              55.0,
+              80.1,
+              66.5
+            ]
+          },
+          {
+            "text": "R",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              80.1,
+              55.0,
+              85.9,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              85.9,
+              55.0,
+              88.9,
+              66.5
+            ]
+          },
+          {
+            "text": "T",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              88.9,
+              55.0,
+              93.7,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              93.7,
+              55.0,
+              96.7,
+              66.5
+            ]
+          },
+          {
+            "text": "U",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              96.7,
+              55.0,
+              102.5,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              102.5,
+              55.0,
+              105.5,
+              66.5
+            ]
+          },
+          {
+            "text": "R",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              105.5,
+              55.0,
+              111.3,
+              66.5
+            ]
+          },
+          {
+            "text": " ",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              111.3,
+              55.0,
+              114.3,
+              66.5
+            ]
+          },
+          {
+            "text": "A",
+            "size": 8.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              114.3,
+              55.0,
+              119.6,
+              66.5
+            ]
+          }
+        ],
+        [
+          {
+            "text": "Lo que te molestaba en ",
+            "size": 22.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              72.5,
+              322.6,
+              98.1
+            ]
+          }
+        ],
+        [
+          {
+            "text": "silencio.",
+            "size": 22.0,
+            "font": "DejaVuSerif",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              98.1,
+              147.1,
+              123.7
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Hay un fenómeno en casi todas las casas que conozco — ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              163.1,
+              341.2,
+              178.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "incluida la mía durante años. Es esto:",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              179.1,
+              238.5,
+              194.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Hay cosas que te molestan todos los días. La gaveta que ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              205.1,
+              337.6,
+              220.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cuesta cerrar. El espacio donde nunca encuentras lo que ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              221.1,
+              336.3,
+              236.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "buscas. El rincón de la cocina que evitas mirar. El cuarto de los ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              237.1,
+              366.9,
+              252.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "niños que pospones organizar. La bodega que llevas dos años ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              253.1,
+              363.9,
+              268.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "sin abrir.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              269.1,
+              97.3,
+              284.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Te molestan todos los días. Pero te molestan en silencio. No ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              295.1,
+              354.0,
+              310.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "las nombras. No las priorizas. Las normalizas. Aprendes a vivir ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              311.1,
+              365.0,
+              326.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "alrededor de ellas — caminas por la cocina sin mirar ese ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              327.1,
+              335.0,
+              342.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "rincón, sacas la ropa del closet sin abrir el cajón de abajo, ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              343.1,
+              340.6,
+              358.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "cierras la puerta de la bodega rápido.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              359.1,
+              237.3,
+              374.8
+            ]
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "text": "Eso es lo que yo llamo molestia silenciosa. Y mientras esa ",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              385.1,
+              343.6,
+              400.8
+            ]
+          }
+        ],
+        [
+          {
+            "text": "molestia siga siendo silenciosa, tu casa nunca va a cambiar.",
+            "size": 11.0,
+            "font": "TeXGyreHeros-Regular",
+            "flags": 4,
+            "bbox": [
+              55.1,
+              401.1,
+              349.7,
+              416.8
+            ]
+          }
+        ]
+      ]
+    ],
+    "text": "A P E R T U R A\nLo que te molestaba en \nsilencio.\nHay un fenómeno en casi todas las casas que conozco — \nincluida la mía durante años. Es esto:\nHay cosas que te molestan todos los días. La gaveta que \ncuesta cerrar. El espacio donde nunca encuentras lo que \nbuscas. El rincón de la cocina que evitas mirar. El cuarto de los \nniños que pospones organizar. La bodega que llevas dos años \nsin abrir.\nTe molestan todos los días. Pero te molestan en silencio. No \nlas nombras. No las priorizas. Las normalizas. Aprendes a vivir \nalrededor de ellas — caminas por la cocina sin mirar ese \nrincón, sacas la ropa del closet sin abrir el cajón de abajo, \ncierras la puerta de la bodega rápido.\nEso es lo que yo llamo molestia silenciosa. Y mientras esa \nmolestia siga siendo silenciosa, tu casa nunca va a cambiar.\n"
+  }
+]

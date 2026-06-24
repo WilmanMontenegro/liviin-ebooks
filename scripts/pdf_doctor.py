@@ -22,7 +22,7 @@ def main() -> int:
         with pikepdf.open(path) as pdf:
             n = len(pdf.pages)
             print(f"pikepdf: OK — {n} páginas")
-            if n != EXPECTED_PAGES:
+            if path == PDF and n != EXPECTED_PAGES:
                 print(f"  ⚠ esperadas {EXPECTED_PAGES}")
                 ok = False
     except Exception as e:

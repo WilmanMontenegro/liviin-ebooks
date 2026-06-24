@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liviin · Ebooks en progreso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo: #DFE0DB;
+      --texto: #3A322C;
+      --secundario: #665E53;
+      --taupe: #AB9E95;
+      --sans: 'Inter', sans-serif;
+      --serif: 'Cormorant Garamond', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #ECEDEA;
+      font-family: var(--sans);
+      color: var(--texto);
+      padding: 48px 24px 64px;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; }
+    h1 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .lead {
+      color: var(--secundario);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .card {
+      background: var(--fondo);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .card h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .card p { font-size: 0.85rem; color: var(--secundario); line-height: 1.5; }
+    .badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      background: #fff;
+      color: var(--secundario);
+      white-space: nowrap;
+    }
+    .badge.done { background: var(--taupe); color: #fff; }
+    .badge.wip { background: #B7BDBB; color: var(--texto); }
+    .badge.todo { background: transparent; border: 1px solid var(--taupe); }
+    a.btn {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--texto);
+      text-decoration: none;
+      border-bottom: 1px solid var(--taupe);
+      padding-bottom: 2px;
+    }
+    a.btn:hover { color: var(--taupe); }
+    .foot {
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: var(--secundario);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Liviin · Ebooks</h1>
+    <p class="lead">
+      Vista de progreso — misma plantilla gráfica en los tres libros.
+      Plantilla base: HTML editable de la clienta.
+    </p>
+
+    <article class="card">
+      <div>
+        <h2>Las manos que sostienen tu hogar</h2>
+        <p>Bonus · plantilla completa de la clienta + foto de portada.</p>
+        <a class="btn" href="bonus.html">Ver libro →</a>
+      </div>
+      <span class="badge done">Completo</span>
+    </article>
+
+    <article class="card">
+      <div>
+        <h2>El arte de liderar tu hogar</h2>
+        <p>91 páginas · plantilla HTML + portada editorial.</p>
+        <a class="btn" href="liderar.html">Ver libro →</a>
+      </div>
+      <span class="badge done">Completo</span>
+    </article>
+
+    <article class="card">
+      <div>
+        <h2>El arte de transformar tu hogar</h2>
+        <p>101 páginas migradas a plantilla HTML.</p>
+        <a class="btn" href="transformar.html">Ver libro →</a>
+      </div>
+      <span class="badge done">Completo</span>
+    </article>
+
+    <p class="foot">
+      Para PDF: abrir el libro → Ctrl+P → Guardar como PDF.<br>
+      Actualizado: junio 2026.
+    </p>
+  </div>
+</body>
+</html>

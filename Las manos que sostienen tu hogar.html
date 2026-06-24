@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las manos que sostienen tu hogar · Liviin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fondo:     #DFE0DB;
+  --crema:     #FAF7F0;
+  --banda:     #B7BDBB;
+  --texto:     #3A322C;
+  --secundario:#665E53;
+  --filete:    #B5A891;
+  --taupe:     #AB9E95;
+  --serif-display: 'Cormorant SC', 'Cormorant Garamond', serif;
+  --serif-text:    'Cormorant Garamond', serif;
+  --sans:          'Inter', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
+
+.page {
+  width: 576px; min-height: 864px; margin: 0 auto 4px;
+  background: var(--fondo); position: relative;
+  display: flex; flex-direction: column;
+  page-break-after: always; overflow: hidden;
+}
+.page-crema { background: var(--crema); }
+.content { flex: 1; padding: 48px 42px 40px 37px; }
+
+.banda {
+  background: var(--banda); height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 42px 0 37px; flex-shrink: 0;
+}
+.banda-texto {
+  font-family: var(--sans); font-size: 8px; font-weight: 400;
+  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
+}
+
+.tag {
+  font-family: var(--sans); font-size: 8.5px; font-weight: 400;
+  letter-spacing: 0.22em; color: var(--secundario); text-transform: uppercase;
+  margin-bottom: 20px; display: block;
+}
+.h1 {
+  font-family: var(--serif-display); font-size: 52px; font-weight: 500;
+  color: var(--texto); line-height: 1.0; letter-spacing: 0.01em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.h1-italic {
+  font-family: var(--serif-text); font-size: 44px; font-weight: 300;
+  font-style: italic; color: var(--texto); line-height: 1.1; margin-bottom: 20px;
+}
+.h2 {
+  font-family: var(--serif-display); font-size: 28px; font-weight: 500;
+  color: var(--texto); line-height: 1.15; text-transform: uppercase;
+  letter-spacing: 0.02em; margin-bottom: 12px;
+}
+.rule { width: 52px; height: 1px; background: var(--filete); margin-bottom: 32px; }
+.subtitle {
+  font-family: var(--serif-text); font-size: 15px; font-style: italic;
+  color: var(--secundario); line-height: 1.5; margin-top: 8px;
+}
+.body {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.85; margin-bottom: 16px;
+}
+.pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
+.pull-quote p {
+  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
+  color: var(--secundario); line-height: 1.6;
+}
+
+.foto-portada {
+  width: 100%; height: 340px; background: var(--banda);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px; flex-shrink: 0;
+}
+.foto-portada img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.foto-placeholder {
+  border: 1.5px dashed var(--filete); min-height: 200px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; margin-bottom: 24px; gap: 10px;
+}
+.foto-diamond { font-family: var(--serif-text); font-size: 16px; color: var(--filete); }
+.foto-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; }
+.foto-caption { font-family: var(--serif-text); font-size: 11px; font-style: italic; color: var(--secundario); text-align: center; max-width: 80%; line-height: 1.5; }
+
+.pull-page { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 52px; flex: 1; }
+.pull-page-quote { font-family: var(--serif-text); font-size: 22px; font-style: italic; color: var(--texto); line-height: 1.55; margin-bottom: 28px; }
+.pull-page-attr { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; }
+
+.movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
+
+.numbered-block { margin-bottom: 20px; }
+.numbered-title { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 8px; align-items: baseline; }
+.numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
+
+.caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
+
+.dedicatoria { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; text-align: center; gap: 4px; }
+.dedicatoria .dash { font-family: var(--sans); font-size: 8px; letter-spacing: 0.25em; color: var(--filete); text-transform: uppercase; margin-bottom: 28px; }
+.dedicatoria p { font-family: var(--serif-text); font-size: 17px; font-style: italic; font-weight: 300; color: var(--texto); line-height: 1.6; }
+
+.agradecimiento-item { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--texto); line-height: 1.75; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--filete); }
+.agradecimiento-item:last-child { border-bottom: none; }
+.agradecimiento-item strong { font-weight: 500; }
+
+.next-link { text-align: right; margin-top: 28px; }
+.next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
+.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--texto); }
+
+.firma { margin-top: 32px; }
+.firma .con-carino { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); margin-bottom: 4px; }
+.firma .nombre { font-family: var(--sans); font-size: 9px; letter-spacing: 0.22em; color: var(--secundario); text-transform: uppercase; font-weight: 400; }
+
+.portada-content { padding: 0 37px 36px 37px; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+.portada-colofon { font-family: var(--sans); font-size: 8px; letter-spacing: 0.15em; color: var(--secundario); text-transform: uppercase; margin-bottom: 8px; }
+.portada-titulo { font-family: var(--serif-display); font-size: 56px; font-weight: 500; color: var(--texto); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 16px; }
+.portada-subtitulo { font-family: var(--serif-text); font-size: 13.5px; font-style: italic; color: var(--secundario); line-height: 1.5; margin-bottom: 28px; max-width: 320px; }
+.portada-liviin { display: flex; flex-direction: column; align-items: flex-end; }
+.portada-liviin .marca { font-family: var(--serif-text); font-size: 28px; font-weight: 300; color: var(--texto); letter-spacing: 0.02em; }
+.portada-liviin .tagline { font-family: var(--serif-text); font-size: 11px; font-style: italic; color: var(--secundario); }
+
+.spacer-sm { height: 12px; } .spacer-md { height: 24px; } .spacer-lg { height: 40px; } .spacer-xl { height: 64px; }
+.text-center { text-align: center; }
+.frase-cierre { font-family: var(--serif-text); font-size: 19px; font-style: italic; color: var(--texto); line-height: 1.6; text-align: center; margin-bottom: 24px; }
+.liviin-footer-brand { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
+.liviin-footer-brand .marca-final { font-family: var(--serif-text); font-size: 22px; font-weight: 300; color: var(--secundario); }
+.liviin-footer-brand .tagline-final { font-family: var(--serif-text); font-size: 10px; font-style: italic; color: var(--taupe); }
+
+@media print { body { background: white; } .page { margin: 0; page-break-after: always; } }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="page">
+  <div class="foto-portada">
+    <span class="foto-diamond">◇</span>
+    <span class="foto-label">Foto Portada</span>
+    <span class="foto-caption" style="font-family:var(--serif-text);font-size:11px;font-style:italic;color:var(--secundario);text-align:center;max-width:80%;">Foto editorial Liviin · manos cuidando algo con delicadeza, luz natural cálida, paleta neutra</span>
+  </div>
+  <div class="portada-content">
+    <span class="portada-colofon">LIVIIN · UN REGALO</span>
+    <div class="portada-titulo">Las manos<br>que sostienen<br>tu hogar</div>
+    <div class="portada-subtitulo">Empatía y puertas abiertas con tu asistente del hogar</div>
+    <div class="portada-liviin">
+      <span class="marca">liviin</span>
+      <span class="tagline">for better living</span>
+    </div>
+  </div>
+</div>
+
+<!-- TÍTULO LEGAL -->
+<div class="page">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;">
+    <div class="spacer-xl"></div>
+    <span class="tag">LIVIIN · UN REGALO</span>
+    <div class="h1" style="font-size:36px;margin-bottom:6px;">Las manos que<br>sostienen tu hogar</div>
+    <div class="rule"></div>
+    <p class="subtitle">Empatía y puertas abiertas con tu asistente del hogar</p>
+    <div class="spacer-xl"></div>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">UNA CARTA DE MARÍA TERESA ESPINOSA</p>
+    <p style="font-family:var(--serif-text);font-size:12px;font-style:italic;color:var(--secundario);">Interiorista y Home Coach · MTE</p>
+    <div class="spacer-xl"></div>
+    <p style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.1em;color:var(--filete);text-transform:uppercase;">© LIVIIN · FOR BETTER LIVING</p>
+    <p style="font-family:var(--serif-text);font-size:11px;font-style:italic;color:var(--filete);margin-top:4px;">Bonus de cortesía · 2026</p>
+  </div>
+  <div class="banda"><span class="banda-texto">LIVIIN · UN REGALO</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- DEDICATORIA -->
+<div class="page page-crema">
+  <div class="content dedicatoria">
+    <span class="dash">— DEDICATORIA —</span>
+    <p>A cada mujer que ha sostenido</p>
+    <p>mi hogar con sus manos.</p>
+    <div class="spacer-sm"></div>
+    <p>Ustedes me enseñaron que el liderazgo</p>
+    <p>del hogar empieza con la mirada.</p>
+  </div>
+</div>
+
+<!-- APERTURA P1 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">DE MÍ PARA TI · UN REGALO</span>
+    <div class="h1-italic">Antes de empezar,<br>una confesión.</div>
+    <div class="rule"></div>
+    <div class="spacer-md"></div>
+    <p class="body">Cuando terminé de escribir <em>El arte de liderar tu hogar</em>, sentí que faltaba algo.</p>
+    <p class="body">Había hablado de filosofía, de método, de herramientas, de conversaciones. Te había entregado todo lo que sé sobre cómo dirigir una casa con calma. Pero había una conversación que se me había quedado adentro — y no me dejaba cerrar el libro en paz.</p>
+    <p class="body">Era la conversación sobre <strong>ellas</strong>.</p>
+    <p class="body">Sobre las mujeres que llegan a nuestra casa cada mañana. Que dejan la suya para sostener la nuestra. Que cuidan lo que más amamos sin que muchas veces sepamos sus historias, sus miedos, sus sueños.</p>
+    <p class="body">Por eso este regalo. Porque hay cosas que no caben en un manual de liderazgo — pero sin las cuales ningún liderazgo es real.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">APERTURA</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- APERTURA P2 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EL MOMENTO QUE ME CAMBIÓ LA MIRADA</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Fue en pandemia. Pero no en mi quiebre — de ese ya te conté en el otro libro. Fue en otro momento, más silencioso, que casi nadie nota.</p>
+    <p class="body">Fue cuando empecé a preguntarles a <em>ellas</em> cómo estaban.</p>
+    <p class="body">Te confieso algo: al principio lo hacía con miedo. Miedo a que sus respuestas me sumaran una responsabilidad más, en un momento en que yo apenas podía con la mía. Pero algo dentro de mí me dijo que tenía que preguntar igual.</p>
+    <p class="body">Y empezaron a aparecer las historias.</p>
+    <p class="body"><strong>Glendis</strong> tenía a sus hijos en Venezuela. Los veía crecer por video. Les mandaba dinero. Sostenía mi casa mientras la suya quedaba a miles de kilómetros, en manos de otros.</p>
+    <p class="body"><strong>Karina</strong> no tenía tres hijos como yo creía. Tenía cinco. Por eso vivía pegada al teléfono — no era distracción, era una madre coordinando desde lejos quién cuidaba a los más pequeños mientras ella cuidaba a los míos.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">APERTURA</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- FRASE PULL APERTURA -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando finalmente les pregunté cómo estaban ellas, descubrí que del otro lado había mujeres tan asustadas como yo — sosteniendo sus propias casas mientras sostenían la mía."</div>
+      <span class="pull-page-attr">— MARÍA TERESA ESPINOSA · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- APERTURA P3 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LO QUE VAS A ENCONTRAR EN ESTAS PÁGINAS</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Ahí entendí algo que cambió mi forma de liderar mi hogar para siempre: las mujeres que volvían a mi casa cada día, después del encierro, no volvían por el sueldo. Volvían por el aprecio. Por cómo las mirábamos como personas, no como empleadas.</p>
+    <p class="body">Este regalo no es un manual de cómo ser "buena patrona". Lo que vas a encontrar aquí es una invitación a <strong>mirar diferente</strong> a la mujer que te acompaña en casa. Y al mismo tiempo, una invitación a <strong>liderar con límites</strong>. Empatía con claridad. Vínculo con límites. Puertas abiertas, en los dos sentidos.</p>
+    <div class="pull-quote">
+      <p>Si lo que leíste en el ebook principal te dio el método, lo que vas a leer aquí te va a dar el corazón.</p>
+    </div>
+    <p class="body">Te leo con calma. Tómate tu tiempo. Esto es un regalo.</p>
+    <div class="firma">
+      <p class="con-carino">— María Teresa Espinosa</p>
+      <p class="nombre">Interiorista y Home Coach · MTE</p>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">APERTURA</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- PORTADA M01 -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 01</span>
+    <div class="h1">Ponerse<br>en sus zapatos</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">Antes de hablar de empatía,<br>hay que practicarla.</p>
+  </div>
+</div>
+
+<!-- M01 APERTURA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">APERTURA</span>
+    <div class="h1-italic">Una pregunta que<br>casi nunca nos hacemos.</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="body">¿Alguna vez te has detenido a pensar en lo que vive tu asistente del hogar antes de llegar a tu casa?</p>
+    <p class="body">No me refiero a si desayunó o no. Me refiero a algo más profundo. A todo lo que ella ya vivió antes de tocar tu puerta — un recorrido invisible que casi nunca consideramos, y que sin embargo determina cómo va a estar ese día contigo.</p>
+    <p class="body">Este movimiento es una pausa. Una invitación a hacer un ejercicio que muy pocas dueñas hacen — y que cambia, desde la raíz, la forma en que vas a recibirla mañana.</p>
+    <p class="body">Antes de hablar con ella, antes de capacitarla, antes de pedirle nada — ponte en sus zapatos.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">01 · PONERSE EN SUS ZAPATOS</span><span class="banda-texto">01</span></div>
+</div>
+
+<!-- M01 RECORRIDO -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EL RECORRIDO INVISIBLE</span>
+    <p class="body">Cada asistente del hogar tiene un camino propio. Algunas son internas y dejaron su pueblo, su familia, su tierra para venir a vivir a una casa que no es suya. Otras viajan cada día desde lejos, en transporte público, atravesando ciudades que no siempre son seguras.</p>
+    <p class="body">Y todas — todas — antes de entrar a tu casa, ya hicieron algo:</p>
+    <div class="text-center" style="margin:20px 0;"><span style="font-family:var(--serif-text);font-size:20px;font-style:italic;color:var(--texto);">Dejaron la suya.</span></div>
+    <p class="body">Dejaron a sus hijos al cuidado de otros. Dejaron pendientes en su propia cocina, conversaciones sin terminar. Y aún así, llegan. Sonríen. Saludan. Empiezan a sostener tu hogar. Eso, antes de cualquier otra cosa, merece ser visto.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">01 · PONERSE EN SUS ZAPATOS</span><span class="banda-texto">01</span></div>
+</div>
+
+<!-- FRASE M01 -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Antes de pedirle nada a quien entra a tu casa, recuerda todo lo que ya dejó atrás para llegar."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- M01 LO QUE NO SABEMOS -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LO QUE NO SABEMOS DE ELLA</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Casi todas contratamos a alguien sabiendo muy poco de quién es. Sabemos su nombre, sus referencias, los años de experiencia. Pero no sabemos lo importante:</p>
+    <p class="body"><strong>No sabemos si eligió este oficio o lo aceptó porque era lo que había.</strong> Hay mujeres con verdadera vocación de servicio — y hay otras que están aquí mientras encuentran otra cosa. Las dos merecen respeto. Pero no se lideran igual.</p>
+    <p class="body"><strong>No sabemos qué soñaba ser.</strong> Muchas tenían otros planes que la vida fue posponiendo. Algunas todavía tienen ese sueño guardado.</p>
+    <p class="body"><strong>No sabemos qué carga emocional trae</strong> ese día. Una llamada antes de salir. Un hijo enfermo. Una deuda pendiente. Cosas que ella no va a contarte — pero que están ahí, en cada gesto.</p>
+    <p class="body">No saber está bien. Lo que no está bien es <strong>olvidar que no sabemos</strong>, y exigirle como si fuera una máquina sin historia.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">01 · PONERSE EN SUS ZAPATOS</span><span class="banda-texto">01</span></div>
+</div>
+
+<!-- M01 EJERCICIO + CIERRE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EL EJERCICIO</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Mañana, antes de que ella llegue, regálate dos minutos. Quédate quieta. Y pregúntate:</p>
+    <div class="caja-crema">
+      <p style="font-family:var(--serif-text);font-size:14px;font-style:italic;color:var(--texto);line-height:1.7;text-align:center;">¿Qué tuvo que hacer ella esta mañana<br>para llegar puntual a mi casa?<br><br>¿Qué dejó atrás? ¿A quién dejó atrás?<br><br>¿Qué carga puede estar trayendo que yo no veo?</p>
+    </div>
+    <p class="body">No tienes que adivinar. Solo tienes que <strong>recordar que existe</strong> ese mundo invisible que ella trae consigo. Cuando la recibas con esa conciencia adentro, todo cambia.</p>
+    <div class="spacer-sm"></div>
+    <span class="tag">CIERRE DEL MOVIMIENTO 01</span>
+    <p class="body">Si leíste este movimiento con atención, ya hiciste algo importante: te detuviste a considerar que del otro lado hay una mujer completa, con historia propia. Eso, por sí solo, ya cambia tu hogar.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 02 →</span>
+      <span class="arrow-title">Conocer a quien te acompaña</span>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">01 · PONERSE EN SUS ZAPATOS</span><span class="banda-texto">01</span></div>
+</div>
+
+<!-- PORTADA M02 -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 02</span>
+    <div class="h1">Conocer a<br>quien te<br>acompaña</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">Saber su nombre no es conocerla.</p>
+  </div>
+</div>
+
+<!-- M02 APERTURA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">APERTURA</span>
+    <div class="h1-italic">La pregunta que<br>nunca le hicimos.</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="body">Sabemos su nombre. Su edad aproximada. De dónde es. Cuántos hijos tiene. Y creemos que con eso la conocemos.</p>
+    <p class="body">Pero hay una pregunta que casi ninguna dueña le hace a su asistente — y es la que más cambia la relación cuando finalmente se hace:</p>
+    <div class="text-center" style="margin:24px 0;"><span style="font-family:var(--serif-text);font-size:24px;font-style:italic;color:var(--texto);">¿Qué sueñas tú?</span></div>
+    <p class="body">No es una pregunta de coach. Es una conversación humana que casi nadie tiene. Hemos heredado la idea de que las relaciones laborales en el hogar deben mantenerse en lo funcional.</p>
+    <p class="body">Y yo te quiero proponer lo contrario: <strong>conocerla es respetarla</strong>. No invadirla — eso es distinto. Pero sí interesarte de verdad por la mujer completa que está sosteniendo tu hogar.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">02 · CONOCER A QUIEN TE ACOMPAÑA</span><span class="banda-texto">02</span></div>
+</div>
+
+<!-- M02 LAS 3 PREGUNTAS -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LA CONVERSACIÓN QUE CASI NADIE TIENE</span>
+    <div class="spacer-sm"></div>
+    <p class="body">No tiene que ser larga ni solemne. Puede ser un café compartido el primer mes. Un momento sin prisa donde tú le preguntes — con interés real — quién es ella más allá de su rol en tu casa.</p>
+    <div class="spacer-sm"></div>
+    <p style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;color:var(--secundario);text-transform:uppercase;margin-bottom:16px;font-weight:500;">TRES PREGUNTAS QUE ABREN LA PUERTA</p>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">01</span> ¿Esto que haces aquí lo ves como algo de largo plazo, o de esta etapa?</div>
+      <p class="body" style="margin-left:28px;">No hay respuesta correcta. Ambas merecen ser escuchadas sin juicio.</p>
+    </div>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">02</span> ¿Qué te gustaría aprender, estudiar, o llegar a hacer?</div>
+      <p class="body" style="margin-left:28px;">Esta pregunta a veces toma a las mujeres por sorpresa. Algunas hace años que nadie les pregunta por sus sueños.</p>
+    </div>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">03</span> ¿Hay algo en lo que yo te pueda apoyar en ese camino?</div>
+      <p class="body" style="margin-left:28px;">La pregunta valiente. La que comunica que tú no la ves como mano de obra fija — sino como mujer con vida propia.</p>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">02 · CONOCER A QUIEN TE ACOMPAÑA</span><span class="banda-texto">02</span></div>
+</div>
+
+<!-- FRASE M02 -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando le preguntas a una mujer por sus sueños, le devuelves algo que la rutina le había quitado: la conciencia de que tiene futuro propio."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- M02 HISTORIAS REALES + CIERRE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">DOS HISTORIAS QUE ME ENSEÑARON</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Quiero contarte de dos mujeres que pasaron por mi hogar — y a quienes hoy debo gran parte de lo que entiendo por liderazgo con empatía.</p>
+    <p class="body"><strong>Paola</strong> llegó a mi casa como niñera de mi primera hija. Ya había estudiado auxiliar de enfermería y un día me contó que su sueño era estudiar enfermería completa. Ella siguió trabajando con nosotros mientras estudiaba, y cuando el ritmo académico se intensificó, pasó a trabajar solo los fines de semana. <em>No la perdimos. La acompañamos.</em></p>
+    <p class="body"><strong>Wendy</strong> llegó como niñera de mi segundo hijo. Con el tiempo fui notando algo en ella: orden, criterio, presencia. Cuando decidió replantear sus tiempos, en mi familia tuvimos clara una cosa: no queríamos que ella dejara de trabajar con nosotros. Hoy Wendy es mi asistente en sala de ventas. El cambio se dio gradual, casi natural — porque <em>cuando hay vínculo real, la relación encuentra formas de continuar.</em></p>
+    <p class="body">Lo que aprendí de ellas es que cuando una mujer encuentra voz y reciprocidad en la casa donde trabaja, todo fluye mejor.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 03 →</span>
+      <span class="arrow-title">El vínculo que trasciende</span>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">02 · CONOCER A QUIEN TE ACOMPAÑA</span><span class="banda-texto">02</span></div>
+</div>
+
+<!-- PORTADA M03 -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 03</span>
+    <div class="h1">El vínculo<br>que trasciende</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">Cuando trabajar en una casa<br>transforma dos familias.</p>
+  </div>
+</div>
+
+<!-- M03 APERTURA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">APERTURA · UN TRABAJO NUNCA ES SOLO UN TRABAJO</span>
+    <p class="body">Cuando una mujer entra a trabajar en tu casa, no entra solamente a un empleo. Entra a un mundo con costumbres, ritmos, valores — que muchas veces son distintas a las que ella conoce. Y ese contacto con un mundo distinto <strong>abre puertas</strong>. No solo para ella — también para sus hijos, sus nietos, su familia entera.</p>
+    <p class="body">Eso es lo que llamo <strong>el vínculo que trasciende</strong>. Una relación laboral que, cuando se cuida, se convierte en algo mucho más grande: un puente entre dos familias.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">03 · EL VÍNCULO QUE TRASCIENDE</span><span class="banda-texto">03</span></div>
+</div>
+
+<!-- M03 LO QUE ELLA APORTA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LO QUE ELLA APORTA A TU HOGAR</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Tu asistente del hogar no solo hace tareas. Aporta cosas que muchas veces solo se ven cuando ella no está:</p>
+    <p class="body"><strong>Presencia constante</strong> en momentos donde tú no puedes estar. Ese ratico extra con tus hijos cuando tú llegas tarde.</p>
+    <p class="body"><strong>Criterio en lo cotidiano.</strong> Decisiones pequeñas que sostienen el ritmo de la casa sin que tú las veas.</p>
+    <p class="body"><strong>Cuidado emocional</strong>, sobre todo si hay niños. Una asistente que está años con una familia se vuelve parte del paisaje afectivo de los hijos.</p>
+    <p class="body"><strong>Memoria de la casa.</strong> Ella sabe dónde está cada cosa, qué se acabó, qué le gusta a cada miembro. Esa memoria es valiosísima — y casi nunca la reconocemos.</p>
+    <p class="body">Cuando entiendes todo lo que ella aporta, dejas de medir su trabajo en tareas cumplidas — y empiezas a medirlo en <strong>lo que sostiene de tu vida.</strong></p>
+  </div>
+  <div class="banda"><span class="banda-texto">03 · EL VÍNCULO QUE TRASCIENDE</span><span class="banda-texto">03</span></div>
+</div>
+
+<!-- M03 LO QUE TU HOGAR PUEDE APORTAR -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LO QUE TU HOGAR PUEDE APORTAR A SU VIDA</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Trabajar en una casa con costumbres y posibilidades distintas a las suyas <strong>puede transformar el futuro de su familia.</strong> No es asistencialismo. Es exponerla a un mundo de posibilidades.</p>
+    <p class="body"><strong>Estabilidad económica</strong> que le permite planear más allá del día a día. Ahorrar. Apoyar la educación de sus hijos.</p>
+    <p class="body"><strong>Exposición a nuevas costumbres</strong> — a libros, conversaciones, formas de organizar el tiempo. Cosas que ella va integrando sin darse cuenta.</p>
+    <p class="body"><strong>Modelos distintos para sus hijos.</strong> Cuando ella les cuenta lo que ve, lo que aprende — sus hijos crecen sabiendo que existe otra forma. Y muchas veces, eso es lo que los empuja a soñar.</p>
+    <div class="pull-quote">
+      <p>Esto no se trata de creerte salvadora. Se trata de entender el peso real de lo que pasa cuando dos mundos se encuentran bien.</p>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">03 · EL VÍNCULO QUE TRASCIENDE</span><span class="banda-texto">03</span></div>
+</div>
+
+<!-- FRASE M03 -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando una mujer entra a una casa con la dignidad que merece, no se transforma solo su trabajo. Se transforman dos familias — la suya y la tuya."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- M03 GANA-GANA + CIERRE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EL GANA-GANA INTERGENERACIONAL</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Cuando una relación entre dueña y asistente se cuida bien, lo que pasa no se queda en esa generación. <strong>Se hereda.</strong></p>
+    <p class="body">Sus hijos crecen viendo que su mamá trabaja en un lugar donde la respetan. Tus hijos crecen viendo que en su casa se trata con dignidad a quien trabaja con la familia. Y así, <strong>una buena relación construye dos linajes nuevos</strong>: uno donde el trabajo se dignifica, y otro donde el liderazgo se ejerce con respeto.</p>
+    <p class="body">Esto es mucho más que una relación laboral. Es un acto cultural. Es romper, en pequeño y en silencio, paradigmas que llevan siglos pesando sobre el trabajo doméstico en nuestros países.</p>
+    <p class="body">Y lo más bonito es que no requiere grandes gestos. Solo requiere <strong>conciencia</strong>. Mirar bien. Hablar bien. Reconocer bien. Día tras día.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 04 →</span>
+      <span class="arrow-title">Puertas abiertas</span>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">03 · EL VÍNCULO QUE TRASCIENDE</span><span class="banda-texto">03</span></div>
+</div>
+
+<!-- PORTADA M04 -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 04</span>
+    <div class="h1">Puertas<br>abiertas</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">El vínculo que no termina<br>con el contrato.</p>
+  </div>
+</div>
+
+<!-- M04 APERTURA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">APERTURA</span>
+    <div class="h1-italic">Cómo terminan,<br>normalmente,<br>estas relaciones.</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="body">La mayoría de las relaciones entre dueñas y asistentes del hogar terminan de una de dos formas:</p>
+    <p class="body"><em>Mal</em> — con un conflicto acumulado, una conversación tensa, y dos mujeres que después se cruzan en la calle y voltean la cara.</p>
+    <p class="body"><em>O secas</em> — sin conflicto, pero también sin cierre. La relación que sostuvo años de vida cotidiana se evapora como si nunca hubiera existido.</p>
+    <p class="body">Y yo te quiero proponer una tercera forma — la que más he aprendido a cuidar con los años:</p>
+    <div class="text-center" style="margin:24px 0;"><span style="font-family:var(--serif-text);font-size:18px;font-style:italic;color:var(--texto);">Que las relaciones terminen con las puertas abiertas.</span></div>
+  </div>
+  <div class="banda"><span class="banda-texto">04 · PUERTAS ABIERTAS</span><span class="banda-texto">04</span></div>
+</div>
+
+<!-- M04 QUÉ SIGNIFICA + CÓMO SE CONSTRUYE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">QUÉ SIGNIFICA "PUERTAS ABIERTAS"</span>
+    <div class="spacer-sm"></div>
+    <p class="body">No es seguir siendo su empleadora a distancia. Es algo mucho más profundo: <strong>mantener el vínculo humano</strong> después de que termine el vínculo laboral. Saber que ella puede llamarte si necesita una recomendación — y que tú vas a contestar. Y que tú puedes llamarla a ella para un apoyo puntual — y que ella va a estar dispuesta, no por obligación, sino porque la relación se cuidó.</p>
+    <p class="body"><strong>Eso no se improvisa el día de la despedida. Se construye desde el primer día.</strong></p>
+    <div class="spacer-sm"></div>
+    <span class="tag">CÓMO SE CONSTRUYEN LAS PUERTAS ABIERTAS</span>
+    <p class="body">Las puertas abiertas se construyen <em>mientras ella trabaja contigo</em>, no después. Se construyen en el saludo de cada mañana. En la pregunta sincera por cómo está. En el respeto por su tiempo. En el feedback cuidado. En el pago puntual. En el trato digno.</p>
+    <p class="body">Cada uno de esos gestos pequeños — sostenidos en el tiempo — es un ladrillo en la puerta que va a quedar abierta el día que ella se vaya.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">04 · PUERTAS ABIERTAS</span><span class="banda-texto">04</span></div>
+</div>
+
+<!-- FRASE M04 -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando una mujer sale de tu casa con las puertas abiertas, es porque esas puertas ya estaban abiertas mucho antes del día de la despedida."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- M04 CÓMO DESPEDIRSE + CIERRE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">CÓMO DESPEDIRSE BIEN</span>
+    <div class="spacer-sm"></div>
+    <p class="body">El día de la despedida también es parte del liderazgo. En mi casa, cuando una asistente se va, hacemos algunas cosas que han marcado la diferencia:</p>
+    <p class="body"><strong>Una conversación de cierre.</strong> Sin prisa. Le pregunto cómo se sintió, qué se lleva, qué le hubiera gustado distinto. Y yo también le digo lo mío.</p>
+    <p class="body"><strong>Le digo explícitamente que las puertas quedan abiertas.</strong> No lo asumo. Lo nombro: <em>"Si alguna vez necesitas algo, sabes dónde estoy."</em></p>
+    <p class="body"><strong>Le ofrezco recomendarla</strong> si su salida no es por conflicto.</p>
+    <p class="body"><strong>Mantenemos el contacto.</strong> Esa reciprocidad — ellas disponibles para mí cuando las necesito, yo disponible para ellas cuando me necesitan — es lo que llamo puertas abiertas en el sentido más completo.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL MOVIMIENTO 05 →</span>
+      <span class="arrow-title">Sin romantizar</span>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">04 · PUERTAS ABIERTAS</span><span class="banda-texto">04</span></div>
+</div>
+
+<!-- PORTADA M05 -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">MOVIMIENTO 05</span>
+    <div class="h1">Sin<br>romantizar</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">Empatía sin verdad no es empatía.<br>Es romanticismo.</p>
+  </div>
+</div>
+
+<!-- M05 APERTURA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">APERTURA · UNA VERDAD INCÓMODA</span>
+    <div class="h1-italic">Reconozcámoslo<br>entre nosotras.</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="body">Casi todas las dueñas que conozco — yo incluida, en algún momento — hemos querido lo mismo cuando buscamos a alguien para nuestro hogar:</p>
+    <p class="body">Que sepa cocinar como chef. Que organice como ama de llaves de hotel cinco estrellas. Que decore con criterio. Que cuide a los niños con paciencia infinita. Que los entretenga como recreacionista. Que escuche y aconseje como psicóloga. Que limpie sin que se note.</p>
+    <p class="body">Queremos, en otras palabras, <strong>una mujer integral que haga todo aquello que nosotras no sabemos, no queremos, o no tenemos tiempo de hacer.</strong></p>
+    <p class="body">Reírnos de esto está bien — porque casi todas hemos pasado por ahí. Pero después de la risa, hay que ser honestas: esa expectativa es imposible. Y cargarla sobre una sola mujer es, en el fondo, una forma de no respetar el oficio.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">05 · SIN ROMANTIZAR</span><span class="banda-texto">05</span></div>
+</div>
+
+<!-- M05 EMPATÍA NO ES ASISTENCIALISMO -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EMPATÍA NO ES ASISTENCIALISMO</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Hay una idea que me preocupa: la de que ser empática con tu asistente significa <strong>cargar también con sus problemas</strong>. Eso no es empatía. Eso es asistencialismo. Y a la larga, no le sirve a nadie.</p>
+    <p class="body"><strong>Cuando una mujer busca ayuda en casa, es porque la necesita.</strong> La empatía real es mirar con respeto, escuchar con interés, apoyar donde se pueda, y poner límites donde corresponde. Como en cualquier relación profesional sana.</p>
+    <div class="spacer-sm"></div>
+    <span class="tag">CUANDO NO ES LA PERSONA INDICADA</span>
+    <p class="body">No toda persona que entra a tu casa es la indicada para tu hogar. Y eso está bien. Cuando notes que una relación no está funcionando, hay tres preguntas honestas:</p>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">01</span> ¿Le estoy dando las herramientas que necesita?</div>
+    </div>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">02</span> ¿Hay disposición de su parte para crecer y mejorar?</div>
+    </div>
+    <div class="numbered-block">
+      <div class="numbered-title"><span class="num">03</span> ¿Mi hogar es el lugar ideal para ella, en este momento?</div>
+    </div>
+    <p class="body">Reconocer a tiempo cuando una relación no es la adecuada — y cerrarla con respeto — también es un acto de empatía.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">05 · SIN ROMANTIZAR</span><span class="banda-texto">05</span></div>
+</div>
+
+<!-- FRASE M05 -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Empatía sin límites no es empatía. Es una forma elegante de cargar más peso del que te corresponde — y de pedirle a ella que también lo cargue."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- M05 VALOR DEL TRABAJO + CIERRE -->
+<div class="page">
+  <div class="content">
+    <span class="tag">EL VALOR DEL TIEMPO Y LA CALIDAD DEL TRABAJO</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Hay otra parte de la empatía real que pocas veces nombramos: enseñarle también a ella <strong>el valor profesional del oficio que ejerce.</strong></p>
+    <p class="body">Esto significa hablarle del valor del tiempo — del suyo y del tuyo. De la importancia de los acuerdos cumplidos. De cómo el oficio del hogar es un trabajo serio, con estándares, con resultados visibles.</p>
+    <p class="body"><strong>Hablarle así no es exigirle más. Es respetarla más.</strong> La empatía sin estándares se vuelve permisividad. Y la permisividad, a la larga, no honra a nadie.</p>
+    <div class="spacer-sm"></div>
+    <span class="tag">CIERRE DEL MOVIMIENTO 05</span>
+    <p class="body">Si has llegado hasta aquí, ya sabes algo importante: <strong>la empatía real no es blanda.</strong> Es firme, clara, respetuosa, profesional. Es la que permite construir relaciones que duran, transforman, y honran a las dos partes.</p>
+    <p class="body">No es romanticismo. No es asistencialismo. No es maternalismo. Es liderazgo humano.</p>
+    <div class="next-link">
+      <span class="arrow-label">SIGUE AL CIERRE →</span>
+      <span class="arrow-title">Una invitación a romper paradigmas</span>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">05 · SIN ROMANTIZAR</span><span class="banda-texto">05</span></div>
+</div>
+
+<!-- PORTADA CIERRE -->
+<div class="page">
+  <div class="content movimiento-cover">
+    <span class="tag">CIERRE</span>
+    <div class="h1">Una invitación<br>a romper<br>paradigmas</div>
+    <div class="rule"></div>
+    <div class="spacer-sm"></div>
+    <p class="subtitle">Lo que cambia cuando<br>una mujer mira diferente.</p>
+  </div>
+</div>
+
+<!-- CIERRE P1 -->
+<div class="page">
+  <div class="content">
+    <span class="tag">LO QUE TE LLEVAS</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Si llegaste hasta aquí, te llevas algo más que ideas. Te llevas una mirada distinta. La conciencia de que del otro lado hay una mujer completa — con historia, con sueños, con miedos, con dignidad propia.</p>
+    <p class="body">Te llevas la práctica de <strong>ponerte en sus zapatos</strong> antes de pedirle nada. La intención de <strong>conocerla</strong> sin invadirla. La comprensión de que el vínculo bien cuidado puede <strong>transformar dos familias.</strong> La idea de las <strong>puertas abiertas</strong> que se construyen desde el primer día. Y el criterio para hacer todo esto <strong>sin romantizar.</strong></p>
+    <div class="spacer-sm"></div>
+    <span class="tag">EL PARADIGMA QUE ESTAMOS ROMPIENDO</span>
+    <p class="body">Durante generaciones, las relaciones entre dueñas y asistentes del hogar se han sostenido en un acuerdo silencioso: funcionales, distantes. Que se hable poco. Ese acuerdo ha hecho mucho daño. A ellas — porque las ha invisibilizado. Pero también a nosotras — porque nos ha enseñado a habitar nuestras casas sin mirar de verdad a quienes las sostienen.</p>
+    <p class="body">Romper ese paradigma no requiere grandes gestos. <strong>Requiere conciencia.</strong> Cada hogar donde una dueña empieza a liderar así, es un pequeño acto cultural.</p>
+    <p class="body">Eso es Liviin. Eso es lo que sueño que se contagie.</p>
+  </div>
+  <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- FRASE CIERRE -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="pull-page">
+      <div class="pull-page-quote">"Cuando una mujer empieza a mirar con dignidad a quien sostiene su hogar, no cambia solo una casa. Empieza a cambiar la forma en que toda una cultura entiende el trabajo doméstico."</div>
+      <span class="pull-page-attr">— MTE · LIVIIN</span>
+    </div>
+  </div>
+</div>
+
+<!-- CIERRE P2 INVITACIÓN + FIRMA -->
+<div class="page">
+  <div class="content">
+    <span class="tag">UNA INVITACIÓN CONCRETA</span>
+    <div class="spacer-sm"></div>
+    <p class="body">Mañana, antes de que ella llegue, regálate un momento. Y haz una sola cosa:</p>
+    <div class="caja-crema">
+      <p style="font-family:var(--serif-text);font-size:15px;font-style:italic;color:var(--texto);line-height:1.7;text-align:center;">Recibe a tu asistente del hogar<br>mirándola a los ojos.<br><br>Pregúntale cómo está — ella, no la casa.<br><br>Y escucha la respuesta sin prisa.</p>
+    </div>
+    <p class="body">Es así de simple. Y es así de transformador. Ese gesto pequeño — sostenido en el tiempo — es el inicio de todo lo demás.</p>
+    <div class="spacer-sm"></div>
+    <span class="tag">PARA CERRAR</span>
+    <p class="body">Gracias por leer este regalo hasta el final. No lo escribí como autora. Lo escribí como mujer — una más, igual que tú — que aprendió tarde algo que hubiera querido saber temprano.</p>
+    <p class="body" style="text-align:center;font-family:var(--serif-text);font-size:14px;font-style:italic;color:var(--texto);">Que tu hogar — y el de ellas —<br>nunca más vuelvan a quedarles grandes.</p>
+    <div class="firma" style="margin-top:28px;">
+      <p class="con-carino">Con cariño,</p>
+      <p class="nombre">M A R Í A &nbsp; T E R E S A</p>
+    </div>
+  </div>
+  <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- AGRADECIMIENTOS -->
+<div class="page">
+  <div class="content">
+    <div class="spacer-xl"></div>
+    <div class="text-center" style="margin-bottom:32px;"><span style="font-family:var(--sans);font-size:8px;letter-spacing:0.25em;color:var(--filete);text-transform:uppercase;">— AGRADECIMIENTOS —</span></div>
+    <p style="font-family:var(--serif-text);font-size:14px;font-style:italic;color:var(--texto);line-height:1.6;text-align:center;margin-bottom:32px;">Este regalo no existiría sin las mujeres<br>que han pasado por mi hogar.</p>
+    <div class="agradecimiento-item"><strong>Glendis</strong>, que sostuvo mi casa mientras la suya quedaba a miles de kilómetros, en Venezuela.</div>
+    <div class="agradecimiento-item"><strong>Karina</strong>, que me enseñó que detrás de cada llamada al teléfono hay una madre cuidando a los suyos a la distancia.</div>
+    <div class="agradecimiento-item"><strong>Paola</strong>, que se atrevió a soñar con la enfermería y nos permitió acompañarla en ese camino.</div>
+    <div class="agradecimiento-item"><strong>Wendy</strong>, que entró como niñera y hoy es parte de mi negocio — porque cuando hay vínculo real, la relación encuentra formas de continuar.</div>
+    <div class="spacer-lg"></div>
+    <p style="font-family:var(--serif-text);font-size:13px;font-style:italic;color:var(--secundario);text-align:center;line-height:1.6;">Y a cada una de las mujeres que ha trabajado conmigo y con mi familia. Ustedes me enseñaron lo que está escrito aquí.</p>
+    <div class="spacer-md"></div>
+    <p style="font-family:var(--serif-text);font-size:15px;font-style:italic;color:var(--texto);text-align:center;">Este regalo es, también, suyo.</p>
+    <div class="spacer-md"></div>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.2em;color:var(--filete);text-align:center;text-transform:uppercase;">— M T E —</p>
+  </div>
+  <div class="banda"><span class="banda-texto">AGRADECIMIENTOS</span><span class="banda-texto"></span></div>
+</div>
+
+<!-- PÁGINA FINAL -->
+<div class="page page-crema">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;text-align:center;">
+    <div class="spacer-xl"></div>
+    <p class="frase-cierre">"Que cada mujer encuentre, en la casa<br>donde trabaja, una puerta abierta<br>para volver a sus sueños."</p>
+    <span style="font-family:var(--sans);font-size:8px;letter-spacing:0.2em;color:var(--secundario);text-transform:uppercase;margin-bottom:64px;">— MARÍA TERESA ESPINOSA · MTE</span>
+    <div class="spacer-xl"></div>
+    <div class="liviin-footer-brand">
+      <span class="marca-final">liviin</span>
+      <span class="tagline-final">for better living</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
