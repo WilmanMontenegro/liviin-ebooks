@@ -344,6 +344,15 @@ _ORDINAL_ITEM = re.compile(
     r"^(Uno|Dos|Tres|Cuatro|Cinco|Seis|Siete|Ocho|Nueve|Diez)\.\s*(.*)",
     re.I,
 )
+_ORDINAL_INDEX = {
+    "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
+    "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10,
+}
+
+
+def _ordinal_num(label: str, i: int) -> str:
+    n = _ORDINAL_INDEX.get(label.lower(), i + 1)
+    return f"{n:02d}"
 
 
 def _is_ordinal_start(ln: Line) -> bool:
@@ -374,9 +383,9 @@ def _render_ordinal_block(intro: list[Line], items: list[tuple[str, str]]) -> li
     parts = _group_prose_plain(intro) if intro else []
     blocks = "".join(
         f'<div class="discovery-item">'
-        f'<span class="discovery-num">{esc(label)}.</span>'
+        f'<span class="discovery-num">{esc(_ordinal_num(label, i))}</span>'
         f'<p class="discovery-text">{esc(text)}</p></div>'
-        for label, text in items
+        for i, (label, text) in enumerate(items)
     )
     parts.append(f'<div class="discovery-list">{blocks}</div>')
     return parts
