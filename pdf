@@ -93,6 +93,7 @@ case "$cmd" in
       all)
         "$PY" scripts/build_transformar_html.py
         "$PY" scripts/build_liderar_html.py
+        "$PY" scripts/stamp_index.py
         ;;
       *) echo "Uso: ./pdf html [transformar|liderar|all]" >&2; exit 1 ;;
     esac
