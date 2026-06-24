@@ -64,6 +64,10 @@ def parse_numbered_label(label: str) -> tuple[str, str]:
     return "", collapse_spaced(label)
 
 
+def fmt_caps(s: str) -> str:
+    return esc(collapse_spaced(s))
+
+
 def is_numbered_label(s: str) -> bool:
     return bool(re.match(r"^0\s*\d\s*·", s.strip()))
 
@@ -277,7 +281,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
   <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
     <div class="pull-page">
       <div class="pull-page-quote">{quote}</div>
-      <span class="pull-page-attr">{esc(attr)}</span>
+      <span class="pull-page-attr">{fmt_caps(attr)}</span>
     </div>
   </div>
 </div>
@@ -378,7 +382,7 @@ def content_page(lines: list[Line], page_no: int) -> str:
         if ln.text.startswith("SIGUE AL"):
             break
         if is_tag_line(ln.text, ln.size):
-            tokens.append(("tag", ln.text))
+            tokens.append(("tag", collapse_spaced(ln.text)))
             i += 1
             continue
         if is_numbered_label(ln.text):
