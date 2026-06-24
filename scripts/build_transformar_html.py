@@ -80,6 +80,24 @@ def is_tag_line(s: str, size: float) -> bool:
     return bool(re.search(r"(?:[A-ZÁÉÍÓÚ]\s){3,}", t))
 
 
+def _footer_key(s: str) -> str:
+    return re.sub(r"[^\wáéíóúñ]", "", collapse_spaced(s).lower())
+
+
+def is_margin_noise(ln: Line, page_h: float, page_no: int) -> bool:
+    """Número de página y etiqueta de sección del pie PDF — ya van en .banda."""
+    t = ln.text.strip()
+    if re.fullmatch(r"\d{1,3}", t) and ln.size < 10:
+        return True
+    if ln.y <= page_h * 0.9:
+        return False
+    if _footer_key(t) == _footer_key(section_for(page_no)):
+        return True
+    if is_numbered_label(t) and ln.size <= 8.5:
+        return True
+    return False
+
+
 def extract_lines(page: fitz.Page) -> list[Line]:
     out: list[Line] = []
     for b in page.get_text("dict")["blocks"]:
@@ -321,6 +339,8 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 
 
 def content_page(lines: list[Line], page_no: int) -> str:
+    page_h = max((ln.y for ln in lines), default=0) + 25
+    lines = [ln for ln in lines if not is_margin_noise(ln, page_h, page_no)]
     sec = section_for(page_no)
     full_text = "\n".join(ln.text for ln in lines)
     sigue = parse_sigue(full_text)
