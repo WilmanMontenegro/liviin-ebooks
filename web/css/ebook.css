@@ -67,6 +67,11 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
   color: var(--texto); line-height: var(--lh-body-tight); margin: 0;
 }
 .rule { width: var(--rule-w); height: 1px; background: var(--filete); margin-bottom: 32px; }
+.rule--full { width: 100%; margin: 20px 0 28px; }
+.opening-lead {
+  font-family: var(--serif-text); font-size: var(--fs-body-sm); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-step); margin: 12px 0 0;
+}
 .subtitle {
   font-family: var(--serif-text); font-size: var(--fs-serif-lead); font-style: italic;
   color: var(--secundario); line-height: 1.5; margin-top: 8px;

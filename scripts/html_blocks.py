@@ -13,6 +13,56 @@ class TextLine(Protocol):
     text: str
     size: float
     italic: bool
+    x: float
+
+
+# PDF: citas con barra lateral empiezan ~x≥73; cuerpo y leads van ~x55
+PULL_QUOTE_X_MIN = 70
+
+
+def is_pull_quote_group(g: list[TextLine]) -> bool:
+    if not g or not all(x.italic for x in g):
+        return False
+    text = " ".join(x.text for x in g).strip()
+    if text.startswith("— MARÍA") or text.startswith("Interiorista y Home"):
+        return False
+    if text.endswith(":"):
+        return False
+    if not all(ln.x >= PULL_QUOTE_X_MIN for ln in g):
+        return False
+    sizes = [x.size for x in g]
+    if all(9 <= s <= 14.5 for s in sizes):
+        return True
+    if all(12.5 <= s <= 14.5 for s in sizes):
+        return True
+    if (
+        len(g) <= 2
+        and all(9 <= s <= 10.5 for s in sizes)
+        and len(text) < 115
+        and text.rstrip().endswith((".", "—", "…"))
+    ):
+        return True
+    return False
+
+
+def is_opening_lead(g: list[TextLine]) -> bool:
+    """PDF p.4: «Otra vez.» itálica al margen + filete ancho debajo (no pull-quote)."""
+    if len(g) != 1:
+        return False
+    ln = g[0]
+    text = ln.text.strip()
+    return (
+        ln.italic
+        and ln.x < PULL_QUOTE_X_MIN
+        and 11.5 <= ln.size <= 13
+        and len(text) <= 24
+        and text.endswith((".", "—", "…"))
+    )
+
+
+def render_opening_lead(esc: Callable[[str], str], g: list[TextLine]) -> list[str]:
+    text = esc(" ".join(x.text for x in g))
+    return [f'<p class="opening-lead">{text}</p>', '<div class="rule rule--full"></div>']
 
 
 def is_section_subtitle(ln: TextLine) -> bool:
@@ -27,10 +77,7 @@ def render_title_block(
     t0 = titles[0]
     if t0.italic or t0.size >= 26:
         th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
-        return [
-            f'<div class="h1-italic" style="font-size:38px;">{th}</div>',
-            '<div class="rule"></div>',
-        ]
+        return [f'<div class="h1-italic" style="font-size:38px;">{th}</div>']
     th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
     # ponytail: dígitos en Cormorant SC se ven de otra fuente; PDF = Liberation Serif (≈ h2-section)
     section_style = subtitle is not None or any(

@@ -12,8 +12,11 @@ import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from html_blocks import (
+    is_opening_lead,
+    is_pull_quote_group,
     is_section_subtitle,
     render_numeric_steps_page,
+    render_opening_lead,
     render_title_block,
     split_numeric_steps,
 )
@@ -243,32 +246,10 @@ def is_mov_cover(lines: list[Line]) -> bool:
     return extras <= 5
 
 
-def _is_pull_quote_group(g: list[Line]) -> bool:
-    if not g or not all(x.italic for x in g):
-        return False
-    text = " ".join(x.text for x in g).strip()
-    if text.startswith("— MARÍA") or text.startswith("Interiorista y Home"):
-        return False
-    if text.endswith(":"):
-        return False
-    sizes = [x.size for x in g]
-    # ponytail: PDF indenta ~13pt (x≥55) las citas con barra lateral
-    if all(ln.x >= 55 for ln in g) and all(9 <= s <= 14.5 for s in sizes):
-        return True
-    if all(12.5 <= s <= 14.5 for s in sizes):
-        return True
-    if (
-        len(g) <= 2
-        and all(9 <= s <= 10.5 for s in sizes)
-        and len(text) < 115
-        and text.rstrip().endswith((".", "—", "…"))
-    ):
-        return True
-    return False
-
-
 def _render_prose_group(g: list[Line]) -> list[str]:
-    if _is_pull_quote_group(g):
+    if is_opening_lead(g):
+        return render_opening_lead(esc, g)
+    if is_pull_quote_group(g):
         return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
     text = " ".join(x.text for x in g)
     sizes = [x.size for x in g]
