@@ -220,10 +220,15 @@ def _group_prose(lines: list[Line]) -> list[str]:
     prev_bottom: float | None = None
     for ln in lines:
         gap = 6 if cur and cur[-1].size <= 8.5 else 14
-        if prev_bottom is not None and ln.y - prev_bottom > gap:
-            if cur:
-                groups.append(cur)
-                cur = []
+        if prev_bottom is not None:
+            if ln.y + 12 < cur[-1].y:
+                if cur:
+                    groups.append(cur)
+                    cur = []
+            elif ln.y - prev_bottom > gap:
+                if cur:
+                    groups.append(cur)
+                    cur = []
         cur.append(ln)
         prev_bottom = ln.y + max(ln.size * 0.35, 8)
     if cur:
@@ -540,13 +545,35 @@ def content_page(lines: list[Line], page_no: int) -> str:
 """
 
 
+def _split_dense_tail(
+    lines: list[Line], page_no: int, next_lines: list[Line] | None
+) -> tuple[list[Line], list[Line]]:
+    """PDF p.4 llena el frame HTML; si la siguiente es liviana, adelanta cola."""
+    if not lines or page_no < 4:
+        return lines, []
+    if max(ln.y for ln in lines) < 475:
+        return lines, []
+    if next_lines is not None and len(next_lines) > 6:
+        return lines, []
+    cut = 415.0
+    early = [ln for ln in lines if ln.y < cut]
+    late = [ln for ln in lines if ln.y >= cut]
+    if len(early) < 8 or len(late) < 2:
+        return lines, []
+    return early, late
+
+
 def build() -> str:
     doc = fitz.open(PDF)
     pages_html: list[str] = [cover_page(), legal_page()]
+    carry: list[Line] = []
 
     for i in range(2, doc.page_count):
         page_no = i + 1
-        lines = extract_lines(doc[i])
+        raw = extract_lines(doc[i])
+        next_raw = extract_lines(doc[i + 1]) if i + 1 < doc.page_count else None
+        lines = carry + raw
+        carry = []
         if page_no == 3:
             pages_html.append(dedicatoria_page(lines))
         elif page_no == 10:
@@ -556,6 +583,7 @@ def build() -> str:
         elif is_mov_cover(lines):
             pages_html.append(mov_cover_page(lines, page_no))
         else:
+            lines, carry = _split_dense_tail(lines, page_no, next_raw)
             pages_html.append(content_page(lines, page_no))
     doc.close()
 
