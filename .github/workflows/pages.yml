@@ -23,7 +23,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: ./pdf html all
+      - run: |
+          python scripts/build_transformar_html.py
+          python scripts/build_liderar_html.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web
