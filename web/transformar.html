@@ -65,6 +65,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   font-family: var(--serif-text); font-size: 15px; font-style: italic;
   color: var(--secundario); line-height: 1.5; margin-top: 8px;
 }
+.section-subtitle {
+  font-family: var(--serif-text); font-size: 17px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.45; margin: 0 0 18px 0;
+}
 .body {
   font-family: var(--sans); font-size: 12.5px; font-weight: 300;
   color: var(--texto); line-height: 1.85; margin-bottom: 16px;
@@ -76,10 +80,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 }
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
-.pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
+.pull-quote {
+  border-left: 2px solid var(--filete); padding-left: 16px;
+  margin: 24px 0 24px 13px;
+}
 .pull-quote p {
-  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
-  color: var(--secundario); line-height: 1.6;
+  font-family: var(--serif-text); font-size: 15px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.55; margin: 0;
 }
 
 .foto-portada {
@@ -107,8 +114,64 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
 
 .numbered-block { margin-bottom: 20px; }
-.numbered-title { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 8px; align-items: baseline; }
-.numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
+.numbered-title {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
+  display: flex; gap: 10px; align-items: baseline; line-height: 1.35;
+  margin-bottom: 6px;
+}
+.numbered-title .num {
+  font-family: var(--serif-text); font-size: 12px; font-weight: 300;
+  color: var(--secundario); letter-spacing: 0.02em; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.numbered-title .numbered-label { flex: 1; min-width: 0; }
+.area-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 36px; row-gap: 14px;
+  margin: 18px 0 22px; padding-left: 4px;
+}
+.area-item { display: flex; gap: 12px; align-items: baseline; }
+.area-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); min-width: 16px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.area-label {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.45;
+}
+.index-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 16px; }
+.index-entry .index-line { flex: 1; min-width: 0; }
+.index-line { display: flex; gap: 10px; align-items: baseline; }
+.index-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); flex-shrink: 0;
+}
+.index-title {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300; color: var(--texto);
+  line-height: 1.45; letter-spacing: 0;
+}
+.index-page {
+  font-family: var(--sans); font-size: 9px; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--secundario); flex-shrink: 0; text-align: right;
+}
+.overview-line { margin-bottom: 4px; }
+.discovery-list { margin: 22px 0 10px; }
+.discovery-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--filete);
+}
+.discovery-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.discovery-num {
+  font-family: var(--serif-text); font-size: 13px; font-weight: 400; font-style: italic;
+  color: var(--secundario); flex-shrink: 0; min-width: 38px;
+}
+.discovery-text {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.8; margin: 0;
+}
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
 
@@ -121,8 +184,17 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .agradecimiento-item strong { font-weight: 500; }
 
 .next-link { text-align: right; margin-top: 28px; }
-.next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
-.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--texto); }
+.next-link .arrow-label {
+  display: inline-flex; align-items: center; justify-content: flex-end;
+  gap: 0.5em; width: 100%;
+  font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em;
+  color: var(--secundario); text-transform: uppercase; margin-bottom: 4px;
+}
+.next-link .arrow-icon {
+  font-size: 10px; letter-spacing: 0; line-height: 1; flex-shrink: 0;
+  transform: translateY(-0.5px);
+}
+.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); }
 
 .firma { margin-top: 32px; }
 .firma .con-carino { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); margin-bottom: 4px; }
@@ -218,7 +290,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">INICIACIÓN 00</span>
     <div class="h2">De mí para ti</div>
     <div class="rule"></div>
-    <p class="body">Otra vez.</p>
+    <div class="pull-quote"><p>Otra vez.</p></div>
     <p class="body">Si llegaste hasta aquí, es porque ya leíste el primer libro. Y eso ya dice mucho de ti.</p>
     <p class="body">Significa que hiciste introspección. Que te miraste a los ojos como dueña de tu hogar. Que entendiste — quizás por primera vez — que la armonía no se filtraba desde abajo, sino desde arriba. Que liderar tu casa era una habilidad, no un don.</p>
     <p class="body">Y muy probablemente, también, que te sentaste con tu Home Excel. Que recorriste tu casa con ojos nuevos. Que escribiste lo que la rutina diaria no alcanzaba a cubrir. Que viste, por primera vez en mucho tiempo, el mapa completo de lo que tu hogar te estaba pidiendo.</p>
@@ -277,11 +349,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Lo que vas a encontrar<br>aquí</div>
     <div class="rule"></div>
     <p class="body">Este ebook no te va a dar más teoría. Si leíste el primer libro, ya tienes la filosofía suficiente para una vida entera. Lo que este libro te va a enseñar es algo distinto:</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> EL CAMBIO DE VISIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">ELCAMBIODEVISIÓN</span></div></div>
     <p class="body">Por qué la introspección sincera sobre lo que te molesta en silencio es el verdadero punto de partida — y por qué casi ninguna dueña se atreve a hacerla.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LEJOS DE LA PERFECCIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">LEJOS DE LA PERFECCIÓN</span></div></div>
     <p class="body">La tesis que sostiene este libro entero: tu casa no necesita ser perfecta para empezar a transformarse. Solo necesita ser nombrada, depurada y querida desde donde está hoy.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> POR DÓNDE EMPEZAR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">POR DÓNDE EMPEZAR</span></div></div>
     <p class="body">El método del menor apego — empezar por el espacio que menos pesa, no por el que más arregla. Y por qué eso lo cambia todo.</p>
   </div>
     <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">8</span></div>
@@ -291,13 +363,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p9 -->
 <div class="page">
   <div class="content">
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> EL ORDEN REAL</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">EL ORDEN REAL</span></div></div>
     <p class="body">La secuencia que casi nadie respeta: depurar, limpiar, organizar — y solo entonces comprar. Por qué hacerlo al revés es la razón por la que nada funciona.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> TU EQUIPO DE TRANSFORMACIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span><span class="numbered-label">TU EQUIPO DE TRANSFORMACIÓN</span></div></div>
     <p class="body">Los tres momentos donde una asesoría externa transforma tu proceso. Y cómo armar tu propio equipo — sin gastar de más.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span> DE PROYECTO A HÁBITO</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span><span class="numbered-label">DE PROYECTO A HÁBITO</span></div></div>
     <p class="body">Cómo lo que empezó como tarea se convierte en forma de vida. El Excel que se transforma, los hábitos atómicos, y la familia que también entra en el método.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">07</span> CUANDO TERMINA, EMPIEZA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">07</span><span class="numbered-label">CUANDO TERMINA, EMPIEZA</span></div></div>
     <p class="body">Por qué estas metas sí tienen principio y final — y qué se libera adentro de ti cuando tu casa, finalmente, fluye.</p>
   </div>
     <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">9</span></div>
@@ -311,14 +383,14 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h2">El recorrido</div>
     <div class="rule"></div>
     <div class="spacer-sm"></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">00</span> Iniciación · De mí para ti, otra vez</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> El cambio de visión</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> Lejos de la perfección</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> Por dónde empezar</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> El orden real</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> Tu equipo de transformación</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span> De proyecto a hábito</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">07</span> Cuando termina, empieza</div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">00</span><span class="index-title">Iniciación · De mí para ti, otra vez</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">01</span><span class="index-title">El cambio de visión</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">02</span><span class="index-title">Lejos de la perfección</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">03</span><span class="index-title">Por dónde empezar</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">04</span><span class="index-title">El orden real</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">05</span><span class="index-title">Tu equipo de transformación</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">06</span><span class="index-title">De proyecto a hábito</span></div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">07</span><span class="index-title">Cuando termina, empieza</span></div></div>
     <div class="spacer-md"></div>
     <p class="body">Lee a tu ritmo. Cada movimiento puede leerse solo. Pero esta vez, te invito especialmente a algo: no solo leer. Después de cada movimiento, haz una cosa — aunque sea pequeña — en tu casa. Una sola. Esa es la diferencia entre un libro y un cambio.</p>
   </div>
@@ -401,9 +473,9 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Tres tipos de molestia<br>silenciosa</div>
     <div class="rule"></div>
     <p class="body">Cuando hagas el recorrido, vas a encontrar tres tipos de molestia. Las tres son válidas. Las tres tienen solución. Pero cada una pide un camino distinto:</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> MOLESTIA FUNCIONAL</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">MOLESTIA FUNCIONAL</span></div></div>
     <p class="body">Algo que no funciona como debería: una gaveta que se traba, una luz que parpadea, una puerta que no cierra. Estas se resuelven con el arreglo estructural del que hablamos en el Ebook 1. Suelen costar poco. Y dan una satisfacción enorme cuando se resuelven.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> MOLESTIA DE SATURACIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">MOLESTIA DE SATURACIÓN</span></div></div>
     <p class="body">Espacios saturados de cosas que ya no usas, no quieres, o no recuerdas que tienes. El closet que está lleno pero no tienes qué ponerte. La bodega donde ya no cabe nada más. Estas se resuelven con depuración — y son las que más energía liberan cuando finalmente se atienden.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">16</span></div>
@@ -413,9 +485,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p17 -->
 <div class="page">
   <div class="content">
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> MOLESTIA DE DESORDEN CON</div></div>
-    <span class="tag">SENTIDO</span>
-    <p class="body">Cosas que sí usas, que sí quieres, pero que están en cualquier parte. No tienen casa propia. Estas se resuelven con organización — pero solo después de haber depurado, nunca antes.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">MOLESTIA DE DESORDEN CON</span></div></div>
+    <p class="body">SENTIDO Cosas que sí usas, que sí quieres, pero que están en cualquier parte. No tienen casa propia. Estas se resuelven con organización — pero solo después de haber depurado, nunca antes.</p>
     <p class="body">Casi todas las molestias silenciosas son una mezcla de los tres tipos. Identificar cuál pesa más en cada espacio te dice exactamente por dónde empezar.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · EL CAMBIO DE VISIÓN</span><span class="banda-texto">17</span></div>
@@ -475,7 +546,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Y, sobre todo, ya rompiste el primer hechizo: el de creer que la solución estaba en lo nuevo, en lo bonito, en la próxima compra. Ahora sabes que la solución empieza adentro, con lo que ya tienes.</p>
     <div class="pull-quote"><p>Pero ver no es suficiente. Ahora tenemos que hablar de algo que casi nadie nombra — y que es la verdadera razón por la que muchas casas no cambian.</p></div>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 02 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 02</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Lejos de la perfección</span>
     </div>
   </div>
@@ -501,12 +572,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Lo que nos contamos.</div>
     <div class="rule"></div>
     <p class="body">Voy a empezar este movimiento nombrando algo que escucho en casi todas las consultas. Es una colección de frases. Las he escuchado tantas veces que las puedo recitar de memoria — y me las dije a mí misma durante años:</p>
-    <p class="body">“Es que mi casa es muy pequeña.”</p>
-    <p class="body">“Es que esta casa no me gusta.”</p>
-    <p class="body">“Es que vivo en casa alquilada.”</p>
-    <p class="body">“Es que estoy en proceso de cambio.”</p>
-    <p class="body">“Es que cuando tenga la casa propia, ahí sí.”</p>
-    <p class="body">“Es que cuando los niños crezcan, ahí sí.”</p>
+    <div class="pull-quote"><p>“Es que mi casa es muy pequeña.”</p></div>
+    <div class="pull-quote"><p>“Es que esta casa no me gusta.”</p></div>
+    <div class="pull-quote"><p>“Es que vivo en casa alquilada.”</p></div>
+    <div class="pull-quote"><p>“Es que estoy en proceso de cambio.”</p></div>
+    <div class="pull-quote"><p>“Es que cuando tenga la casa propia, ahí sí.”</p></div>
+    <div class="pull-quote"><p>“Es que cuando los niños crezcan, ahí sí.”</p></div>
     <p class="body">Estas frases tienen algo en común. Todas posponen la transformación de tu casa para un momento futuro — un momento que casi nunca llega. Y mientras tanto, los años pasan, y tú sigues viviendo en un hogar que no te representa, que no te da paz, que no te devuelve la energía.</p>
     <div class="pull-quote"><p>Estas frases no son razones. Son excusas. Y vale la pena nombrarlas con esa palabra exacta.</p></div>
   </div>
@@ -563,12 +634,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Que pospones tu hogar</div>
     <div class="rule"></div>
     <p class="body">Vamos a desarmar las cuatro excusas más comunes — una por una. No para juzgarte, sino para que veas que detrás de cada una hay una verdad que puede liberarte:</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> “ES QUE MI CASA ES MUY</div></div>
-    <span class="tag">PEQUEÑA.”</span>
-    <p class="body">Verdad: una casa pequeña depurada se siente más amplia que una casa grande saturada. La sensación de espacio no la dan los metros cuadrados — la da la cantidad de cosas que conviven contigo en ellos.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> “ES QUE ESTA CASA NO ME</div></div>
-    <span class="tag">GUSTA.”</span>
-    <p class="body">Verdad: una casa que no te gusta no se transforma evitándola. Se transforma cuidándola. Y muchas veces, después de cuidarla con intención, descubres que sí te gustaba — solo que llevaba años sin recibir tu mirada.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">“ES QUE MI CASA ES MUY</span></div></div>
+    <p class="body">P  E  Q  U  E  Ñ  A  . ” Verdad: una casa pequeña depurada se siente más amplia que una casa grande saturada. La sensación de espacio no la dan los metros cuadrados — la da la cantidad de cosas que conviven contigo en ellos.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">“ES QUE ESTA CASA NO ME</span></div></div>
+    <p class="body">GUSTA.” Verdad: una casa que no te gusta no se transforma evitándola. Se transforma cuidándola. Y muchas veces, después de cuidarla con intención, descubres que sí te gustaba — solo que llevaba años sin recibir tu mirada.</p>
   </div>
     <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">27</span></div>
 
@@ -577,12 +646,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p28 -->
 <div class="page">
   <div class="content">
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> “ES QUE VIVO EN CASA</div></div>
-    <span class="tag">ALQUILADA.”</span>
-    <p class="body">Verdad: la organización, la depuración, la limpieza profunda, los hábitos de cuidado — nada de eso depende de quién es dueño de las paredes. Eso depende de ti. Y se va contigo cuando te mudes — porque se vuelve forma de vivir, no decoración.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> “ES QUE ESTOY EN PROCESO DE</div></div>
-    <span class="tag">CAMBIO.”</span>
-    <p class="body">Verdad: el proceso de cambio dura años. La vida es lo que pasa mientras tanto. Esperar a que las circunstancias sean ideales para empezar es la receta más confiable para no empezar nunca.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">“ES QUE VIVO EN CASA</span></div></div>
+    <p class="body">ALQUILADA.” Verdad: la organización, la depuración, la limpieza profunda, los hábitos de cuidado — nada de eso depende de quién es dueño de las paredes. Eso depende de ti. Y se va contigo cuando te mudes — porque se vuelve forma de vivir, no decoración.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">“ES QUE ESTOY EN PROCESO DE</span></div></div>
+    <p class="body">C  A  M  B  I O  . ” Verdad: el proceso de cambio dura años. La vida es lo que pasa mientras tanto. Esperar a que las circunstancias sean ideales para empezar es la receta más confiable para no empezar nunca.</p>
   </div>
     <div class="banda"><span class="banda-texto">02 · LEJOS DE LA PERFECCIÓN</span><span class="banda-texto">28</span></div>
 
@@ -650,7 +717,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Y eso es lo que tenía que pasar primero. Porque toda transformación de espacio empieza con una transformación interna. Sin ella, las casas se mueven por unos meses y vuelven a su estado anterior. Con ella, los cambios se sostienen.</p>
     <div class="pull-quote"><p>Ya no necesitas comprar para sentirte mejor en tu casa. Necesitas mirar lo que tienes con ojos nuevos. Y a partir del siguiente movimiento, vamos a empezar a hacerlo — con manos, no solo con ojos.</p></div>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 03 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 03</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Por dónde empezar</span>
     </div>
   </div>
@@ -824,7 +891,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Pero antes de que abras el cajón, antes de que saques la primera prenda, antes de que empieces a separar — necesitamos hablar del orden de las cosas. De la secuencia exacta. Porque hacerlo en el orden equivocado es la razón por la que muchas mujeres organizan, organizan, organizan — y a los seis meses todo está otra vez en el mismo lugar.</p>
     <div class="pull-quote"><p>Hay un orden. Y respetarlo es la diferencia entre la transformación que se queda y la que se va.</p></div>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 04 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 04</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">El orden real</span>
     </div>
   </div>
@@ -866,11 +933,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Las cuatro etapas</div>
     <div class="rule"></div>
     <p class="body">En mi proceso, y en el de las clientas que he acompañado, el orden que funciona es siempre el mismo. Y siempre, sin excepción, va en esta secuencia:</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> DEPURAR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">DEPURAR</span></div></div>
     <p class="body">Sacar lo que ya no representa, no usas, no quieres, no recuerdas. Esto es lo emocional. Lo que más cuesta. Pero también lo que más libera. Sin esto, lo demás no funciona.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LIMPIAR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">LIMPIAR</span></div></div>
     <p class="body">Una vez vacío el espacio, limpiar a fondo. No con la rutina diaria — con la limpieza profunda que el espacio llevaba meses pidiendo. Marcos de cajón, interior de los muebles, paredes detrás de los objetos. Un espacio depurado y limpio se siente nuevo, sin haber comprado nada.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> ORGANIZAR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">ORGANIZAR</span></div></div>
     <p class="body">Con lo que se queda — solo con lo que se queda — empezar a darle casa a cada cosa. Por categoría, por uso, por frecuencia. Esto sí se hace antes de comprar organizadores: con lo que ya tienes, con cajitas que ya tenías, con criterio simple.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">48</span></div>
@@ -880,7 +947,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p49 -->
 <div class="page">
   <div class="content">
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> COMPRAR (CON ASERTIVIDAD)</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">COMPRAR(CONASERTIVIDAD)</span></div></div>
     <p class="body">Y ahora sí — solo ahora — vas a comprar organizadores. Pero esta vez sabiendo exactamente qué necesitas, qué medidas, qué cantidad. Sin sobrar. Sin faltar. Sin gastar de más en cajas que después no caben o no sirven.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · EL ORDEN REAL</span><span class="banda-texto">49</span></div>
@@ -900,7 +967,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p51 -->
 <div class="page">
   <div class="content">
-    <span class="tag">ETAPA 01 · DEPURAR</span>
+    <span class="tag">ETAPA 01· DEPURAR</span>
     <div class="h1-italic" style="font-size:38px;">El arte de soltar</div>
     <div class="rule"></div>
     <p class="body">Depurar no es botar por botar. Es decidir, con calma, qué se queda — y qué se va a un destino mejor.</p>
@@ -927,7 +994,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p53 -->
 <div class="page">
   <div class="content">
-    <span class="tag">ETAPA 02 · LIMPIAR</span>
+    <span class="tag">ETAPA 02· LIMPIAR</span>
     <div class="h1-italic" style="font-size:38px;">La limpieza que cambia<br>todo</div>
     <div class="rule"></div>
     <p class="body">Cuando el espacio queda vacío después de depurar, ocurre algo mágico — y casi nadie aprovecha el momento.</p>
@@ -953,7 +1020,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p55 -->
 <div class="page">
   <div class="content">
-    <span class="tag">ETAPA 03 · ORGANIZAR</span>
+    <span class="tag">ETAPA 03· ORGANIZAR</span>
     <div class="h1-italic" style="font-size:38px;">Con lo que ya tienes</div>
     <div class="rule"></div>
     <p class="body">Ahora — y solo ahora — viene la organización. Pero con una regla que casi nadie respeta:</p>
@@ -971,7 +1038,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p56 -->
 <div class="page">
   <div class="content">
-    <span class="tag">ETAPA 04 · COMPRAR</span>
+    <span class="tag">ETAPA 04· COMPRAR</span>
     <div class="h1-italic" style="font-size:38px;">Compras asertivas</div>
     <div class="rule"></div>
     <p class="body">Esta es la etapa donde la mayoría de las dueñas empieza — y donde más se equivocan. Pero si llegaste aquí después de las tres etapas anteriores, lo vas a hacer distinto.</p>
@@ -1033,7 +1100,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="pull-quote"><p>Esto es muchísimo trabajo. ¿Tengo que hacerlo todo sola?</p></div>
     <p class="body">La respuesta es no. Y en el siguiente movimiento te cuento cómo construir tu propio equipo de transformación — sin gastar de más, y aprovechando los tres momentos exactos donde una mirada externa hace toda la diferencia.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 05 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 05</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Tu equipo de transformación</span>
     </div>
   </div>
@@ -1171,7 +1238,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p71 -->
 <div class="page">
   <div class="content">
-    <span class="tag">MOMENTO 04 · OPCIONAL</span>
+    <span class="tag">MOMENTO 04· OPCIONAL</span>
     <div class="h1-italic" style="font-size:38px;">La cereza al final</div>
     <div class="rule"></div>
     <p class="body">Y para cerrar — esto es opcional, pero hermoso si tu presupuesto lo permite — hay un cuarto momento donde la mirada de una interiorista entra de nuevo, ahora con una intención completamente distinta.</p>
@@ -1220,7 +1287,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Pero hay un último ingrediente que vale más que cualquier ayuda externa. Sin él, todo lo anterior se desarma a los seis meses. Con él, todo se sostiene de por vida.</p>
     <div class="pull-quote"><p>Ese ingrediente es convertir lo que has hecho en hábito. Y de eso hablamos en el siguiente movimiento.</p></div>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 06 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 06</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">De proyecto a hábito</span>
     </div>
   </div>
@@ -1278,11 +1345,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Cinco prácticas que<br>sostienen</div>
     <div class="rule"></div>
     <p class="body">De todos los hábitos posibles, hay cinco que descubrí — en mi propia casa y en las de mis clientas — que sostienen una transformación lograda. No son glamorosos. No son virales. Pero son los que de verdad importan.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> EL CIERRE DEL DÍA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">ELCIERREDELDÍA</span></div></div>
     <p class="body">Cinco minutos antes de acostarte, una vuelta corta por las áreas comunes para devolver cada cosa a su casa. No para limpiar — para reordenar. Esto evita que el desorden se acumule día tras día.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> LA REGLA DE UNO ENTRA, UNO</div></div>
-    <span class="tag">SALE</span>
-    <p class="body">Cada vez que algo nuevo entra a tu casa — una prenda, un libro, un objeto — algo equivalente sale. No siempre el mismo día. Pero sí dentro de la misma semana. Esto previene que la depuración se desarme con el tiempo.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">LA REGLA DE UNO ENTRA, UNO</span></div></div>
+    <p class="body">SALE Cada vez que algo nuevo entra a tu casa — una prenda, un libro, un objeto — algo equivalente sale. No siempre el mismo día. Pero sí dentro de la misma semana. Esto previene que la depuración se desarme con el tiempo.</p>
   </div>
     <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">78</span></div>
 
@@ -1291,12 +1357,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p79 -->
 <div class="page">
   <div class="content">
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> EL MINUTO DE LA ACCIÓN</div></div>
-    <span class="tag">INMEDIATA</span>
-    <p class="body">Si una tarea toma menos de un minuto, se hace en el momento. No se agenda, no se posterga. Colgar el abrigo. Lavar la taza. Doblar la manta. Es lo que evita que las micro- tareas se conviertan en montañas.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> LA REVISIÓN SEMANAL DEL EXCEL</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">EL MINUTO DE LA ACCIÓN</span></div></div>
+    <p class="body">I N  M  E  D  I A  T A Si una tarea toma menos de un minuto, se hace en el momento. No se agenda, no se posterga. Colgar el abrigo. Lavar la taza. Doblar la manta. Es lo que evita que las micro- tareas se conviertan en montañas.</p>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">LA REVISIÓN SEMANAL DEL EXCEL</span></div></div>
     <p class="body">Una vez por semana — quince minutos — abres tu Home Excel y lo actualizas. Tachas lo hecho. Anotas lo nuevo. Esto mantiene viva la herramienta y evita que se vuelva un documento muerto.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> LA GRATITUD DEL ESPACIO</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span><span class="numbered-label">LA GRATITUD DEL ESPACIO</span></div></div>
     <p class="body">Una práctica que parece tonta pero que cambia tu relación con tu casa: una vez por semana, agradece en voz baja un espacio específico de tu hogar. Le da un alma a la casa que ningún sistema te puede dar.</p>
   </div>
     <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">79</span></div>
@@ -1395,7 +1460,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Y a partir de aquí, ya no hay vuelta atrás. No porque sea perfecto — vamos a fallar muchas veces, vamos a saltarnos hábitos, vamos a tener semanas caóticas. Sino porque ya conoces el camino. Y siempre, después de cada caída, vas a saber cómo volver.</p>
     <div class="pull-quote"><p>La transformación no es no caer nunca. Es saber cómo levantarse, una y otra vez, con menos esfuerzo cada vez.</p></div>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 07 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 07</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Cuando termina, empieza</span>
     </div>
   </div>
@@ -1544,10 +1609,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Este es el segundo libro de la línea editorial Liviin. Si te acompañó, te invito a seguir el recorrido. Esto es lo que viene:</p>
     <span class="tag">Próximo libro · MENÚS PARA OCHO</span>
-    <span class="tag">SEMANAS</span>
+    <span class="tag">S  E  M  A  N  A  S</span>
     <p class="body">El siguiente trabajo nace de lo que se liberó después de transformar mi casa: una propuesta concreta de menús semanales — ocho semanas pensadas con cuidado para nutrir mejor a tu familia, sin complicaciones, sin agendas imposibles. La continuación natural de una casa que ya fluye.</p>
     <span class="tag">Capacitaciones Liviin · ESPACIOS</span>
-    <span class="tag">PEQUEÑOS</span>
+    <span class="tag">P  E  Q  U  E  Ñ  O  S</span>
     <p class="body">Talleres en grupo o consultorías individuales donde profundizamos cada uno de los pilares — introspección, verdad, acción, sistema, amor — aplicados a tu casa específica, con acompañamiento real.</p>
     <span class="tag">Comunidad · PARA NO PERDERTE NADA</span>
     <p class="body">Sígueme en mis redes — al final de este libro encuentras dónde. Comparto contenido nuevo cada semana sobre liderazgo del hogar, transformación con sentido, y la mujer que cada una está aprendiendo a ser.</p>
@@ -1562,11 +1627,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">SOBRE LA AUTORA</span>
     <div class="h1-italic" style="font-size:38px;">María Teresa Espinosa</div>
     <div class="rule"></div>
-    <p class="body">interiorista y home coach</p>
+    <div class="pull-quote"><p>interiorista y home coach</p></div>
     <p class="body">Más de veinte años diseñando interiores en Latinoamérica. Mamá de tres hijos. Fundadora de Liviin — la marca desde la que acompaña a mujeres a transformar sus casas en hogares bien llevados.</p>
     <p class="body">Su método — introspección, verdad, acción, sistema, amor — nació en su propia casa, durante un quiebre personal en pandemia. Desde entonces lo ha aplicado en decenas de hogares con clientas que pasaron de cargar todo en silencio a liderar con calma.</p>
     <p class="body">Hoy ofrece capacitaciones y talleres Liviin donde profundiza cada uno de los cinco pilares.</p>
-    <span class="tag">ENCUÉNTRAME EN</span>
+    <p class="body">ENCUÉNTRAME EN</p>
     <ul class="body-list"><li>Instagram · @mte_disenointerior</li><li>TikTok · @mariateresaespinosa_</li><li>Sitio web · liviin.com</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">98</span></div>
@@ -1576,7 +1641,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p99 -->
 <div class="page">
   <div class="content">
-    <p class="body">Conversaciones nuevas cada semana sobre liderazgo del hogar, transformación con sentido, y la mujer que cada una está aprendiendo a ser.</p>
+    <div class="pull-quote"><p>Conversaciones nuevas cada semana sobre liderazgo del hogar, transformación con sentido, y la mujer que cada una está aprendiendo a ser.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">99</span></div>
 
@@ -1585,7 +1650,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p100 -->
 <div class="page">
   <div class="content">
-    <span class="tag">— GRACIAS —</span>
+    <span class="tag">—  G  R  A  C  I A  S  —</span>
     <div class="pull-quote"><p>A las dueñas que han confiado en mi acompañamiento durante estos años. Cada una de ustedes me enseñó algo que está en estas páginas.</p></div>
     <div class="pull-quote"><p>A mis maestras a distancia — que me sostuvieron desde lejos en el momento en que mi propia casa me quedó grande.</p></div>
     <div class="pull-quote"><p>Y a mi familia — mi esposo, mis tres hijos — que aprendieron este camino conmigo, en tiempo real, dentro de las paredes de la casa donde todo este método nació.</p></div>
@@ -1599,10 +1664,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   <div class="content">
     <div class="h1-italic" style="font-size:38px;">"Que tu casa nunca más<br>sea ese lugar pendiente.<br>Que se vuelva,<br>finalmente, el refugio<br>que siempre estuvo listo<br>para ser."</div>
     <div class="rule"></div>
-    <p class="body">Con amor,</p>
+    <div class="pull-quote"><p>Con amor,</p></div>
     <div class="h1-italic" style="font-size:38px;">M T E</div>
     <div class="rule"></div>
-    <p class="body">María Teresa Espinosa</p>
+    <div class="pull-quote"><p>María Teresa Espinosa</p></div>
   </div>
     <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">101</span></div>
 

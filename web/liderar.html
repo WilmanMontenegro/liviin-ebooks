@@ -60,10 +60,23 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   color: var(--texto); line-height: 1.15; text-transform: uppercase;
   letter-spacing: 0.02em; margin-bottom: 12px;
 }
+/* ponytail: PDF usa Liberation Serif 22pt + subtítulo; Garamond ≈ serif del PDF, no SC */
+.h2-section {
+  font-family: var(--serif-text); font-size: 28px; font-weight: 500;
+  letter-spacing: 0.01em; margin-bottom: 8px;
+}
+/* PDF: dígito en título ~62% altura letras, baseline */
+.title-digit {
+  font-size: 0.62em; vertical-align: baseline; letter-spacing: 0;
+}
 .rule { width: 52px; height: 1px; background: var(--filete); margin-bottom: 32px; }
 .subtitle {
   font-family: var(--serif-text); font-size: 15px; font-style: italic;
   color: var(--secundario); line-height: 1.5; margin-top: 8px;
+}
+.section-subtitle {
+  font-family: var(--serif-text); font-size: 17px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.45; margin: 0 0 18px 0;
 }
 .body {
   font-family: var(--sans); font-size: 12.5px; font-weight: 300;
@@ -76,10 +89,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 }
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
-.pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
+.pull-quote {
+  border-left: 2px solid var(--filete); padding-left: 16px;
+  margin: 24px 0 24px 13px;
+}
 .pull-quote p {
-  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
-  color: var(--secundario); line-height: 1.6;
+  font-family: var(--serif-text); font-size: 15px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.55; margin: 0;
 }
 
 .foto-portada {
@@ -107,8 +123,100 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
 
 .numbered-block { margin-bottom: 20px; }
-.numbered-title { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 8px; align-items: baseline; }
-.numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
+.numbered-title {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
+  display: flex; gap: 10px; align-items: baseline; line-height: 1.35;
+  margin-bottom: 6px;
+}
+.numbered-title .num {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.numbered-title .numbered-label { flex: 1; min-width: 0; }
+.area-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 36px; row-gap: 14px;
+  margin: 18px 0 22px; padding-left: 4px;
+}
+.area-item { display: flex; gap: 12px; align-items: baseline; }
+.area-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); min-width: 16px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.area-label {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.45;
+}
+.index-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 16px; }
+.index-entry .index-line { flex: 1; min-width: 0; }
+.index-line { display: flex; gap: 10px; align-items: baseline; }
+.index-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); flex-shrink: 0;
+}
+.index-title {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300; color: var(--texto);
+  line-height: 1.45; letter-spacing: 0;
+}
+.index-page {
+  font-family: var(--sans); font-size: 9px; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--secundario); flex-shrink: 0; text-align: right;
+}
+.overview-line { margin-bottom: 4px; }
+.discovery-list { margin: 22px 0 10px; }
+.discovery-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--filete);
+}
+.discovery-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.discovery-num {
+  font-family: var(--serif-text); font-size: 13px; font-weight: 400; font-style: italic;
+  color: var(--secundario); flex-shrink: 0; min-width: 38px;
+}
+.discovery-text {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.8; margin: 0;
+}
+.step-list { margin: 24px 0 18px; }
+.step-item { margin-bottom: 22px; }
+.step-item:last-child { margin-bottom: 0; }
+.step-head {
+  display: flex; gap: 14px; align-items: baseline;
+  margin-bottom: 8px; padding-left: 4px;
+}
+.step-num {
+  font-family: var(--serif-text); font-size: 13px; font-weight: 300; font-style: italic;
+  color: var(--secundario); min-width: 24px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.step-title {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 500;
+  color: var(--texto); line-height: 1.45;
+}
+.step-desc {
+  font-family: var(--sans); font-size: 9.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75; margin: 0 0 0 38px;
+}
+.step-item--question { margin-bottom: 22px; }
+.step-item--question:last-child { margin-bottom: 0; }
+.step-question-row {
+  display: flex; gap: 14px; align-items: baseline;
+  margin-bottom: 8px; padding-left: 4px;
+}
+.step-item--question .step-num { flex-shrink: 0; line-height: 1.45; }
+.step-item--question .step-question {
+  flex: 1; min-width: 0;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 400;
+  color: var(--texto); line-height: 1.55; margin: 0;
+}
+.step-item--question .step-insight {
+  font-family: var(--sans); font-size: 9.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75; margin: 0 0 0 38px;
+}
+.step-closing { font-style: italic; margin-top: 20px; }
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
 
@@ -121,8 +229,17 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .agradecimiento-item strong { font-weight: 500; }
 
 .next-link { text-align: right; margin-top: 28px; }
-.next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
-.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--texto); }
+.next-link .arrow-label {
+  display: inline-flex; align-items: center; justify-content: flex-end;
+  gap: 0.5em; width: 100%;
+  font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em;
+  color: var(--secundario); text-transform: uppercase; margin-bottom: 4px;
+}
+.next-link .arrow-icon {
+  font-size: 10px; letter-spacing: 0; line-height: 1; flex-shrink: 0;
+  transform: translateY(-0.5px);
+}
+.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); }
 
 .firma { margin-top: 32px; }
 .firma .con-carino { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); margin-bottom: 4px; }
@@ -211,7 +328,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p4 -->
 <div class="page">
   <div class="content">
-    <span class="tag">DE MÍ PARA TI</span>
+    <span class="tag">D E  M Í  PARA  T I</span>
     <div class="h1-italic" style="font-size:38px;">Yo también pasé por esto.</div>
     <div class="rule"></div>
     <p class="body">Llevo más de veinte años diseñando interiores. He acompañado a muchas mujeres a transformar sus casas en hogares — eligiendo cada material, cada acabado, cada textura para que la casa fuera reflejo de quien la habita.</p>
@@ -229,7 +346,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   <div class="content">
     <p class="body">Con los años empecé a notar lo mismo en las casas de mis clientas. Yo entregaba diseños cuidadosamente pensados, con acabados especiales, costosos, hechos para durar.</p>
     <p class="body">Y meses después volvía y encontraba el desorden. El daño. El desgaste prematuro. No por descuido — por algo más profundo: un vacío que nadie estaba llenando.</p>
-    <p class="body">Nadie le había enseñado a la dueña cómo enseñarle a su empleada.</p>
+    <div class="pull-quote"><p>Nadie le había enseñado a la dueña cómo enseñarle a su empleada.</p></div>
     <p class="body">Ahí entendí algo que cambió mi forma de trabajar para siempre — y que es la razón por la que existe este libro:</p>
     <p class="body">Nuestras empleadas no son simplemente empleadas del servicio. Son las manos que sostienen nuestro hogar cuando no estamos.</p>
   </div>
@@ -245,7 +362,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Liderar tu hogar es una habilidad. Como diseñar uno. Se aprende, se practica, se pule.</p>
     <p class="body">Eso es lo que vamos a hacer juntas en estas páginas.</p>
     <p class="body">Te leo despacio. Tómate tu tiempo. Esto no es un manual técnico — es una conversación que llevamos años necesitando tener.</p>
-    <span class="tag">— MARÍATERESAESPINOSA</span>
+    <span class="tag">— MARÍA TERESA ESPINOSA</span>
     <div class="firma">
       <p class="con-carino">— María Teresa Espinosa</p>
       <p class="nombre">Interiorista y Home Coach · MTE</p>
@@ -269,15 +386,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">ANTES DE EMPEZAR</span>
-    <div class="h1-italic" style="font-size:38px;">LO QUE VAS A ENCONTRAR<br>AQUÍ</div>
+    <div class="h2">LO QUE VAS A ENCONTRAR<br>AQUÍ</div>
     <div class="rule"></div>
     <p class="body">Este ebook no te va a decir qué empleada contratar ni qué productos comprar. Te va a enseñar algo más valioso: a ser la dueña que tu hogar necesita que seas.</p>
     <p class="body">En estas páginas vas a aprender a:</p>
-    <p class="body">01 Entender por qué la armonía empieza arriba — el paralelo entre liderar tu casa y liderar un equipo en una empresa, y por qué ninguna casa funciona sin un liderazgo claro.</p>
-    <p class="body">02 Conocer tu casa antes de delegarla — el inventario consciente que casi ninguna dueña hace, y sin el cual capacitar a alguien es imposible.</p>
-    <p class="body">03 Construir tu equipo con criterio — cómo entrevistar, capacitar y comunicarte con tu empleada sin desgastarte ni convertirte en maestra de escuela.</p>
-    <p class="body">04 Sostener la armonía en el tiempo — rutinas semanales, reconocimiento del buen trabajo, y cómo prevenir las crisis más comunes.</p>
-    <p class="body">05 Manejar las conversaciones difíciles — con cinco scripts listos para usar: la entrevista, la capacitación, el feedback positivo, el feedback difícil, y qué decir cuando algo se rompe.</p>
+    <div class="step-list"><div class="step-item"><div class="step-head"><span class="step-num">01</span><span class="step-title">Entender por qué la armonía empieza arriba — el paralelo entre</span></div><p class="step-desc">liderar tu casa y liderar un equipo en una empresa, y por qué ninguna casa funciona sin un liderazgo claro.</p></div><div class="step-item"><div class="step-head"><span class="step-num">02</span><span class="step-title">Conocer tu casa antes de delegarla — el inventario consciente</span></div><p class="step-desc">que casi ninguna dueña hace, y sin el cual capacitar a alguien es imposible.</p></div><div class="step-item"><div class="step-head"><span class="step-num">03</span><span class="step-title">Construir tu equipo con criterio — cómo entrevistar, capacitar y</span></div><p class="step-desc">comunicarte con tu empleada sin desgastarte ni convertirte en maestra de escuela.</p></div><div class="step-item"><div class="step-head"><span class="step-num">04</span><span class="step-title">Sostener la armonía en el tiempo — rutinas semanales,</span></div><p class="step-desc">reconocimiento del buen trabajo, y cómo prevenir las crisis más comunes.</p></div><div class="step-item"><div class="step-head"><span class="step-num">05</span><span class="step-title">Manejar las conversaciones difíciles — con cinco scripts listos</span></div><p class="step-desc">para usar: la entrevista, la capacitación, el feedback positivo, el feedback difícil, y qué decir cuando algo se rompe.</p></div></div>
   </div>
     <div class="banda"><span class="banda-texto">INICIACIÓN</span><span class="banda-texto">8</span></div>
 
@@ -290,13 +403,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h2">El recorrido</div>
     <div class="rule"></div>
     <div class="spacer-sm"></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">00</span> Iniciación · De mí para ti</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> La filosofía del hogar bien llevado</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> Conoce tu casa antes de delegarla</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> Construir el equipo</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> Sostener la armonía en el tiempo</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> Bonus · Conversaciones esenciales</div></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">06</span> Cierre · El hogar como reflejo</div></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">00</span><span class="index-title">Iniciación · De mí para ti</span></div><span class="index-page">05</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">01</span><span class="index-title">La filosofía del hogar bien llevado</span></div><span class="index-page">11</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">02</span><span class="index-title">Conoce tu casa antes de delegarla</span></div><span class="index-page">24</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">03</span><span class="index-title">Construir el equipo</span></div><span class="index-page">37</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">04</span><span class="index-title">Sostener la armonía en el tiempo</span></div><span class="index-page">58</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">05</span><span class="index-title">Bonus · Conversaciones esenciales</span></div><span class="index-page">74</span></div>
+    <div class="index-entry"><div class="index-line"><span class="index-num">06</span><span class="index-title">Cierre · El hogar como reflejo</span></div><span class="index-page">87</span></div>
     <div class="spacer-md"></div>
     <p class="body">Lee a tu ritmo. Cada movimiento puede leerse solo.</p>
   </div>
@@ -324,7 +437,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Imagina una empresa donde la jefa nunca capacita a su equipo, no comunica las expectativas con claridad, no da feedback, no reconoce el buen trabajo — y luego se queja de que nadie hace bien su trabajo.</p>
     <p class="body">Esa empresa quebraría en seis meses.</p>
     <p class="body">Y sin embargo, así dirigimos la mayoría de los hogares.</p>
-    <p class="body">Esperamos resultados de empresa con métodos de improvisación.</p>
+    <div class="pull-quote"><p>Esperamos resultados de empresa con métodos de improvisación.</p></div>
     <p class="body">La diferencia no está en quién contratas. Está en cómo lideras a quien contrataste. Y aquí está la buena noticia: si has liderado un proyecto, una reunión, un evento familiar — ya tienes el músculo. Solo necesitas dirigirlo hacia el lugar correcto.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">11</span></div>
@@ -335,7 +448,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">CONCEPTO FUNDACIONAL</span>
-    <p class="body"><strong>LA ARMONÍA EMPIEZA ARRIBA</strong></p>
+    <div class="h2">LA ARMONÍA EMPIEZA ARRIBA</div>
+    <div class="rule"></div>
     <p class="body">Por años creímos que la armonía del hogar dependía de la empleada. Si era buena, la casa funcionaba. Si no, había que reemplazarla.</p>
     <p class="body">La realidad es exactamente al revés: la armonía no se filtra desde abajo hacia arriba. Se filtra desde arriba hacia abajo. Tu energía, tu claridad, tu liderazgo · son la corriente que sostiene todo lo demás. Una empleada extraordinaria en una casa sin liderazgo termina rindiendo lo mismo que una empleada promedio. Una empleada promedio en una casa con liderazgo claro, rinde como una extraordinaria.</p>
   </div>
@@ -347,14 +461,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">DETENTE UN MOMENTO</span>
-    <div class="h1-italic" style="font-size:38px;">LAS CUATRO MENTIRAS</div>
+    <div class="h2 h2-section">LAS CUATRO MENTIRAS</div>
+    <p class="section-subtitle">que nos contamos para no liderar</p>
     <div class="rule"></div>
-    <p class="body">que nos contamos para no liderar</p>
     <p class="body">Casi todas las dueñas que conozco — incluida yo, hace años — repetimos al menos una de estas frases. Detente. Léelas. Ve cuál te suena familiar.</p>
-    <p class="body">01 "Si yo no estoy pendiente, nadie lo hace bien." Verdad: si tú no enseñas con paciencia, nadie aprende tu estándar. La pendiente eres tú al inicio, no para siempre.</p>
-    <p class="body">02 "Es más rápido que lo haga yo." Verdad: una sola vez es más rápido. Treinta veces es agotamiento. Capacitar bien es invertir tiempo para recuperarlo multiplicado.</p>
-    <p class="body">"Ella debería entender lo que necesito." 03 Verdad: nadie entiende lo que no se nombra. Lo que para ti es obvio, para ella es invisible. La claridad es responsabilidad de quien dirige.</p>
-    <p class="body">"No tengo tiempo para capacitarla." 04 Verdad: no tienes tiempo justamente porque no la has capacitado. Los hogares sin capacitación inicial consumen el doble de horas.</p>
+    <div class="step-list"><div class="step-item"><div class="step-head"><span class="step-num">01</span><span class="step-title">"Si yo no estoy pendiente, nadie lo hace bien."</span></div><p class="step-desc">Verdad: si tú no enseñas con paciencia, nadie aprende tu estándar. La pendiente eres tú al inicio, no para siempre.</p></div><div class="step-item"><div class="step-head"><span class="step-num">02</span><span class="step-title">"Es más rápido que lo haga yo."</span></div><p class="step-desc">Verdad: una sola vez es más rápido. Treinta veces es agotamiento. Capacitar bien es invertir tiempo para recuperarlo multiplicado.</p></div><div class="step-item"><div class="step-head"><span class="step-num">03</span><span class="step-title">"Ella debería entender lo que necesito."</span></div><p class="step-desc">Verdad: nadie entiende lo que no se nombra. Lo que para ti es obvio, para ella es invisible. La claridad es responsabilidad de quien dirige.</p></div><div class="step-item"><div class="step-head"><span class="step-num">04</span><span class="step-title">"No tengo tiempo para capacitarla."</span></div><p class="step-desc">Verdad: no tienes tiempo justamente porque no la has capacitado. Los hogares sin capacitación inicial consumen el doble de horas.</p></div></div>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">13</span></div>
 
@@ -374,14 +485,14 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL NUEVO ROL</span>
-    <div class="h1-italic" style="font-size:38px;">LOS TRES ROLES DE LA<br>DUEÑA LÍDER</div>
+    <div class="h2">LOS TRES ROLES DE LA<br>DUEÑA LÍDER</div>
     <div class="rule"></div>
     <p class="body">Cuando empecé a aplicar mi mirada de interiorista al liderazgo del hogar, descubrí algo: liderar una casa es un acto de diseño. Y como todo diseño, requiere tres roles que conviven en la misma persona — tú.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> DISEÑADORADEL SISTEMA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">DISEÑADORA DEL SISTEMA</span></div></div>
     <p class="body">Tú decides cómo funciona tu casa: las rutinas, los productos, las prioridades. Antes de delegar nada, tienes que tener el sistema en tu cabeza con claridad.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> COMUNICADORADEL SISTEMA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">COMUNICADORA DEL SISTEMA</span></div></div>
     <p class="body">Lo que tienes en la cabeza no le sirve a nadie hasta que lo comunicas. Aquí entran las conversaciones, los acuerdos, las expectativas claras desde el día uno.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> SOSTENEDORADEL SISTEMA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">SOSTENEDORA DEL SISTEMA</span></div></div>
     <p class="body">Crear un sistema y comunicarlo no basta. Hay que sostenerlo: revisar, ajustar, reconocer, corregir con respeto. Es el rol que convierte un buen inicio en una casa que funciona en el tiempo.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">15</span></div>
@@ -392,7 +503,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">DISTINCIÓN CLAVE</span>
-    <p class="body"><strong>SUPERVISAR NO ES LIDERAR</strong></p>
+    <div class="h2">SUPERVISAR NO ES LIDERAR</div>
+    <div class="rule"></div>
     <p class="body">Supervisar es vigilar el trabajo de alguien mientras lo hace. Es estar pendiente, corregir en el momento, cuidar que no se equivoque. Cansa a las dos: a quien hace y a quien vigila.</p>
     <p class="body">Liderar es algo distinto. Es crear las condiciones para que el trabajo se haga bien aunque tú no estés mirando. Es invertir tiempo al inicio, en capacitación clara, para no tener que invertirlo todos los días en supervisión.</p>
     <p class="body">La meta no es estar siempre pendiente. La meta es llegar al punto en que no necesites estarlo.</p>
@@ -405,12 +517,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LO QUE POCAS CALCULAN</span>
-    <div class="h1-italic" style="font-size:38px;">EL COSTO INVISIBLE</div>
+    <div class="h2 h2-section">EL COSTO INVISIBLE</div>
+    <p class="section-subtitle">de no liderar tu hogar</p>
     <div class="rule"></div>
-    <p class="body">de no liderar tu hogar</p>
     <p class="body">Cuando una dueña no lidera, el hogar no se queda quieto. Sigue funcionando — pero a un costo que casi nadie ve. Lo he visto en hogares hermosos durante veinte años:</p>
     <ul class="body-list"><li>Rotación constante de empleadas. No porque ellas fallen — porque el hogar nunca les dio claridad.</li><li>Desgaste de muebles, telas y acabados. Inversiones costosas que se arruinan por falta de conocimiento técnico transmitido.</li><li>Conversaciones siempre tensas. Porque el feedback se acumula hasta explotar, en vez de fluir en pequeñas dosis cuidadas.</li><li>Casa siempre "a medias". Nada está mal, pero nada termina de estar bien. Sensación de cansancio permanente al volver a casa.</li><li>Carga mental constante. Tu cabeza nunca descansa porque tú eres el único sistema operativo que tiene la casa.</li></ul>
-    <p class="body">Estos costos no aparecen en ninguna factura. Pero se pagan todos los días — en energía, en tiempo, en paz.</p>
+    <div class="pull-quote"><p>Estos costos no aparecen en ninguna factura. Pero se pagan todos los días — en energía, en tiempo, en paz.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">17</span></div>
 
@@ -420,11 +532,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">RESPIRA</span>
-    <div class="h1-italic" style="font-size:38px;">LA BUENA NOTICIA</div>
+    <div class="h2">LA BUENA NOTICIA</div>
     <div class="rule"></div>
     <p class="body">Liderar tu hogar no requiere más tiempo. Requiere mejor tiempo.</p>
     <p class="body">Una hora bien invertida en capacitar a tu empleada al comienzo te ahorra diez horas de supervisión durante los meses siguientes. Una conversación clara sobre expectativas evita seis meses de fricciones acumuladas. Un buen sistema, diseñado una sola vez, sostiene la casa por años.</p>
-    <p class="body">No es trabajo extra. Es trabajo bien hecho.</p>
+    <div class="pull-quote"><p>No es trabajo extra. Es trabajo bien hecho.</p></div>
     <p class="body">Lo que voy a compartirte en los siguientes movimientos no es teoría. Son las herramientas concretas — las mismas que uso con mis clientas, las mismas que aplico en mi propia casa — para que pases de cargar todo en silencio a dirigir con calma.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">18</span></div>
@@ -445,12 +557,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">HOME COACH · EJERCICIO 01</span>
-    <div class="spacer-sm"></div>
-    <div class="h1-italic" style="font-size:38px;">TU PRIMER EJERCICIO</div>
+    <div class="h2 h2-section">TU PRIMER EJERCICIO</div>
+    <p class="section-subtitle">como dueña líder</p>
     <div class="rule"></div>
-    <p class="body">como dueña líder</p>
     <p class="body">Antes de pasar al siguiente movimiento, te voy a pedir algo que muchas dueñas evitan por miedo — pero que es la puerta de entrada al verdadero liderazgo del hogar:</p>
-    <p class="body">Camina por tu casa. Sin prisa. Mirándola con ojos nuevos.</p>
+    <div class="pull-quote"><p>Camina por tu casa. Sin prisa. Mirándola con ojos nuevos.</p></div>
     <p class="body">Mientras caminas, empieza a notar — sin escribir todavía, solo notar — cuatro tipos de cosas:</p>
     <ul class="body-list"><li>Lo que necesita una limpieza profunda que la rutina no alcanza a cubrir.</li><li>Lo que requiere arreglo estructural — una puerta que no cierra bien, un mueble que cojea, un acabado que se está desgastando.</li><li>Lo que pide organización profunda — ese armario, ese cajón, esa despensa que llevas meses posponiendo.</li><li>Lo que sueñas con cambiar, renovar o comprar — tu wish list secreta, esa que casi nunca te das permiso de mirar de frente.</li></ul>
   </div>
@@ -462,14 +573,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">HOME COACH · CONTINUACIÓN</span>
-    <div class="spacer-sm"></div>
     <div class="h1-italic" style="font-size:38px;">Por qué importa esta lista.</div>
     <div class="rule"></div>
     <p class="body">La mayoría de las mujeres no quieren visualizar esta lista por miedo a su tamaño. Pero esa lista es la hoja de ruta del hogar. Sin nombrarla, no hay liderazgo posible.</p>
     <p class="body">Y aquí va lo que más me ha sorprendido en estos años como home coach: cuando las dueñas finalmente se atreven a hacerla, descubren que muchos puntos no tienen grandes costos, y traen grandes satisfacciones. Que algunas tareas se resuelven contratando ayuda extra unos días. Que poner la wish list en papel — con valores reales — convierte un sueño abstracto en una decisión concreta: renunciar a unas cuantas salidas a comer y darle prioridad a eso que tanto anhelas para tu hogar.</p>
-    <p class="body">Porque al final, ese hogar es el lugar al que llegas cada día. Tu refugio en los días largos. Donde se construyen las memorias que más vas a recordar.</p>
-    <span class="tag">ANTICIPO</span>
-    <p class="body">En el siguiente movimiento te enseño a hacer esta lista de forma estructurada — y al final del ebook te entrego mi Home Excel como herramienta descargable para que la lleves a tu propia casa.</p>
+    <div class="pull-quote"><p>Porque al final, ese hogar es el lugar al que llegas cada día. Tu refugio en los días largos. Donde se construyen las memorias que más vas a recordar.</p></div>
+    <p class="body">ANTICIPO En el siguiente movimiento te enseño a hacer esta lista de forma estructurada — y al final del ebook te entrego mi Home Excel como herramienta descargable para que la lleves a tu propia casa.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">21</span></div>
 
@@ -485,8 +594,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Si has llegado hasta aquí, ya sabes algo que la mayoría de las dueñas tarda años — o nunca — en entender:</p>
     <ul class="body-list"><li>La armonía del hogar empieza arriba, no abajo.</li><li>Las cuatro mentiras que nos contamos para no liderar son, en realidad, las cuatro razones para empezar.</li><li>Liderar no es supervisar. Es diseñar, comunicar y sostener un sistema.</li><li>El costo de no liderar se paga todos los días — en energía, tiempo y paz.</li></ul>
     <p class="body">Pero entender la filosofía es solo la mitad del camino. La otra mitad empieza ahora — y empieza adentro de tu propia casa.</p>
-    <span class="tag">SIGUE ALMOVIMIENTO 02 →</span>
-    <p class="body">Conoce tu casa antes de delegarla</p>
+    <div class="next-link">
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 02</span><span class="arrow-icon" aria-hidden="true">→</span></span>
+      <span class="arrow-title">Conoce tu casa antes de delegarla</span>
+    </div>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">22</span></div>
 
@@ -496,9 +607,9 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">MOVIMIENTO 02</span>
-    <div class="h2">CONOCE TU CASA<br>ANTES DE<br>DELEGARLA</div>
+    <div class="h1-italic" style="font-size:38px;">CONOCE TU CASA<br>ANTES DE<br>DELEGARLA</div>
     <div class="rule"></div>
-    <p class="body">No se puede dirigir lo que no se conoce. Y casi ninguna dueña conoce su casa de verdad.</p>
+    <p class="body">conoce. Y casi ninguna dueña conoce su casa de verdad.</p>
   </div>
     <div class="banda"><span class="banda-texto">01 · LA FILOSOFÍA</span><span class="banda-texto">23</span></div>
 
@@ -523,7 +634,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL PASO INNEGOCIABLE</span>
-    <p class="body">NO PUEDES DELEGAR LO QUE NO CONOCES</p>
+    <div class="h2">NO PUEDES DELEGAR LO QUE NO<br>CONOCES</div>
+    <div class="rule"></div>
     <p class="body">Este es el paso que casi todas las dueñas se saltan. Quieren ir directo a contratar, capacitar, comunicar · pero hay un movimiento previo que no se puede saltar: conocer tu propia casa.</p>
     <p class="body">¿Cómo le vas a explicar a tu empleada cómo cuidar tu comedor de madera maciza si tú no sabes que es madera maciza? ¿Cómo le vas a pedir que organice tu despensa si tú nunca has organizado tu despensa? ¿Cómo le vas a transmitir tus prioridades si nunca te has detenido a definirlas?</p>
   </div>
@@ -546,12 +658,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">HOME COACH · HERRAMIENTA 01</span>
-    <div class="spacer-sm"></div>
-    <div class="h1-italic" style="font-size:38px;">TE PRESENTO EL HOME<br>EXCEL</div>
+    <div class="h2">TE PRESENTO EL HOME<br>EXCEL</div>
     <div class="rule"></div>
     <p class="body">A lo largo de mis años acompañando hogares, fui creando una herramienta. Empezó como una libreta. Después se volvió un documento. Hoy es un Excel — y lo llamo Home Excel.</p>
     <p class="body">Es, simplemente, una guía estructurada donde tú escribes, área por área, todo lo que tu casa necesita. Pero no en desorden, no como una lista al azar — sino organizado en cuatro categorías que te dan claridad y prioridad.</p>
-    <p class="body">El Home Excel convierte el caos en una hoja de ruta. Y la hoja de ruta convierte la ansiedad en acción.</p>
+    <div class="pull-quote"><p>El Home Excel convierte el caos en una hoja de ruta. Y la hoja de ruta convierte la ansiedad en acción.</p></div>
     <p class="body">En las próximas páginas vamos a recorrer las cuatro categorías y ver cómo se aplican a cada área de tu casa. Al final del ebook lo recibes como bonus descargable — listo para que lo abras y empieces el tuyo esta misma semana.</p>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">27</span></div>
@@ -562,15 +673,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LAS CUATRO LENTES</span>
-    <div class="h1-italic" style="font-size:38px;">LAS 4 CATEGORÍAS</div>
+    <div class="h2 h2-section">LAS <span class="title-digit">4</span> CATEGORÍAS</div>
+    <p class="section-subtitle">para mirar cada área de tu casa</p>
     <div class="rule"></div>
-    <p class="body">para mirar cada área de tu casa</p>
-    <p class="body">Cada lente revela algo distinto. Juntas, te dan el cuadro completo de lo que tu casa necesita.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> LIMPIEZAPROFUNDA</div></div>
+    <div class="pull-quote"><p>Cada lente revela algo distinto. Juntas, te dan el cuadro completo de lo que tu casa necesita.</p></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">LIMPIEZA PROFUNDA</span></div></div>
     <p class="body">Lo que la rutina diaria no alcanza a cubrir: cortinas, cojines, tapetes, electrodomésticos por dentro, juntas del baño, marcos de ventana, vidrios altos, lámparas. Una clienta descubrió que su lavadora llevaba dos años sin limpiarse por dentro. Una hora de trabajo y volvió a oler bien la ropa.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> ARREGLO ESTRUCTURAL</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">ARREGLO ESTRUCTURAL</span></div></div>
     <p class="body">Obra civil, reparaciones, muebles que cojean, acabados desgastados, herrajes flojos, pintura que pide retoque, puertas que no cierran bien.</p>
-    <p class="body">Una clienta llevaba años convencida de que tenía que cambiar todo el mobiliario del comedor. Resultó que solo necesitaba reparar tres sillas — un costo insignificante.</p>
+    <div class="pull-quote"><p>Una clienta llevaba años convencida de que tenía que cambiar todo el mobiliario del comedor. Resultó que solo necesitaba reparar tres sillas — un costo insignificante.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">28</span></div>
 
@@ -582,12 +693,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">LAS CUATRO LENTES · CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">Y ahora las dos<br>más reveladoras.</div>
     <div class="rule"></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> ORGANIZACIÓN PROFUNDA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">ORGANIZACIÓN PROFUNDA</span></div></div>
     <p class="body">Armarios, cajones, despensas, biblioteca, garaje. Todo lo que pide reordenarse desde cero — no solo "limpiarse" por encima.</p>
-    <p class="body">Otra clienta descubrió, al ordenar su despensa, tres frascos del mismo condimento — porque nunca veía lo que ya tenía. Compraba dos veces, gastaba el doble.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> WISH LIST CON VALORES</div></div>
+    <div class="pull-quote"><p>Otra clienta descubrió, al ordenar su despensa, tres frascos del mismo condimento — porque nunca veía lo que ya tenía. Compraba dos veces, gastaba el doble.</p></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">WISH LIST CON VALORES</span></div></div>
     <p class="body">Lo que sueñas con cambiar, renovar o comprar — pero esta vez con precios reales al lado. Convierte el sueño abstracto en decisión concreta.</p>
-    <p class="body">Esta es, sin duda, la categoría que más transformaciones genera. Cuando una dueña ve su wish list completa con valores, descubre que sus sueños son más alcanzables de lo que creía — y que muchas veces solo necesitaba renombrar prioridades.</p>
+    <div class="pull-quote"><p>Esta es, sin duda, la categoría que más transformaciones genera. Cuando una dueña ve su wish list completa con valores, descubre que sus sueños son más alcanzables de lo que creía — y que muchas veces solo necesitaba renombrar prioridades.</p></div>
     <p class="body">Con estas cuatro lentes, ya tienes la estructura. Lo que falta es saber dónde aplicarla — y eso lo vemos en la siguiente página.</p>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">29</span></div>
@@ -598,16 +709,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">ANATOMÍA DEL HOGAR</span>
-    <div class="h1-italic" style="font-size:38px;">EL MAPA DE TU CASA</div>
+    <div class="h2">EL MAPA DE TU CASA</div>
     <div class="rule"></div>
     <p class="body">Cada categoría se aplica a cada área. Esa es la lógica del Home Excel. Estas son las áreas que normalmente consideramos — adáptalas a tu propia casa:</p>
-    <p class="body">1  Recibidor 2  Sala / estar</p>
-    <p class="body">3  Comedor 4  Cocina</p>
-    <p class="body">5  Despensa 6  Habitación principal</p>
-    <p class="body">7  Closet principal 8  Habitaciones niños</p>
-    <p class="body">9  Baños 10  Zona de servicio</p>
-    <p class="body">11  Estudio / oficina 12  Terraza / balcón</p>
-    <p class="body">13  Garaje / depósito</p>
+    <div class="area-grid"><div class="area-item"><span class="area-num">1</span><span class="area-label">Recibidor</span></div><div class="area-item"><span class="area-num">2</span><span class="area-label">Sala / estar</span></div><div class="area-item"><span class="area-num">3</span><span class="area-label">Comedor</span></div><div class="area-item"><span class="area-num">4</span><span class="area-label">Cocina</span></div><div class="area-item"><span class="area-num">5</span><span class="area-label">Despensa</span></div><div class="area-item"><span class="area-num">6</span><span class="area-label">Habitación principal</span></div><div class="area-item"><span class="area-num">7</span><span class="area-label">Closet principal</span></div><div class="area-item"><span class="area-num">8</span><span class="area-label">Habitaciones niños</span></div><div class="area-item"><span class="area-num">9</span><span class="area-label">Baños</span></div><div class="area-item"><span class="area-num">10</span><span class="area-label">Zona de servicio</span></div><div class="area-item"><span class="area-num">11</span><span class="area-label">Estudio / oficina</span></div><div class="area-item"><span class="area-num">12</span><span class="area-label">Terraza / balcón</span></div><div class="area-item"><span class="area-num">13</span><span class="area-label">Garaje / depósito</span></div></div>
     <p class="body">Tu casa puede tener más áreas o menos. Lo importante es que ninguna se quede invisible. Cada espacio merece ser nombrado.</p>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">30</span></div>
@@ -618,12 +723,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL MÉTODO</span>
-    <div class="h1-italic" style="font-size:38px;">CÓMO SE LLENA</div>
+    <div class="h2 h2-section">CÓMO SE LLENA</div>
+    <p class="section-subtitle">área por área, con calma</p>
     <div class="rule"></div>
-    <p class="body">área por área, con calma</p>
     <p class="body">Aquí va el secreto que cambia todo: no empieces por categoría — empieza por área.</p>
     <p class="body">Si abres tu Home Excel y empiezas por "limpieza profunda de toda la casa", te vas a abrumar y vas a cerrar el documento en quince minutos. Lo he visto pasar cien veces.</p>
-    <p class="body">Empieza por una sola habitación. Y para esa habitación, recorre las cuatro categorías.</p>
+    <div class="pull-quote"><p>Empieza por una sola habitación. Y para esa habitación, recorre las cuatro categorías.</p></div>
     <p class="body">Por ejemplo, tu habitación principal:</p>
     <ul class="body-list"><li>Limpieza profunda: cortinas, cabecero, colchón, lámparas, marcos de ventana.</li><li>Arreglo estructural: ¿hay alguna gaveta que no cierra bien? ¿Algún herraje flojo? ¿Pintura que pide retoque?</li><li>Organización profunda: mesas de noche, interior del closet, accesorios.</li><li>Wish list: ¿qué cambiarías? ¿Cabecero nuevo? ¿Lencería de cama? ¿Lámparas? Anota precios reales.</li></ul>
     <p class="body">Cuando termines una habitación, pasa a la siguiente. No hay prisa. Una habitación por semana es un ritmo perfecto.</p>
@@ -652,8 +757,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LO QUE PASA CUANDO LO HACES</span>
-    <p class="body"><strong>TRES DESCUBRIMIENTOS</strong></p>
-    <p class="body">Llevo años viendo lo que pasa cuando una dueña hace su Home Excel completo. Casi siempre hay tres descubrimientos: Uno. Muchos puntos no tienen grandes costos. Una clienta resolvió ocho cosas de su lista con menos de lo que gastaba en una salida a comer. Dos. Algunas tareas no necesitan más tiempo, sino más manos: una jornada extra de la empleada, o un ayudante por dos días, resuelven lo que llevaba meses pendiente. Tres. La wish list con valores reales permite tomar decisiones familiares concretas. Renunciar a unas vacaciones cortas para renovar el comedor que llevas siete años queriendo cambiar · y no es sacrificio, es prioridad consciente.</p>
+    <div class="h2">TRES DESCUBRIMIENTOS</div>
+    <div class="rule"></div>
+    <p class="body">Llevo años viendo lo que pasa cuando una dueña hace su Home Excel completo. Casi siempre hay tres descubrimientos:</p>
+    <div class="discovery-list"><div class="discovery-item"><span class="discovery-num">Uno.</span><p class="discovery-text">Muchos puntos no tienen grandes costos. Una clienta resolvió ocho cosas de su lista con menos de lo que gastaba en una salida a comer.</p></div><div class="discovery-item"><span class="discovery-num">Dos.</span><p class="discovery-text">Algunas tareas no necesitan más tiempo, sino más manos: una jornada extra de la empleada, o un ayudante por dos días, resuelven lo que llevaba meses pendiente.</p></div><div class="discovery-item"><span class="discovery-num">Tres.</span><p class="discovery-text">La wish list con valores reales permite tomar decisiones familiares concretas. Renunciar a unas vacaciones cortas para renovar el comedor que llevas siete años queriendo cambiar · y no es sacrificio, es prioridad consciente.</p></div></div>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">33</span></div>
 
@@ -679,10 +786,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Si hiciste el ejercicio — aunque sea para una sola habitación — ya estás en otro lugar. Ya viste lo que tu casa estaba diciéndote en silencio. Ya tienes el primer mapa.</p>
     <p class="body">Y ese mapa cambia todo. Cuando converses con tu empleada, no le hablarás desde la frustración de quien siente que algo falta. Le hablarás desde la claridad de quien sabe qué necesita su casa, qué prioridades hay, qué se delega y qué no.</p>
     <p class="body">Con tu casa nombrada, ya puedes construir el equipo que la va a sostener.</p>
-    <span class="tag">RECORDATORIO</span>
-    <p class="body">Al final del ebook recibes el Home Excel listo para descargar.</p>
-    <span class="tag">SIGUE ALMOVIMIENTO 03 →</span>
-    <p class="body">Construir el equipo</p>
+    <p class="body">RECORDATORIO Al final del ebook recibes el Home Excel listo para descargar.</p>
+    <div class="next-link">
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 03</span><span class="arrow-icon" aria-hidden="true">→</span></span>
+      <span class="arrow-title">Construir el equipo</span>
+    </div>
   </div>
     <div class="banda"><span class="banda-texto">02 · CONOCE TU CASA</span><span class="banda-texto">35</span></div>
 
@@ -708,7 +816,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Hasta aquí he usado la palabra empleada. La he usado a propósito</p>
     <p class="body">empezar por la palabra de la lectora es, también, una forma de respeto.</p>
     <p class="body">Pero a partir de este movimiento te voy a pedir algo pequeño que cambia mucho: que empieces a llamarla asistente del hogar.</p>
-    <p class="body">No es un eufemismo. No es corrección política. Es precisión profesional.</p>
+    <div class="pull-quote"><p>No es un eufemismo. No es corrección política. Es precisión profesional.</p></div>
     <p class="body">Decimos asistente médica, asistente legal, asistente personal — y nadie las trata con desprecio. Decimos empleada del hogar y aparece, sin que lo notemos, una jerarquía cultural heredada que no le hace bien a nadie: ni a ella, ni a ti, ni al hogar.</p>
     <p class="body">La asistente del hogar tiene un oficio. Un saber técnico. Una responsabilidad real. Y la palabra con la que la nombras es la primera forma en que la posicionas — frente a ella, frente a tu familia, frente a ti misma.</p>
   </div>
@@ -720,7 +828,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL CAMBIO QUE SE NOTA ADENTRO</span>
-    <p class="body">CUANDO DEJÉ DE BUSCAR "UNA EMPLEADA"</p>
+    <div class="h2">CUANDO DEJÉ DE BUSCAR &quot;UNA<br>EMPLEADA&quot;</div>
+    <div class="rule"></div>
     <p class="body">En mis primeros años contratando, buscaba "una empleada que sirviera". Esa frase me hacía cargar todo el peso a mí: yo era la que sabía, ella era la que ejecutaba. El día que empecé a buscar una asistente, todo cambió · incluso mi propia actitud durante la entrevista. Empecé a hacer mejores preguntas. A explicar mejor. A escuchar distinto. Y las mujeres que llegaron a mi casa después de ese cambio, llegaron diferente. Porque las miraba diferente. La palabra con que las nombras es la palabra con que ellas se paran frente a ti.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">38</span></div>
@@ -731,14 +840,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">PREPARACIÓN</span>
-    <div class="h1-italic" style="font-size:38px;">ANTES DE CONTRATAR</div>
+    <div class="h2 h2-section">ANTES DE CONTRATAR</div>
+    <p class="section-subtitle">tres cosas que casi nadie hace</p>
     <div class="rule"></div>
-    <p class="body">tres cosas que casi nadie hace</p>
     <p class="body">La mayoría de dueñas pone el aviso o pide referencias y se va directo a entrevistar. Y ahí empieza el problema: contratan a alguien sin saber para qué la están contratando.</p>
-    <p class="body">Tener tu Home Excel listo. 01 Sin saber qué necesita tu casa — limpieza, arreglos, organización, prioridades — buscar a alguien es como contratar a ciegas. El Home Excel es tu hoja de requerimientos.</p>
-    <p class="body">Definir tu estilo de liderazgo. 02 ¿Vas a ser cercana o más formal? ¿Estarás presente o vas a delegar mucho? ¿Prefieres estructura estricta o autonomía amplia? No hay una respuesta correcta — hay tu respuesta. Y necesitas saberla antes de buscar a alguien que encaje.</p>
-    <p class="body">03 Escribir las expectativas en papel. Si no las has escrito, no son reales — son ideas difusas en tu cabeza. Lo que está escrito se puede comunicar, ajustar, sostener. Lo que está solo en tu mente se vuelve frustración cuando alguien no lo adivina.</p>
-    <p class="body">Estos tres pasos toman uno o dos días. Te ahorran meses de fricción.</p>
+    <div class="step-list"><div class="step-item"><div class="step-head"><span class="step-num">01</span><span class="step-title">Tener tu Home Excel listo.</span></div><p class="step-desc">Sin saber qué necesita tu casa — limpieza, arreglos, organización, prioridades — buscar a alguien es como contratar a ciegas. El Home Excel es tu hoja de requerimientos.</p></div><div class="step-item"><div class="step-head"><span class="step-num">02</span><span class="step-title">Definir tu estilo de liderazgo.</span></div><p class="step-desc">¿Vas a ser cercana o más formal? ¿Estarás presente o vas a delegar mucho? ¿Prefieres estructura estricta o autonomía amplia? No hay una respuesta correcta — hay tu respuesta. Y necesitas saberla antes de buscar a alguien que encaje.</p></div><div class="step-item"><div class="step-head"><span class="step-num">03</span><span class="step-title">Escribir las expectativas en papel.</span></div><p class="step-desc">Si no las has escrito, no son reales — son ideas difusas en tu cabeza. Lo que está escrito se puede comunicar, ajustar, sostener. Lo que está solo en tu mente se vuelve frustración cuando alguien no lo adivina.</p></div></div>
+    <p class="body step-closing">Estos tres pasos toman uno o dos días. Te ahorran meses de fricción.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">39</span></div>
 
@@ -758,12 +865,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL PRIMER ENCUENTRO</span>
-    <div class="h1-italic" style="font-size:38px;">LA ENTREVISTA</div>
+    <div class="h2 h2-section">LA ENTREVISTA</div>
+    <p class="section-subtitle">cómo conocer a alguien en treinta minutos</p>
     <div class="rule"></div>
-    <p class="body">cómo conocer a alguien en treinta minutos</p>
     <p class="body">Una entrevista bien hecha no es un interrogatorio. Es una conversación con propósito. Tu meta no es asustar a la candidata ni vender el puesto</p>
     <p class="body">permitir que ella te conozca.</p>
-    <p class="body">Una entrevista es una conversación entre dos mujeres que están considerando trabajar juntas.</p>
+    <div class="pull-quote"><p>Una entrevista es una conversación entre dos mujeres que están considerando trabajar juntas.</p></div>
     <p class="body">Tres cosas que cambian la entrevista de fondo:</p>
     <ul class="body-list"><li>Hazla en la casa, no por teléfono. Necesitas que ella vea el lugar donde podría trabajar, y tú necesitas verla en él.</li><li>Ofrécele algo de tomar. Café, agua, algo. Es cortesía básica que cambia el tono desde el primer minuto.</li><li>Habla menos, escucha más. La regla del 70/30: ella habla 70%, tú 30%. La gente se revela cuando hace, no cuando responde "sí señora".</li></ul>
   </div>
@@ -774,16 +881,12 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p42 -->
 <div class="page">
   <div class="content">
-    <span class="tag">PARA TU ENTREVISTA</span>
-    <div class="h1-italic" style="font-size:38px;">LAS 5 PREGUNTAS</div>
+    <span class="tag">PARA  T U  ENTREVISTA</span>
+    <div class="h2 h2-section">LAS <span class="title-digit">5</span> PREGUNTAS</div>
+    <p class="section-subtitle">que valen oro</p>
     <div class="rule"></div>
-    <p class="body">que valen oro</p>
     <p class="body">El script completo de la entrevista está en el Bonus al final del ebook. Aquí van las preguntas-clave que revelan más que cualquier currículum:</p>
-    <p class="body">01 "Cuéntame de un día normal en tu trabajo anterior. ¿Cómo empezabas? ¿Qué hacías primero?" Revela autonomía y método. Quien narra con detalle, sabe lo que hace.</p>
-    <p class="body">02 "¿Qué fue lo más difícil de tu trabajo anterior? ¿Cómo lo manejaste?" Revela honestidad y resiliencia. Cuidado con la respuesta "nada", "todo bien" — alguien sin dificultades no aprendió nada.</p>
-    <p class="body">03 "Si encuentras algo roto o dañado en mi casa, ¿qué harías?" Revela criterio bajo presión. La respuesta correcta no es "no diría nada por miedo" — es "te lo cuento de inmediato".</p>
-    <p class="body">04 "¿Qué te gustaría aprender en este trabajo?" Revela mentalidad de crecimiento. Quien quiere aprender, quiere quedarse.</p>
-    <p class="body">05 "¿Qué necesitas tú para sentirte cómoda trabajando aquí?" Revela autoconocimiento. Y le comunica que tú también te haces cargo.</p>
+    <div class="step-list step-list--questions"><div class="step-item step-item--question"><div class="step-question-row"><span class="step-num">01</span><p class="step-question">"Cuéntame de un día normal en tu trabajo anterior. ¿Cómo empezabas? ¿Qué hacías primero?"</p></div><p class="step-insight">Revela autonomía y método. Quien narra con detalle, sabe lo que hace.</p></div><div class="step-item step-item--question"><div class="step-question-row"><span class="step-num">02</span><p class="step-question">"¿Qué fue lo más difícil de tu trabajo anterior? ¿Cómo lo manejaste?"</p></div><p class="step-insight">Revela honestidad y resiliencia. Cuidado con la respuesta "nada", "todo bien" — alguien sin dificultades no aprendió nada.</p></div><div class="step-item step-item--question"><div class="step-question-row"><span class="step-num">03</span><p class="step-question">"Si encuentras algo roto o dañado en mi casa, ¿qué harías?"</p></div><p class="step-insight">Revela criterio bajo presión. La respuesta correcta no es "no diría nada por miedo" — es "te lo cuento de inmediato".</p></div><div class="step-item step-item--question"><div class="step-question-row"><span class="step-num">04</span><p class="step-question">"¿Qué te gustaría aprender en este trabajo?"</p></div><p class="step-insight">Revela mentalidad de crecimiento. Quien quiere aprender, quiere quedarse.</p></div><div class="step-item step-item--question"><div class="step-question-row"><span class="step-num">05</span><p class="step-question">"¿Qué necesitas tú para sentirte cómoda trabajando aquí?"</p></div><p class="step-insight">Revela autoconocimiento. Y le comunica que tú también te haces cargo.</p></div></div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">42</span></div>
 
@@ -793,7 +896,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL DÍA UNO</span>
-    <p class="body"><strong>EL RITUAL DE BIENVENIDA</strong></p>
+    <div class="h2">EL RITUAL DE BIENVENIDA</div>
+    <div class="rule"></div>
     <p class="body">El primer día marca el resto. Es el momento donde tu asistente decide internamente · sin palabras · qué tipo de jefa eres. Y donde tú decides · también sin palabras · qué tipo de equipo van a ser. Mi regla: el primer día no se trabaja. Se conoce. Se conversa. Se recorre la casa juntas. Se comparte un café. Se firman los acuerdos por escrito. Se acuerdan los horarios. Se le entrega la llave si corresponde. Una bienvenida cuidada vale por tres meses de capacitación apurada.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">43</span></div>
@@ -804,15 +908,14 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LOS PRIMEROS SIETE DÍAS</span>
-    <div class="h1-italic" style="font-size:38px;">CAPACITACIÓN CON<br>COMPASIÓN</div>
+    <div class="h2">CAPACITACIÓN CON<br>COMPASIÓN</div>
     <div class="rule"></div>
     <p class="body">La primera semana define el siguiente año. Es donde se construye — o se pierde — la confianza, el método y la relación de trabajo.</p>
     <p class="body">Aquí hay que invertir tiempo de verdad. No supervisar desde el celular mientras ella trabaja. Estar. Hacer juntas. Mostrar haciendo.</p>
-    <span class="tag">EL MÉTODO DE LOS TRES TIEMPOS</span>
-    <p class="body">1. Yo lo hago, ella mira. Le muestras cómo quieres que se haga, paso a paso, explicando el por qué.</p>
+    <p class="body">EL MÉTODO DE LOS TRES TIEMPOS 1. Yo lo hago, ella mira. Le muestras cómo quieres que se haga, paso a paso, explicando el por qué.</p>
     <p class="body">2. Lo hacemos juntas. Ella lo hace contigo al lado, tú resuelves dudas en el momento, sin corregir de mala manera.</p>
     <p class="body">3. Ella lo hace, tú revisas. Lo hace sola, tú revisas al final con respeto y reconocimiento.</p>
-    <p class="body">Una semana así vale por seis meses de instrucciones a las carreras. La inversión es desproporcionada.</p>
+    <div class="pull-quote"><p>Una semana así vale por seis meses de instrucciones a las carreras. La inversión es desproporcionada.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">44</span></div>
 
@@ -848,11 +951,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LOS ACUERDOS DEL DÍA UNO</span>
-    <div class="h1-italic" style="font-size:38px;">LO QUE SE NOMBRA,<br>SE SOSTIENE</div>
+    <div class="h2">LO QUE SE NOMBRA,<br>SE SOSTIENE</div>
     <div class="rule"></div>
     <p class="body">La mayoría de los problemas en una casa con asistente no nacen de mala voluntad. Nacen de acuerdos no nombrados.</p>
     <p class="body">Acuerdos sobre horarios que cada quien interpretó distinto. Acuerdos sobre tareas que nunca se escribieron. Acuerdos sobre comidas, sobre invitados, sobre comunicación con la familia.</p>
-    <p class="body">Lo que no acordaste claramente, lo van a interpretar las dos diferente.</p>
+    <div class="pull-quote"><p>Lo que no acordaste claramente, lo van a interpretar las dos diferente.</p></div>
     <p class="body">Los acuerdos del día uno se hablan, se escriben, y se firman las dos. No es burocracia — es respeto. Y es la única forma de prevenir 90% de los conflictos que vienen después.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">47</span></div>
@@ -863,13 +966,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LO QUE SE FIRMA</span>
-    <div class="h1-italic" style="font-size:38px;">LOS 4 ACUERDOS</div>
+    <div class="h2 h2-section">LOS <span class="title-digit">4</span> ACUERDOS</div>
+    <p class="section-subtitle">del día uno</p>
     <div class="rule"></div>
-    <p class="body">del día uno</p>
     <p class="body">Estos cuatro se hablan, se escriben y se firman las dos. No es burocracia. Es el respeto que sostiene todo lo demás.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> HORARIOS Y DESCANSOS</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">HORARIOS Y DESCANSOS</span></div></div>
     <p class="body">Hora de entrada y salida. Día(s) de descanso semanal. Almuerzo (con cuánto tiempo). Manejo de horas extras si las hay. Vacaciones anuales. Festivos.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> TAREAS Y PRIORIDADES</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">TAREAS Y PRIORIDADES</span></div></div>
     <p class="body">Lista clara de tareas semanales y diarias. Qué se hace cada día, qué se hace una vez por semana, qué entra en la limpieza profunda mensual. Sin esto todo se vuelve urgente — y nada importante.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">48</span></div>
@@ -882,9 +985,9 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">LO QUE SE FIRMA · CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">Y los dos que más se olvidan.</div>
     <div class="rule"></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> BENEFICIOS Y COMPENSACIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">BENEFICIOS Y COMPENSACIÓN</span></div></div>
     <p class="body">Salario, fecha de pago, prestaciones legales (seguridad social, aportes), bonificaciones si aplican, alimentación si come en casa, transporte si corresponde.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> COMUNICACIÓN Y FEEDBACK</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">COMUNICACIÓN Y FEEDBACK</span></div></div>
     <p class="body">Cómo se va a comunicar el día a día (notas, mensajes, viva voz). Cuándo se conversa: la reunión semanal de quince minutos para revisar la semana. Este último acuerdo es el que casi nadie hace explícito — y el que más previene fricciones.</p>
     <p class="body">Cuando los cuatro están firmados, el hogar tiene fundamento. Cuando faltan, todo lo demás se construye sobre arena.</p>
   </div>
@@ -896,7 +999,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL RITUAL QUE CAMBIA TODO</span>
-    <p class="body"><strong>LA CONVERSACIÓN SEMANAL</strong></p>
+    <div class="h2">LA CONVERSACIÓN SEMANAL</div>
+    <div class="rule"></div>
     <p class="body">Quince minutos a la semana · un día fijo, en un momento sin prisa · para revisar juntas: cómo estuvo la semana, qué funcionó bien, qué hay que ajustar, qué viene la próxima semana. Parece poco. Es transformador. Sin reunión semanal, los problemas se acumulan en silencio hasta que explotan en una conversación tensa. Con reunión semanal, los problemas se resuelven cuando son pequeños · y el reconocimiento del buen trabajo aparece naturalmente.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">50</span></div>
@@ -907,18 +1011,16 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">RECONOCIMIENTO</span>
-    <div class="h1-italic" style="font-size:38px;">EL ARTE DEL FEEDBACK</div>
+    <div class="h2 h2-section">EL ARTE DEL FEEDBACK</div>
+    <p class="section-subtitle">positivo</p>
     <div class="rule"></div>
-    <p class="body">positivo</p>
     <p class="body">Casi todas las dueñas dan feedback positivo mal — sin darse cuenta. Decimos "todo bien, gracias" o "qué rico te quedó", y creemos que con eso basta.</p>
     <p class="body">No basta. Ese tipo de reconocimiento es genérico, se vuelve invisible en pocas semanas, y no le enseña a tu asistente qué fue lo que específicamente hizo bien.</p>
-    <p class="body">El buen feedback positivo es específico, oportuno y nombrado.</p>
+    <div class="pull-quote"><p>El buen feedback positivo es específico, oportuno y nombrado.</p></div>
     <p class="body">Compara estas dos formas de decir lo mismo:</p>
-    <span class="tag">GENÉRICO</span>
-    <p class="body">"Todo bien hoy, gracias."</p>
-    <span class="tag">NOMBRADO</span>
-    <p class="body">"Me encantó cómo organizaste el closet hoy. Tener todo por color hace una diferencia enorme. Gracias por ese cuidado."</p>
-    <p class="body">El segundo enseña, motiva y refuerza. El primero apenas suena.</p>
+    <p class="body">GENÉRICO "Todo bien hoy, gracias."</p>
+    <p class="body">NOMBRADO "Me encantó cómo organizaste el closet hoy. Tener todo por color hace una diferencia enorme. Gracias por ese cuidado."</p>
+    <div class="pull-quote"><p>El segundo enseña, motiva y refuerza. El primero apenas suena.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">51</span></div>
 
@@ -928,14 +1030,14 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LA CONVERSACIÓN QUE EVITAMOS</span>
-    <div class="h1-italic" style="font-size:38px;">FEEDBACK DIFÍCIL</div>
+    <div class="h2 h2-section">FEEDBACK DIFÍCIL</div>
+    <p class="section-subtitle">sin destruir la relación</p>
     <div class="rule"></div>
-    <p class="body">sin destruir la relación</p>
     <p class="body">Esta es la conversación que casi todas posponemos — hasta que se vuelve imposible evitarla, y entonces sale mal porque ya estamos cargadas. La regla principal:</p>
-    <p class="body">El feedback difícil se da temprano, en privado, y sobre la conducta — nunca sobre la persona.</p>
+    <div class="pull-quote"><p>El feedback difícil se da temprano, en privado, y sobre la conducta — nunca sobre la persona.</p></div>
     <p class="body">Tres principios que cambian este momento:</p>
     <ul class="body-list"><li>Pronto, no acumulado. Lo que se dice en el momento se aprende. Lo que se acumula explota.</li><li>En privado, nunca delante de otros. Familia, otros empleados, niños — nunca.</li><li>Sobre la conducta, no la persona. "Esto no quedó como esperaba" — no "tú no sirves para esto". La diferencia es enorme.</li></ul>
-    <p class="body">El script completo de cómo conducir esta conversación está en el Bonus.</p>
+    <div class="pull-quote"><p>El script completo de cómo conducir esta conversación está en el Bonus.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">52</span></div>
 
@@ -945,9 +1047,9 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LO QUE NO HACER</span>
-    <div class="h1-italic" style="font-size:38px;">ERRORES COMUNES</div>
+    <div class="h2 h2-section">ERRORES COMUNES</div>
+    <p class="section-subtitle">al dar feedback difícil</p>
     <div class="rule"></div>
-    <p class="body">al dar feedback difícil</p>
     <ul class="body-list"><li>Esperar a estar enojada para hablar. El enojo cambia el tono y arruina el mensaje. Si estás enojada, espera 24 horas. La conversación puede esperar; tu paz no.</li><li>Empezar con "no quiero molestarte, pero…". Pone a la otra persona inmediatamente a la defensiva. Empieza nombrando lo que pasó: "Quiero hablar contigo sobre algo que noté ayer."</li><li>Acumular varios temas en una sola conversación. Una conversación, un tema. Si juntas tres reclamos, ella escucha solo el primero — y tú dejas de ser tomada en serio.</li><li>Hablar en plural cuando es algo de ella. "A veces algunas cosas no quedan bien" no comunica nada. "Esto que hiciste ayer no quedó como yo esperaba" sí.</li><li>No escuchar su versión. Pregunta. "¿Tú qué piensas? ¿Qué pasó?" Muchas veces hay un contexto que tú no conocías y que cambia todo.</li><li>Dejar la conversación sin acuerdo. Toda conversación difícil cierra con un acuerdo concreto: qué va a pasar distinto a partir de ahora. Sin acuerdo, fue una queja — no un feedback.</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">53</span></div>
@@ -962,11 +1064,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Va a pasar. En toda casa pasa. Una taza preciada que se rompió, un jarrón heredado que se cayó, un objeto que desapareció.</p>
     <p class="body">Cómo manejes este momento define la relación de los siguientes años. Lo que parece un detalle es, en realidad, el momento donde tu asistente decide si puede confiar en ti — y tú en ella.</p>
-    <span class="tag">LA REGLA DE LOS TRES PASOS</span>
-    <p class="body">1. Antes de reaccionar, respira. Lo material ya pasó. Lo importante es lo que viene ahora.</p>
+    <p class="body">LA REGLA DE LOS TRES PASOS 1. Antes de reaccionar, respira. Lo material ya pasó. Lo importante es lo que viene ahora.</p>
     <p class="body">2. Pregúntale qué pasó, sin acusar. La gran mayoría de las veces fue un accidente. La forma en que ella te lo cuente vale más que el objeto perdido.</p>
     <p class="body">3. Decide si lo descuentas, no lo descuentas, o lo asumes como costo de la casa. Y dilo en voz alta. El silencio aquí destruye más que cualquier descuento.</p>
-    <p class="body">Una conversación sana en este momento construye más confianza que diez meses de buen trabajo.</p>
+    <div class="pull-quote"><p>Una conversación sana en este momento construye más confianza que diez meses de buen trabajo.</p></div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">54</span></div>
 
@@ -992,8 +1093,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Si llegaste hasta aquí — y aplicaste, aunque sea parcialmente, lo que hemos visto — ya no hablas con tu asistente igual que antes. Ya no la contratas igual. Ya no la capacitas igual. Ya no le das feedback igual.</p>
     <p class="body">Eso es liderazgo. Y es la mitad del camino.</p>
     <p class="body">La otra mitad es sostener lo que has construido. Porque construir un equipo es un día. Sostenerlo es todos los días.</p>
-    <span class="tag">SIGUE ALMOVIMIENTO 04 →</span>
-    <p class="body">Sostener la armonía en el tiempo</p>
+    <div class="next-link">
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 04</span><span class="arrow-icon" aria-hidden="true">→</span></span>
+      <span class="arrow-title">Sostener la armonía en el tiempo</span>
+    </div>
   </div>
     <div class="banda"><span class="banda-texto">03 · EQUIPO</span><span class="banda-texto">56</span></div>
 
@@ -1019,7 +1122,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Hasta aquí hemos hablado del inicio: la entrevista, el día uno, la primera semana, los acuerdos, las primeras conversaciones. Y eso ya es muchísimo.</p>
     <p class="body">Pero hay una verdad que pocas dueñas conocen al principio: la mayoría de las casas no fracasan en el inicio — fracasan en el sostener.</p>
     <p class="body">Las primeras semanas todas estamos atentas, pacientes, presentes. A los seis meses, cuando lo nuevo ya no es nuevo, es donde se prueba si construiste un sistema o solo un buen comienzo.</p>
-    <p class="body">Sostener no es repetir. Es ritualizar.</p>
+    <div class="pull-quote"><p>Sostener no es repetir. Es ritualizar.</p></div>
     <p class="body">Lo que vamos a ver en este movimiento son los pocos rituales que, bien sostenidos, mantienen tu hogar funcionando — sin que tú tengas que vigilarlo.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · ARMONÍA</span><span class="banda-texto">58</span></div>
@@ -1030,7 +1133,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LOS PILARES DEL SOSTENER</span>
-    <p class="body"><strong>TRES RITUALES, SOSTENIDOS</strong></p>
+    <div class="h2">TRES RITUALES, SOSTENIDOS</div>
+    <div class="rule"></div>
     <p class="body">Después de años acompañando hogares, descubrí que solo tres rituales · bien hechos, sostenidos en el tiempo · sostienen un hogar entero: El ritual semanal. Quince minutos a la semana para revisar la semana que pasó y planear la que viene. El ritual mensual. Una conversación más larga, con café, donde se revisa lo grande: relación, ajustes, agradecimientos. El reconocimiento continuo. No esperar al ritual para reconocer. Hacerlo en el día a día, sin dramatismo, con consistencia.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · ARMONÍA</span><span class="banda-texto">59</span></div>
@@ -1041,12 +1145,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL RITUAL MÁS IMPORTANTE</span>
-    <div class="h1-italic" style="font-size:38px;">LA REUNIÓN SEMANAL</div>
+    <div class="h2 h2-section">LA REUNIÓN SEMANAL</div>
+    <p class="section-subtitle">quince minutos que cambian un hogar</p>
     <div class="rule"></div>
-    <p class="body">quince minutos que cambian un hogar</p>
     <p class="body">Ya la nombramos en los acuerdos del día uno. Ahora vamos a verla en detalle, porque es el ritual que sostiene todo lo demás.</p>
-    <span class="tag">LA ESTRUCTURA DE QUINCE MINUTOS</span>
-    <p class="body">5 minutos · Lo que funcionó. Empieza tú. Reconoce algo específico de la semana. Luego pregúntale a ella qué siente que funcionó.</p>
+    <p class="body">LA ESTRUCTURA DE QUINCE MINUTOS 5 minutos · Lo que funcionó. Empieza tú. Reconoce algo específico de la semana. Luego pregúntale a ella qué siente que funcionó.</p>
     <p class="body">5 minutos · Lo que hay que ajustar. Sin acumular dramas. Una o dos cosas concretas que se pueden mejorar la próxima semana.</p>
     <p class="body">5 minutos · Lo que viene. Prioridades de la semana siguiente. Eventos especiales. Si vas a estar o no. Si hay alguien de visita. Lo que ella necesita saber para hacer bien su trabajo.</p>
     <p class="body">Hazla el mismo día, a la misma hora. Lunes en la mañana, viernes al cierre — tú decides. Pero que sea ritual, no capricho. Lo que es ritual se sostiene; lo que es capricho se olvida.</p>
@@ -1070,15 +1173,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">ANTICIPARSE VALE POR MIL</span>
-    <div class="h1-italic" style="font-size:38px;">LAS 3 CRISIS</div>
+    <div class="h2 h2-section">LAS <span class="title-digit">3</span> CRISIS</div>
+    <p class="section-subtitle">que vas a enfrentar tarde o temprano</p>
     <div class="rule"></div>
-    <p class="body">que vas a enfrentar tarde o temprano</p>
-    <p class="body">Tres crisis son casi inevitables. Quien las anticipa las atraviesa. Quien no, las sufre.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> LARENUNCIA</div></div>
+    <div class="pull-quote"><p>Tres crisis son casi inevitables. Quien las anticipa las atraviesa. Quien no, las sufre.</p></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">LA RENUNCIA</span></div></div>
     <p class="body">Tarde o temprano, ella se va. Prevención: ten siempre tu Home Excel actualizado y un cuaderno de procedimientos. Eso convierte una renuncia en cambio, no en crisis.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> EL CONFLICTO FAMILIAR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">EL CONFLICTO FAMILIAR</span></div></div>
     <p class="body">Alguien de tu familia va a tener una queja sobre ella. Prevención: tú eres la única vocería. Nadie le da instrucciones contradictorias. Todo pasa por ti.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> LAAUSENCIAINESPERADA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">LA AUSENCIA INESPERADA</span></div></div>
     <p class="body">Enfermedad, emergencia, accidente. Va a faltar días o semanas. Prevención: ten identificado a quién llamar de respaldo, y un fondo separado para esos imprevistos.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · ARMONÍA</span><span class="banda-texto">62</span></div>
@@ -1093,7 +1196,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Casi todas reconocemos a nuestra asistente en los momentos especiales: cumpleaños, fin de año, después de un evento grande. Y eso está bien.</p>
     <p class="body">Pero el reconocimiento que sostiene no es ese. Es el de un martes cualquiera. Es ver el ramo de flores que ella arregló sin que se lo pidieras y decírselo. Es notar que el café estaba a la temperatura exacta y agradecerlo. Es percibir que hoy la casa huele distinto — porque ella puso atención — y nombrarlo.</p>
-    <p class="body">El reconocimiento grande se olvida. El reconocimiento pequeño se sostiene.</p>
+    <div class="pull-quote"><p>El reconocimiento grande se olvida. El reconocimiento pequeño se sostiene.</p></div>
     <p class="body">Es la diferencia entre una asistente que se queda tres meses y una que se queda diez años. No es lo que le dices en su cumpleaños — es lo que le dices un martes cualquiera.</p>
   </div>
     <div class="banda"><span class="banda-texto">04 · ARMONÍA</span><span class="banda-texto">63</span></div>
@@ -1120,8 +1223,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Si has llegado hasta aquí ya tienes lo esencial: la filosofía, la herramienta, la construcción del equipo, y los rituales del sostener. Eso es Liviin como método.</p>
     <p class="body">Pero antes de entregarte los scripts y cerrar este libro, quiero contarte algo que hasta ahora no te he contado.</p>
     <p class="body">Quiero contarte de dónde viene este método. Y por qué tuve que crearlo. Porque no nació en una oficina — nació en un momento de mi vida en que mi propio hogar me estaba rompiendo.</p>
-    <span class="tag">SIGUE ALMOVIMIENTO 05 →</span>
-    <p class="body">Mi historia y mi método</p>
+    <div class="next-link">
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 05</span><span class="arrow-icon" aria-hidden="true">→</span></span>
+      <span class="arrow-title">Mi historia y mi método</span>
+    </div>
   </div>
     <div class="banda"><span class="banda-texto">04 · ARMONÍA</span><span class="banda-texto">65</span></div>
 
@@ -1147,10 +1252,10 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Acabábamos de mudarnos. Tres hijos pequeños. Pandemia recién declarada. Y por primera vez en años, no tenía la excusa del trabajo, ni la del tráfico, ni la de las reuniones. Estaba en mi casa nueva, todo el día, todos los días.</p>
     <p class="body">Y mi casa — la de la interiorista que vivía recomendándole a otras cómo cuidar la suya — me empezó a quedar grande.</p>
     <p class="body">Tuve ataques de pánico. No los esperaba. No sabía cómo nombrarlos. Aparecían en los momentos menos pensados: mientras cocinaba, mientras los niños jugaban, mientras intentaba responder un correo desde la mesa del comedor que también era oficina y también era cuarto de tareas.</p>
-    <p class="body">Tardé en entender que mi inconformidad no era con mi casa. Era conmigo misma.</p>
+    <div class="pull-quote"><p>Tardé en entender que mi inconformidad no era con mi casa. Era conmigo misma.</p></div>
     <p class="body">Yo, que sabía de hogares por oficio, no había aprendido a habitar el mío.</p>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">67</span></div>
+    <div class="banda"><span class="banda-texto">05 · MI HISTORIA</span><span class="banda-texto">67</span></div>
 
 </div>
 
@@ -1158,15 +1263,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">LO QUE ME SOSTUVO</span>
-    <div class="h1-italic" style="font-size:38px;">MIS MAESTRAS</div>
+    <div class="h2 h2-section">MIS MAESTRAS</div>
+    <p class="section-subtitle">a distancia</p>
     <div class="rule"></div>
-    <p class="body">a distancia</p>
     <p class="body">En esos meses leí, vi, estudié todo lo que pude. Y tres mujeres — sin saberlo ellas — se volvieron mis maestras:</p>
     <ul class="body-list"><li>Marie Kondo me enseñó que un hogar no se ordena con técnica, sino con intención. Que cada objeto merece una pregunta: ¿esto me da alegría?</li><li>The Home Edit me mostró que la organización puede ser sistema, estética y arte al mismo tiempo. Que un cajón ordenado puede ser una pequeña obra de calma.</li><li>Dream Home me recordó que la casa también es proyecto vivo. Que se sueña, se planea, se construye — y que tener una visión es la diferencia entre vivir en una casa y habitarla.</li></ul>
     <p class="body">Pero ninguna de ellas me hablaba a mí: a una mujer latinoamericana, mamá de tres hijos pequeños, en su casa con su asistente del hogar.</p>
     <p class="body">Tomé lo que aprendí de ellas, lo mezclé con mis veinte años de oficio, lo pasé por mi propio momento de quiebre — y nació un método propio. Mi método.</p>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">68</span></div>
+    <div class="banda"><span class="banda-texto">05 · MI HISTORIA</span><span class="banda-texto">68</span></div>
 
 </div>
 
@@ -1174,17 +1279,17 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">EL MÉTODO MTE</span>
-    <div class="h1-italic" style="font-size:38px;">LOS 5 PILARES</div>
+    <div class="h2">LOS <span class="title-digit">5</span> PILARES</div>
     <div class="rule"></div>
     <p class="body">Todo lo que has leído en este libro descansa sobre cinco pilares. Los formulé en mi propia casa, en mi propio quiebre, y los he probado en decenas de hogares desde entonces.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span> INTROSPECCIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">01</span><span class="numbered-label">INTROSPECCIÓN</span></div></div>
     <p class="body">Mirar tu propia relación con el hogar antes de querer cambiar el de los demás. ¿Qué sientes al volver a casa? ¿Qué te frustra? ¿Qué evitas? Sin esa mirada hacia adentro, todo lo demás es técnica vacía.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span> VERDAD</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">02</span><span class="numbered-label">VERDAD</span></div></div>
     <p class="body">Nombrar lo que está pasando — incluso lo incómodo. La lista que evitas. La conversación que pospones. La frustración que no quieres reconocer. Lo que se nombra deja de tener poder sobre ti.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span> ACCIÓN</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">03</span><span class="numbered-label">ACCIÓN</span></div></div>
     <p class="body">Pasar de la idea al hacer. No esperar a tener todo claro, a tener todo el tiempo, a tener todo el dinero. Empezar con una habitación, una conversación, un acuerdo. La acción es la que enseña.</p>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">69</span></div>
+    <div class="banda"><span class="banda-texto">05 · MI HISTORIA</span><span class="banda-texto">69</span></div>
 
 </div>
 
@@ -1194,14 +1299,14 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">LOS 5 PILARES · CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">Los dos que sostienen<br>todo lo anterior.</div>
     <div class="rule"></div>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span> SISTEMA</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">04</span><span class="numbered-label">SISTEMA</span></div></div>
     <p class="body">Convertir lo aprendido en estructura. Rituales semanales, acuerdos firmados, herramientas como el Home Excel. Sin sistema, los buenos comienzos no se sostienen — y todo lo construido se desarma con el tiempo.</p>
-    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span> AMOR</div></div>
+    <div class="numbered-block"><div class="numbered-title"><span class="num">05</span><span class="numbered-label">AMOR</span></div></div>
     <p class="body">Por la organización y la estética. Porque al final, todo esto no es para tener una casa "perfecta". Es para que el lugar al que llegas cada día sea hermoso, te dé paz, te devuelva la energía que el mundo te quita.</p>
     <p class="body">Introspección. Verdad. Acción. Sistema. Amor. Esos son los cinco. Y en ese orden.</p>
-    <p class="body">Si te saltas un pilar, lo demás se cae. Por eso la secuencia importa.</p>
+    <div class="pull-quote"><p>Si te saltas un pilar, lo demás se cae. Por eso la secuencia importa.</p></div>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">70</span></div>
+    <div class="banda"><span class="banda-texto">05 · MI HISTORIA</span><span class="banda-texto">70</span></div>
 
 </div>
 
@@ -1212,14 +1317,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Esto es solo el comienzo.</div>
     <div class="rule"></div>
     <p class="body">Cada uno de los cinco pilares merece su propio espacio. Por eso, en Liviin, este ebook es la primera puerta — pero no la última. Hay un camino entero esperándote.</p>
-    <span class="tag">CAPACITACIONES LIVIIN</span>
+    <p class="body">CAPACITACIONES LIVIIN</p>
     <p class="body">Espacios pequeños, en grupo o individuales, donde trabajamos pilar por pilar — la introspección que más te cuesta, la verdad que llevas tiempo evitando, la acción que necesitas tomar.</p>
-    <span class="tag">Y DOS LIBROS MÁS</span>
+    <p class="body">Y DOS LIBROS MÁS</p>
     <p class="body">Estoy escribiendo los dos siguientes libros de esta línea editorial. Uno te tomará de la mano para ejecutar todo lo que aprendiste aquí — el libro del hacer. Y el otro te llevará a la dimensión más profunda de todas: la relación humana con quien sostiene tu hogar.</p>
-    <span class="tag">PARA NO PERDERTE NADA</span>
-    <p class="body">Sígueme en mis redes — al final de este libro encuentras dónde. Allí anuncio cada lanzamiento y comparto contenido nuevo cada semana.</p>
+    <p class="body">PARA NO PERDERTE NADA Sígueme en mis redes — al final de este libro encuentras dónde. Allí anuncio cada lanzamiento y comparto contenido nuevo cada semana.</p>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">71</span></div>
+    <div class="banda"><span class="banda-texto">05 · MI HISTORIA</span><span class="banda-texto">71</span></div>
 
 </div>
 
@@ -1233,34 +1337,31 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   </div>
 </div>
 
-<!-- p73 -->
+<!-- p73 movimiento -->
 <div class="page">
-  <div class="content">
+  <div class="content movimiento-cover">
     <span class="tag">MOVIMIENTO BONUS</span>
-    <div class="h2">CONVERSACIONES<br>ESENCIALES</div>
+    <div class="h1">CONVERSACIONES<br>ESENCIALES</div>
     <div class="rule"></div>
-    <p class="body">Cinco scripts listos para usar. Las palabras exactas para los momentos clave.</p>
+    <div class="spacer-sm"></div>
+    <p class="subtitle"></p>
   </div>
-    <div class="banda"><span class="banda-texto">05 · CONVERSACIONES</span><span class="banda-texto">73</span></div>
-
 </div>
 
 <!-- p74 -->
 <div class="page">
   <div class="content">
     <span class="tag">ANTES DE USARLOS</span>
-    <div class="h1-italic" style="font-size:38px;">CÓMO LEER</div>
+    <div class="h2 h2-section">CÓMO LEER</div>
+    <p class="section-subtitle">estos scripts</p>
     <div class="rule"></div>
-    <p class="body">estos scripts</p>
     <p class="body">Estos scripts no son para memorizar. Son para que aprendas la estructura de cada conversación clave — y luego encuentres tus propias palabras.</p>
     <p class="body">Léelos completos antes de la conversación. Después, durante la conversación, deja que fluyan tus palabras siguiendo el orden y el tono que aprendiste aquí.</p>
-    <span class="tag">SOBRE EL TUTEO</span>
-    <p class="body">Los scripts están escritos con tuteo por fluidez editorial. Si en tu hogar usan usted — sea por respeto, por costumbre regional, o por afecto formal</p>
+    <p class="body">SOBRE EL TUTEO Los scripts están escritos con tuteo por fluidez editorial. Si en tu hogar usan usted — sea por respeto, por costumbre regional, o por afecto formal</p>
     <span class="tag">SOBRE LA ESTRUCTURA</span>
     <p class="body">Cada script tiene la misma arquitectura: contexto (cuándo se usa), conversación recomendada (las palabras), variaciones (cómo ajustarlo). Los scripts complejos incluyen además lo que NO decir — los errores frecuentes a evitar.</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">74</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">74</span></div>
 
 </div>
 
@@ -1268,38 +1369,33 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SCRIPT 01</span>
-    <div class="h1-italic" style="font-size:38px;">LA ENTREVISTA</div>
+    <div class="h2">LA ENTREVISTA</div>
     <div class="rule"></div>
     <p class="body">Contexto: Cuando estás conociendo a una candidata para asistente del hogar. Hazla en tu casa, no por teléfono. Treinta minutos máximo.</p>
-    <span class="tag">APERTURA · 5 MINUTOS</span>
-    <p class="body">"Hola [nombre], gracias por venir. ¿Te ofrezco un café o un té antes de empezar? Quiero contarte un poco de mi casa, escuchar de tu experiencia, y al final te cuento cómo trabajamos aquí. ¿Te parece?"</p>
-    <span class="tag">RECORRIDO POR LA CASA · 5 MINUTOS</span>
-    <p class="body">"Antes de hablar, quiero que veas el lugar. Aquí es la cocina, esta es la sala donde más se vive…"</p>
+    <p class="body">APERTURA · 5 MINUTOS "Hola [nombre], gracias por venir. ¿Te ofrezco un café o un té antes de empezar? Quiero contarte un poco de mi casa, escuchar de tu experiencia, y al final te cuento cómo trabajamos aquí. ¿Te parece?"</p>
+    <p class="body">RECORRIDO POR LA CASA · 5 MINUTOS "Antes de hablar, quiero que veas el lugar. Aquí es la cocina, esta es la sala donde más se vive…"</p>
     <p class="body">Camina con ella. Muestra la casa con calma. Esto te dice mucho de cómo ella la mirará después.</p>
-    <span class="tag">LAS 5 PREGUNTAS · 15 MINUTOS</span>
-    <p class="body">Las que ya viste en el Movimiento 03. Repítelas aquí tal como te las enseñé — con calma, dejando silencios. La regla: ella habla 70%, tú 30%.</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
+    <p class="body">LAS 5 PREGUNTAS · 15 MINUTOS Las que ya viste en el Movimiento 03. Repítelas aquí tal como te las enseñé — con calma, dejando silencios. La regla: ella habla 70%, tú 30%.</p>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">75</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">75</span></div>
 
 </div>
 
 <!-- p76 -->
 <div class="page">
   <div class="content">
-    <span class="tag">SCRIPT 01 · CONTINÚA</span>
+    <span class="tag">SCRIPT 01· CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">El cierre y lo que sigue.</div>
     <div class="rule"></div>
-    <span class="tag">CIERRE · 5 MINUTOS</span>
-    <p class="body">"Cuéntame ahora qué te interesaría tú saber de mí, de la casa, de cómo trabajamos. Quiero que tomes la decisión con toda la información."</p>
+    <span class="tag">CIERRE·5MINUTOS</span>
+    <div class="pull-quote"><p>"Cuéntame ahora qué te interesaría tú saber de mí, de la casa, de cómo trabajamos. Quiero que tomes la decisión con toda la información."</p></div>
     <p class="body">Después de sus preguntas, cierra así:</p>
-    <p class="body">"Tengo otras candidatas que voy a conocer esta semana. Te llamo el [día concreto] sin falta — sea sí o no, te contesto. ¿Te parece?"</p>
-    <p class="body">Lo que diferencia una buena entrevista no es lo que preguntas. Es cómo escuchas.</p>
-    <span class="tag">LO QUE NO DECIR</span>
+    <div class="pull-quote"><p>"Tengo otras candidatas que voy a conocer esta semana. Te llamo el [día concreto] sin falta — sea sí o no, te contesto. ¿Te parece?"</p></div>
+    <div class="pull-quote"><p>Lo que diferencia una buena entrevista no es lo que preguntas. Es cómo escuchas.</p></div>
+    <p class="body">LO QUE NO DECIR</p>
     <ul class="body-list"><li>"¿Tienes hijos? ¿Estás casada?" — Es información personal que no determina si servirá para el trabajo. Si ella lo trae naturalmente, escucha.</li><li>"En tu trabajo anterior, ¿por qué te fueron?" — Pone a la defensiva. Mejor: "¿Por qué te interesa cambiar?"</li><li>"Aquí no hay problemas, todo es muy fácil." — Mentir en la entrevista garantiza que en tres meses haya conflicto. Sé honesta sobre tu casa.</li></ul>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">76</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">76</span></div>
 
 </div>
 
@@ -1307,21 +1403,16 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SCRIPT 02</span>
-    <div class="h1-italic" style="font-size:38px;">LA CAPACITACIÓN</div>
+    <div class="h2 h2-section">LA CAPACITACIÓN</div>
+    <p class="section-subtitle">de la primera semana</p>
     <div class="rule"></div>
-    <p class="body">de la primera semana</p>
-    <p class="body">Contexto: El día uno y los primeros siete días. El método de los tres tiempos en palabras concretas.</p>
-    <span class="tag">CUANDO LE MUESTRAS ALGO NUEVO</span>
-    <p class="body">"Te voy a mostrar cómo me gusta que se haga esto en mi casa. No es porque tú no sepas — es porque cada casa tiene sus formas. Te muestro primero, después lo hacemos juntas, y al tercer día ya lo haces tú sola y yo solo reviso al final. ¿Te parece?"</p>
-    <span class="tag">CUANDO ELLA PREGUNTA ALGO</span>
-    <p class="body">"Qué buena pregunta. Antes de contestarte, déjame pensar… [explica]. Y si tienes más preguntas en cualquier momento, hazlas — siempre. Es mucho mejor preguntar que asumir."</p>
-    <span class="tag">AL CIERRE DEL PRIMER DÍA</span>
-    <p class="body">"Antes de que te vayas, ¿cómo te sentiste hoy? ¿Hay algo que te haya quedado raro o que quieras que repasemos mañana? Para mí también es nuevo trabajar contigo, y quiero que esto fluya bien para las dos."</p>
-    <p class="body">Variación: si ella es más formal y prefiere usted, mantén el mismo espíritu</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
-    <p class="body">cambiando solo la conjugación.</p>
+    <div class="pull-quote"><p>Contexto: El día uno y los primeros siete días. El método de los tres tiempos en palabras concretas.</p></div>
+    <p class="body">CUANDO LE MUESTRAS ALGO NUEVO "Te voy a mostrar cómo me gusta que se haga esto en mi casa. No es porque tú no sepas — es porque cada casa tiene sus formas. Te muestro primero, después lo hacemos juntas, y al tercer día ya lo haces tú sola y yo solo reviso al final. ¿Te parece?"</p>
+    <p class="body">CUANDO ELLA PREGUNTA ALGO "Qué buena pregunta. Antes de contestarte, déjame pensar… [explica]. Y si tienes más preguntas en cualquier momento, hazlas — siempre. Es mucho mejor preguntar que asumir."</p>
+    <p class="body">AL CIERRE DEL PRIMER DÍA "Antes de que te vayas, ¿cómo te sentiste hoy? ¿Hay algo que te haya quedado raro o que quieras que repasemos mañana? Para mí también es nuevo trabajar contigo, y quiero que esto fluya bien para las dos."</p>
+    <div class="pull-quote"><p>Variación: si ella es más formal y prefiere usted, mantén el mismo espíritu cambiando solo la conjugación.</p></div>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">77</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">77</span></div>
 
 </div>
 
@@ -1329,21 +1420,18 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SCRIPT 03</span>
-    <div class="h1-italic" style="font-size:38px;">FEEDBACK POSITIVO</div>
+    <div class="h2 h2-section">FEEDBACK POSITIVO</div>
+    <p class="section-subtitle">nombrado, no genérico</p>
     <div class="rule"></div>
-    <p class="body">nombrado, no genérico</p>
-    <p class="body">Contexto: En el día a día y en la reunión semanal. Recuerda: lo nombrado se sostiene; lo genérico se olvida.</p>
-    <span class="tag">LA ESTRUCTURA DE TRES PARTES</span>
-    <p class="body">1. Lo que viste exactamente. "Hoy vi cómo organizaste el cajón de los cubiertos…"</p>
+    <div class="pull-quote"><p>Contexto: En el día a día y en la reunión semanal. Recuerda: lo nombrado se sostiene; lo genérico se olvida.</p></div>
+    <p class="body">LA ESTRUCTURA DE TRES PARTES 1. Lo que viste exactamente. "Hoy vi cómo organizaste el cajón de los cubiertos…"</p>
     <p class="body">2. El por qué importa. "…tener todo por tamaño hace una diferencia enorme cuando estamos sirviendo a invitados."</p>
     <p class="body">3. El reconocimiento personal. "Gracias por ese cuidado. Me hace sentir que la casa está en buenas manos."</p>
-    <p class="body">El feedback positivo nombrado es la inversión más rentable de un hogar.</p>
+    <div class="pull-quote"><p>El feedback positivo nombrado es la inversión más rentable de un hogar.</p></div>
     <p class="body">Hazlo al menos una vez al día. No tiene que ser largo — pero tiene que ser específico. La diferencia entre una asistente que se queda y una que se va, muchas veces está aquí.</p>
-    <p class="body">Variación: en la reunión semanal, recapitula 2-3 cosas específicas de la</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
-    <p class="body">semana, no solo del día.</p>
+    <div class="pull-quote"><p>Variación: en la reunión semanal, recapitula 2-3 cosas específicas de la semana, no solo del día.</p></div>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">78</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">78</span></div>
 
 </div>
 
@@ -1351,37 +1439,32 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SCRIPT 04</span>
-    <div class="h1-italic" style="font-size:38px;">EL FEEDBACK DIFÍCIL</div>
+    <div class="h2">EL FEEDBACK DIFÍCIL</div>
     <div class="rule"></div>
     <p class="body">Contexto: Cuando algo no salió bien y necesitas decirlo. Pronto, no acumulado. En privado. Sobre la conducta, no la persona.</p>
-    <span class="tag">APERTURA</span>
-    <p class="body">"[Nombre], ¿tienes un momento? Quiero hablar contigo sobre algo que noté esta mañana. Nada grave — pero quiero que lo conversemos antes de que se vuelva un patrón."</p>
-    <span class="tag">NOMBRAR EL HECHO</span>
-    <p class="body">"Cuando entré al baño esta mañana, vi que la ducha no había quedado seca como acordamos. Quería entender qué pasó."</p>
+    <p class="body">APERTURA "[Nombre], ¿tienes un momento? Quiero hablar contigo sobre algo que noté esta mañana. Nada grave — pero quiero que lo conversemos antes de que se vuelva un patrón."</p>
+    <p class="body">NOMBRAR EL HECHO "Cuando entré al baño esta mañana, vi que la ducha no había quedado seca como acordamos. Quería entender qué pasó."</p>
     <p class="body">(Habla del hecho. No de la persona. No de "siempre" ni de "nunca". De este hecho específico, este día.)</p>
-    <span class="tag">ESCUCHAR SU VERSIÓN</span>
-    <p class="body">"¿Tú qué piensas? ¿Qué pasó?"</p>
+    <p class="body">ESCUCHAR SU VERSIÓN "¿Tú qué piensas? ¿Qué pasó?"</p>
     <p class="body">Y aquí te callas. Aunque te dé incomodidad el silencio. Muchas veces hay un contexto que tú no conoces — y que cambia todo.</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">79</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">79</span></div>
 
 </div>
 
 <!-- p80 -->
 <div class="page">
   <div class="content">
-    <span class="tag">SCRIPT 04 · CONTINÚA</span>
+    <span class="tag">SCRIPT 04· CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">El cierre con acuerdo.</div>
     <div class="rule"></div>
     <span class="tag">CERRAR CON ACUERDO CONCRETO</span>
-    <p class="body">"Entonces quedamos así: a partir de mañana, después de limpiar la ducha, le pasas la toalla seca antes de salir del baño. Si hay algo que te dificulte hacerlo así, dímelo y buscamos juntas una forma. ¿De acuerdo?"</p>
-    <p class="body">Toda conversación difícil debe cerrar con un acuerdo concreto: qué va a pasar distinto desde mañana.</p>
-    <span class="tag">LO QUE NO DECIR</span>
+    <div class="pull-quote"><p>"Entonces quedamos así: a partir de mañana, después de limpiar la ducha, le pasas la toalla seca antes de salir del baño. Si hay algo que te dificulte hacerlo así, dímelo y buscamos juntas una forma. ¿De acuerdo?"</p></div>
+    <div class="pull-quote"><p>Toda conversación difícil debe cerrar con un acuerdo concreto: qué va a pasar distinto desde mañana.</p></div>
+    <p class="body">LO QUE NO DECIR</p>
     <ul class="body-list"><li>"No quiero molestarte, pero…" — Te pone en posición débil y a ella a la defensiva. Empieza nombrando lo que pasó, sin pedir permiso.</li><li>"Siempre haces esto" o "nunca…" — Universaliza un hecho puntual. Habla solo de este día, este hecho.</li><li>"Es que no estás trabajando bien." — Ataca a la persona, no la conducta. La diferencia es enorme. Una se corrige; la otra duele.</li><li>"A ver si esta vez sí lo haces bien." — Sarcasmo disfrazado. La conversación se rompe.</li><li>Acumular tres reclamos en una conversación. — Una conversación, un tema. Si juntas varios, ella escucha solo el primero y deja de tomarte en serio.</li></ul>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">80</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">80</span></div>
 
 </div>
 
@@ -1389,39 +1472,35 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SCRIPT 05</span>
-    <div class="h1-italic" style="font-size:38px;">CUANDO ALGO SE ROMPE</div>
+    <div class="h2 h2-section">CUANDO ALGO SE ROMPE</div>
+    <p class="section-subtitle">o se pierde</p>
     <div class="rule"></div>
-    <p class="body">o se pierde</p>
-    <p class="body">Contexto: El momento de verdad. Tu reacción aquí define la confianza de los siguientes años.</p>
-    <span class="tag">ANTES DE HABLAR · RESPIRA</span>
-    <p class="body">Lo material ya pasó. Lo importante es lo que viene ahora. Si estás en shock, dile "déjame procesar y hablamos en una hora" — y vete a respirar. Una conversación con la rabia caliente arruina años de relación.</p>
-    <span class="tag">LA CONVERSACIÓN, SIN ACUSAR</span>
-    <p class="body">"[Nombre], cuéntame qué pasó con [el objeto]. Te escucho con calma."</p>
+    <div class="pull-quote"><p>Contexto: El momento de verdad. Tu reacción aquí define la confianza de los siguientes años.</p></div>
+    <p class="body">ANTES DE HABLAR · RESPIRA Lo material ya pasó. Lo importante es lo que viene ahora. Si estás en shock, dile "déjame procesar y hablamos en una hora" — y vete a respirar. Una conversación con la rabia caliente arruina años de relación.</p>
+    <p class="body">LA CONVERSACIÓN, SIN ACUSAR "[Nombre], cuéntame qué pasó con [el objeto]. Te escucho con calma."</p>
     <p class="body">Y la dejas hablar completa. Sin interrumpir. Sin gestos de incredulidad. Sin "ay, no puedo creer…".</p>
     <p class="body">La gran mayoría de las veces fue un accidente. La forma en que ella te lo cuente — con honestidad o con miedo — vale más que el objeto perdido.</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">81</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">81</span></div>
 
 </div>
 
 <!-- p82 -->
 <div class="page">
   <div class="content">
-    <span class="tag">SCRIPT 05 · CONTINÚA</span>
+    <span class="tag">SCRIPT 05· CONTINÚA</span>
     <div class="h1-italic" style="font-size:38px;">Decir lo que vas a hacer.</div>
     <div class="rule"></div>
     <span class="tag">EL CIERRE CON DECISIÓN CLARA</span>
     <p class="body">Después de escucharla, decide. Y dilo en voz alta:</p>
-    <p class="body">"[Nombre], lo que pasó pasó. Para mí esto era importante y por eso me dolió. Lo voy a asumir como costo de la casa, no te lo voy a descontar — porque sé que fue accidente y porque la confianza vale más que el objeto. Te pido eso sí que de aquí en adelante seas más cuidadosa con [tipo de objeto]."</p>
+    <div class="pull-quote"><p>"[Nombre], lo que pasó pasó. Para mí esto era importante y por eso me dolió. Lo voy a asumir como costo de la casa, no te lo voy a descontar — porque sé que fue accidente y porque la confianza vale más que el objeto. Te pido eso sí que de aquí en adelante seas más cuidadosa con [tipo de objeto]."</p></div>
     <p class="body">Si decides descontarlo, también dilo claro:</p>
-    <p class="body">"He pensado y voy a descontarlo en partes en los próximos meses. No es castigo</p>
-    <p class="body">dividimos en tres partes?"</p>
-    <span class="tag">LO QUE NO DECIR</span>
+    <div class="pull-quote"><p>"He pensado y voy a descontarlo en partes en los próximos meses. No es castigo</p></div>
+    <div class="pull-quote"><p>dividimos en tres partes?"</p></div>
+    <p class="body">LO QUE NO DECIR</p>
     <ul class="body-list"><li>"Eso era de mi abuela." — Aunque sea cierto, en este momento le carga culpa imposible. Si era especial, dilo después, cuando todo haya cerrado en paz.</li><li>Quedarse en silencio sin decidir. — El silencio aquí destruye más que cualquier descuento. Ella se queda con la duda sin saber qué viene. Decide y comunica.</li><li>"Está bien, no importa, déjalo así." dicho con tono cortante. — La palabra dice una cosa, el tono otra. Lo único que se queda es el tono.</li></ul>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">82</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">82</span></div>
 
 </div>
 
@@ -1443,12 +1522,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Estos cinco scripts son los que más me piden mis clientas cuando trabajamos juntas. Son los momentos donde más se equivocan las dueñas — y donde más se transforma la relación con la asistente del hogar cuando se manejan bien.</p>
     <p class="body">Pero quiero decirte algo importante:</p>
-    <p class="body">Los scripts son la estructura. Tú pones el alma.</p>
+    <div class="pull-quote"><p>Los scripts son la estructura. Tú pones el alma.</p></div>
     <p class="body">No los repitas como si fueran un guion de teatro. Léelos. Entiende su lógica. Y después, durante la conversación real, deja que tus palabras fluyan siguiendo el espíritu — no la letra.</p>
     <p class="body">Tu asistente no necesita que digas las palabras perfectas. Necesita que tu intención sea clara, tu tono sea respetuoso, y tu cierre sea concreto. Eso lo aprendes practicando — y los scripts son tu pista de despegue.</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">84</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">84</span></div>
 
 </div>
 
@@ -1461,24 +1539,24 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Ya tienes la filosofía. Ya tienes el método. Ya tienes las herramientas. Y ahora también tienes las palabras.</p>
     <p class="body">Solo queda lo más difícil — y lo más bonito: usar todo esto en tu propia casa, con tus propias manos, en tus propias conversaciones. La teoría termina aquí. La vida empieza ahora.</p>
     <p class="body">Antes de cerrar este libro, quiero dejarte un epílogo. Una última reflexión sobre lo que significa, al final, un hogar bien llevado.</p>
-    <span class="tag">SIGUE ALCIERRE →</span>
-    <p class="body">El hogar como reflejo</p>
-    <span class="tag">BONUS · CONVERSACIONES</span>
+    <div class="next-link">
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL CIERRE</span><span class="arrow-icon" aria-hidden="true">→</span></span>
+      <span class="arrow-title">El hogar como reflejo</span>
+    </div>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">85</span></div>
+    <div class="banda"><span class="banda-texto">BONUS · CONVERSACIONES</span><span class="banda-texto">85</span></div>
 
 </div>
 
-<!-- p86 -->
+<!-- p86 movimiento -->
 <div class="page">
-  <div class="content">
+  <div class="content movimiento-cover">
     <span class="tag">MOVIMIENTO CIERRE</span>
-    <div class="h2">EL HOGAR COMO<br>REFLEJO</div>
+    <div class="h1">EL HOGAR COMO<br>REFLEJO</div>
     <div class="rule"></div>
-    <p class="body">Lo que cuidamos en casa es, al final, lo que somos por dentro.</p>
+    <div class="spacer-sm"></div>
+    <p class="subtitle"></p>
   </div>
-    <div class="banda"><span class="banda-texto">SCRIPTS</span><span class="banda-texto">86</span></div>
-
 </div>
 
 <!-- p87 -->
@@ -1489,12 +1567,11 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Hicimos un viaje largo. Empezamos hablando de empleadas y terminamos hablando de asistentes del hogar. Empezamos buscando técnicas y terminamos descubriendo pilares. Empezamos con una lista de tareas y terminamos con un método.</p>
     <p class="body">Pero la verdad más profunda es esta: todo lo que aprendiste en estas páginas no era realmente sobre tu casa.</p>
-    <p class="body">Era sobre la mujer que se vuelve quien lidera su hogar.</p>
+    <div class="pull-quote"><p>Era sobre la mujer que se vuelve quien lidera su hogar.</p></div>
     <p class="body">Una mujer que ya no carga sola. Que ya no asume que los demás "deberían entender". Que ya no posterga las conversaciones difíciles. Que ya no confunde supervisar con liderar. Que ya no espera que su hogar sea perfecto — porque entendió que un hogar no se mide en perfección, sino en cómo te sientes al volver a él.</p>
     <p class="body">Esa mujer eres tú. Y ese hogar te está esperando.</p>
-    <span class="tag">CIERRE</span>
   </div>
-    <div class="banda"><span class="banda-texto">EPÍLOGO</span><span class="banda-texto">87</span></div>
+    <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">87</span></div>
 
 </div>
 
@@ -1502,17 +1579,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">BONUS DESCARGABLE</span>
-    <div class="h1-italic" style="font-size:38px;">TU HOME EXCEL</div>
+    <div class="h2 h2-section">TU HOME EXCEL</div>
+    <p class="section-subtitle">listo para ti</p>
     <div class="rule"></div>
-    <p class="body">listo para ti</p>
     <p class="body">Como te prometí, aquí va la herramienta. El Home Excel ya está estructurado con las cuatro categorías y las áreas más comunes de un hogar — listo para que lo adaptes a tu propia casa esta misma semana.</p>
-    <span class="tag">DESCARGA DIRECTA</span>
-    <p class="body">Visita el enlace: [liviin.com/home-excel]</p>
-    <span class="tag">ESCANEACON TU</span>
-    <span class="tag">CÁMARA</span>
-    <p class="body">No esperes el momento perfecto. Empieza por una sola habitación.</p>
+    <p class="body">DESCARGA DIRECTA</p>
+    <p class="body">Visita el enlace: [liviin.com/home-excel] ESCANEACON TU CÁMARA</p>
+    <div class="pull-quote"><p>No esperes el momento perfecto. Empieza por una sola habitación.</p></div>
     <p class="body">Recuerda: una habitación por semana es un ritmo perfecto. En menos de tres meses tendrás el mapa completo de tu hogar — y serás otra dueña.</p>
-    <span class="tag">CIERRE</span>
+    <p class="body">CIERRE</p>
   </div>
     <div class="banda"><span class="banda-texto">BONUS</span><span class="banda-texto">88</span></div>
 
@@ -1522,15 +1597,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <div class="page">
   <div class="content">
     <span class="tag">SOBRE LA AUTORA</span>
-    <div class="h1-italic" style="font-size:38px;">MARÍA TERESA ESPINOSA</div>
+    <div class="h2 h2-section">MARÍA TERESA ESPINOSA</div>
+    <p class="section-subtitle">interiorista y home coach</p>
     <div class="rule"></div>
-    <p class="body">interiorista y home coach</p>
     <p class="body">Más de veinte años diseñando interiores en Latinoamérica. Mamá de tres hijos. Fundadora de Liviin — la marca desde la que acompaña a mujeres a transformar sus casas en hogares bien llevados.</p>
     <p class="body">Su método — introspección, verdad, acción, sistema, amor — nació en su propia casa, durante un quiebre personal en pandemia. Desde entonces lo ha aplicado en decenas de hogares con clientas que pasaron de cargar todo en silencio a liderar con calma. Hoy ofrece capacitaciones y talleres Liviin donde profundiza cada uno de los cinco pilares.</p>
-    <span class="tag">ENCUÉNTRAME EN</span>
+    <p class="body">ENCUÉNTRAME EN</p>
     <ul class="body-list"><li>Instagram · @mte_disenointerior</li><li>TikTok · @mariateresaespinosa_</li><li>Sitio web · [liviin.com]</li></ul>
-    <p class="body">Conversaciones nuevas cada semana sobre liderazgo del hogar y la mujer que cada una está aprendiendo a ser.</p>
-    <span class="tag">CIERRE</span>
+    <div class="pull-quote"><p>Conversaciones nuevas cada semana sobre liderazgo del hogar y la mujer que cada una está aprendiendo a ser.</p></div>
+    <p class="body">CIERRE</p>
   </div>
     <div class="banda"><span class="banda-texto">BONUS</span><span class="banda-texto">89</span></div>
 

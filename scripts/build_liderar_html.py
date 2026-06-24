@@ -4,10 +4,14 @@ from __future__ import annotations
 
 import html
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
 import fitz
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, title_digits_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
@@ -19,10 +23,20 @@ MOVIMIENTOS = [
     (24, "02 · CONOCE TU CASA"),
     (37, "03 · EQUIPO"),
     (58, "04 · ARMONÍA"),
-    (67, "05 · CONVERSACIONES"),
-    (74, "SCRIPTS"),
-    (87, "EPÍLOGO"),
+    (67, "05 · MI HISTORIA"),
+    (74, "BONUS · CONVERSACIONES"),
+    (87, "CIERRE"),
     (88, "BONUS"),
+]
+
+INDEX_ITEMS = [
+    ("00", "Iniciación · De mí para ti", 5),
+    ("01", "La filosofía del hogar bien llevado", 11),
+    ("02", "Conoce tu casa antes de delegarla", 24),
+    ("03", "Construir el equipo", 37),
+    ("04", "Sostener la armonía en el tiempo", 58),
+    ("05", "Bonus · Conversaciones esenciales", 74),
+    ("06", "Cierre · El hogar como reflejo", 87),
 ]
 
 SIGUE_TITLES = {
@@ -39,22 +53,13 @@ class Line:
     text: str
     size: float
     y: float
+    x: float = 0.0
     bold: bool = False
     italic: bool = False
 
 
 def esc(s: str) -> str:
     return html.escape(s, quote=False)
-
-
-def collapse_spaced(s: str) -> str:
-    """PDF caps con letter-spacing: 'E L  C A M B I O' → 'EL CAMBIO'; '0 1' → '01'."""
-    s = s.strip()
-    if re.fullmatch(r"0\s*\d", s):
-        return re.sub(r"\s+", "", s)
-    if not re.search(r"(?:\S\s){3,}", s):
-        return s
-    return " ".join(re.sub(r"\s+", "", c) for c in re.split(r"\s{2,}", s) if c.strip())
 
 
 def parse_numbered_label(label: str) -> tuple[str, str]:
@@ -72,13 +77,63 @@ def is_numbered_label(s: str) -> bool:
     return bool(re.match(r"^0\s*\d\s*·", s.strip()))
 
 
+def _normalize_sigue_text(text: str) -> str:
+    t = collapse_spaced(text)
+    t = re.sub(r"ALMOVIMIENTO", "AL MOVIMIENTO", t, flags=re.I)
+    t = re.sub(r"ALCIERRE", "AL CIERRE", t, flags=re.I)
+    return t
+
+
+def _is_sigue_line(text: str) -> bool:
+    c = _normalize_sigue_text(text).upper()
+    return bool(re.search(r"SIGUE\s+AL\s+(?:MOVIMIENTO|CIERRE)", c))
+
+
 def is_tag_line(s: str, size: float) -> bool:
     if size > 10.5:
         return False
     t = s.strip()
-    if is_numbered_label(t) or t.startswith("SIGUE AL"):
+    if is_numbered_label(t) or _is_sigue_line(t):
         return False
     return bool(re.search(r"(?:[A-ZÁÉÍÓÚ]\s){3,}", t))
+
+
+_AREA_ITEM = re.compile(r"^(\d{1,2})\s{2,}(.+)$")
+
+
+def _is_section_label(ln: Line) -> bool:
+    """PDF: etiqueta 8pt mayúsculas antes del título de sección."""
+    t = ln.text.strip()
+    if ln.size > 9.5 or not t or is_numbered_label(t) or _is_sigue_line(t):
+        return False
+    return bool(re.match(r"^[A-ZÁÉÍÓÚÑ0-9 ·—\-·\"']+$", t)) and any(c.isalpha() for c in t)
+
+
+def _parse_area_item(text: str) -> tuple[int, str] | None:
+    m = _AREA_ITEM.match(text.strip())
+    return (int(m.group(1)), m.group(2).strip()) if m else None
+
+
+def _is_area_map_line(ln: Line) -> bool:
+    return _parse_area_item(ln.text) is not None
+
+
+def _render_area_map_block(lines: list[Line]) -> str:
+    by_y: dict[int, list[Line]] = {}
+    for ln in lines:
+        by_y.setdefault(round(ln.y), []).append(ln)
+    cells: list[str] = []
+    for y in sorted(by_y):
+        for ln in sorted(by_y[y], key=lambda l: l.x):
+            p = _parse_area_item(ln.text)
+            if not p:
+                continue
+            n, label = p
+            cells.append(
+                f'<div class="area-item"><span class="area-num">{n}</span>'
+                f'<span class="area-label">{esc(label)}</span></div>'
+            )
+    return f'<div class="area-grid">{"".join(cells)}</div>'
 
 
 def _footer_key(s: str) -> str:
@@ -101,14 +156,21 @@ def is_margin_noise(ln: Line, page_h: float, page_no: int) -> bool:
 
 def extract_lines(page: fitz.Page) -> list[Line]:
     out: list[Line] = []
-    for b in page.get_text("dict")["blocks"]:
+    for b in page.get_text("rawdict")["blocks"]:
         if b.get("type") != 0:
             continue
         for ln in b["lines"]:
             spans = ln["spans"]
             if not spans:
                 continue
-            text = "".join(s["text"] for s in spans)
+            chars: list[dict] = []
+            for sp in spans:
+                chars.extend(sp.get("chars", []))
+            raw = "".join(c["c"] for c in chars) if chars else ""
+            if chars and needs_gap_extract(raw):
+                text = collapse_spaced(chars_to_line_text(chars))
+            else:
+                text = raw
             if not text.strip():
                 continue
             out.append(
@@ -116,11 +178,12 @@ def extract_lines(page: fitz.Page) -> list[Line]:
                     text=text.strip(),
                     size=max(s["size"] for s in spans),
                     y=min(s["bbox"][1] for s in spans),
+                    x=min(s["bbox"][0] for s in spans),
                     bold=any(s["flags"] & 16 for s in spans),
                     italic=any(s["flags"] & 2 for s in spans),
                 )
             )
-    out.sort(key=lambda x: x.y)
+    out.sort(key=lambda x: (x.y, x.x))
     return out
 
 
@@ -148,10 +211,15 @@ def is_pull_page(lines: list[Line]) -> bool:
 def mov_tag_text(lines: list[Line]) -> str:
     for ln in lines:
         compact = re.sub(r"\s+", "", ln.text.upper())
-        if compact.startswith("MOVIMIENTO"):
-            m = re.search(r"0?(\d+)", compact)
-            if m:
-                return f"MOVIMIENTO {m.group(1).zfill(2)}"
+        if not compact.startswith("MOVIMIENTO"):
+            continue
+        if "CIERRE" in compact:
+            return "MOVIMIENTO CIERRE"
+        if "BONUS" in compact:
+            return "MOVIMIENTO BONUS"
+        m = re.search(r"0?(\d+)", compact)
+        if m:
+            return f"MOVIMIENTO {m.group(1).zfill(2)}"
     return ""
 
 
@@ -162,8 +230,32 @@ def is_mov_cover(lines: list[Line]) -> bool:
     return extras <= 5
 
 
+def _is_pull_quote_group(g: list[Line]) -> bool:
+    if not g or not all(x.italic for x in g):
+        return False
+    text = " ".join(x.text for x in g).strip()
+    if text.startswith("— MARÍA") or text.startswith("Interiorista y Home"):
+        return False
+    if text.endswith(":"):
+        return False
+    sizes = [x.size for x in g]
+    # ponytail: PDF indenta ~13pt (x≥55) las citas con barra lateral
+    if all(ln.x >= 55 for ln in g) and all(9 <= s <= 14.5 for s in sizes):
+        return True
+    if all(12.5 <= s <= 14.5 for s in sizes):
+        return True
+    if (
+        len(g) <= 2
+        and all(9 <= s <= 10.5 for s in sizes)
+        and len(text) < 115
+        and text.rstrip().endswith((".", "—", "…"))
+    ):
+        return True
+    return False
+
+
 def _render_prose_group(g: list[Line]) -> list[str]:
-    if all(12.5 <= x.size <= 14.5 and x.italic for x in g):
+    if _is_pull_quote_group(g):
         return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
     text = " ".join(x.text for x in g)
     if any(x.bold for x in g) and len(g) == 1:
@@ -177,6 +269,27 @@ def _render_prose_group(g: list[Line]) -> list[str]:
 
 
 def _group_prose(lines: list[Line]) -> list[str]:
+    if not lines:
+        return []
+    parts: list[str] = []
+    i = 0
+    while i < len(lines):
+        if _is_area_map_line(lines[i]):
+            area: list[Line] = []
+            while i < len(lines) and _is_area_map_line(lines[i]):
+                area.append(lines[i])
+                i += 1
+            parts.append(_render_area_map_block(area))
+            continue
+        j = i
+        while j < len(lines) and not _is_area_map_line(lines[j]):
+            j += 1
+        parts.extend(_group_prose_plain(lines[i:j]))
+        i = j
+    return parts
+
+
+def _group_prose_plain(lines: list[Line]) -> list[str]:
     if not lines:
         return []
     groups: list[list[Line]] = []
@@ -220,10 +333,237 @@ def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int
     return items, i
 
 
+_ORDINAL_ITEM = re.compile(
+    r"^(Uno|Dos|Tres|Cuatro|Cinco|Seis|Siete|Ocho|Nueve|Diez)\.\s*(.*)",
+    re.I,
+)
+
+
+def _is_ordinal_start(ln: Line) -> bool:
+    return bool(_ORDINAL_ITEM.match(ln.text.strip()))
+
+
+def _split_ordinal_items(lines: list[Line]) -> tuple[list[Line], list[tuple[str, str]]] | None:
+    """PDF: párrafos 'Uno. …' 'Dos. …' en líneas separadas."""
+    starts = [i for i, ln in enumerate(lines) if _is_ordinal_start(ln)]
+    if len(starts) < 2:
+        return None
+    intro = lines[: starts[0]]
+    items: list[tuple[str, str]] = []
+    for j, si in enumerate(starts):
+        end = starts[j + 1] if j + 1 < len(starts) else len(lines)
+        chunk = lines[si:end]
+        m = _ORDINAL_ITEM.match(chunk[0].text.strip())
+        if not m:
+            continue
+        label = m.group(1).capitalize()
+        parts = [m.group(2).strip()] if m.group(2).strip() else []
+        parts.extend(ln.text.strip() for ln in chunk[1:])
+        items.append((label, " ".join(parts)))
+    return intro, items if len(items) >= 2 else None
+
+
+def _render_ordinal_block(intro: list[Line], items: list[tuple[str, str]]) -> list[str]:
+    parts = _group_prose_plain(intro) if intro else []
+    blocks = "".join(
+        f'<div class="discovery-item">'
+        f'<span class="discovery-num">{esc(label)}.</span>'
+        f'<p class="discovery-text">{esc(text)}</p></div>'
+        for label, text in items
+    )
+    parts.append(f'<div class="discovery-list">{blocks}</div>')
+    return parts
+
+
+def _is_step_num(ln: Line) -> bool:
+    return bool(re.fullmatch(r"\d{2}", ln.text.strip())) and 10 <= ln.size <= 12 and ln.x < 65
+
+
+def _same_row(a: Line, b: Line) -> bool:
+    return abs(a.y - b.y) <= 1.0
+
+
+def _title_on_step_row(lines: list[Line], step_i: int) -> tuple[int, str] | None:
+    for j, ln in enumerate(lines):
+        if j == step_i or not _same_row(ln, lines[step_i]) or ln.x <= lines[step_i].x + 15:
+            continue
+        return j, ln.text.strip()
+    return None
+
+
+def _split_desc_tail(desc_idxs: list[int], lines: list[Line], gap: float = 35) -> tuple[list[int], list[int]]:
+    if len(desc_idxs) < 2:
+        return desc_idxs, []
+    ordered = sorted(desc_idxs, key=lambda k: lines[k].y)
+    for i in range(len(ordered) - 1, 0, -1):
+        if lines[ordered[i]].y - lines[ordered[i - 1]].y > gap:
+            return ordered[:i], ordered[i:]
+    return ordered, []
+
+
+def _split_step_blocks(lines: list[Line]) -> tuple[list[Line], list[tuple[str, str, str]], list[Line]] | None:
+    """PDF: '01' + título en la misma fila, cuerpo indentado debajo (p.39)."""
+    step_idxs = [i for i, ln in enumerate(lines) if _is_step_num(ln)]
+    if len(step_idxs) < 2:
+        return None
+    pairs = [_title_on_step_row(lines, i) for i in step_idxs]
+    if not all(pairs):
+        return None
+
+    items: list[tuple[str, str, str]] = []
+    consumed: set[int] = set()
+    for si, step_i in enumerate(step_idxs):
+        title_j, title = pairs[si]
+        consumed.add(step_i)
+        consumed.add(title_j)
+        y_lo = lines[step_i].y + 0.5
+        y_hi = lines[step_idxs[si + 1]].y - 0.5 if si + 1 < len(step_idxs) else float("inf")
+        desc_idxs = [
+            k
+            for k in range(len(lines))
+            if k not in consumed and y_lo < lines[k].y < y_hi
+        ]
+        if si + 1 >= len(step_idxs):
+            desc_idxs, _ = _split_desc_tail(desc_idxs, lines)
+        desc = " ".join(lines[k].text.strip() for k in desc_idxs)
+        consumed.update(desc_idxs)
+        items.append((lines[step_i].text.strip(), title, desc))
+
+    intro = [lines[i] for i in range(step_idxs[0]) if i not in consumed]
+    tail = [lines[k] for k in range(step_idxs[0], len(lines)) if k not in consumed]
+    return intro, items, tail
+
+
+def _has_question_items(lines: list[Line]) -> bool:
+    step_idxs = [i for i, ln in enumerate(lines) if _is_step_num(ln)]
+    if len(step_idxs) < 2:
+        return False
+    for si, step_i in enumerate(step_idxs):
+        end = step_idxs[si + 1] if si + 1 < len(step_idxs) else min(step_i + 5, len(lines))
+        for k in range(step_i + 1, end):
+            if lines[k].text.strip().startswith('"'):
+                return True
+    return False
+
+
+def _split_question_blocks(lines: list[Line]) -> tuple[list[Line], list[tuple[str, str, str]], list[Line]] | None:
+    """PDF p.42: 01 + pregunta entre comillas, párrafo 'Revela…' debajo."""
+    if not _has_question_items(lines):
+        return None
+    step_idxs = [i for i, ln in enumerate(lines) if _is_step_num(ln)]
+    items: list[tuple[str, str, str]] = []
+    consumed: set[int] = set()
+    for si, step_i in enumerate(step_idxs):
+        consumed.add(step_i)
+        end = step_idxs[si + 1] if si + 1 < len(step_idxs) else len(lines)
+        q_parts: list[str] = []
+        insight_parts: list[str] = []
+        for k in range(step_i + 1, end):
+            t = lines[k].text.strip()
+            if t.startswith("Revela"):
+                insight_parts.append(t)
+            elif insight_parts:
+                insight_parts.append(t)
+            else:
+                q_parts.append(t)
+            consumed.add(k)
+        if not q_parts:
+            return None
+        items.append((lines[step_i].text.strip(), " ".join(q_parts), " ".join(insight_parts)))
+    intro = [lines[i] for i in range(step_idxs[0]) if i not in consumed]
+    tail = [lines[k] for k in range(step_idxs[0], len(lines)) if k not in consumed]
+    return intro, items, tail
+
+
+def _render_step_block_page(
+    intro: list[Line], items: list[tuple[str, str, str]], tail: list[Line]
+) -> list[str]:
+    parts = _group_prose_plain(intro)
+    blocks = "".join(
+        f'<div class="step-item"><div class="step-head">'
+        f'<span class="step-num">{esc(num)}</span>'
+        f'<span class="step-title">{esc(title)}</span></div>'
+        f'<p class="step-desc">{esc(desc)}</p></div>'
+        for num, title, desc in items
+    )
+    parts.append(f'<div class="step-list">{blocks}</div>')
+    for ln in tail:
+        cls = "body step-closing" if ln.italic else "body"
+        parts.append(f'<p class="{cls}">{esc(ln.text)}</p>')
+    return parts
+
+
+def _render_question_block_page(
+    intro: list[Line], items: list[tuple[str, str, str]], tail: list[Line]
+) -> list[str]:
+    parts = _group_prose_plain(intro)
+    blocks = "".join(
+        f'<div class="step-item step-item--question">'
+        f'<div class="step-question-row">'
+        f'<span class="step-num">{esc(num)}</span>'
+        f'<p class="step-question">{esc(question)}</p></div>'
+        f'<p class="step-insight">{esc(insight)}</p></div>'
+        for num, question, insight in items
+    )
+    parts.append(f'<div class="step-list step-list--questions">{blocks}</div>')
+    for ln in tail:
+        parts.append(f'<p class="body">{esc(ln.text)}</p>')
+    return parts
+
+
+def _is_overview_num(ln: Line) -> bool:
+    """PDF Liderar: línea suelta '01' antes del texto del ítem."""
+    return bool(re.fullmatch(r"\d{2}", ln.text.strip())) and 10.5 <= ln.size <= 12
+
+
+def _overview_item_html(num: str, text: str) -> list[str]:
+    full = text.strip()
+    if " — " in full:
+        title, _, rest = full.partition(" — ")
+        desc = "— " + rest
+    elif "—" in full:
+        idx = full.index("—")
+        title, desc = full[:idx].strip(), full[idx:].strip()
+    else:
+        title, desc = full, ""
+    out = [
+        f'<div class="index-line overview-line">'
+        f'<span class="index-num">{esc(num)}</span>'
+        f'<span class="index-title">{esc(title)}</span></div>'
+    ]
+    if desc:
+        out.append(f'<p class="body" style="margin-left:28px;">{esc(desc)}</p>')
+    return out
+
+
+def index_item_html(num: str, title: str, page: int | None = None) -> str:
+    page_html = f'<span class="index-page">{page:02d}</span>' if page is not None else ""
+    return (
+        f'<div class="index-entry">'
+        f'<div class="index-line"><span class="index-num">{esc(num)}</span>'
+        f'<span class="index-title">{esc(title)}</span></div>'
+        f"{page_html}</div>"
+    )
+
+
 def group_paragraphs(lines: list[Line]) -> list[str]:
     if not lines:
         return []
-    if not any(ln.text.strip() == "•" for ln in lines):
+    ordinal = _split_ordinal_items(lines)
+    if ordinal:
+        intro, items = ordinal
+        return _render_ordinal_block(intro, items)
+    steps = _split_step_blocks(lines)
+    if steps:
+        intro, items, tail = steps
+        return _render_step_block_page(intro, items, tail)
+    questions = _split_question_blocks(lines)
+    if questions:
+        intro, items, tail = questions
+        return _render_question_block_page(intro, items, tail)
+    has_bullets = any(ln.text.strip() == "•" for ln in lines)
+    has_overview = any(_is_overview_num(ln) for ln in lines)
+    if not has_bullets and not has_overview:
         return _group_prose(lines)
     parts: list[str] = []
     i = 0
@@ -234,25 +574,55 @@ def group_paragraphs(lines: list[Line]) -> list[str]:
                 lis = "".join(f"<li>{esc(t)}</li>" for t in items)
                 parts.append(f'<ul class="body-list">{lis}</ul>')
             continue
+        if _is_overview_num(lines[i]):
+            num = lines[i].text.strip()
+            i += 1
+            chunk: list[str] = []
+            while i < len(lines) and lines[i].text.strip() != "•" and not _is_overview_num(lines[i]):
+                chunk.append(lines[i].text)
+                i += 1
+            parts.extend(_overview_item_html(num, " ".join(chunk)))
+            continue
         j = i
-        while j < len(lines) and lines[j].text.strip() != "•":
+        while j < len(lines) and lines[j].text.strip() != "•" and not _is_overview_num(lines[j]):
             j += 1
         parts.extend(_group_prose(lines[i:j]))
         i = j
     return parts
 
 
-def parse_sigue(text: str) -> tuple[str, str] | None:
-    m = re.search(
-        r"SIGUE\s+AL\s+MOVIMIENTO\s+(\d{2})\s*→|SIGUE\s+AL\s+CIERRE\s*→",
-        text,
-        re.I,
-    )
-    if not m:
-        return None
-    if "CIERRE" in m.group(0).upper():
-        return ("SIGUE AL CIERRE →", SIGUE_TITLES["CIERRE"])
-    return (f"SIGUE AL MOVIMIENTO {m.group(1)} →", SIGUE_TITLES.get(m.group(1), ""))
+def parse_sigue_lines(lines: list[Line]) -> tuple[str, str] | None:
+    for i, ln in enumerate(lines):
+        if not _is_sigue_line(ln.text):
+            continue
+        label = _normalize_sigue_text(ln.text)
+        m = re.search(
+            r"SIGUE\s+AL\s+MOVIMIENTO\s+(\d{2})\s*→|SIGUE\s+AL\s+CIERRE\s*→",
+            label,
+            re.I,
+        )
+        if not m:
+            continue
+        title = ""
+        if i + 1 < len(lines):
+            nxt = lines[i + 1]
+            if not _is_sigue_line(nxt.text) and not is_tag_line(nxt.text, nxt.size):
+                title = nxt.text.strip()
+        if "CIERRE" in m.group(0).upper():
+            return ("SIGUE AL CIERRE →", title or SIGUE_TITLES["CIERRE"])
+        return (f"SIGUE AL MOVIMIENTO {m.group(1)} →", title or SIGUE_TITLES.get(m.group(1), ""))
+    return None
+
+
+def arrow_label_html(label: str) -> str:
+    t = label.rstrip()
+    if t.endswith("→"):
+        text = t[:-1].strip()
+        return (
+            f'<span class="arrow-label"><span class="arrow-label-text">{esc(text)}</span>'
+            f'<span class="arrow-icon" aria-hidden="true">→</span></span>'
+        )
+    return f'<span class="arrow-label">{esc(t)}</span>'
 
 
 def banda(section: str, num: int | str, show_num: bool = True) -> str:
@@ -335,19 +705,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
 
 
 def index_page_liderar() -> str:
-    items = [
-        ("00", "Iniciación · De mí para ti"),
-        ("01", "La filosofía del hogar bien llevado"),
-        ("02", "Conoce tu casa antes de delegarla"),
-        ("03", "Construir el equipo"),
-        ("04", "Sostener la armonía en el tiempo"),
-        ("05", "Bonus · Conversaciones esenciales"),
-        ("06", "Cierre · El hogar como reflejo"),
-    ]
-    items_html = "\n    ".join(
-        f'<div class="numbered-block"><div class="numbered-title"><span class="num">{n}</span> {esc(t)}</div></div>'
-        for n, t in items
-    )
+    items_html = "\n    ".join(index_item_html(n, t, pg) for n, t, pg in INDEX_ITEMS)
     return f"""<!-- ÍNDICE -->
 <div class="page">
   <div class="content">
@@ -396,12 +754,36 @@ def index_page(lines: list[Line]) -> str:
 """
 
 
+def _is_section_subtitle(ln: Line) -> bool:
+    """PDF Liderar: línea 15pt itálica tras título display (22pt)."""
+    return 14 <= ln.size <= 16 and ln.italic and not is_tag_line(ln.text, ln.size)
+
+
+def _render_title_block(titles: list[Line], subtitle: Line | None) -> list[str]:
+    # ponytail: orden fijo tag→h2→subtitle→rule→body; cliente revisa esto al pixel
+    t0 = titles[0]
+    if t0.italic or t0.size >= 26:
+        th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
+        return [
+            f'<div class="h1-italic" style="font-size:38px;">{th}</div>',
+            '<div class="rule"></div>',
+        ]
+    th = "<br>".join(title_digits_html(t.text) for t in titles)
+    if subtitle is not None:
+        return [
+            f'<div class="h2 h2-section">{th}</div>',
+            f'<p class="section-subtitle">{esc(collapse_spaced(subtitle.text))}</p>',
+            '<div class="rule"></div>',
+        ]
+    return [f'<div class="h2">{th}</div>', '<div class="rule"></div>']
+
+
 def mov_cover_page(lines: list[Line], page_no: int) -> str:
     tag = mov_tag_text(lines)
     titles = [ln for ln in lines if ln.size >= 18 and not is_tag_line(ln.text, ln.size)]
     subs = [ln for ln in lines if 10 <= ln.size <= 14 and not is_tag_line(ln.text, ln.size)]
-    title_html = "<br>".join(esc(t.text) for t in titles)
-    sub = esc(subs[-1].text) if subs else ""
+    title_html = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
+    sub = esc(collapse_spaced(subs[-1].text)) if subs else ""
     return f"""<!-- p{page_no} movimiento -->
 <div class="page">
   <div class="content movimiento-cover">
@@ -419,15 +801,18 @@ def content_page(lines: list[Line], page_no: int) -> str:
     page_h = max((ln.y for ln in lines), default=0) + 25
     lines = [ln for ln in lines if not is_margin_noise(ln, page_h, page_no)]
     sec = section_for(page_no)
-    full_text = "\n".join(ln.text for ln in lines)
-    sigue = parse_sigue(full_text)
+    sigue = parse_sigue_lines(lines)
     tokens: list[tuple] = []
     i = 0
     while i < len(lines):
         ln = lines[i]
-        if ln.text.startswith("SIGUE AL"):
+        if _is_sigue_line(ln.text):
             break
         if is_tag_line(ln.text, ln.size):
+            tokens.append(("tag", collapse_spaced(ln.text)))
+            i += 1
+            continue
+        if _is_section_label(ln):
             tokens.append(("tag", collapse_spaced(ln.text)))
             i += 1
             continue
@@ -435,25 +820,28 @@ def content_page(lines: list[Line], page_no: int) -> str:
             label = ln.text
             i += 1
             desc: list[Line] = []
-            while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 16 and not lines[i].text.startswith("SIGUE"):
+            while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 15.5 and not _is_sigue_line(lines[i].text):
                 desc.append(lines[i])
                 i += 1
             tokens.append(("numbered", label, desc))
             continue
-        if ln.size >= 16 and not is_tag_line(ln.text, ln.size):
+        if ln.size >= 15.5 and not is_tag_line(ln.text, ln.size):
             titles = [ln]
             i += 1
-            while i < len(lines) and lines[i].size >= 16 and not is_tag_line(lines[i].text, lines[i].size):
+            while i < len(lines) and lines[i].size >= 15.5 and not is_tag_line(lines[i].text, lines[i].size):
                 titles.append(lines[i])
                 i += 1
-            tokens.append(("title", titles))
+            subtitle = lines[i] if i < len(lines) and _is_section_subtitle(lines[i]) else None
+            if subtitle is not None:
+                i += 1
+            tokens.append(("title", titles, subtitle))
             continue
         if ln.text.startswith("—") and ln.size < 12:
             i += 1
             continue
         chunk = [ln]
         i += 1
-        while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 16 and not lines[i].text.startswith("SIGUE") and not (lines[i].text.startswith("—") and lines[i].size < 12):
+        while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 15.5 and not _is_sigue_line(lines[i].text) and not (lines[i].text.startswith("—") and lines[i].size < 12):
             chunk.append(lines[i])
             i += 1
         tokens.append(("body", chunk))
@@ -462,23 +850,17 @@ def content_page(lines: list[Line], page_no: int) -> str:
     for tok in tokens:
         if tok[0] == "tag":
             parts.append(f'<span class="tag">{esc(tok[1])}</span>')
-            if "CIERRE DEL MOVIMIENTO" in tok[1].upper() or "HOME COACH" in tok[1].upper():
+            if "CIERRE DEL MOVIMIENTO" in tok[1].upper():
                 parts.append('<div class="spacer-sm"></div>')
         elif tok[0] == "title":
-            titles = tok[1]
-            if titles[0].size < 26 or titles[0].italic:
-                th = "<br>".join(esc(t.text) for t in titles)
-                parts.append(f'<div class="h1-italic" style="font-size:38px;">{th}</div>')
-            else:
-                th = "<br>".join(esc(t.text) for t in titles)
-                parts.append(f'<div class="h2">{th}</div>')
-            parts.append('<div class="rule"></div>')
+            parts.extend(_render_title_block(tok[1], tok[2]))
         elif tok[0] == "numbered":
             label, desc = tok[1], tok[2]
             num, title = parse_numbered_label(label)
             parts.append(
                 f'<div class="numbered-block"><div class="numbered-title">'
-                f'<span class="num">{esc(num)}</span> {esc(title)}</div></div>'
+                f'<span class="num">{esc(num)}</span>'
+                f'<span class="numbered-label">{esc(title)}</span></div></div>'
             )
             parts.extend(group_paragraphs(desc))
         elif tok[0] == "body":
@@ -486,7 +868,7 @@ def content_page(lines: list[Line], page_no: int) -> str:
 
     if sigue:
         parts.append(f"""<div class="next-link">
-      <span class="arrow-label">{esc(sigue[0])}</span>
+      {arrow_label_html(sigue[0])}
       <span class="arrow-title">{esc(sigue[1])}</span>
     </div>""")
 

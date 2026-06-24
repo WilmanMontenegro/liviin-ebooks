@@ -59,10 +59,23 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   color: var(--texto); line-height: 1.15; text-transform: uppercase;
   letter-spacing: 0.02em; margin-bottom: 12px;
 }
+/* ponytail: PDF usa Liberation Serif 22pt + subtítulo; Garamond ≈ serif del PDF, no SC */
+.h2-section {
+  font-family: var(--serif-text); font-size: 28px; font-weight: 500;
+  letter-spacing: 0.01em; margin-bottom: 8px;
+}
+/* PDF: dígito en título ~62% altura letras, baseline */
+.title-digit {
+  font-size: 0.62em; vertical-align: baseline; letter-spacing: 0;
+}
 .rule { width: 52px; height: 1px; background: var(--filete); margin-bottom: 32px; }
 .subtitle {
   font-family: var(--serif-text); font-size: 15px; font-style: italic;
   color: var(--secundario); line-height: 1.5; margin-top: 8px;
+}
+.section-subtitle {
+  font-family: var(--serif-text); font-size: 17px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.45; margin: 0 0 18px 0;
 }
 .body {
   font-family: var(--sans); font-size: 12.5px; font-weight: 300;
@@ -75,10 +88,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 }
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
-.pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
+.pull-quote {
+  border-left: 2px solid var(--filete); padding-left: 16px;
+  margin: 24px 0 24px 13px;
+}
 .pull-quote p {
-  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
-  color: var(--secundario); line-height: 1.6;
+  font-family: var(--serif-text); font-size: 15px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.55; margin: 0;
 }
 
 .foto-portada {
@@ -106,8 +122,100 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .movimiento-cover { display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 42px 48px 37px; flex: 1; }
 
 .numbered-block { margin-bottom: 20px; }
-.numbered-title { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 8px; align-items: baseline; }
-.numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
+.numbered-title {
+  font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; color: var(--texto); text-transform: uppercase;
+  display: flex; gap: 10px; align-items: baseline; line-height: 1.35;
+  margin-bottom: 6px;
+}
+.numbered-title .num {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.numbered-title .numbered-label { flex: 1; min-width: 0; }
+.area-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 36px; row-gap: 14px;
+  margin: 18px 0 22px; padding-left: 4px;
+}
+.area-item { display: flex; gap: 12px; align-items: baseline; }
+.area-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); min-width: 16px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.area-label {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.45;
+}
+.index-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 16px; }
+.index-entry .index-line { flex: 1; min-width: 0; }
+.index-line { display: flex; gap: 10px; align-items: baseline; }
+.index-num {
+  font-family: var(--serif-text); font-size: 11px; font-weight: 300; font-style: italic;
+  color: var(--secundario); flex-shrink: 0;
+}
+.index-title {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300; color: var(--texto);
+  line-height: 1.45; letter-spacing: 0;
+}
+.index-page {
+  font-family: var(--sans); font-size: 9px; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--secundario); flex-shrink: 0; text-align: right;
+}
+.overview-line { margin-bottom: 4px; }
+.discovery-list { margin: 22px 0 10px; }
+.discovery-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--filete);
+}
+.discovery-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.discovery-num {
+  font-family: var(--serif-text); font-size: 13px; font-weight: 400; font-style: italic;
+  color: var(--secundario); flex-shrink: 0; min-width: 38px;
+}
+.discovery-text {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.8; margin: 0;
+}
+.step-list { margin: 24px 0 18px; }
+.step-item { margin-bottom: 22px; }
+.step-item:last-child { margin-bottom: 0; }
+.step-head {
+  display: flex; gap: 14px; align-items: baseline;
+  margin-bottom: 8px; padding-left: 4px;
+}
+.step-num {
+  font-family: var(--serif-text); font-size: 13px; font-weight: 300; font-style: italic;
+  color: var(--secundario); min-width: 24px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.step-title {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 500;
+  color: var(--texto); line-height: 1.45;
+}
+.step-desc {
+  font-family: var(--sans); font-size: 9.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75; margin: 0 0 0 38px;
+}
+.step-item--question { margin-bottom: 22px; }
+.step-item--question:last-child { margin-bottom: 0; }
+.step-question-row {
+  display: flex; gap: 14px; align-items: baseline;
+  margin-bottom: 8px; padding-left: 4px;
+}
+.step-item--question .step-num { flex-shrink: 0; line-height: 1.45; }
+.step-item--question .step-question {
+  flex: 1; min-width: 0;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 400;
+  color: var(--texto); line-height: 1.55; margin: 0;
+}
+.step-item--question .step-insight {
+  font-family: var(--sans); font-size: 9.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75; margin: 0 0 0 38px;
+}
+.step-closing { font-style: italic; margin-top: 20px; }
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
 
@@ -120,8 +228,17 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .agradecimiento-item strong { font-weight: 500; }
 
 .next-link { text-align: right; margin-top: 28px; }
-.next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
-.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--texto); }
+.next-link .arrow-label {
+  display: inline-flex; align-items: center; justify-content: flex-end;
+  gap: 0.5em; width: 100%;
+  font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em;
+  color: var(--secundario); text-transform: uppercase; margin-bottom: 4px;
+}
+.next-link .arrow-icon {
+  font-size: 10px; letter-spacing: 0; line-height: 1; flex-shrink: 0;
+  transform: translateY(-0.5px);
+}
+.next-link .arrow-title { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); }
 
 .firma { margin-top: 32px; }
 .firma .con-carino { font-family: var(--serif-text); font-size: 13px; font-style: italic; color: var(--secundario); margin-bottom: 4px; }
@@ -337,7 +454,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">CIERRE DEL MOVIMIENTO 01</span>
     <p class="body">Si leíste este movimiento con atención, ya hiciste algo importante: te detuviste a considerar que del otro lado hay una mujer completa, con historia propia. Eso, por sí solo, ya cambia tu hogar.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 02 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 02</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Conocer a quien te acompaña</span>
     </div>
   </div>
@@ -415,7 +532,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body"><strong>Wendy</strong> llegó como niñera de mi segundo hijo. Con el tiempo fui notando algo en ella: orden, criterio, presencia. Cuando decidió replantear sus tiempos, en mi familia tuvimos clara una cosa: no queríamos que ella dejara de trabajar con nosotros. Hoy Wendy es mi asistente en sala de ventas. El cambio se dio gradual, casi natural — porque <em>cuando hay vínculo real, la relación encuentra formas de continuar.</em></p>
     <p class="body">Lo que aprendí de ellas es que cuando una mujer encuentra voz y reciprocidad en la casa donde trabaja, todo fluye mejor.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 03 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 03</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">El vínculo que trasciende</span>
     </div>
   </div>
@@ -494,7 +611,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Esto es mucho más que una relación laboral. Es un acto cultural. Es romper, en pequeño y en silencio, paradigmas que llevan siglos pesando sobre el trabajo doméstico en nuestros países.</p>
     <p class="body">Y lo más bonito es que no requiere grandes gestos. Solo requiere <strong>conciencia</strong>. Mirar bien. Hablar bien. Reconocer bien. Día tras día.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 04 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 04</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Puertas abiertas</span>
     </div>
   </div>
@@ -564,7 +681,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body"><strong>Le ofrezco recomendarla</strong> si su salida no es por conflicto.</p>
     <p class="body"><strong>Mantenemos el contacto.</strong> Esa reciprocidad — ellas disponibles para mí cuando las necesito, yo disponible para ellas cuando me necesitan — es lo que llamo puertas abiertas en el sentido más completo.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL MOVIMIENTO 05 →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL MOVIMIENTO 05</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Sin romantizar</span>
     </div>
   </div>
@@ -644,7 +761,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Si has llegado hasta aquí, ya sabes algo importante: <strong>la empatía real no es blanda.</strong> Es firme, clara, respetuosa, profesional. Es la que permite construir relaciones que duran, transforman, y honran a las dos partes.</p>
     <p class="body">No es romanticismo. No es asistencialismo. No es maternalismo. Es liderazgo humano.</p>
     <div class="next-link">
-      <span class="arrow-label">SIGUE AL CIERRE →</span>
+      <span class="arrow-label"><span class="arrow-label-text">SIGUE AL CIERRE</span><span class="arrow-icon" aria-hidden="true">→</span></span>
       <span class="arrow-title">Una invitación a romper paradigmas</span>
     </div>
   </div>
