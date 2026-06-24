@@ -271,6 +271,9 @@ def _render_prose_group(g: list[Line]) -> list[str]:
     if _is_pull_quote_group(g):
         return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
     text = " ".join(x.text for x in g)
+    sizes = [x.size for x in g]
+    if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
+        return [f'<p class="closing-lead">{esc(text)}</p>']
     if any(x.bold for x in g) and len(g) == 1:
         return [f'<p class="body"><strong>{esc(text)}</strong></p>']
     if g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):
@@ -302,9 +305,55 @@ def _group_prose(lines: list[Line]) -> list[str]:
     return parts
 
 
+_REMINDER_LABELS = frozenset({"RECORDATORIO", "ANTICIPO", "DESCARGA DIRECTA"})
+
+
+def _is_reminder_callout(label: Line, body: list[Line]) -> bool:
+    key = re.sub(r"\s+", "", collapse_spaced(label.text).upper())
+    if key not in _REMINDER_LABELS:
+        return False
+    text = " ".join(ln.text.strip() for ln in body)
+    return bool(text) and len(text) < 280
+
+
+def _render_label_callout(label: Line, body: list[Line]) -> str:
+    text = " ".join(ln.text.strip() for ln in body)
+    return (
+        f'<div class="caja-crema reminder-block">'
+        f'<p class="section-label">{esc(collapse_spaced(label.text))}</p>'
+        f'<p class="reminder-text">{esc(text)}</p></div>'
+    )
+
+
+def _split_label_callout(
+    lines: list[Line],
+) -> tuple[list[Line], Line, list[Line], list[Line]] | None:
+    """PDF: etiqueta 8pt (RECORDATORIO) + texto debajo en caja crema."""
+    for i, ln in enumerate(lines):
+        if not _is_section_label(ln):
+            continue
+        j = i + 1
+        body: list[Line] = []
+        while j < len(lines) and lines[j].size < 12 and not _is_sigue_line(lines[j].text):
+            body.append(lines[j])
+            j += 1
+        if not body or not _is_reminder_callout(ln, body):
+            continue
+        return lines[:i], ln, body, lines[j:]
+    return None
+
+
 def _group_prose_plain(lines: list[Line]) -> list[str]:
     if not lines:
         return []
+    callout = _split_label_callout(lines)
+    if callout:
+        intro, label, body, tail = callout
+        return (
+            _group_prose_plain(intro)
+            + [_render_label_callout(label, body)]
+            + _group_prose_plain(tail)
+        )
     groups: list[list[Line]] = []
     cur: list[Line] = []
     prev_bottom: float | None = None
