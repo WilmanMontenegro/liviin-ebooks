@@ -13,7 +13,6 @@ PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
 
 PAGE_BG = (0.8745, 0.8784, 0.8588)
 SAGE_SLOT = (0.7843, 0.8039, 0.7882)
-LINE_COLOR = (0.710, 0.659, 0.569)
 TARGET_TOP = 58.0
 FOOTER_Y = 600.0
 
@@ -54,8 +53,8 @@ def photo_slot_rect(page: fitz.Page) -> fitz.Rect | None:
     return None
 
 
-def content_lines(page: fitz.Page) -> tuple[list[dict], list[fitz.Rect], float]:
-    """Extrae spans de contenido (sin pie) y líneas decorativas."""
+def content_lines(page: fitz.Page) -> tuple[list[dict], float]:
+    """Extrae spans de contenido (sin pie)."""
     spans: list[dict] = []
     min_y = 9999.0
     for b in page.get_text("dict")["blocks"]:
@@ -65,7 +64,7 @@ def content_lines(page: fitz.Page) -> tuple[list[dict], list[fitz.Rect], float]:
             y0 = line["bbox"][1]
             if y0 >= FOOTER_Y:
                 continue
-            if y0 < 250:  # ya sin placeholder
+            if y0 < 250:
                 continue
             min_y = min(min_y, y0)
             for s in line["spans"]:
@@ -82,21 +81,12 @@ def content_lines(page: fitz.Page) -> tuple[list[dict], list[fitz.Rect], float]:
                         "color": rgb(s["color"]),
                     }
                 )
-
-    hlines: list[fitz.Rect] = []
-    for d in page.get_drawings():
-        r = d.get("rect")
-        if not r or r.height > 2 or r.width < 20:
-            continue
-        if 250 < r.y0 < FOOTER_Y and r.x0 < 100:
-            hlines.append(fitz.Rect(r))
-
-    return spans, hlines, min_y
+    return spans, min_y
 
 
 def reflow_page(page: fitz.Page) -> bool:
     slot = photo_slot_rect(page)
-    spans, hlines, first_y = content_lines(page)
+    spans, first_y = content_lines(page)
     if not spans or first_y > 900:
         # Sin slot sage: usar hueco superior (foto ya borrada)
         first_y = min(s["y"] for s in spans) if spans else 0
@@ -121,10 +111,6 @@ def reflow_page(page: fitz.Page) -> bool:
             fontsize=s["size"],
             color=s["color"],
         )
-
-    for r in hlines:
-        nr = fitz.Rect(r.x0, r.y0 - shift, r.x1, r.y1 - shift)
-        page.draw_rect(nr, color=LINE_COLOR, fill=LINE_COLOR, overlay=True)
 
     return True
 
