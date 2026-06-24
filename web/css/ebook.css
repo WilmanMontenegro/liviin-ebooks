@@ -92,6 +92,9 @@ body {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body); margin-bottom: 16px;
 }
+.body--italic {
+  font-style: italic;
+}
 .body-list {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body-tight);

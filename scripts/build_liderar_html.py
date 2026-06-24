@@ -299,6 +299,8 @@ def _render_prose_group(g: list[Line]) -> list[str]:
       <p class="con-carino">— María Teresa Espinosa</p>
       <p class="nombre">Interiorista y Home Coach · MTE</p>
     </div>"""]
+    if all(x.italic for x in g) and all(9 <= s <= 12 for s in sizes):
+        return [f'<p class="body body--italic">{esc(text)}</p>']
     return [f'<p class="body">{esc(text)}</p>']
 
 

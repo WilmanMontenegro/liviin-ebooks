@@ -75,7 +75,14 @@ def render_opening_lead(esc: Callable[[str], str], g: list[TextLine]) -> list[st
 
 
 def is_section_subtitle(ln: TextLine) -> bool:
-    return 14 <= ln.size <= 16 and ln.italic
+    if not ln.italic:
+        return False
+    if 14 <= ln.size <= 16:
+        return True
+    # ponytail: Transformar «interiorista y home coach» bajo nombre ≈11pt
+    return 9.5 <= ln.size <= 13 and bool(
+        re.match(r"^interiorista y home coach", ln.text.strip(), re.I)
+    )
 
 
 def render_title_block(
