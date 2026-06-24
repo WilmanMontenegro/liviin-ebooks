@@ -616,6 +616,18 @@ def _is_sparse_continuation(next_lines: list[Line]) -> bool:
     return len(next_lines) <= 14
 
 
+def _is_list_continuation(next_lines: list[Line]) -> bool:
+    """PDF siguiente sigue una lista — sin sección nueva arriba."""
+    if not next_lines or _starts_new_section(next_lines):
+        return False
+    if not any(ln.text.strip() == "•" for ln in next_lines[:8]):
+        return False
+    ymax = max(ln.y for ln in next_lines)
+    if ymax > 320:
+        return False
+    return len(next_lines) <= 20
+
+
 def _offset_lines(lines: list[Line], dy: float) -> list[Line]:
     return [
         Line(ln.text, ln.size, ln.y + dy, ln.x, ln.bold, ln.italic) for ln in lines
@@ -659,7 +671,7 @@ def _try_merge_sparse_next(
         if room >= 100 and max(ln.y for ln in next_lines) <= 400:
             return lines + tail, True
         return lines, False
-    if _is_sparse_continuation(next_lines):
+    if _is_sparse_continuation(next_lines) or _is_list_continuation(next_lines):
         return lines + tail, True
     return lines, False
 
@@ -672,7 +684,9 @@ def _split_dense_tail(
         return lines, []
     if _is_overview_page(lines):
         return lines, []
-    if next_lines is not None and _is_sparse_continuation(next_lines):
+    if next_lines is not None and (
+        _is_sparse_continuation(next_lines) or _is_list_continuation(next_lines)
+    ):
         return lines, []
     if max(ln.y for ln in lines) < 475:
         return lines, []
