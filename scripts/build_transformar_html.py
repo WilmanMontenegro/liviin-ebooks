@@ -485,7 +485,7 @@ def mov_cover_page(lines: list[Line], pdf_page_no: int) -> str:
     titles = [ln for ln in lines if ln.size >= 18 and not is_tag_line(ln.text, ln.size)]
     subs = [ln for ln in lines if 10 <= ln.size <= 14 and not is_tag_line(ln.text, ln.size)]
     title_html = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
-    sub = esc(collapse_spaced(subs[-1].text)) if subs else ""
+    sub = esc(re.sub(r"\s+", " ", " ".join(s.text.strip() for s in subs)).strip()) if subs else ""
     return f"""<!-- pdf p{pdf_page_no} movimiento -->
 <div class="page">
   <div class="content movimiento-cover">
