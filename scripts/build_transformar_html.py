@@ -367,9 +367,8 @@ def legal_page() -> str:
     <span class="tag">LIVIIN · EBOOK 02</span>
     <div class="h1" style="font-size:36px;margin-bottom:6px;">El arte de<br>transformar tu hogar</div>
     <div class="rule"></div>
-    <p class="subtitle">Una guía para dueñas que ya tienen la lista — y que están preparadas para pasar de la idea al hacer, desde lo que ya tienen.</p>
     <div class="spacer-lg"></div>
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">UNA GUÍA DE MARÍA TERESA ESPINOSA</p>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">MARÍA TERESA ESPINOSA</p>
     <p style="font-family:var(--serif-text);font-size:12px;font-style:italic;color:var(--secundario);">Interiorista y Home Coach · MTE</p>
     <div class="spacer-lg"></div>
     <p style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.1em;color:var(--filete);text-transform:uppercase;">© LIVIIN · FOR BETTER LIVING</p>

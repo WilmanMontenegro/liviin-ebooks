@@ -3,7 +3,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  background: var(--fondo-shell); font-family: var(--sans); color: var(--texto);
+  background: #fff; font-family: var(--sans); color: var(--texto);
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
