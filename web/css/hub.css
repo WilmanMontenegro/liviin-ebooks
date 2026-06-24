@@ -1,0 +1,84 @@
+@import url("tokens.css");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  background: var(--fondo-shell);
+  font-family: var(--sans);
+  color: var(--texto);
+  padding: 48px 24px 64px;
+}
+.wrap { max-width: 640px; margin: 0 auto; }
+h1 {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.lead {
+  color: var(--secundario);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.card {
+  background: var(--fondo);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.card h2 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.card p { font-size: 0.85rem; color: var(--secundario); line-height: 1.5; }
+.badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  background: #fff;
+  color: var(--secundario);
+  white-space: nowrap;
+}
+.badge.done { background: var(--taupe); color: #fff; }
+.badge.wip { background: var(--banda); color: var(--texto); }
+.badge.todo { background: transparent; border: 1px solid var(--taupe); }
+.card-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+a.btn-pill {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+a.btn-pill-read {
+  background: var(--texto);
+  color: #fff;
+}
+a.btn-pill-read:hover { background: var(--secundario); }
+a.btn-pill-dl {
+  background: var(--taupe);
+  color: #fff;
+}
+a.btn-pill-dl:hover { background: var(--secundario); }
+.foot {
+  margin-top: 40px;
+  font-size: 0.75rem;
+  color: var(--secundario);
+  line-height: 1.6;
+}

@@ -1,0 +1,69 @@
+/* Liviin — tokens de diseño (única fuente de verdad) */
+:root {
+  /* Colores */
+  --fondo: #DFE0DB;
+  --crema: #FAF7F0;
+  --banda: #B7BDBB;
+  --texto: #3A322C;
+  --secundario: #665E53;
+  --filete: #B5A891;
+  --taupe: #AB9E95;
+  --fondo-shell: #ECEDEA;
+
+  /* Fuentes */
+  --serif-display: 'Cormorant SC', 'Cormorant Garamond', serif;
+  --serif-text: 'Cormorant Garamond', serif;
+  --serif: var(--serif-text);
+  --sans: 'Inter', sans-serif;
+
+  /* Escala tipográfica */
+  --fs-micro: 8px;
+  --fs-label: 8.5px;
+  --fs-tiny: 9px;
+  --fs-caption: 9.5px;
+  --fs-small: 10px;
+  --fs-smallish: 10.5px;
+  --fs-serif-sm: 11px;
+  --fs-body-sm: 12px;
+  --fs-body: 12.5px;
+  --fs-serif-md: 13px;
+  --fs-serif-lead: 15px;
+  --fs-serif-ui: 16px;
+  --fs-section-sub: 17px;
+  --fs-serif-lg: 19px;
+  --fs-pull: 22px;
+  --fs-h2: 28px;
+  --fs-h1-italic: 44px;
+  --fs-h1: 52px;
+  --fs-portada: 56px;
+  --fs-portada-sub: 13.5px;
+
+  /* Layout página ebook */
+  --page-w: 576px;
+  --page-min-h: 864px;
+  --content-pt: 48px;
+  --content-pr: 42px;
+  --content-pb: 40px;
+  --content-pl: 37px;
+  --banda-h: 32px;
+  --rule-w: 52px;
+
+  /* Listas numeradas (01 / step-list) */
+  --step-num-col: 28px;
+  --step-gap-x: 10px;
+  --step-gap-y: 8px;
+  --step-prose-num-col: 18px;
+
+  /* Tracking */
+  --track-label: 0.22em;
+  --track-footer: 0.18em;
+
+  /* Cifras */
+  --nums-title: lining-nums;
+  --nums-tabular: tabular-nums;
+
+  /* Interlineado */
+  --lh-body: 1.85;
+  --lh-body-tight: 1.75;
+  --lh-step: 1.55;
+}

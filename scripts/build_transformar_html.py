@@ -11,12 +11,12 @@ from pathlib import Path
 import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ebook_style import ebook_head_links
 from html_blocks import is_section_subtitle, render_numeric_steps_page, render_title_block, split_numeric_steps
 from pdf_text import chars_to_line_text, collapse_spaced, fmt_structural, needs_gap_extract, numbered_caps_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "El_arte_de_transformar_tu_hogar_v11.pdf"
-BONUS = ROOT / "web" / "bonus.html"
 OUT = ROOT / "web" / "transformar.html"
 
 MOVIMIENTOS = [
@@ -572,11 +572,6 @@ def build() -> str:
             pages_html.append(content_page(lines, page_no))
     doc.close()
 
-    bonus = BONUS.read_text(encoding="utf-8")
-    s0 = bonus.index("<style>") + len("<style>")
-    s1 = bonus.index("</style>")
-    styles = bonus[s0:s1].split("<style>")[0]
-
     hub_body = """
 <a class="hub-link hub-home" href="index.html">← Inicio</a>
 <a class="hub-link hub-pdf" href="pdf/transformar.pdf" download>Descargar PDF</a>
@@ -588,10 +583,7 @@ def build() -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El arte de transformar tu hogar · Liviin</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-{styles}
-</style>
+{ebook_head_links()}
 </head>
 <body>
 {hub_body}
