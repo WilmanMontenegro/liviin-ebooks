@@ -222,3 +222,9 @@ def render_firma_cierre_page(
   </div>
 </div>
 """
+
+
+def render_tag_html(esc: Callable[[str], str], text: str, *, bold: bool = False) -> str:
+    """Etiqueta de sección; el PDF marca algunas (p. ej. cierre editorial) en negrita."""
+    inner = f"<strong>{esc(text)}</strong>" if bold else esc(text)
+    return f'<span class="tag">{inner}</span>'

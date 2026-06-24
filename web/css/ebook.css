@@ -35,6 +35,7 @@ body {
   letter-spacing: var(--track-label); color: var(--secundario); text-transform: uppercase;
   margin-bottom: 22px; display: block;
 }
+.tag strong { font-weight: 600; color: var(--texto); }
 .h1 {
   font-family: var(--serif-display); font-size: var(--fs-h1); font-weight: 500;
   color: var(--texto); line-height: 1.0; letter-spacing: 0.01em;

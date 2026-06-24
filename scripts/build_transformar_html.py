@@ -21,6 +21,7 @@ from html_blocks import (
     render_firma_cierre_page,
     render_numeric_steps_page,
     render_opening_lead,
+    render_tag_html,
     render_title_block,
     split_numeric_steps,
 )
@@ -563,11 +564,11 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
         if _is_sigue_line(ln.text):
             break
         if is_tag_line(ln.text, ln.size):
-            tokens.append(("tag", collapse_spaced(ln.text)))
+            tokens.append(("tag", collapse_spaced(ln.text), ln.bold))
             i += 1
             continue
         if _is_section_label(ln):
-            tokens.append(("tag", collapse_spaced(ln.text)))
+            tokens.append(("tag", collapse_spaced(ln.text), ln.bold))
             i += 1
             continue
         if is_numbered_label(ln.text):
@@ -603,7 +604,7 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     parts: list[str] = []
     for tok in tokens:
         if tok[0] == "tag":
-            parts.append(f'<span class="tag">{esc(tok[1])}</span>')
+            parts.append(render_tag_html(esc, tok[1], bold=tok[2]))
             if "CIERRE DEL MOVIMIENTO" in tok[1].upper() or "HOME COACH" in tok[1].upper():
                 parts.append('<div class="spacer-sm"></div>')
         elif tok[0] == "title":
