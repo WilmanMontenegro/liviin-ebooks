@@ -27,6 +27,7 @@ jobs:
           python scripts/build_transformar_html.py
           python scripts/build_liderar_html.py
           python scripts/stamp_index.py
+          python scripts/stamp_index.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web

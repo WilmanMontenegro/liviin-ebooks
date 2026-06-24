@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from typing import Callable, Protocol
 
-from pdf_text import collapse_spaced
+from pdf_text import collapse_spaced, fmt_prose_step
 
 _NUMERIC_STEP = re.compile(r"^(\d+)\.\s*(.*)")
 
@@ -60,7 +60,7 @@ def parse_numeric_step(text: str) -> tuple[str, str] | None:
 def render_prose_steps_html(esc: Callable[[str], str], items: list[tuple[str, str]]) -> str:
     blocks = "".join(
         f'<div class="step-item step-item--prose">'
-        f'<span class="step-num">{esc(num)}.</span>'
+        f'<span class="step-num">{esc(fmt_prose_step(num))}.</span>'
         f'<p class="step-prose">{esc(text)}</p></div>'
         for num, text in items
     )

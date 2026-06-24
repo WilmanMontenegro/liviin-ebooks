@@ -17,7 +17,14 @@ from html_blocks import (
     render_title_block,
     split_numeric_steps,
 )
-from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, numbered_caps_html
+from pdf_text import (
+    chars_to_line_text,
+    collapse_spaced,
+    fmt_inventory,
+    fmt_structural,
+    needs_gap_extract,
+    numbered_caps_html,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
@@ -136,7 +143,7 @@ def _render_area_map_block(lines: list[Line]) -> str:
                 continue
             n, label = p
             cells.append(
-                f'<div class="area-item"><span class="area-num">{n}</span>'
+                f'<div class="area-item"><span class="area-num">{fmt_inventory(n)}</span>'
                 f'<span class="area-label">{esc(label)}</span></div>'
             )
     return f'<div class="area-grid">{"".join(cells)}</div>'
@@ -344,15 +351,6 @@ _ORDINAL_ITEM = re.compile(
     r"^(Uno|Dos|Tres|Cuatro|Cinco|Seis|Siete|Ocho|Nueve|Diez)\.\s*(.*)",
     re.I,
 )
-_ORDINAL_INDEX = {
-    "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
-    "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10,
-}
-
-
-def _ordinal_num(label: str, i: int) -> str:
-    n = _ORDINAL_INDEX.get(label.lower(), i + 1)
-    return f"{n:02d}"
 
 
 def _is_ordinal_start(ln: Line) -> bool:
@@ -383,7 +381,7 @@ def _render_ordinal_block(intro: list[Line], items: list[tuple[str, str]]) -> li
     parts = _group_prose_plain(intro) if intro else []
     blocks = "".join(
         f'<div class="discovery-item">'
-        f'<span class="discovery-num">{esc(_ordinal_num(label, i))}</span>'
+        f'<span class="discovery-num">{esc(fmt_structural(i + 1))}</span>'
         f'<p class="discovery-text">{esc(text)}</p></div>'
         for i, (label, text) in enumerate(items)
     )
@@ -497,7 +495,7 @@ def _render_step_block_page(
     parts = _group_prose_plain(intro)
     blocks = "".join(
         f'<div class="step-item"><div class="step-head">'
-        f'<span class="step-num">{esc(num)}</span>'
+        f'<span class="step-num">{esc(fmt_structural(num))}</span>'
         f'<span class="step-title">{esc(title)}</span></div>'
         f'<p class="step-desc">{esc(desc)}</p></div>'
         for num, title, desc in items
@@ -516,7 +514,7 @@ def _render_question_block_page(
     blocks = "".join(
         f'<div class="step-item step-item--question">'
         f'<div class="step-question-row">'
-        f'<span class="step-num">{esc(num)}</span>'
+        f'<span class="step-num">{esc(fmt_structural(num))}</span>'
         f'<p class="step-question">{esc(question)}</p></div>'
         f'<p class="step-insight">{esc(insight)}</p></div>'
         for num, question, insight in items
@@ -544,7 +542,7 @@ def _overview_item_html(num: str, text: str) -> list[str]:
         title, desc = full, ""
     out = [
         f'<div class="index-line overview-line">'
-        f'<span class="index-num">{esc(num)}</span>'
+        f'<span class="index-num">{esc(fmt_structural(num))}</span>'
         f'<span class="index-title">{esc(title)}</span></div>'
     ]
     if desc:
@@ -556,7 +554,7 @@ def index_item_html(num: str, title: str, page: int | None = None) -> str:
     page_html = f'<span class="index-page">{page:02d}</span>' if page is not None else ""
     return (
         f'<div class="index-entry">'
-        f'<div class="index-line"><span class="index-num">{esc(num)}</span>'
+        f'<div class="index-line"><span class="index-num">{esc(fmt_structural(num))}</span>'
         f'<span class="index-title">{esc(title)}</span></div>'
         f"{page_html}</div>"
     )

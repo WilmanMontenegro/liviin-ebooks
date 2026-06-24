@@ -12,7 +12,7 @@ import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from html_blocks import is_section_subtitle, render_numeric_steps_page, render_title_block, split_numeric_steps
-from pdf_text import chars_to_line_text, collapse_spaced, needs_gap_extract, numbered_caps_html
+from pdf_text import chars_to_line_text, collapse_spaced, fmt_structural, needs_gap_extract, numbered_caps_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "El_arte_de_transformar_tu_hogar_v11.pdf"
@@ -415,7 +415,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
 def index_item_html(num: str, title: str) -> str:
     return (
         f'<div class="index-entry">'
-        f'<div class="index-line"><span class="index-num">{esc(num)}</span>'
+        f'<div class="index-line"><span class="index-num">{esc(fmt_structural(num))}</span>'
         f'<span class="index-title">{esc(title)}</span></div></div>'
     )
 
