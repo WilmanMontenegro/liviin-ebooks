@@ -52,7 +52,7 @@
   --step-num-col: 28px;
   --step-gap-x: 10px;
   --step-gap-y: 8px;
-  --step-prose-num-col: 18px;
+  --step-prose-gap-x: 6px;
 
   /* Tracking */
   --track-label: 0.22em;
