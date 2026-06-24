@@ -404,16 +404,18 @@ def pull_page(lines: list[Line], page_no: int) -> str:
 """
 
 
-def index_item_html(num: str, title: str) -> str:
+def index_item_html(num: str, title: str, page: int | None = None) -> str:
+    page_html = f'<span class="index-page">{page:02d}</span>' if page is not None else ""
     return (
         f'<div class="index-entry">'
         f'<div class="index-line"><span class="index-num">{esc(fmt_structural(num))}</span>'
-        f'<span class="index-title">{esc(title)}</span></div></div>'
+        f'<span class="index-title">{esc(title)}</span></div>'
+        f"{page_html}</div>"
     )
 
 
-def index_page(lines: list[Line]) -> str:
-    items: list[str] = []
+def parse_index_items(lines: list[Line]) -> tuple[list[tuple[str, str]], str]:
+    items: list[tuple[str, str]] = []
     note: list[str] = []
     for ln in lines:
         t = ln.text.strip()
@@ -424,7 +426,15 @@ def index_page(lines: list[Line]) -> str:
             continue
         elif items:
             note.append(t)
-    items_html = "\n    ".join(index_item_html(n, t) for n, t in items)
+    return items, " ".join(note)
+
+
+def render_index_page(
+    items: list[tuple[str, str]], section_pages: dict[str, int], note: str
+) -> str:
+    items_html = "\n    ".join(
+        index_item_html(n, t, section_pages.get(n)) for n, t in items
+    )
     return f"""<!-- ÍNDICE -->
 <div class="page">
   <div class="content">
@@ -434,11 +444,41 @@ def index_page(lines: list[Line]) -> str:
     <div class="spacer-sm"></div>
     {items_html}
     <div class="spacer-md"></div>
-    <p class="body">{esc(" ".join(note))}</p>
+    <p class="body">{esc(note)}</p>
   </div>
   {banda("ÍNDICE", 10)}
 </div>
 """
+
+
+def _is_iniciacion_00(lines: list[Line]) -> bool:
+    for ln in lines:
+        t = collapse_spaced(ln.text).upper()
+        if ln.size <= 10.5 and "INICIACI" in t and "00" in t:
+            return True
+    return False
+
+
+def _mov_num_from_cover(lines: list[Line]) -> str | None:
+    tag = mov_tag_text(lines)
+    if not tag:
+        return None
+    m = re.search(r"MOVIMIENTO\s+(\d+)", tag, re.I)
+    return f"{int(m.group(1)):02d}" if m else None
+
+
+def _note_section_start(
+    lines: list[Line],
+    page_no: int,
+    section_pages: dict[str, int],
+    pending_mov: str | None,
+) -> str | None:
+    if _is_iniciacion_00(lines):
+        section_pages.setdefault("00", page_no)
+    if pending_mov is not None:
+        section_pages.setdefault(pending_mov, page_no)
+        return None
+    return pending_mov
 
 
 def mov_cover_page(lines: list[Line], page_no: int) -> str:
@@ -588,9 +628,15 @@ def _split_dense_tail(
 
 def build() -> str:
     doc = fitz.open(PDF)
-    pages_html: list[str] = [cover_page(), legal_page()]
+    pages_before: list[str] = [cover_page(), legal_page()]
+    pages_after: list[str] = []
     carry: list[Line] = []
     skip_indices: set[int] = set()
+    section_pages: dict[str, int] = {}
+    pending_mov: str | None = None
+    index_items: list[tuple[str, str]] = []
+    index_note = ""
+    past_index_slot = False
 
     for i in range(2, doc.page_count):
         if i in skip_indices:
@@ -609,17 +655,29 @@ def build() -> str:
                     lines = merged
                     skip_indices.add(i + 1)
         if page_no == 3:
-            pages_html.append(dedicatoria_page(lines))
+            pages_before.append(dedicatoria_page(lines))
         elif page_no == 10:
-            pages_html.append(index_page(lines))
+            index_items, index_note = parse_index_items(lines)
+            past_index_slot = True
         elif is_pull_page(lines):
-            pages_html.append(pull_page(lines, page_no))
+            html = pull_page(lines, page_no)
+            (pages_after if past_index_slot else pages_before).append(html)
         elif is_mov_cover(lines):
-            pages_html.append(mov_cover_page(lines, page_no))
+            pending_mov = _mov_num_from_cover(lines)
+            html = mov_cover_page(lines, page_no)
+            (pages_after if past_index_slot else pages_before).append(html)
         else:
             lines, carry = _split_dense_tail(lines, page_no, next_raw)
-            pages_html.append(content_page(lines, page_no))
+            pending_mov = _note_section_start(lines, page_no, section_pages, pending_mov)
+            html = content_page(lines, page_no)
+            (pages_after if past_index_slot else pages_before).append(html)
     doc.close()
+
+    pages_html = (
+        pages_before
+        + [render_index_page(index_items, section_pages, index_note)]
+        + pages_after
+    )
 
     hub_body = """
 <a class="hub-link hub-home" href="index.html">← Inicio</a>
