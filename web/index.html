@@ -64,23 +64,32 @@
     .badge.done { background: var(--taupe); color: #fff; }
     .badge.wip { background: #B7BDBB; color: var(--texto); }
     .badge.todo { background: transparent; border: 1px solid var(--taupe); }
-    a.btn {
+    .card-actions {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    a.btn-pill {
       display: inline-block;
-      margin-top: 12px;
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--texto);
       text-decoration: none;
-      border-bottom: 1px solid var(--taupe);
-      padding-bottom: 2px;
+      padding: 8px 14px;
+      border-radius: 2px;
     }
-    a.btn:hover { color: var(--taupe); }
-    a.btn-dl {
-      margin-left: 16px;
-      color: var(--secundario);
-      border-bottom-color: var(--secundario);
+    a.btn-pill-read {
+      background: var(--texto);
+      color: #fff;
     }
+    a.btn-pill-read:hover { background: var(--secundario); }
+    a.btn-pill-dl {
+      background: var(--taupe);
+      color: #fff;
+    }
+    a.btn-pill-dl:hover { background: var(--secundario); }
     .foot {
       margin-top: 40px;
       font-size: 0.75rem;
@@ -101,8 +110,10 @@
       <div>
         <h2>Las manos que sostienen tu hogar</h2>
         <p>Bonus · plantilla completa de la clienta + foto de portada.</p>
-        <a class="btn" href="bonus.html">Ver libro →</a>
-        <a class="btn btn-dl" href="pdf/bonus.pdf" download>Descargar PDF</a>
+        <div class="card-actions">
+          <a class="btn-pill btn-pill-read" href="bonus.html">Ver libro</a>
+          <a class="btn-pill btn-pill-dl" href="pdf/bonus.pdf" download>Descargar PDF</a>
+        </div>
       </div>
       <span class="badge done">Completo</span>
     </article>
@@ -111,8 +122,10 @@
       <div>
         <h2>El arte de liderar tu hogar</h2>
         <p>91 páginas · plantilla HTML + portada editorial.</p>
-        <a class="btn" href="liderar.html">Ver libro →</a>
-        <a class="btn btn-dl" href="pdf/liderar.pdf" download>Descargar PDF</a>
+        <div class="card-actions">
+          <a class="btn-pill btn-pill-read" href="liderar.html">Ver libro</a>
+          <a class="btn-pill btn-pill-dl" href="pdf/liderar.pdf" download>Descargar PDF</a>
+        </div>
       </div>
       <span class="badge done">Completo</span>
     </article>
@@ -121,8 +134,10 @@
       <div>
         <h2>El arte de transformar tu hogar</h2>
         <p>101 páginas migradas a plantilla HTML.</p>
-        <a class="btn" href="transformar.html">Ver libro →</a>
-        <a class="btn btn-dl" href="pdf/transformar.pdf" download>Descargar PDF</a>
+        <div class="card-actions">
+          <a class="btn-pill btn-pill-read" href="transformar.html">Ver libro</a>
+          <a class="btn-pill btn-pill-dl" href="pdf/transformar.pdf" download>Descargar PDF</a>
+        </div>
       </div>
       <span class="badge done">Completo</span>
     </article>

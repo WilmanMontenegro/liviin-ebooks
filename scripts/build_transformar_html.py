@@ -452,12 +452,6 @@ def build() -> str:
     s1 = bonus.index("</style>")
     styles = bonus[s0:s1].split("<style>")[0]
 
-    hub = """
-.hub-link { position:fixed;top:12px;z-index:9;font-family:var(--sans);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:rgba(58,50,44,0.85);color:#fff;padding:8px 12px;text-decoration:none;border-radius:2px; }
-.hub-link.hub-home { left:12px; }
-.hub-link.hub-pdf { right:12px; }
-@media print { .hub-link { display:none; } }
-"""
     hub_body = """
 <a class="hub-link hub-home" href="index.html">← Inicio</a>
 <a class="hub-link hub-pdf" href="pdf/transformar.pdf" download>Descargar PDF</a>
@@ -472,7 +466,6 @@ def build() -> str:
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 {styles}
-{hub}
 </style>
 </head>
 <body>
