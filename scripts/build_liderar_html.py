@@ -35,6 +35,9 @@ from pdf_text import (
     needs_gap_extract,
     normalize_label_part,
     numbered_caps_html,
+    is_orphan_caps_line,
+    absorb_numbered_orphans,
+    collapse_orphan_caps,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -877,6 +880,7 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     page_h = max((ln.y for ln in lines), default=0) + 25
     lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
+    lines = merge_orphan_caps_lines(lines, is_numbered_label)
     sec = section_for(pdf_page_no)
     sigue = parse_sigue_lines(lines)
     tokens: list[tuple] = []
@@ -896,6 +900,11 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
         if is_numbered_label(ln.text):
             label = ln.text
             i += 1
+            while i < len(lines) and is_orphan_caps_line(
+                lines[i].text, lines[i].size, is_numbered_label
+            ):
+                label = f"{label.rstrip()} {collapse_orphan_caps(lines[i].text)}"
+                i += 1
             desc: list[Line] = []
             while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 15.5 and not _is_sigue_line(lines[i].text):
                 desc.append(lines[i])
@@ -932,7 +941,7 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
         elif tok[0] == "title":
             parts.extend(render_title_block(esc, tok[1], tok[2]))
         elif tok[0] == "numbered":
-            label, desc = tok[1], tok[2]
+            label, desc = absorb_numbered_orphans(tok[1], tok[2], is_numbered_label)
             num, title = parse_numbered_label(label)
             parts.append(
                 f'<div class="numbered-block"><div class="numbered-title">'
@@ -940,7 +949,20 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
             )
             parts.extend(group_paragraphs(desc))
         elif tok[0] == "body":
-            parts.extend(group_paragraphs(tok[1]))
+            chunk = list(tok[1])
+            if (
+                chunk
+                and parts
+                and "numbered-title" in parts[-1]
+                and is_orphan_caps_line(chunk[0].text, chunk[0].size, is_numbered_label)
+            ):
+                orphan = esc(collapse_orphan_caps(chunk[0].text))
+                parts[-1] = parts[-1].replace(
+                    "</div></div>", f" {orphan}</div></div>", 1
+                )
+                chunk = chunk[1:]
+            if chunk:
+                parts.extend(group_paragraphs(chunk))
 
     if sigue:
         parts.append(f"""<div class="next-link">

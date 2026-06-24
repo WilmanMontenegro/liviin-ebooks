@@ -199,20 +199,37 @@ def merge_orphan_caps_lines(lines: list, is_numbered_label_fn) -> list:
     out = [lines[0]]
     for ln in lines[1:]:
         prev = out[-1]
-        t = ln.text.strip()
-        if (
-            is_numbered_label_fn(prev.text)
-            and t
-            and ln.size <= 10.5
-            and not is_numbered_label_fn(t)
-            and not re.search(r"[a-záéíóúñ]", t)
-            and len(collapse_orphan_caps(t)) <= 24
+        if is_numbered_label_fn(prev.text) and is_orphan_caps_line(
+            ln.text, ln.size, is_numbered_label_fn
         ):
-            merged = f"{prev.text.rstrip()} {collapse_orphan_caps(t)}"
+            merged = f"{prev.text.rstrip()} {collapse_orphan_caps(ln.text)}"
             out[-1] = type(prev)(**{**prev.__dict__, "text": merged})
         else:
             out.append(ln)
     return out
+
+
+def is_orphan_caps_line(text: str, size: float, is_numbered_label_fn) -> bool:
+    """Línea suelta en caps tras un 01· (SALE, I N M E D I A T A…) — no es cuerpo."""
+    t = text.strip()
+    if not t or size > 10.5 or is_numbered_label_fn(t):
+        return False
+    if re.search(r"[a-záéíóúñ]", t):
+        return False
+    if len(collapse_orphan_caps(t)) > 24:
+        return False
+    tokens = t.split()
+    if len(tokens) == 1:
+        return True
+    return all(len(tok) <= 2 for tok in tokens)
+
+
+def absorb_numbered_orphans(label: str, desc: list, is_numbered_label_fn) -> tuple[str, list]:
+    """Si el PDF partió el título, la cola no debe ir al párrafo."""
+    while desc and is_orphan_caps_line(desc[0].text, desc[0].size, is_numbered_label_fn):
+        label = f"{label.rstrip()} {collapse_orphan_caps(desc[0].text)}"
+        desc = desc[1:]
+    return label, desc
 
 
 def _digits(s: str | int) -> int:
@@ -258,6 +275,10 @@ if __name__ == "__main__":
     )
     assert collapse_orphan_caps("I N  M  E  D  I A  T A") == "INMEDIATA"
     assert normalize_title_caps("MUY P E Q U E Ñ A.") == "MUY PEQUEÑA."
+    assert is_orphan_caps_line("SALE", 9.0, lambda t: False)
+    assert is_orphan_caps_line("I N  M  E  D  I A  T A", 9.0, lambda t: False)
+    assert not is_orphan_caps_line("Cada vez que algo", 11.0, lambda t: False)
+    assert absorb_numbered_orphans("02 · LA REGLA DE UNO ENTRA, UNO", [type("L", (), {"text": "SALE", "size": 9})()], lambda t: t.startswith("02"))[0].endswith("SALE")
     assert numbered_caps_html("01", "EL MINUTO DE LA ACCIÓN INMEDIATA") == "01 · EL MINUTO DE LA ACCIÓN INMEDIATA"
     assert fmt_structural("0 1") == "01"
     assert fmt_inventory(13) == "13"
