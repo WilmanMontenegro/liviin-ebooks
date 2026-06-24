@@ -69,6 +69,13 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   font-family: var(--sans); font-size: 12.5px; font-weight: 300;
   color: var(--texto); line-height: 1.85; margin-bottom: 16px;
 }
+.body-list {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 300;
+  color: var(--texto); line-height: 1.75;
+  margin: 0 0 16px 1.15em; padding: 0;
+}
+.body-list li { margin-bottom: 10px; }
+.body-list li::marker { color: var(--secundario); }
 .pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
 .pull-quote p {
   font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
@@ -439,7 +446,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Tu primer ejercicio</div>
     <div class="rule"></div>
     <p class="body">Antes de pasar al siguiente movimiento, te pido esto:</p>
-    <p class="body">• Esta semana, haz el recorrido silencioso. Sola. Sin teléfono. Mínimo veinte minutos. • Lleva un cuaderno — no el celular. Lo análogo conecta con el cuerpo de otra forma. • Anota solo dos cosas: dónde tu cuerpo se tensiona, y de qué tipo es esa molestia (funcional, saturación, o desorden). • No empieces a resolver nada todavía. Solo nombra. La acción viene en el siguiente movimiento.</p>
+    <ul class="body-list"><li>Esta semana, haz el recorrido silencioso. Sola. Sin teléfono. Mínimo veinte minutos.</li><li>Lleva un cuaderno — no el celular. Lo análogo conecta con el cuerpo de otra forma.</li><li>Anota solo dos cosas: dónde tu cuerpo se tensiona, y de qué tipo es esa molestia (funcional, saturación, o desorden).</li><li>No empieces a resolver nada todavía. Solo nombra. La acción viene en el siguiente movimiento.</li></ul>
     <p class="body">Cuando termines, vuelve a abrir tu Home Excel. Y cruza lo que escribiste en el cuaderno con lo que ya tenías en el Excel. Vas a descubrir que coinciden — pero que lo del cuaderno tiene una urgencia distinta. Más íntima. Más real.</p>
     <p class="body">Esa es la diferencia entre saber lo que hay que hacer y saber por dónde empezar a hacerlo.</p>
   </div>
@@ -615,7 +622,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Antes de pasar al método del cómo, te pido un segundo ejercicio — corto, pero profundo. No es una pregunta intelectual. Es un ejercicio de mirada honesta sobre lo que ya tienes.</p>
     <p class="body">Camina por tu casa, despacio, una vez más. Y esta vez no busques lo que te molesta. Busca lo opuesto. Identifica:</p>
-    <p class="body">• Tres objetos que de verdad te gustan, que usas, que te representan hoy. • Tres rincones de tu casa que ya te dan paz cuando los miras — aunque sean pequeños. • Tres cosas que tienes y que muchas mujeres anhelan tener — y que tú quizás dejaste de ver.</p>
+    <ul class="body-list"><li>Tres objetos que de verdad te gustan, que usas, que te representan hoy.</li><li>Tres rincones de tu casa que ya te dan paz cuando los miras — aunque sean pequeños.</li><li>Tres cosas que tienes y que muchas mujeres anhelan tener — y que tú quizás dejaste de ver.</li></ul>
     <div class="pull-quote"><p>Tu casa no es solo lo que le falta. También es todo lo que ya está bien.</p></div>
     <p class="body">La mayoría de las dueñas se sorprenden con este ejercicio. Descubren que su casa tenía mucho más a su favor de lo que estaban viendo. Que llevaban meses concentradas en lo que faltaba — y habían dejado de honrar lo que sí estaba.</p>
   </div>
@@ -799,7 +806,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Tu primer espacio</div>
     <div class="rule"></div>
     <p class="body">Ahora sí, te pido pasar a la acción. Pequeña, pero acción.</p>
-    <p class="body">• Mira tu Home Excel y tus notas del recorrido silencioso. • Identifica tres espacios candidatos a ser el primero — no por su importancia, sino por su ligereza. • Entre esos tres, elige el que sientas que menos resistencia te da empezar. No el que más arregle. El más liviano. • Bloquea en tu calendario una ventana — puede ser de dos horas, de medio día, de un fin de semana, según el tamaño. Pero bloquéalo. Si no está en el calendario, no existe. • Y empieza. Saca todo del espacio, mira cada cosa, decide. La regla simple: ¿esto me sigue representando hoy? Sí, se queda. No, sale.</p>
+    <ul class="body-list"><li>Mira tu Home Excel y tus notas del recorrido silencioso.</li><li>Identifica tres espacios candidatos a ser el primero — no por su importancia, sino por su ligereza.</li><li>Entre esos tres, elige el que sientas que menos resistencia te da empezar. No el que más arregle. El más liviano.</li><li>Bloquea en tu calendario una ventana — puede ser de dos horas, de medio día, de un fin de semana, según el tamaño. Pero bloquéalo. Si no está en el calendario, no existe.</li><li>Y empieza. Saca todo del espacio, mira cada cosa, decide. La regla simple: ¿esto me sigue representando hoy? Sí, se queda. No, sale.</li></ul>
     <p class="body">Y antes de comprar un solo organizador — porque sé que te va a dar la tentación — sigue al siguiente movimiento. Porque ahí está la secuencia que casi nadie respeta, y que es la diferencia entre un orden que dura una semana y un orden que dura años.</p>
   </div>
     <div class="banda"><span class="banda-texto">03 · POR DÓNDE EMPEZAR</span><span class="banda-texto">44</span></div>
@@ -898,7 +905,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Depurar no es botar por botar. Es decidir, con calma, qué se queda — y qué se va a un destino mejor.</p>
     <p class="body">Para cada objeto, hay solo cuatro destinos posibles:</p>
-    <p class="body">• Se queda. Lo usas, te representa, te da alegría tenerlo. • Se vende. Tiene valor, pero ya no lo usas. Hay quien lo va a aprovechar. • Se dona o regala. Está bien, alguien lo necesita. Le vas a dar segunda vida. • Se descarta. Está dañado, vencido, o ya cumplió su ciclo.</p>
+    <ul class="body-list"><li>Se queda. Lo usas, te representa, te da alegría tenerlo.</li><li>Se vende. Tiene valor, pero ya no lo usas. Hay quien lo va a aprovechar.</li><li>Se dona o regala. Está bien, alguien lo necesita. Le vas a dar segunda vida.</li><li>Se descarta. Está dañado, vencido, o ya cumplió su ciclo.</li></ul>
     <p class="body">La regla — para que no te quedes paralizada — es esta: ningún objeto pasa por tus manos sin destino. No hay categoría tal vez. No hay categoría después decido. Cada cosa, en el momento, va a una de las cuatro pilas.</p>
     <div class="pull-quote"><p>La duda perpetua es el enemigo de la depuración. Decide y avanza.</p></div>
   </div>
@@ -1186,7 +1193,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="rule"></div>
     <p class="body">Te quiero hablar con honestidad sobre el dinero. Porque sé que cuando lees ayuda profesional, una parte de ti calcula y se pregunta si esto es para ti.</p>
     <p class="body">Pero la verdad es que tu equipo de transformación se arma según tus posibilidades. Y los cuatro momentos que acabo de describir tienen versiones de muchos presupuestos:</p>
-    <p class="body">• La mirada externa al inicio puede ser una amiga con buen ojo. Una hermana. Una vecina con experiencia. Café y conversación — sin costo. • El acompañamiento en la acción puede ser por horas, no por proyecto. Hoy hay organizadoras profesionales que cobran por jornada. Una jornada bien aprovechada hace milagros. • Las manos extras pueden ser una persona de limpieza por dos días específicos. No una contratación permanente. • La cereza al final puede ser una consulta puntual con una interiorista — una visita, recomendaciones, no un proyecto completo.</p>
+    <ul class="body-list"><li>La mirada externa al inicio puede ser una amiga con buen ojo. Una hermana. Una vecina con experiencia. Café y conversación — sin costo.</li><li>El acompañamiento en la acción puede ser por horas, no por proyecto. Hoy hay organizadoras profesionales que cobran por jornada. Una jornada bien aprovechada hace milagros.</li><li>Las manos extras pueden ser una persona de limpieza por dos días específicos. No una contratación permanente.</li><li>La cereza al final puede ser una consulta puntual con una interiorista — una visita, recomendaciones, no un proyecto completo.</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">05 · TU EQUIPO DE TRANSFORMACIÓN</span><span class="banda-texto">72</span></div>
 
@@ -1315,7 +1322,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Cuando los hábitos se asientan, algo precioso empieza a pasar con tu Home Excel. Recuerdo el momento exacto en mi propia casa — en que abrí el archivo y noté algo distinto.</p>
     <p class="body">La columna de pendientes — esa que al inicio era larguísima y abrumadora — se había encogido. Ya no era una lista de cosas urgentes. Era una lista pequeña de mantenimientos. De refresh. De mejoras opcionales.</p>
     <p class="body">Y aparecieron columnas nuevas, casi sin que yo me diera cuenta:</p>
-    <p class="body">• Mantenimiento — lo que hay que cuidar para que se sostenga lo logrado. • Sostenimiento — los rituales semanales y mensuales que ya no se piensan, se hacen. • Refresh — pequeñas actualizaciones estacionales para que la casa respire nueva. • Deseos a corto plazo — lo que sí me daré este trimestre. • Deseos a mediano plazo — lo que estoy ahorrando o esperando.</p>
+    <ul class="body-list"><li>Mantenimiento — lo que hay que cuidar para que se sostenga lo logrado.</li><li>Sostenimiento — los rituales semanales y mensuales que ya no se piensan, se hacen.</li><li>Refresh — pequeñas actualizaciones estacionales para que la casa respire nueva.</li><li>Deseos a corto plazo — lo que sí me daré este trimestre.</li><li>Deseos a mediano plazo — lo que estoy ahorrando o esperando.</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">81</span></div>
 
@@ -1324,7 +1331,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p82 -->
 <div class="page">
   <div class="content">
-    <p class="body">• Deseos a largo plazo — los sueños grandes que ya no me asustan, porque sé que llegan paso a paso.</p>
+    <ul class="body-list"><li>Deseos a largo plazo — los sueños grandes que ya no me asustan, porque sé que llegan paso a paso.</li></ul>
     <div class="pull-quote"><p>Y todas esas columnas, ahora, se llenan desde un lugar distinto. Desde el sentido de valor, de ligereza, de amor y de paz. No desde la urgencia ni la frustración.</p></div>
     <p class="body">Sí — suena romántico. Pero es real. Y le pasa a casi todas las dueñas que sostienen el método durante un año.</p>
   </div>
@@ -1343,7 +1350,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Eso no es una transformación. Es una dependencia. Es haber cambiado el caos por ser el cerebro único de un sistema más bonito.</p>
     <p class="body">Para que la transformación sea real, en algún punto la familia tiene que entrar. Tu pareja. Tus hijos — según la edad. Cualquiera que comparta la casa contigo.</p>
     <p class="body">No de un día para otro. No con una imposición. Pero sí progresivamente, con conversaciones claras, con sistemas que ellos también puedan navegar:</p>
-    <p class="body">• Etiquetas en los espacios donde el sistema no es obvio.</p>
+    <ul class="body-list"><li>Etiquetas en los espacios donde el sistema no es obvio.</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">83</span></div>
 
@@ -1352,8 +1359,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 <!-- p84 -->
 <div class="page">
   <div class="content">
-    <p class="body">• Conversaciones cortas en familia explicando el por qué</p>
-    <p class="body">• Acuerdos claros sobre qué responsabilidad le corresponde a cada quien. • Y sobre todo, la disposición de tu parte a soltar el control en algunas zonas — para que el sistema sea de la familia, no solo tuyo.</p>
+    <ul class="body-list"><li>Conversaciones cortas en familia explicando el por qué</li></ul>
+    <ul class="body-list"><li>Acuerdos claros sobre qué responsabilidad le corresponde a cada quien.</li><li>Y sobre todo, la disposición de tu parte a soltar el control en algunas zonas — para que el sistema sea de la familia, no solo tuyo.</li></ul>
     <p class="body">Te lo dice una esposa, mamá de tres, que trabaja 24/7: sí se puede. Lleva tiempo. Lleva paciencia. Pero un hogar sostenido en colectivo es exponencialmente más sostenible que uno sostenido en solitario.</p>
   </div>
     <div class="banda"><span class="banda-texto">06 · DE PROYECTO A HÁBITO</span><span class="banda-texto">84</span></div>
@@ -1368,7 +1375,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="h1-italic" style="font-size:38px;">Tu primer hábito</div>
     <div class="rule"></div>
     <p class="body">Antes de pasar al cierre, te pido un último ejercicio. Pequeño, pero clave:</p>
-    <p class="body">• De los cinco hábitos que enumeré, elige UNO. Solo uno. El que sientas más fácil de implementar esta semana. • Comprométete con él durante 21 días seguidos. Sin excepciones. Sin saltarse un día por cansancio. • Anota cada noche, en una hoja simple, si lo hiciste o no. Solo eso. Sí o no. • A los 21 días, revisa. Si lo sostuviste, agrega un segundo hábito. Si no, vuelve a empezar el mismo — sin culpa, con paciencia.</p>
+    <ul class="body-list"><li>De los cinco hábitos que enumeré, elige UNO. Solo uno. El que sientas más fácil de implementar esta semana.</li><li>Comprométete con él durante 21 días seguidos. Sin excepciones. Sin saltarse un día por cansancio.</li><li>Anota cada noche, en una hoja simple, si lo hiciste o no. Solo eso. Sí o no.</li><li>A los 21 días, revisa. Si lo sostuviste, agrega un segundo hábito. Si no, vuelve a empezar el mismo — sin culpa, con paciencia.</li></ul>
     <p class="body">21 días no es una fórmula mágica — los estudios serios sobre formación de hábitos muestran que el promedio real es más cercano a 66 días. Pero 21 días es un buen primer marcador. Si llegas ahí, el hábito ya está echando raíz.</p>
     <div class="pull-quote"><p>La meta no es transformarte en una semana. Es construir, ladrillo por ladrillo, la mujer que sostiene su hogar con calma.</p></div>
   </div>
@@ -1560,7 +1567,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body">Su método — introspección, verdad, acción, sistema, amor — nació en su propia casa, durante un quiebre personal en pandemia. Desde entonces lo ha aplicado en decenas de hogares con clientas que pasaron de cargar todo en silencio a liderar con calma.</p>
     <p class="body">Hoy ofrece capacitaciones y talleres Liviin donde profundiza cada uno de los cinco pilares.</p>
     <span class="tag">ENCUÉNTRAME EN</span>
-    <p class="body">• Instagram · @mte_disenointerior • TikTok · @mariateresaespinosa_ • Sitio web · liviin.com</p>
+    <ul class="body-list"><li>Instagram · @mte_disenointerior</li><li>TikTok · @mariateresaespinosa_</li><li>Sitio web · liviin.com</li></ul>
   </div>
     <div class="banda"><span class="banda-texto">CIERRE</span><span class="banda-texto">98</span></div>
 

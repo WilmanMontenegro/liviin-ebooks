@@ -162,7 +162,21 @@ def is_mov_cover(lines: list[Line]) -> bool:
     return extras <= 5
 
 
-def group_paragraphs(lines: list[Line]) -> list[str]:
+def _render_prose_group(g: list[Line]) -> list[str]:
+    if all(12.5 <= x.size <= 14.5 and x.italic for x in g):
+        return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
+    text = " ".join(x.text for x in g)
+    if any(x.bold for x in g) and len(g) == 1:
+        return [f'<p class="body"><strong>{esc(text)}</strong></p>']
+    if g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):
+        return ["""<div class="firma">
+      <p class="con-carino">— María Teresa Espinosa</p>
+      <p class="nombre">Interiorista y Home Coach · MTE</p>
+    </div>"""]
+    return [f'<p class="body">{esc(text)}</p>']
+
+
+def _group_prose(lines: list[Line]) -> list[str]:
     if not lines:
         return []
     groups: list[list[Line]] = []
@@ -177,22 +191,54 @@ def group_paragraphs(lines: list[Line]) -> list[str]:
         prev_bottom = ln.y + max(ln.size * 0.35, 8)
     if cur:
         groups.append(cur)
-
     parts: list[str] = []
     for g in groups:
-        if all(12.5 <= x.size <= 14.5 and x.italic for x in g):
-            parts.append(f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>')
+        parts.extend(_render_prose_group(g))
+    return parts
+
+
+def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int]:
+    items: list[str] = []
+    cur: list[str] = []
+    i = start
+    last_y = lines[start].y
+    while i < len(lines):
+        ln = lines[i]
+        if ln.text.strip() == "•":
+            if cur:
+                items.append(" ".join(cur))
+                cur = []
+            i += 1
             continue
-        text = " ".join(x.text for x in g)
-        if any(x.bold for x in g) and len(g) == 1:
-            parts.append(f'<p class="body"><strong>{esc(text)}</strong></p>')
-        elif g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):
-            parts.append("""<div class="firma">
-      <p class="con-carino">— María Teresa Espinosa</p>
-      <p class="nombre">Interiorista y Home Coach · MTE</p>
-    </div>""")
-        else:
-            parts.append(f'<p class="body">{esc(text)}</p>')
+        if cur and ln.y - last_y > 34:
+            break
+        cur.append(ln.text)
+        last_y = ln.y
+        i += 1
+    if cur:
+        items.append(" ".join(cur))
+    return items, i
+
+
+def group_paragraphs(lines: list[Line]) -> list[str]:
+    if not lines:
+        return []
+    if not any(ln.text.strip() == "•" for ln in lines):
+        return _group_prose(lines)
+    parts: list[str] = []
+    i = 0
+    while i < len(lines):
+        if lines[i].text.strip() == "•":
+            items, i = _extract_bullet_items(lines, i)
+            if items:
+                lis = "".join(f"<li>{esc(t)}</li>" for t in items)
+                parts.append(f'<ul class="body-list">{lis}</ul>')
+            continue
+        j = i
+        while j < len(lines) and lines[j].text.strip() != "•":
+            j += 1
+        parts.extend(_group_prose(lines[i:j]))
+        i = j
     return parts
 
 
