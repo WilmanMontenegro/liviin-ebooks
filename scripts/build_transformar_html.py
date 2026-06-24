@@ -592,20 +592,40 @@ def _is_overview_page(lines: list[Line]) -> bool:
     return sum(1 for ln in lines if is_numbered_label(ln.text)) >= 2
 
 
+def _starts_new_section(lines: list[Line]) -> bool:
+    for ln in lines[:4]:
+        if is_tag_line(ln.text, ln.size):
+            t = collapse_spaced(ln.text).upper()
+            if "MOVIMIENTO" in t or "CIERRE" in t or "ÍNDICE" in t or "INICIACI" in t:
+                return True
+        if ln.size >= 22 and not ln.italic:
+            return True
+    return False
+
+
+def _is_sparse_continuation(next_lines: list[Line]) -> bool:
+    """PDF siguiente muy liviana, mismo hilo — sin tag/título nuevo arriba."""
+    if not next_lines or _starts_new_section(next_lines):
+        return False
+    if max(ln.y for ln in next_lines) > 200:
+        return False
+    return len(next_lines) <= 6
+
+
 def _try_merge_sparse_next(
     lines: list[Line], page_no: int, next_lines: list[Line]
 ) -> tuple[list[Line], bool]:
     """PDF deja hueco abajo y la siguiente es liviana → un solo HTML."""
-    if page_no < 8 or not lines or not next_lines:
-        return lines, False
-    if not _is_overview_page(lines) or not _is_overview_page(next_lines):
+    if page_no < 4 or not lines or not next_lines:
         return lines, False
     room = PDF_CONTENT_H - max(ln.y for ln in lines)
-    if room < 100:
+    if _is_overview_page(lines) and _is_overview_page(next_lines):
+        if room >= 100 and max(ln.y for ln in next_lines) <= 400:
+            return lines + next_lines, True
         return lines, False
-    if max(ln.y for ln in next_lines) > 400:
-        return lines, False
-    return lines + next_lines, True
+    if room >= 150 and _is_sparse_continuation(next_lines):
+        return lines + next_lines, True
+    return lines, False
 
 
 def _split_dense_tail(
