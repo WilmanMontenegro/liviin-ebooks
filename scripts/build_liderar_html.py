@@ -480,8 +480,14 @@ def build() -> str:
     styles = bonus[s0:s1].split("<style>")[0]
 
     hub = """
-.hub-link { position:fixed;top:12px;left:12px;z-index:9;font-family:var(--sans);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:rgba(58,50,44,0.85);color:#fff;padding:8px 12px;text-decoration:none;border-radius:2px; }
+.hub-link { position:fixed;top:12px;z-index:9;font-family:var(--sans);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:rgba(58,50,44,0.85);color:#fff;padding:8px 12px;text-decoration:none;border-radius:2px; }
+.hub-link.hub-home { left:12px; }
+.hub-link.hub-pdf { right:12px; }
 @media print { .hub-link { display:none; } }
+"""
+    hub_body = """
+<a class="hub-link hub-home" href="index.html">← Inicio</a>
+<a class="hub-link hub-pdf" href="pdf/liderar.pdf" download>Descargar PDF</a>
 """
     body = "\n".join(pages_html)
     return f"""<!DOCTYPE html>
@@ -497,7 +503,7 @@ def build() -> str:
 </style>
 </head>
 <body>
-<a class="hub-link" href="index.html">← Inicio</a>
+{hub_body}
 {body}
 </body>
 </html>
