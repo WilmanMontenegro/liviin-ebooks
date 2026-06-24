@@ -85,6 +85,18 @@ No reflow tipografía. No inventar elementos. Preguntar si hay duda.
 - p.51–52: sparse fallaba por pull-quote multi-línea (umbral líneas)
 - p.62 cita partida en dos `<div class="pull-quote">`
 - Lista familia p.83–84 en dos hojas
+- **Export print CSS**: `@media print` altura fija 864px + overflow cortaba banda/pie → usar screenshot Playwright por `.page` (`html_to_pdf.py`)
+- **Citas centradas (6a09c15)**: no centrar `.pull-quote`; PDF = barrita filete izquierda + serif itálica
+- **pdf_text gaps**: no recomponer letter-spacing siempre; solo si `_raw_has_merged_words` (evita COMPRAR/DISEÑADORADEL)
+- **Pull-quote en step numérico**: p.78 — `_split_last_step_body` en `html_blocks.py`
+- **discovery-list p.27**: `.discovery-num` negrita `--texto`; sin `border-bottom` entre items (cliente rechazó rayas)
+
+### Export PDF descargable (jun 2026)
+
+- WYSIWYG: Playwright screenshot cada `.page` → merge PyMuPDF
+- Escala 1x JPEG q=92 (~4 MB/libro); 2x raster = ~519 MB
+- `./pdf export all` tras cambios CSS; CI Pages también exporta en push
+- Auditorías: `./pdf audit-html`, `./pdf design-audit`, `./pdf audit-overflow`
 
 ### Pendiente visual
 
