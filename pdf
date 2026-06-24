@@ -21,6 +21,7 @@ Comandos:
   preview         Servidor web — piloto plantilla Liderar (puerto 8765)
   extract         PDF → JSON borrador (scripts/pdf_to_content.py)
   html [libro]    Regenerar HTML (transformar|liderar|all)
+  export [libro]  HTML → PDF para descarga (web/pdf/, WYSIWYG web)
   help
 
 Python (venv): pymupdf, pikepdf, pdfplumber, pypdf, reportlab,
@@ -96,6 +97,14 @@ case "$cmd" in
         "$PY" scripts/stamp_index.py
         ;;
       *) echo "Uso: ./pdf html [transformar|liderar|all]" >&2; exit 1 ;;
+    esac
+    ;;
+  export|webpdf)
+    book="${1:-all}"
+    case "$book" in
+      liderar|transformar|bonus) "$PY" scripts/html_to_pdf.py "$book" ;;
+      all) "$PY" scripts/html_to_pdf.py all ;;
+      *) echo "Uso: ./pdf export [liderar|transformar|bonus|all]" >&2; exit 1 ;;
     esac
     ;;
   optimize)

@@ -19,19 +19,24 @@
   /* Escala tipográfica */
   --fs-micro: 8px;
   --fs-label: 8.5px;
+  --fs-tag: 10px;         /* etiquetas de sección — legible y refinado */
+  --fs-attr: 10px;        /* atribución citas / firma secundaria */
   --fs-tiny: 9px;
   --fs-caption: 9.5px;
   --fs-small: 10px;
   --fs-smallish: 10.5px;
   --fs-serif-sm: 11px;
   --fs-body-sm: 12px;
-  --fs-body: 12.5px;
+  --fs-body: 13px;
   --fs-serif-md: 13px;
-  --fs-serif-lead: 15px;
+  --fs-serif-lead: 17px;
   --fs-serif-ui: 16px;
   --fs-section-sub: 17px;
   --fs-serif-lg: 19px;
   --fs-pull: 22px;
+  --fs-editorial: 17px;   /* versos centrados — PDF ≈13pt */
+  --fs-firma-line: 15px;  /* Con amor, nombre — PDF ≈11pt */
+  --fs-quote: 24px;       /* citas de cierre en crema */
   --fs-h2: 28px;
   --fs-h1-italic: 44px;
   --fs-h1: 52px;
@@ -63,7 +68,8 @@
   --nums-tabular: tabular-nums;
 
   /* Interlineado */
-  --lh-body: 1.85;
-  --lh-body-tight: 1.75;
+  --lh-body: 1.82;
+  --lh-body-tight: 1.72;
   --lh-step: 1.55;
+  --lh-editorial: 1.68;   /* versos, citas, agradecimientos */
 }

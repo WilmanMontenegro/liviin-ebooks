@@ -9,3 +9,4 @@ borax>=4.0
 ocrmypdf>=17.0
 pdfrw>=0.4
 fpdf2>=2.8
+playwright>=1.49

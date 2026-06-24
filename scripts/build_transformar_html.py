@@ -207,10 +207,7 @@ def _render_prose_group(g: list[Line]) -> list[str]:
     text = " ".join(x.text for x in g)
     sizes = [x.size for x in g]
     if all(x.italic for x in g) and all(9 <= s <= 12 for s in sizes):
-        return [
-            f'<p class="closing-lead" style="font-family:var(--sans);font-size:var(--fs-caption);">'
-            f"{esc(text)}</p>"
-        ]
+        return [f'<p class="closing-note">{esc(text)}</p>']
     if any(x.bold for x in g) and len(g) == 1:
         return [f'<p class="body"><strong>{esc(text)}</strong></p>']
     if g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):

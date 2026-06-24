@@ -2,13 +2,17 @@
 @import url("tokens.css");
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--fondo-shell); font-family: var(--sans); color: var(--texto); }
+body {
+  background: var(--fondo-shell); font-family: var(--sans); color: var(--texto);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
 
 .page {
-  width: var(--page-w); min-height: var(--page-min-h); margin: 0 auto 4px;
+  width: var(--page-w); min-height: var(--page-min-h); margin: 0 auto 12px;
   background: var(--fondo); position: relative;
   display: flex; flex-direction: column;
   page-break-after: always; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(58, 50, 44, 0.05), 0 12px 32px rgba(58, 50, 44, 0.06);
 }
 .page-crema { background: var(--crema); }
 .content {
@@ -27,9 +31,9 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 }
 
 .tag {
-  font-family: var(--sans); font-size: var(--fs-label); font-weight: 400;
+  font-family: var(--sans); font-size: var(--fs-tag); font-weight: 400;
   letter-spacing: var(--track-label); color: var(--secundario); text-transform: uppercase;
-  margin-bottom: 20px; display: block;
+  margin-bottom: 22px; display: block;
 }
 .h1 {
   font-family: var(--serif-display); font-size: var(--fs-h1); font-weight: 500;
@@ -49,7 +53,7 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 .h2-section {
   font-family: var(--serif-text); font-size: var(--fs-h2); font-weight: 500;
   letter-spacing: 0.01em; margin-bottom: 8px;
-  font-variant-numeric: var(--nums-title);
+  font-variant-numeric: var(--nums-title); text-transform: none;
 }
 .section-label {
   font-family: var(--sans); font-size: var(--fs-label); font-weight: 400;
@@ -57,8 +61,12 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
   margin: 18px 0 12px;
 }
 .closing-lead {
-  font-family: var(--serif-text); font-size: var(--fs-serif-lead); font-weight: 300; font-style: italic;
-  color: var(--texto); line-height: var(--lh-step); margin: 4px 0 22px;
+  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); margin: 6px 0 28px;
+}
+.closing-note {
+  font-family: var(--sans); font-size: var(--fs-firma-line); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); margin: 6px 0 24px;
 }
 .caja-crema.reminder-block { padding: 16px 20px; margin: 4px 0 20px; }
 .caja-crema.reminder-block .section-label { margin: 0 0 8px; }
@@ -92,12 +100,12 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
 .pull-quote {
-  border-left: 2px solid var(--filete); padding-left: 16px;
-  margin: 24px 0 24px 13px;
+  border-left: 1px solid var(--filete); padding-left: 20px;
+  margin: 28px 0 28px 14px;
 }
 .pull-quote p {
-  font-family: var(--serif-text); font-size: var(--fs-serif-lead); font-weight: 300; font-style: italic;
-  color: var(--texto); line-height: var(--lh-step); margin: 0;
+  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); margin: 0;
 }
 
 .foto-portada {
@@ -124,28 +132,39 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
   color: var(--secundario); text-align: center; max-width: 80%; line-height: 1.5;
 }
 
-/* PDF Transformar p.100: agradecimientos centrados en columna estrecha */
-.gracias-page { text-align: center; }
+/* Agradecimientos centrados (Transformar p.100) */
+.gracias-page {
+  text-align: center;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 100%; padding: 12px 0 24px;
+}
 .gracias-tag {
-  font-family: var(--sans); font-size: var(--fs-label); font-weight: 400;
-  letter-spacing: var(--track-label); color: var(--secundario); text-transform: uppercase;
-  display: block; margin-bottom: 36px;
+  font-family: var(--sans); font-size: var(--fs-tag); font-weight: 400;
+  letter-spacing: 0.24em; color: var(--filete); text-transform: uppercase;
+  display: block; margin-bottom: 44px;
 }
 .gracias-verse {
-  font-family: var(--serif-text); font-size: var(--fs-serif-lead); font-weight: 300; font-style: italic;
-  color: var(--texto); line-height: var(--lh-step); margin: 0 auto 28px; max-width: 270px;
+  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); margin: 0 auto 32px; max-width: 320px;
 }
+/* Liderar GRACIAS — alineado PDF, mismo ritmo editorial */
+.gracias-lead-page { padding-top: 56px; }
+.gracias-lead-page > .tag {
+  letter-spacing: 0.24em; color: var(--filete); margin-bottom: 40px;
+}
+.gracias-lead-page > .closing-lead { max-width: 100%; }
 
 .pull-page {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 60px 52px; flex: 1;
 }
 .pull-page-quote {
-  font-family: var(--serif-text); font-size: var(--fs-pull); font-style: italic;
-  color: var(--texto); line-height: var(--lh-step); margin-bottom: 28px;
+  font-family: var(--serif-text); font-size: var(--fs-pull); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); margin-bottom: 32px;
+  max-width: 420px;
 }
 .pull-page-attr {
-  font-family: var(--sans); font-size: var(--fs-micro); letter-spacing: 0.2em;
+  font-family: var(--sans); font-size: var(--fs-attr); letter-spacing: 0.22em;
   color: var(--secundario); text-transform: uppercase;
 }
 
@@ -325,24 +344,24 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 }
 
 .firma { margin-top: 32px; }
-.firma--center { margin-top: 28px; text-align: center; }
+.firma--center { margin-top: 40px; text-align: center; }
 .firma-iniciales {
-  font-family: var(--serif-display); font-size: var(--fs-h2); font-weight: 500;
-  letter-spacing: 0.06em; color: var(--texto); margin: 10px 0 6px;
+  font-family: var(--serif-display); font-size: var(--fs-h2); font-weight: 400;
+  letter-spacing: 0.14em; color: var(--texto); margin: 12px 0 10px;
 }
 .firma-nombre {
-  font-family: var(--serif-text); font-size: var(--fs-caption); font-style: italic;
-  color: var(--texto);
+  font-family: var(--serif-text); font-size: var(--fs-firma-line); font-weight: 300; font-style: italic;
+  color: var(--texto); letter-spacing: 0.02em;
 }
 .cierre-final {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  height: 100%; text-align: center;
+  height: 100%; text-align: center; padding: 24px 12px;
 }
-.cierre-final .pull-page-attr { display: block; margin-top: 28px; }
-.cierre-final .liviin-footer-brand { margin-top: 48px; }
+.cierre-final .pull-page-attr { display: block; margin-top: 32px; }
+.cierre-final .liviin-footer-brand { margin-top: 56px; }
 .firma .con-carino {
-  font-family: var(--serif-text); font-size: var(--fs-serif-md); font-style: italic;
-  color: var(--secundario); margin-bottom: 4px;
+  font-family: var(--serif-text); font-size: var(--fs-firma-line); font-weight: 300; font-style: italic;
+  color: var(--texto); margin-bottom: 10px;
 }
 .firma .nombre {
   font-family: var(--sans); font-size: var(--fs-tiny); letter-spacing: var(--track-label);
@@ -382,8 +401,9 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 .spacer-xl { height: 64px; }
 .text-center { text-align: center; }
 .frase-cierre {
-  font-family: var(--serif-text); font-size: var(--fs-serif-lg); font-style: italic;
-  color: var(--texto); line-height: 1.6; text-align: center; margin-bottom: 24px;
+  font-family: var(--serif-text); font-size: var(--fs-quote); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); text-align: center;
+  margin-bottom: 36px; max-width: 440px;
 }
 .liviin-footer-brand { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
 .liviin-footer-brand .marca-final {
@@ -395,7 +415,17 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
   color: var(--taupe);
 }
 
-@media print { body { background: white; } .page { margin: 0; page-break-after: always; } }
+@media print {
+  @page { size: 576px 864px; margin: 0; }
+  body { background: white; margin: 0; }
+  .page {
+    width: var(--page-w); height: var(--page-min-h); min-height: unset; max-height: var(--page-min-h);
+    margin: 0; overflow: hidden;
+    page-break-after: always; break-after: page; break-inside: avoid;
+    box-shadow: none;
+  }
+  .hub-link { display: none !important; }
+}
 .hub-link {
   position: fixed; top: 12px; z-index: 9;
   font-family: var(--sans); font-size: var(--fs-small); letter-spacing: 0.12em;

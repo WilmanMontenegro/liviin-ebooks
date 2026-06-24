@@ -6,6 +6,20 @@
 - Commit git tras cada avance.
 - `./pdf doctor` antes y después.
 
+## Producto principal vs PDF fuente (jun 2026 — decisión del cliente)
+
+**Los 3 productos publicados** son los ebooks en `web/`:
+
+| Producto | Ver en web | Descargar |
+|----------|------------|-----------|
+| El arte de liderar tu hogar | `liderar.html` | `web/pdf/liderar.pdf` |
+| El arte de transformar tu hogar | `transformar.html` | `web/pdf/transformar.pdf` |
+| Las manos que sostienen tu hogar | `bonus.html` | `web/pdf/bonus.pdf` |
+
+**Los PDF en la raíz del repo** (`4_El_arte_de_liderar…_FINAL.pdf`, `El_arte_de_transformar…`, `Las_manos… BONUS 1.pdf`) son **solo material fuente**: extraer texto, estructura y referencia de diseño. **No son el entregable.**
+
+Pipeline del producto: `./pdf html all` → piloto web → `./pdf export all` (Playwright, WYSIWYG) → `web/pdf/` para el botón Descargar. CI Pages hace html + export en cada push a `main`.
+
 ## Error grave a no repetir: las dos rayitas
 
 | Tipo | Aspecto | Acción |

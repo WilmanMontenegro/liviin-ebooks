@@ -946,9 +946,12 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     </div>""")
 
     inner = "\n    ".join(parts)
+    content_cls = "content"
+    if re.search(r'<span class="tag">[^<]*GRACIAS', inner, re.I):
+        content_cls = "content gracias-lead-page"
     return f"""<!-- folio {folio} pdf p{pdf_page_no} -->
 <div class="page">
-  <div class="content">
+  <div class="{content_cls}">
     {inner}
   </div>
   {banda(sec, folio)}

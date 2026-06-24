@@ -23,11 +23,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - run: python -m playwright install chromium
       - run: |
           python scripts/build_transformar_html.py
           python scripts/build_liderar_html.py
           python scripts/stamp_index.py
-          python scripts/stamp_index.py
+          python scripts/html_to_pdf.py all
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web
