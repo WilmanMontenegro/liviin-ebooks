@@ -17,7 +17,7 @@ COVER_IMAGE = ROOT / "portada ebook 1.png"
 # Donde empieza "LIVIIN · EBOOK 01" (fijo en el PDF).
 TEXT_START_Y = 391.0
 # Fin de la foto: deja respiro sage antes del texto.
-COVER_GAP_PT = 40.0
+COVER_GAP_PT = 30.0
 COVER_BOTTOM_Y = TEXT_START_Y - COVER_GAP_PT
 SAGE = (200, 205, 201)
 SAGE_PDF = tuple(c / 255 for c in SAGE)
