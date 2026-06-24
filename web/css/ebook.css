@@ -138,8 +138,9 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 }
 
 .movimiento-cover {
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: var(--content-pt) var(--content-pr) var(--content-pt) var(--content-pl); flex: 1;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  padding: var(--mov-cover-pt) var(--content-pr) var(--content-pb) var(--content-pl);
+  flex: 1;
 }
 
 .numbered-block { margin-bottom: 20px; }
