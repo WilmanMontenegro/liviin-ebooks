@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# Herramientas PDF del proyecto — usar desde la raíz del repo.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "$ROOT"
+PY="$ROOT/.venv/bin/python"
+VENV="$ROOT/.venv"
+
+usage() {
+  cat <<'EOF'
+Uso: ./pdf <comando> [args]
+
+Comandos:
+  doctor          ¿PDF sano? (pikepdf + pymupdf)
+  audit [archivo] Placeholders e imágenes por página
+  restore         Volver al backup original (limpia desastres)
+  cover           Portada editorial (insert_cover.py)
+  text            Extraer texto (pdftotext)
+  png <página>    Render página a PNG (pdftoppm)
+  optimize        Comprimir PDF (pikepdf)
+  help
+
+Python (venv): pymupdf, pikepdf, pdfplumber, pypdf, reportlab,
+               img2pdf, ocrmypdf, pdfrw, fpdf2, borax, Pillow
+Node:          pdf-lib, sharp
+Sistema:       poppler (pdftotext, pdftoppm), ImageMagick (magick)
+
+Paquetes sistema (opcional, con sudo):
+  sudo pacman -S mupdf ghostscript qpdf python-pymupdf
+EOF
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  doctor)
+    "$PY" scripts/pdf_doctor.py "$@"
+    ;;
+  audit)
+    "$PY" scripts/audit_pdf.py "$@"
+    ;;
+  restore)
+    bash scripts/restore_backup.sh
+    ;;
+  cover)
+    "$PY" insert_cover.py
+    ;;
+  qr)
+    "$PY" scripts/insert_qr.py
+    ;;
+  photo)
+    "$PY" scripts/insert_author_photo.py
+    ;;
+  paginate|pages)
+    "$PY" scripts/fix_pagination.py
+    ;;
+  text)
+    pdftotext "${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}" -
+    ;;
+  png)
+    page="${1:-1}"
+    out="/tmp/libro-p${page}"
+    pdftoppm -png -f "$page" -l "$page" -r 200 \
+      4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf "$out"
+    echo "${out}-$(printf '%02d' "$page").png"
+    ;;
+  optimize)
+    f="${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}"
+  tmp="${f%.pdf}.opt.pdf"
+  "$PY" -c "
+import pikepdf, sys
+src, dst = sys.argv[1], sys.argv[2]
+with pikepdf.open(src) as pdf:
+    pdf.save(dst, compress_streams=True, object_stream_mode=pikepdf.ObjectStreamMode.generate)
+print('OK', dst)
+" "$f" "$tmp"
+    mv "$tmp" "$f"
+    ;;
+  setup)
+    python3 -m venv "$VENV"
+    "$VENV/bin/pip" install -r requirements.txt
+    npm install
+    echo "Listo."
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    echo "Comando desconocido: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac
