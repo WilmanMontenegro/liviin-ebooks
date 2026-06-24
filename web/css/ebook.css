@@ -104,8 +104,7 @@ body {
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
 .pull-quote {
-  border-left: 1px solid var(--filete); padding-left: 20px;
-  margin: 28px 0 28px 14px;
+  margin: 28px auto; padding: 0; max-width: 440px; text-align: center;
 }
 .pull-quote p {
   font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;

@@ -16,6 +16,7 @@ from html_blocks import (
     continues_pull_quote,
     is_firma_cierre_page,
     is_opening_lead,
+    is_pull_page,
     is_pull_quote_group,
     is_section_subtitle,
     render_firma_cierre_page,
@@ -168,16 +169,6 @@ def section_for(page_no: int) -> str:
         if page_no >= start:
             return label
     return "INICIACIÓN"
-
-
-def is_pull_page(lines: list[Line]) -> bool:
-    body = [ln for ln in lines if not (ln.text.startswith("—") and ln.size < 11)]
-    if len(body) < 4:
-        return False
-    if body[0].text.startswith('"') and body[0].size >= 22:
-        return True
-    big = sum(1 for ln in body if ln.size >= 22)
-    return big >= max(4, int(len(body) * 0.75))
 
 
 def mov_tag_text(lines: list[Line]) -> str:

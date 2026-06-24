@@ -16,6 +16,19 @@ class TextLine(Protocol):
     x: float
 
 
+def is_pull_page(lines: list[TextLine]) -> bool:
+    """Página de cita editorial centrada (comillas + MTE, o bloque grande)."""
+    body = [ln for ln in lines if not (ln.text.startswith("—") and ln.size < 11)]
+    if not body:
+        return False
+    if body[0].text.strip().startswith('"') and body[0].size >= 20 and len(body) <= 3:
+        return True
+    if len(body) < 4:
+        return False
+    big = sum(1 for ln in body if ln.size >= 22)
+    return big >= max(4, int(len(body) * 0.75))
+
+
 # PDF: citas con barra lateral empiezan ~x≥73; cuerpo y leads van ~x55
 PULL_QUOTE_X_MIN = 70
 
