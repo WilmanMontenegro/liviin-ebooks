@@ -58,6 +58,9 @@ case "$cmd" in
   index)
     "$PY" scripts/fix_index.py
     ;;
+  nofoto)
+    "$PY" scripts/remove_photo_slot.py "$@"
+    ;;
   text)
     pdftotext "${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}" -
     ;;
