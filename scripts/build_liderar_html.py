@@ -18,9 +18,13 @@ from html_blocks import (
     is_pull_page,
     is_pull_quote_group,
     is_section_subtitle,
+    join_prose_lines,
+    mov_cover_subtitle_lines,
+    pull_vlines_from_page,
     render_firma_cierre_page,
     render_numeric_steps_page,
     render_opening_lead,
+    render_pull_quote_html,
     render_tag_html,
     render_title_block,
     split_numeric_steps,
@@ -73,6 +77,9 @@ SIGUE_TITLES = {
     "05": "Conversaciones esenciales",
     "CIERRE": "El hogar como reflejo",
 }
+
+# ponytail: vlines de la página en curso — solo durante content_page (build single-thread)
+_PULL_VLINES: list[tuple[float, float]] = []
 
 
 @dataclass
@@ -281,8 +288,8 @@ def _note_section_start(
 def _render_prose_group(g: list[Line]) -> list[str]:
     if is_opening_lead(g):
         return render_opening_lead(esc, g)
-    if is_pull_quote_group(g):
-        return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
+    if is_pull_quote_group(g, _PULL_VLINES):
+        return [render_pull_quote_html(esc, " ".join(x.text for x in g))]
     text = " ".join(x.text for x in g)
     sizes = [x.size for x in g]
     if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
@@ -636,7 +643,7 @@ def group_paragraphs(lines: list[Line]) -> list[str]:
     if ordinal:
         intro, items = ordinal
         return _render_ordinal_block(intro, items)
-    numeric = split_numeric_steps(lines)
+    numeric = split_numeric_steps(lines, _PULL_VLINES)
     if numeric:
         intro, items, tail = numeric
         return render_numeric_steps_page(
@@ -852,9 +859,9 @@ def _is_section_subtitle(ln: Line) -> bool:
 def mov_cover_page(lines: list[Line], page_no: int) -> str:
     tag = mov_tag_text(lines)
     titles = [ln for ln in lines if ln.size >= 18 and not is_tag_line(ln.text, ln.size)]
-    subs = [ln for ln in lines if 10 <= ln.size <= 14 and not is_tag_line(ln.text, ln.size)]
+    subs = mov_cover_subtitle_lines(lines, is_tag_line)
     title_html = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
-    sub = esc(re.sub(r"\s+", " ", " ".join(s.text.strip() for s in subs)).strip()) if subs else ""
+    sub = esc(join_prose_lines(subs)) if subs else ""
     return f"""<!-- p{page_no} movimiento -->
 <div class="page">
   <div class="content movimiento-cover">
@@ -868,7 +875,9 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 """
 
 
-def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
+def content_page(lines: list[Line], pdf_page_no: int, folio: int, fitz_page: fitz.Page) -> str:
+    global _PULL_VLINES
+    _PULL_VLINES = pull_vlines_from_page(fitz_page)
     page_h = max((ln.y for ln in lines), default=0) + 25
     lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
     lines = merge_orphan_caps_lines(lines, is_numbered_label)
@@ -1009,7 +1018,7 @@ def build() -> str:
             (pages_after if past_index_slot else pages_before).append(html)
         else:
             pending_mov = _note_section_start(lines, folio, section_pages, pending_mov)
-            html = content_page(lines, page_no, folio)
+            html = content_page(lines, page_no, folio, doc[i])
             (pages_after if past_index_slot else pages_before).append(html)
     doc.close()
 

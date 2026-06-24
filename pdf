@@ -44,6 +44,15 @@ case "$cmd" in
   audit)
     "$PY" scripts/audit_pdf.py "$@"
     ;;
+  audit-html)
+    "$PY" scripts/ebook_pdf_audit.py "$@"
+    ;;
+  audit-overflow)
+    "$PY" scripts/ebook_page_overflow_audit.py "$@"
+    ;;
+  design-audit)
+    "$PY" scripts/ebook_design_audit.py "$@"
+    ;;
   restore)
     bash scripts/restore_backup.sh
     ;;
@@ -95,6 +104,7 @@ case "$cmd" in
         "$PY" scripts/build_transformar_html.py
         "$PY" scripts/build_liderar_html.py
         "$PY" scripts/stamp_index.py
+        "$PY" scripts/ebook_pdf_audit.py
         ;;
       *) echo "Uso: ./pdf html [transformar|liderar|all]" >&2; exit 1 ;;
     esac

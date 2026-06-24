@@ -14,13 +14,23 @@ OUT_DIR = WEB / "pdf"
 
 # ponytail: mismo trim que .page en tokens.css (576×864)
 PAGE_W_PX = 576
-PAGE_H_PX = 864
+PX_TO_PT = 72 / 96
 
 BOOKS: dict[str, str] = {
     "liderar": ("liderar.html", "liderar.pdf"),
     "transformar": ("transformar.html", "transformar.pdf"),
     "bonus": ("bonus.html", "bonus.pdf"),
 }
+
+# Captura pantalla por .page — print PDF partía páginas altas y cortaba .banda.
+EXPORT_SCREEN_CSS = """
+body.pdf-export { background: #fff !important; margin: 0 !important; }
+body.pdf-export .page {
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+body.pdf-export .hub-link { display: none !important; }
+"""
 
 
 def _free_port() -> int:
@@ -36,22 +46,59 @@ def _serve_web(port: int) -> None:
     http.server.HTTPServer(("127.0.0.1", port), handler).serve_forever()
 
 
+def _set_visible_page(page, index: int) -> None:
+    page.evaluate(
+        """(i) => {
+          document.querySelectorAll('.page').forEach((el, j) => {
+            el.style.display = j === i ? 'flex' : 'none';
+          });
+        }""",
+        index,
+    )
+
+
 def export_one(base_url: str, html_name: str, out_path: Path) -> None:
+    import fitz
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(viewport={"width": PAGE_W_PX, "height": PAGE_H_PX})
+        context = browser.new_context(
+            viewport={"width": PAGE_W_PX, "height": 1200},
+            device_scale_factor=1,
+        )
+        page = context.new_page()
         page.goto(f"{base_url}/{html_name}", wait_until="networkidle", timeout=120_000)
         page.evaluate("() => document.fonts.ready")
-        page.emulate_media(media="print")
+        page.evaluate("() => document.body.classList.add('pdf-export')")
+        page.add_style_tag(content=EXPORT_SCREEN_CSS)
+
+        n = page.locator(".page").count()
+        if not n:
+            context.close()
+            browser.close()
+            raise RuntimeError(f"Sin .page en {html_name}")
+
+        merged = fitz.open()
+        for i in range(n):
+            _set_visible_page(page, i)
+            loc = page.locator(".page").nth(i)
+            box = loc.bounding_box()
+            if not box:
+                continue
+            png = loc.screenshot(type="jpeg", quality=92)
+            w_pt = box["width"] * PX_TO_PT
+            h_pt = box["height"] * PX_TO_PT
+            sheet = fitz.open()
+            pg = sheet.new_page(width=w_pt, height=h_pt)
+            pg.insert_image(fitz.Rect(0, 0, w_pt, h_pt), stream=png)
+            merged.insert_pdf(sheet)
+            sheet.close()
+
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        page.pdf(
-            path=str(out_path),
-            print_background=True,
-            prefer_css_page_size=True,
-            margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
-        )
+        merged.save(str(out_path), garbage=4, deflate=True)
+        merged.close()
+        context.close()
         browser.close()
 
 

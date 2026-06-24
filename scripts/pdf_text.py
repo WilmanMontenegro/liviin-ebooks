@@ -130,15 +130,50 @@ def collapse_from_raw_spacing(raw: str) -> str:
     return " ".join(words)
 
 
+def _label_words(s: str) -> list[str]:
+    title = s.split("·", 1)[1].strip() if "·" in s else s.strip()
+    return [re.sub(r"[^\wÁÉÍÓÚÑ]", "", w) for w in title.split() if re.sub(r"[^\wÁÉÍÓÚÑ]", "", w)]
+
+
+def _looks_collapsed_label(s: str) -> bool:
+    words = _label_words(s)
+    if not words:
+        return False
+    singles = sum(len(w) <= 2 for w in words)
+    if singles >= max(3, len(words) // 2):
+        return False
+    return any(len(w) >= 4 for w in words)
+
+
+def _raw_has_merged_words(raw_col: str, gap_col: str) -> bool:
+    """True si raw pegó palabras que gap separa (DISEÑADORADEL vs DISEÑADORA DEL)."""
+    if not _looks_collapsed_label(gap_col):
+        return False
+    rw, gw = _label_words(raw_col), _label_words(gap_col)
+    if len(gw) <= len(rw):
+        return False
+    gap_blob = "".join(gw)
+    for w in rw:
+        if len(w) >= 10 and w not in gw and w in gap_blob:
+            return True
+    return False
+
+
 def extract_line_text(raw: str, chars: list[dict]) -> str:
     """Texto de línea PDF: letter-spacing vía gaps o dobles espacios."""
     raw = raw.strip()
     if not raw:
         return raw
     if needs_gap_extract(raw):
-        if re.search(r"\s{2,}", raw):
+        if chars and re.search(r"\s{2,}", raw):
+            gap_raw = chars_to_line_text(chars)
+            if re.search(r"\s{2,}", gap_raw):
+                raw_col = collapse_from_raw_spacing(raw)
+                gap_col = collapse_from_raw_spacing(gap_raw)
+                if _raw_has_merged_words(raw_col, gap_col):
+                    return gap_col
             return collapse_from_raw_spacing(raw)
-        return collapse_spaced(chars_to_line_text(chars))
+        return collapse_spaced(chars_to_line_text(chars)) if chars else collapse_spaced(raw)
     return raw
 
 
@@ -280,6 +315,9 @@ if __name__ == "__main__":
     assert not is_orphan_caps_line("Cada vez que algo", 11.0, lambda t: False)
     assert absorb_numbered_orphans("02 · LA REGLA DE UNO ENTRA, UNO", [type("L", (), {"text": "SALE", "size": 9})()], lambda t: t.startswith("02"))[0].endswith("SALE")
     assert numbered_caps_html("01", "EL MINUTO DE LA ACCIÓN INMEDIATA") == "01 · EL MINUTO DE LA ACCIÓN INMEDIATA"
+    assert _raw_has_merged_words("01 · DISEÑADORADEL SISTEMA", "01 · DISEÑADORA DEL SISTEMA")
+    assert _raw_has_merged_words("01 · LARENUNCIA", "01 · LA RENUNCIA")
+    assert not _raw_has_merged_words("04 · COMPRAR (CON ASERTIVIDAD)", "04 · COMPRAR (CON ASERTIVIDAD)")
     assert fmt_structural("0 1") == "01"
     assert fmt_inventory(13) == "13"
     assert fmt_prose_step("2") == "2"

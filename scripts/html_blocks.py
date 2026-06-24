@@ -29,11 +29,36 @@ def is_pull_page(lines: list[TextLine]) -> bool:
     return big >= max(4, int(len(body) * 0.75))
 
 
-# PDF: citas con barra lateral empiezan ~x≥73; cuerpo y leads van ~x55
+# PDF: citas con barra lateral empiezan ~x≥73 (Transformar); Liderar ~x≥58 + filete x≈46.5
 PULL_QUOTE_X_MIN = 70
+PULL_QUOTE_X_MIN_LIDERAR = 58
 
 
-def is_pull_quote_group(g: list[TextLine]) -> bool:
+def pull_vlines_from_page(page) -> list[tuple[float, float]]:
+    """Filetes verticales del PDF editorial (≈ x 46.5) junto a citas inline."""
+    bands: list[tuple[float, float]] = []
+    for d in page.get_drawings():
+        r = d.get("rect")
+        if r and r.width < 5 and r.height >= 15 and r.x0 < 55:
+            bands.append((r.y0, r.y1))
+    return bands
+
+
+def group_has_pull_vline(g: list[TextLine], vlines: list[tuple[float, float]]) -> bool:
+    if not vlines or not g or not all(x.italic for x in g):
+        return False
+    for ln in g:
+        y = ln.y + ln.size * 0.35
+        if any(y0 - 6 <= y <= y1 + 6 for y0, y1 in vlines):
+            return True
+    return False
+
+
+def is_pull_quote_group(
+    g: list[TextLine], vlines: list[tuple[float, float]] | None = None
+) -> bool:
+    if vlines and group_has_pull_vline(g, vlines):
+        return True
     if not g or not all(x.italic for x in g):
         return False
     text = " ".join(x.text for x in g).strip()
@@ -62,9 +87,16 @@ def continues_pull_quote(prev: TextLine, ln: TextLine) -> bool:
     """Misma cita tras merge de PDF — no cortar aunque el salto en y sea grande."""
     if not (prev.italic and ln.italic):
         return False
+    if prev.x >= PULL_QUOTE_X_MIN_LIDERAR and ln.x >= PULL_QUOTE_X_MIN_LIDERAR:
+        return 9 <= prev.size <= 14.5 and 9 <= ln.size <= 14.5
     if prev.x < PULL_QUOTE_X_MIN or ln.x < PULL_QUOTE_X_MIN:
         return False
     return 9 <= prev.size <= 14.5 and 9 <= ln.size <= 14.5
+
+
+def render_pull_quote_html(esc: Callable[[str], str], text: str) -> str:
+    """Cita inline con filete lateral — PDF Liderar x≈59 + barra x≈46.5."""
+    return f'<div class="pull-quote"><p>{esc(text)}</p></div>'
 
 
 def is_opening_lead(g: list[TextLine]) -> bool:
@@ -85,6 +117,22 @@ def is_opening_lead(g: list[TextLine]) -> bool:
 def render_opening_lead(esc: Callable[[str], str], g: list[TextLine]) -> list[str]:
     text = esc(" ".join(x.text for x in g))
     return [f'<p class="opening-lead">{text}</p>', '<div class="rule rule--full"></div>']
+
+
+def mov_cover_subtitle_lines(
+    lines: list[TextLine], is_tag_line: Callable[[str, float], bool]
+) -> list[TextLine]:
+    """Prosa bajo título en portada movimiento (Transformar ≈12pt, Liderar ≈15pt)."""
+    return [
+        ln
+        for ln in lines
+        if 10 <= ln.size <= 16 and not is_tag_line(ln.text, ln.size)
+    ]
+
+
+def join_prose_lines(lines: list[TextLine]) -> str:
+    """Une líneas de prosa sin collapse_spaced (no romper subtítulos)."""
+    return re.sub(r"\s+", " ", " ".join(ln.text.strip() for ln in lines)).strip()
 
 
 def is_section_subtitle(ln: TextLine) -> bool:
@@ -143,7 +191,33 @@ def render_prose_steps_html(esc: Callable[[str], str], items: list[tuple[str, st
     return f'<div class="step-list step-list--prose">{blocks}</div>'
 
 
-def split_numeric_steps(lines: list[TextLine]) -> tuple[list[TextLine], list[tuple[str, str]], list[TextLine]] | None:
+def _split_last_step_body(
+    body: list[TextLine], vlines: list[tuple[float, float]] | None
+) -> tuple[list[TextLine], list[TextLine]]:
+    """Separa pull-quote incrustada y cola del último paso numerado (script p.78)."""
+    peeled: list[TextLine] = []
+    for i, ln in enumerate(body):
+        is_pq = ln.italic and ln.x >= PULL_QUOTE_X_MIN_LIDERAR and ln.size >= 11
+        if vlines:
+            is_pq = is_pq and group_has_pull_vline([ln], vlines)
+        if not is_pq:
+            continue
+        j = i
+        while j < len(body) and body[j].italic and body[j].x >= PULL_QUOTE_X_MIN_LIDERAR:
+            j += 1
+        peeled.extend(body[i:j])
+        body = body[:i] + body[j:]
+        break
+    cut = len(body)
+    while cut > 0 and body[cut - 1].italic:
+        cut -= 1
+    peeled.extend(body[cut:])
+    return body[:cut], peeled
+
+
+def split_numeric_steps(
+    lines: list[TextLine], vlines: list[tuple[float, float]] | None = None
+) -> tuple[list[TextLine], list[tuple[str, str]], list[TextLine]] | None:
     """PDF: '1. …' '2. …' en líneas separadas (p.54 regla tres pasos)."""
     starts = [i for i, ln in enumerate(lines) if is_numeric_step_line(ln.text)]
     if len(starts) < 2:
@@ -160,11 +234,8 @@ def split_numeric_steps(lines: list[TextLine]) -> tuple[list[TextLine], list[tup
         num, first = parsed
         body = chunk[1:]
         if j + 1 >= len(starts) and body:
-            cut = len(body)
-            while cut > 0 and body[cut - 1].italic:
-                cut -= 1
-            peeled.extend(body[cut:])
-            body = body[:cut]
+            body, extra = _split_last_step_body(body, vlines)
+            peeled.extend(extra)
         parts = [first] if first else []
         parts.extend(ln.text.strip() for ln in body if ln.text.strip())
         items.append((num, " ".join(parts)))

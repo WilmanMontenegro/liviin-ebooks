@@ -63,7 +63,9 @@ body {
 }
 .closing-lead {
   font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
-  color: var(--texto); line-height: var(--lh-editorial); margin: 6px 0 28px;
+  color: var(--texto); line-height: var(--lh-editorial); text-align: left;
+  border-left: 1px solid var(--filete); padding-left: 20px;
+  margin: 28px 0 28px 14px;
 }
 .closing-note {
   font-family: var(--sans); font-size: var(--fs-firma-line); font-weight: 300; font-style: italic;
@@ -103,12 +105,14 @@ body {
 }
 .body-list li { margin-bottom: 10px; }
 .body-list li::marker { color: var(--secundario); }
+/* PDF Liderar: cita inline ≈13pt serif + filete vertical #B5A891 (x≈46.5) */
 .pull-quote {
-  margin: 28px auto; padding: 0; max-width: 440px; text-align: center;
+  border-left: 1px solid var(--filete); padding-left: 20px;
+  margin: 28px 0 28px 14px;
 }
 .pull-quote p {
   font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
-  color: var(--texto); line-height: var(--lh-editorial); margin: 0;
+  color: var(--texto); line-height: var(--lh-editorial); margin: 0; text-align: left;
 }
 
 .foto-portada {
@@ -155,7 +159,10 @@ body {
 .gracias-lead-page > .tag {
   letter-spacing: 0.24em; color: var(--filete); margin-bottom: 40px;
 }
-.gracias-lead-page > .closing-lead { max-width: 100%; }
+.gracias-lead-page > .closing-lead {
+  max-width: 100%;
+  border-left: none; padding-left: 0; margin: 6px 0 28px;
+}
 
 .pull-page {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -191,8 +198,8 @@ body {
 }
 .area-item { display: flex; gap: 5px; align-items: baseline; }
 .area-num {
-  font-family: var(--serif-text); font-size: var(--fs-smallish); font-weight: 400; font-style: italic;
-  color: var(--secundario); flex-shrink: 0; min-width: 14px;
+  font-family: var(--sans); font-size: var(--fs-smallish); font-weight: 300;
+  color: var(--texto); flex-shrink: 0; min-width: 1.35em;
   font-variant-numeric: var(--nums-tabular);
 }
 .area-label {
@@ -224,14 +231,13 @@ body {
 .discovery-item {
   display: grid; grid-template-columns: max-content 1fr;
   column-gap: var(--step-gap-x); align-items: baseline;
-  margin-bottom: 20px; padding-bottom: 20px;
-  border-bottom: 1px solid var(--filete);
+  margin-bottom: 20px;
 }
-.discovery-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.discovery-item:last-child { margin-bottom: 0; }
 .discovery-num {
   grid-column: 1;
-  font-family: var(--serif-text); font-size: var(--fs-serif-md); font-weight: 300; font-style: italic;
-  color: var(--secundario);
+  font-family: var(--serif-text); font-size: var(--fs-serif-md); font-weight: 600; font-style: normal;
+  color: var(--texto);
   font-variant-numeric: var(--nums-tabular);
 }
 .discovery-text {
