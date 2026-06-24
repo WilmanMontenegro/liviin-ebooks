@@ -32,13 +32,18 @@ def render_title_block(
             '<div class="rule"></div>',
         ]
     th = "<br>".join(esc(collapse_spaced(t.text)) for t in titles)
+    # ponytail: dígitos en Cormorant SC se ven de otra fuente; PDF = Liberation Serif (≈ h2-section)
+    section_style = subtitle is not None or any(
+        re.search(r"\d", collapse_spaced(t.text)) for t in titles
+    )
+    h2_cls = "h2 h2-section" if section_style else "h2"
     if subtitle is not None:
         return [
-            f'<div class="h2 h2-section">{th}</div>',
+            f'<div class="{h2_cls}">{th}</div>',
             f'<p class="section-subtitle">{esc(collapse_spaced(subtitle.text))}</p>',
             '<div class="rule"></div>',
         ]
-    return [f'<div class="h2">{th}</div>', '<div class="rule"></div>']
+    return [f'<div class="{h2_cls}">{th}</div>', '<div class="rule"></div>']
 
 
 def is_numeric_step_line(text: str) -> bool:
