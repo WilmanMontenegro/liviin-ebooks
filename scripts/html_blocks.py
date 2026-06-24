@@ -172,3 +172,46 @@ def render_numeric_steps_page(
     parts.append(render_prose_steps_html(esc, items))
     parts.extend(group_prose_plain(tail))
     return parts
+
+
+def is_firma_cierre_page(lines: list[TextLine]) -> bool:
+    """Cierre editorial: cita centrada + Con amor / M T E / nombre."""
+    if len(lines) < 4:
+        return False
+    joined = " ".join(ln.text for ln in lines)
+    return (
+        lines[0].text.strip().startswith('"')
+        and "Con amor" in joined
+        and any(re.sub(r"\s+", "", ln.text.upper()) == "MTE" for ln in lines)
+    )
+
+
+def render_firma_cierre_page(
+    esc: Callable[[str], str],
+    lines: list[TextLine],
+    pdf_page_no: int,
+    folio: int,
+) -> str:
+    quote: list[TextLine] = []
+    tail: list[TextLine] = []
+    for ln in lines:
+        if ln.text.strip().startswith("Con amor"):
+            tail = lines[len(quote) :]
+            break
+        quote.append(ln)
+    quote_html = "<br>".join(esc(ln.text) for ln in quote)
+    con_amor = esc(tail[0].text) if tail else "Con amor,"
+    iniciales = esc(tail[1].text) if len(tail) > 1 else "M T E"
+    nombre = esc(tail[2].text) if len(tail) > 2 else "María Teresa Espinosa"
+    return f"""<!-- folio {folio} pdf p{pdf_page_no} -->
+<div class="page page-crema">
+  <div class="content cierre-final">
+    <p class="frase-cierre">{quote_html}</p>
+    <div class="firma firma--center">
+      <p class="con-carino">{con_amor}</p>
+      <p class="firma-iniciales">{iniciales}</p>
+      <p class="firma-nombre">{nombre}</p>
+    </div>
+  </div>
+</div>
+"""

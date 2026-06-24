@@ -124,6 +124,18 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
   color: var(--secundario); text-align: center; max-width: 80%; line-height: 1.5;
 }
 
+/* PDF Transformar p.100: agradecimientos centrados en columna estrecha */
+.gracias-page { text-align: center; }
+.gracias-tag {
+  font-family: var(--sans); font-size: var(--fs-label); font-weight: 400;
+  letter-spacing: var(--track-label); color: var(--secundario); text-transform: uppercase;
+  display: block; margin-bottom: 36px;
+}
+.gracias-verse {
+  font-family: var(--serif-text); font-size: var(--fs-serif-lead); font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: var(--lh-step); margin: 0 auto 28px; max-width: 270px;
+}
+
 .pull-page {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 60px 52px; flex: 1;
@@ -313,6 +325,21 @@ body { background: var(--fondo-shell); font-family: var(--sans); color: var(--te
 }
 
 .firma { margin-top: 32px; }
+.firma--center { margin-top: 28px; text-align: center; }
+.firma-iniciales {
+  font-family: var(--serif-display); font-size: var(--fs-h2); font-weight: 500;
+  letter-spacing: 0.06em; color: var(--texto); margin: 10px 0 6px;
+}
+.firma-nombre {
+  font-family: var(--serif-text); font-size: var(--fs-caption); font-style: italic;
+  color: var(--texto);
+}
+.cierre-final {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  height: 100%; text-align: center;
+}
+.cierre-final .pull-page-attr { display: block; margin-top: 28px; }
+.cierre-final .liviin-footer-brand { margin-top: 48px; }
 .firma .con-carino {
   font-family: var(--serif-text); font-size: var(--fs-serif-md); font-style: italic;
   color: var(--secundario); margin-bottom: 4px;

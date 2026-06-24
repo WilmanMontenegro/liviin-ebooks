@@ -13,9 +13,11 @@ import fitz
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from html_blocks import (
     continues_pull_quote,
+    is_firma_cierre_page,
     is_opening_lead,
     is_pull_quote_group,
     is_section_subtitle,
+    render_firma_cierre_page,
     render_numeric_steps_page,
     render_opening_lead,
     render_title_block,
@@ -390,6 +392,10 @@ def _group_prose_plain(lines: list[Line]) -> list[str]:
     return parts
 
 
+# PDF: texto de lista va ~x≥58; cuerpo al margen ~x≤47
+BULLET_TEXT_X_MIN = 85.0
+
+
 def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int]:
     items: list[str] = []
     cur: list[str] = []
@@ -403,7 +409,7 @@ def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int
                 cur = []
             i += 1
             continue
-        if cur and ln.y - last_y > 34:
+        if cur and (ln.y - last_y > 34 or ln.x < BULLET_TEXT_X_MIN):
             break
         cur.append(ln.text)
         last_y = ln.y
@@ -780,7 +786,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
         quote = f'"{quote}"'
     return f"""<!-- p{page_no} cita -->
 <div class="page page-crema">
-  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+  <div class="content cierre-final">
     <div class="pull-page">
       <div class="pull-page-quote">{quote}</div>
       <span class="pull-page-attr">{fmt_caps(attr)}</span>
@@ -972,6 +978,9 @@ def build() -> str:
             folio += 1
         if page_no == 3:
             pages_before.append(dedicatoria_page(lines))
+        elif is_firma_cierre_page(lines):
+            html = render_firma_cierre_page(esc, lines, page_no, folio)
+            (pages_after if past_index_slot else pages_before).append(html)
         elif is_pull_page(lines):
             html = pull_page(lines, page_no)
             (pages_after if past_index_slot else pages_before).append(html)

@@ -14,9 +14,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ebook_style import ebook_head_links
 from html_blocks import (
     continues_pull_quote,
+    is_firma_cierre_page,
     is_opening_lead,
     is_pull_quote_group,
     is_section_subtitle,
+    render_firma_cierre_page,
     render_numeric_steps_page,
     render_opening_lead,
     render_title_block,
@@ -203,6 +205,12 @@ def _render_prose_group(g: list[Line]) -> list[str]:
     if is_pull_quote_group(g):
         return [f'<div class="pull-quote"><p>{esc(" ".join(x.text for x in g))}</p></div>']
     text = " ".join(x.text for x in g)
+    sizes = [x.size for x in g]
+    if all(x.italic for x in g) and all(9 <= s <= 12 for s in sizes):
+        return [
+            f'<p class="closing-lead" style="font-family:var(--sans);font-size:var(--fs-caption);">'
+            f"{esc(text)}</p>"
+        ]
     if any(x.bold for x in g) and len(g) == 1:
         return [f'<p class="body"><strong>{esc(text)}</strong></p>']
     if g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):
@@ -241,8 +249,12 @@ def _group_prose(lines: list[Line]) -> list[str]:
     return parts
 
 
+# PDF: texto de lista va ~x≥91; cuerpo al margen ~x≤55
+BULLET_TEXT_X_MIN = 85.0
+
+
 def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int]:
-    """PDF: línea '•' + texto hasta el siguiente '•' o hueco grande."""
+    """PDF: línea '•' + texto hasta el siguiente '•', hueco grande o margen de cuerpo."""
     items: list[str] = []
     cur: list[str] = []
     i = start
@@ -255,7 +267,7 @@ def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int
                 cur = []
             i += 1
             continue
-        if cur and ln.y - last_y > 34:
+        if cur and (ln.y - last_y > 34 or ln.x < BULLET_TEXT_X_MIN):
             break
         cur.append(ln.text)
         last_y = ln.y
@@ -396,7 +408,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
         quote = f'"{quote}"'
     return f"""<!-- p{page_no} cita -->
 <div class="page page-crema">
-  <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+  <div class="content cierre-final">
     <div class="pull-page">
       <div class="pull-page-quote">{quote}</div>
       <span class="pull-page-attr">{fmt_caps(attr)}</span>
@@ -502,9 +514,49 @@ def mov_cover_page(lines: list[Line], pdf_page_no: int) -> str:
 """
 
 
+def _is_gracias_page(lines: list[Line]) -> bool:
+    for ln in lines[:4]:
+        if ln.size > 10.5:
+            continue
+        if "GRACIAS" in re.sub(r"\s+", "", ln.text.upper()):
+            return True
+    return False
+
+
+def _render_gracias_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
+    """PDF p.100: tag centrado + versos itálica en columna estrecha (no pull-quote)."""
+    tag = "— GRACIAS —"
+    body = [ln for ln in lines[1:] if ln.italic]
+    groups: list[list[Line]] = []
+    cur: list[Line] = []
+    for ln in body:
+        if cur and ln.y - cur[-1].y > 22:
+            groups.append(cur)
+            cur = [ln]
+        else:
+            cur.append(ln)
+    if cur:
+        groups.append(cur)
+    verses = [
+        f'    <p class="gracias-verse">{"<br>".join(esc(ln.text) for ln in g)}</p>'
+        for g in groups
+    ]
+    inner = "\n".join([f'    <span class="gracias-tag">{esc(tag)}</span>', *verses])
+    return f"""<!-- folio {folio} pdf p{pdf_page_no} -->
+<div class="page">
+  <div class="content gracias-page">
+{inner}
+  </div>
+  {banda(section_for(pdf_page_no), folio)}
+</div>
+"""
+
+
 def content_page(lines: list[Line], pdf_page_no: int, folio: int) -> str:
     page_h = max((ln.y for ln in lines), default=0) + 25
     lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
+    if _is_gracias_page(lines):
+        return _render_gracias_page(lines, pdf_page_no, folio)
     sec = section_for(pdf_page_no)
     sigue = parse_sigue_lines(lines)
     tokens: list[tuple] = []
@@ -745,6 +797,9 @@ def build() -> str:
             folio += 1
         if page_no == 3:
             pages_before.append(dedicatoria_page(lines))
+        elif is_firma_cierre_page(lines):
+            html = render_firma_cierre_page(esc, lines, page_no, folio)
+            (pages_after if past_index_slot else pages_before).append(html)
         elif is_pull_page(lines):
             html = pull_page(lines, page_no)
             (pages_after if past_index_slot else pages_before).append(html)
