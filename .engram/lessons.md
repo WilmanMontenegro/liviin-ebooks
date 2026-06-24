@@ -90,6 +90,7 @@ No reflow tipografía. No inventar elementos. Preguntar si hay duda.
 - **pdf_text gaps**: no recomponer letter-spacing siempre; solo si `_raw_has_merged_words` (evita COMPRAR/DISEÑADORADEL)
 - **Pull-quote en step numérico**: p.78 — `_split_last_step_body` en `html_blocks.py`
 - **discovery-list p.27**: `.discovery-num` negrita `--texto`; sin `border-bottom` entre items (cliente rechazó rayas)
+- **Footer CIERRE en cuerpo p.88–89**: `(88, "BONUS")` en MOVIMIENTOS hacía banda BONUS pero PDF pie sigue CIERRE → `is_margin_noise` no filtraba; quitar entrada falsa y filtrar cualquier etiqueta conocida en zona pie (`_known_footer_keys`)
 
 ### Export PDF descargable (jun 2026)
 

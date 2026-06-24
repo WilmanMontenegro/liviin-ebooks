@@ -18,9 +18,12 @@ from html_blocks import (
     is_pull_page,
     is_pull_quote_group,
     is_section_subtitle,
+    join_prose_html,
     join_prose_lines,
     mov_cover_subtitle_lines,
     pull_vlines_from_page,
+    horizontal_filetes_from_page,
+    render_section_label_html,
     render_firma_cierre_page,
     render_numeric_steps_page,
     render_opening_lead,
@@ -42,7 +45,8 @@ from pdf_text import (
     numbered_caps_html,
     is_orphan_caps_line,
     absorb_numbered_orphans,
-    collapse_orphan_caps,
+    render_spans_inline_html,
+    spans_need_inline_html,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,8 +61,19 @@ MOVIMIENTOS = [
     (67, "05 · MI HISTORIA"),
     (74, "BONUS · CONVERSACIONES"),
     (87, "CIERRE"),
-    (88, "BONUS"),
 ]
+
+_KNOWN_FOOTER_KEYS: frozenset[str] | None = None
+
+
+def _known_footer_keys() -> frozenset[str]:
+    global _KNOWN_FOOTER_KEYS
+    if _KNOWN_FOOTER_KEYS is None:
+        keys = {_footer_key("INICIACIÓN"), _footer_key("ÍNDICE"), _footer_key("LIVIIN · EBOOK 01")}
+        for _, label in MOVIMIENTOS:
+            keys.add(_footer_key(label))
+        _KNOWN_FOOTER_KEYS = frozenset(keys)
+    return _KNOWN_FOOTER_KEYS
 
 INDEX_ITEMS = [
     ("00", "Iniciación · De mí para ti"),
@@ -80,6 +95,7 @@ SIGUE_TITLES = {
 
 # ponytail: vlines de la página en curso — solo durante content_page (build single-thread)
 _PULL_VLINES: list[tuple[float, float]] = []
+_H_FILETES: list[float] = []
 
 
 @dataclass
@@ -90,6 +106,7 @@ class Line:
     x: float = 0.0
     bold: bool = False
     italic: bool = False
+    rich_html: str | None = None
 
 
 def esc(s: str) -> str:
@@ -136,11 +153,20 @@ _AREA_ITEM = re.compile(r"^(\d{1,2})\s{2,}(.+)$")
 
 
 def _is_section_label(ln: Line) -> bool:
-    """PDF: etiqueta 8pt mayúsculas antes del título de sección."""
+    """PDF: etiqueta 8pt mayúsculas al margen izquierdo (≈x≤58)."""
     t = ln.text.strip()
     if ln.size > 9.5 or not t or is_numbered_label(t) or _is_sigue_line(t):
         return False
-    return bool(re.match(r"^[A-ZÁÉÍÓÚÑ0-9 ·—\-·\"']+$", t)) and any(c.isalpha() for c in t)
+    if ln.x > 100:
+        return False
+    if not re.match(r"^[A-ZÁÉÍÓÚÑ0-9 ·—\-·\"']+$", t) or not any(c.isalpha() for c in t):
+        return False
+    words = collapse_spaced(t).split()
+    if len(words) >= 3:
+        return True
+    if len(words) >= 2 and len(words[0]) >= 4:
+        return True
+    return len(words) == 1 and len(words[0]) >= 8
 
 
 def _parse_area_item(text: str) -> tuple[int, str] | None:
@@ -181,7 +207,7 @@ def is_margin_noise(ln: Line, page_h: float, page_no: int) -> bool:
         return True
     if ln.y <= page_h * 0.9:
         return False
-    if _footer_key(t) == _footer_key(section_for(page_no)):
+    if _footer_key(t) in _known_footer_keys():
         return True
     if is_numbered_label(t) and ln.size <= 8.5:
         return True
@@ -204,6 +230,11 @@ def extract_lines(page: fitz.Page) -> list[Line]:
             text = extract_line_text(raw, chars) if chars else raw.strip()
             if not text.strip():
                 continue
+            rich = (
+                render_spans_inline_html(spans, esc)
+                if spans_need_inline_html(spans)
+                else None
+            )
             out.append(
                 Line(
                     text=text.strip(),
@@ -212,6 +243,7 @@ def extract_lines(page: fitz.Page) -> list[Line]:
                     x=min(s["bbox"][0] for s in spans),
                     bold=any(s["flags"] & 16 for s in spans),
                     italic=any(s["flags"] & 2 for s in spans),
+                    rich_html=rich,
                 )
             )
     out.sort(key=lambda x: (x.y, x.x))
@@ -286,21 +318,23 @@ def _note_section_start(
 
 
 def _render_prose_group(g: list[Line]) -> list[str]:
+    text = " ".join(x.text for x in g)
+    sizes = [x.size for x in g]
     if is_opening_lead(g):
         return render_opening_lead(esc, g)
     if is_pull_quote_group(g, _PULL_VLINES):
         return [render_pull_quote_html(esc, " ".join(x.text for x in g))]
-    text = " ".join(x.text for x in g)
-    sizes = [x.size for x in g]
-    if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
-        return [f'<p class="closing-lead">{esc(text)}</p>']
-    if any(x.bold for x in g) and len(g) == 1:
-        return [f'<p class="body"><strong>{esc(text)}</strong></p>']
     if g[0].text.startswith("— MARÍA") or g[0].text.startswith("Interiorista y Home"):
         return ["""<div class="firma">
       <p class="con-carino">— María Teresa Espinosa</p>
       <p class="nombre">Interiorista y Home Coach · MTE</p>
     </div>"""]
+    if any(x.rich_html for x in g):
+        return [f'<p class="body">{join_prose_html(g, esc)}</p>']
+    if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
+        return [f'<p class="closing-lead">{esc(text)}</p>']
+    if any(x.bold for x in g) and len(g) == 1:
+        return [f'<p class="body"><strong>{esc(text)}</strong></p>']
     if all(x.italic for x in g) and all(9 <= s <= 12 for s in sizes):
         return [f'<p class="body body--italic">{esc(text)}</p>']
     return [f'<p class="body">{esc(text)}</p>']
@@ -647,7 +681,7 @@ def group_paragraphs(lines: list[Line]) -> list[str]:
     if numeric:
         intro, items, tail = numeric
         return render_numeric_steps_page(
-            esc, collapse_spaced, intro, items, tail, _is_section_label, _group_prose_plain
+            esc, collapse_spaced, intro, items, tail, _is_section_label, _group_prose_plain, _H_FILETES
         )
     steps = _split_step_blocks(lines)
     if steps:
@@ -754,9 +788,8 @@ def legal_page() -> str:
     <span class="tag">LIVIIN · EBOOK 01</span>
     <div class="h1" style="font-size:36px;margin-bottom:6px;">El arte de<br>liderar tu hogar</div>
     <div class="rule"></div>
-    <p class="subtitle">Una guía para dueñas que quieren un equipo armonioso, comunicación clara y una casa que funciona aunque no estés.</p>
     <div class="spacer-lg"></div>
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">UNA GUÍA DE MARÍA TERESA ESPINOSA</p>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.16em;color:var(--secundario);text-transform:uppercase;margin-bottom:6px;">MARÍA TERESA ESPINOSA</p>
     <p style="font-family:var(--serif-text);font-size:12px;font-style:italic;color:var(--secundario);">Interiorista y Home Coach · MTE</p>
     <div class="spacer-lg"></div>
     <p style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.1em;color:var(--filete);text-transform:uppercase;">© LIVIIN · FOR BETTER LIVING</p>
@@ -876,8 +909,9 @@ def mov_cover_page(lines: list[Line], page_no: int) -> str:
 
 
 def content_page(lines: list[Line], pdf_page_no: int, folio: int, fitz_page: fitz.Page) -> str:
-    global _PULL_VLINES
+    global _PULL_VLINES, _H_FILETES
     _PULL_VLINES = pull_vlines_from_page(fitz_page)
+    _H_FILETES = horizontal_filetes_from_page(fitz_page)
     page_h = max((ln.y for ln in lines), default=0) + 25
     lines = [ln for ln in lines if not is_margin_noise(ln, page_h, pdf_page_no)]
     lines = merge_orphan_caps_lines(lines, is_numbered_label)
@@ -894,7 +928,10 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int, fitz_page: fit
             i += 1
             continue
         if _is_section_label(ln):
-            tokens.append(("tag", collapse_spaced(ln.text), ln.bold))
+            if ln.y < 120:
+                tokens.append(("tag", collapse_spaced(ln.text), ln.bold))
+            else:
+                tokens.append(("section_label", ln))
             i += 1
             continue
         if is_numbered_label(ln.text):
@@ -927,7 +964,7 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int, fitz_page: fit
             continue
         chunk = [ln]
         i += 1
-        while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 15.5 and not _is_sigue_line(lines[i].text) and not (lines[i].text.startswith("—") and lines[i].size < 12):
+        while i < len(lines) and not is_tag_line(lines[i].text, lines[i].size) and not is_numbered_label(lines[i].text) and lines[i].size < 15.5 and not _is_sigue_line(lines[i].text) and not _is_section_label(lines[i]) and not (lines[i].text.startswith("—") and lines[i].size < 12):
             chunk.append(lines[i])
             i += 1
         tokens.append(("body", chunk))
@@ -940,6 +977,8 @@ def content_page(lines: list[Line], pdf_page_no: int, folio: int, fitz_page: fit
                 parts.append('<div class="spacer-sm"></div>')
         elif tok[0] == "title":
             parts.extend(render_title_block(esc, tok[1], tok[2]))
+        elif tok[0] == "section_label":
+            parts.append(render_section_label_html(esc, tok[1].text, tok[1].y, _H_FILETES))
         elif tok[0] == "numbered":
             label, desc = absorb_numbered_orphans(tok[1], tok[2], is_numbered_label)
             num, title = parse_numbered_label(label)

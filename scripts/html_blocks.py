@@ -44,6 +44,32 @@ def pull_vlines_from_page(page) -> list[tuple[float, float]]:
     return bands
 
 
+def horizontal_filetes_from_page(page) -> list[float]:
+    """Rayitas cortas bajo título / encima de section-label (≈45pt, x 46–91)."""
+    ys: list[float] = []
+    for d in page.get_drawings():
+        r = d.get("rect")
+        if not r or abs(r.height) >= 3:
+            continue
+        if 35 < r.width < 55 and r.x0 < 55:
+            ys.append(r.y0)
+    return ys
+
+
+def filete_above_label(label_y: float, filete_ys: list[float]) -> bool:
+    return any(label_y - 42 < fy < label_y - 8 for fy in filete_ys)
+
+
+def render_section_label_html(
+    esc: Callable[[str], str],
+    label: str,
+    label_y: float,
+    filete_ys: list[float],
+) -> str:
+    rule = '<div class="rule"></div>\n    ' if filete_above_label(label_y, filete_ys) else ""
+    return f'{rule}<p class="section-label">{esc(collapse_spaced(label))}</p>'
+
+
 def group_has_pull_vline(g: list[TextLine], vlines: list[tuple[float, float]]) -> bool:
     if not vlines or not g or not all(x.italic for x in g):
         return False
@@ -133,6 +159,15 @@ def mov_cover_subtitle_lines(
 def join_prose_lines(lines: list[TextLine]) -> str:
     """Une líneas de prosa sin collapse_spaced (no romper subtítulos)."""
     return re.sub(r"\s+", " ", " ".join(ln.text.strip() for ln in lines)).strip()
+
+
+def prose_line_html(ln: TextLine, esc: Callable[[str], str]) -> str:
+    rich = getattr(ln, "rich_html", None)
+    return rich if rich else esc(ln.text)
+
+
+def join_prose_html(lines: list[TextLine], esc: Callable[[str], str]) -> str:
+    return " ".join(prose_line_html(ln, esc) for ln in lines)
 
 
 def is_section_subtitle(ln: TextLine) -> bool:
@@ -250,6 +285,7 @@ def render_numeric_steps_page(
     tail: list[TextLine],
     is_section_label: Callable[[TextLine], bool],
     group_prose_plain: Callable[[list[TextLine]], list[str]],
+    filete_ys: list[float] | None = None,
 ) -> list[str]:
     parts: list[str] = []
     label: TextLine | None = None
@@ -259,7 +295,8 @@ def render_numeric_steps_page(
         prose_intro = intro[:-1]
     parts.extend(group_prose_plain(prose_intro))
     if label is not None:
-        parts.append(f'<p class="section-label">{esc(collapse_spaced_fn(label.text))}</p>')
+        ys = filete_ys or []
+        parts.append(render_section_label_html(esc, label.text, label.y, ys))
     parts.append(render_prose_steps_html(esc, items))
     parts.extend(group_prose_plain(tail))
     return parts

@@ -61,6 +61,7 @@ body {
   letter-spacing: var(--track-label); color: var(--texto); text-transform: uppercase;
   margin: 18px 0 12px;
 }
+.rule + .section-label { margin-top: 0; }
 .closing-lead {
   font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-editorial); text-align: left;
@@ -97,6 +98,20 @@ body {
 }
 .body--italic {
   font-style: italic;
+}
+.body em {
+  font-family: var(--serif-text);
+  font-style: italic;
+  font-weight: 400;
+}
+.body strong {
+  font-weight: 600;
+}
+.body strong em,
+.body em strong {
+  font-family: var(--serif-text);
+  font-style: italic;
+  font-weight: 600;
 }
 .body-list {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;

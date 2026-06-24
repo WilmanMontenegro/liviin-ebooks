@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from html import escape as html_escape
 
 _GAP_MIN = 9.6
@@ -175,6 +176,56 @@ def extract_line_text(raw: str, chars: list[dict]) -> str:
             return collapse_from_raw_spacing(raw)
         return collapse_spaced(chars_to_line_text(chars)) if chars else collapse_spaced(raw)
     return raw
+
+
+def _span_raw_text(sp: dict) -> str:
+    chars = sp.get("chars") or []
+    if chars:
+        return "".join(c["c"] for c in chars)
+    return sp.get("text", "")
+
+
+def _span_style(sp: dict) -> tuple[bool, bool]:
+    return bool(sp["flags"] & 16), bool(sp["flags"] & 2)
+
+
+def spans_need_inline_html(spans: list[dict]) -> bool:
+    """True si la línea mezcla texto plano con énfasis (itálica/negrita) entre spans."""
+    styled: list[tuple[bool, bool]] = []
+    plain = 0
+    for sp in spans:
+        if not _span_raw_text(sp).strip():
+            continue
+        bold, italic = _span_style(sp)
+        if bold or italic:
+            styled.append((bold, italic))
+        else:
+            plain += 1
+    if plain and styled:
+        return True
+    return len(set(styled)) > 1
+
+
+def render_spans_inline_html(spans: list[dict], esc: Callable[[str], str]) -> str:
+    """Énfasis inline del PDF → <em>/<strong> dentro de .body."""
+    parts: list[str] = []
+    for sp in spans:
+        raw = _span_raw_text(sp)
+        if not raw:
+            continue
+        bold, italic = _span_style(sp)
+        if bold or italic:
+            inner = esc(raw)
+            if bold and italic:
+                chunk = f"<strong><em>{inner}</em></strong>"
+            elif bold:
+                chunk = f"<strong>{inner}</strong>"
+            else:
+                chunk = f"<em>{inner}</em>"
+        else:
+            chunk = esc(raw)
+        parts.append(chunk)
+    return "".join(parts)
 
 
 def collapse_orphan_caps(text: str) -> str:
