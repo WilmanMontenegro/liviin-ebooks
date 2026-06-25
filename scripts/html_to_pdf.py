@@ -25,9 +25,9 @@ BOOKS: dict[str, tuple[str, str]] = {
     "imprimible": ("imprimible.html", "imprimible.pdf"),
 }
 
-# ponytail: imprimible = portada .page + hojas .print-page en orden DOM
+# ponytail: imprimible = solo hojas .print-page (sin .page editorial ni imágenes)
 PAGE_SELECTOR: dict[str, str] = {
-    "imprimible.html": ".page, .print-page",
+    "imprimible.html": ".print-page",
 }
 
 # Captura pantalla por .page — print PDF partía páginas altas y cortaba .banda.

@@ -10,7 +10,13 @@ Brief cliente (audios 24 jun 2026):
 
 Imagen = solo fotografía. Texto y degradado = **HTML/CSS** (`.foto-portada--mesa::after`).
 
-## Versión activa (v4)
+## Versión activa (v5 — arte cliente)
+
+- **Asset:** `web/assets/mesa-portada-cliente.png` (desde `portada libro 4.png`)
+- **Layout:** portada entera (`.page-portada-full`) — título y logo van en la imagen, sin HTML duplicado
+- **Referencia:** `assets/referencia/portada-libro-4-mesa.png`
+
+## Versión anterior (v4)
 
 - **Estructura:** igual Liderar/Bonus (`foto-portada` + `portada-content`)
 - **Asset:** `web/assets/mesa-portada.jpg` (576×520)

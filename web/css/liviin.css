@@ -380,6 +380,19 @@ ol.numbered li::before {
   height: 468px;
 }
 
+/* Portada entera (arte cliente — título y logo van en la imagen) */
+.page-portada-full {
+  padding: 0;
+  display: block;
+}
+.page-portada-full .portada-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
 /* ponytail: desvanecido en .foto-portada::after (compartido) */
 .foto-portada::after {
   content: "";
