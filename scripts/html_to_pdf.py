@@ -12,9 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web"
 OUT_DIR = WEB / "pdf"
 
-# ponytail: mismo trim que .page en tokens.css (576×864)
+# ponytail: mismo trim que .page en tokens.css (576×864); scale 2 = nitidez al zoom sin vector print
 PAGE_W_PX = 576
 PX_TO_PT = 72 / 96
+EXPORT_SCALE = 2
 
 BOOKS: dict[str, tuple[str, str]] = {
     "liderar": ("liderar.html", "liderar.pdf"),
@@ -77,7 +78,7 @@ def export_one(base_url: str, html_name: str, out_path: Path) -> None:
         browser = p.chromium.launch()
         context = browser.new_context(
             viewport={"width": PAGE_W_PX, "height": 1200},
-            device_scale_factor=1,
+            device_scale_factor=EXPORT_SCALE,
         )
         page = context.new_page()
         page.goto(f"{base_url}/{html_name}", wait_until="networkidle", timeout=120_000)
@@ -99,12 +100,12 @@ def export_one(base_url: str, html_name: str, out_path: Path) -> None:
             box = loc.bounding_box()
             if not box:
                 continue
-            png = loc.screenshot(type="jpeg", quality=92)
+            img = loc.screenshot(type="png")
             w_pt = box["width"] * PX_TO_PT
             h_pt = box["height"] * PX_TO_PT
             sheet = fitz.open()
             pg = sheet.new_page(width=w_pt, height=h_pt)
-            pg.insert_image(fitz.Rect(0, 0, w_pt, h_pt), stream=png)
+            pg.insert_image(fitz.Rect(0, 0, w_pt, h_pt), stream=img)
             merged.insert_pdf(sheet)
             sheet.close()
 
