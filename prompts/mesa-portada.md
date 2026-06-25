@@ -12,15 +12,14 @@ Imagen = solo fotografía. Texto y degradado = **HTML/CSS** (`.foto-portada--mes
 
 ## Versión activa (v5 — arte cliente)
 
+- **Estructura:** igual v4 — `foto-portada` + `portada-content` (paridad Liderar/Bonus)
 - **Asset:** `web/assets/mesa-portada-cliente.png` (desde `portada libro 4.png`)
-- **Layout:** portada entera (`.page-portada-full`) — título y logo van en la imagen, sin HTML duplicado
+- **Fade:** gradiente CSS al fondo `#DFE0DB`, no quemado en el PNG
 - **Referencia:** `assets/referencia/portada-libro-4-mesa.png`
 
 ## Versión anterior (v4)
 
-- **Estructura:** igual Liderar/Bonus (`foto-portada` + `portada-content`)
 - **Asset:** `web/assets/mesa-portada.jpg` (576×520)
-- **Fade:** gradiente CSS al fondo `#DFE0DB`, no quemado en el JPG
 
 ## Rollbacks
 
