@@ -21,11 +21,12 @@ BOOKS: dict[str, tuple[str, str]] = {
     "transformar": ("transformar.html", "transformar.pdf"),
     "bonus": ("bonus.html", "bonus.pdf"),
     "mesa": ("mesa.html", "mesa.pdf"),
+    "imprimible": ("imprimible.html", "imprimible.pdf"),
 }
 
-# ponytail: mesa suma .page + .print-page en orden DOM
+# ponytail: imprimible = portada .page + hojas .print-page en orden DOM
 PAGE_SELECTOR: dict[str, str] = {
-    "mesa.html": ".page, .print-page",
+    "imprimible.html": ".page, .print-page",
 }
 
 # Captura pantalla por .page — print PDF partía páginas altas y cortaba .banda.
@@ -140,7 +141,7 @@ def main() -> None:
         nargs="*",
         choices=[*BOOKS.keys(), "all"],
         default=["all"],
-        help="liderar | transformar | bonus | mesa | all",
+        help="liderar | transformar | bonus | mesa | imprimible | all",
     )
     args = ap.parse_args()
     keys = list(BOOKS.keys()) if not args.books or args.books == ["all"] else args.books

@@ -21,6 +21,7 @@ BOOKS: tuple[tuple[str, str], ...] = (
     ("transformar.html", "El arte de transformar tu hogar"),
     ("bonus.html", "Las manos que sostienen tu hogar"),
     ("mesa.html", "El arte de liderar tu mesa"),
+    ("imprimible.html", "Asistente imprimible · Liderar tu mesa"),
 )
 
 
@@ -31,8 +32,8 @@ def stamp_text(when: datetime | None = None) -> str:
 
 def page_count(html_path: Path) -> int:
     text = html_path.read_text(encoding="utf-8")
-    n = len(re.findall(r'<div class="page(?:\s|">)', text))
-    if html_path.name == "mesa.html":
+    n = len(re.findall(r'<div class="page(?!-)\b[^"]*">', text))
+    if html_path.name == "imprimible.html":
         n += len(re.findall(r'<div class="print-page"', text))
     return n
 
@@ -43,6 +44,8 @@ def card_meta(slug: str, pages: int) -> str:
         return f"{pages} páginas · bonus de cortesía · portada editorial."
     if slug == "mesa.html":
         return f"{pages} páginas · bonus Lanzamiento 2 · portada editorial."
+    if slug == "imprimible.html":
+        return f"{pages} páginas · para imprimir · portada editorial."
     return f"{pages} páginas · portada editorial."
 
 
@@ -112,7 +115,7 @@ def main() -> None:
     INDEX.write_text(new, encoding="utf-8")
     renumber_ebook_folio(WEB / "bonus.html")
     for slug, _ in BOOKS:
-        if slug == "mesa.html":
+        if slug in ("mesa.html", "imprimible.html"):
             continue
         verify_band_folio(WEB / slug)
     print(f"OK index → {label}")

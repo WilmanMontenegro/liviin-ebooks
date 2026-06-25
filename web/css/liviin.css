@@ -792,6 +792,209 @@ ol.numbered li::before {
   margin-bottom: 12pt;
 }
 
+
+/* === Sección imprimible (web/imprimible.html) === */
+/* === ESTILOS EXCLUSIVOS DE LA SECCIÓN IMPRIMIBLE === */
+.print-page {
+  width: 6in;
+  height: 9in;
+  background: #FFFFFF;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+  padding: 0.65in 0.6in 0.65in 0.6in;
+  display: flex;
+  flex-direction: column;
+}
+.print-page:last-child { page-break-after: avoid; }
+
+.print-cover {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.print-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 7.5pt;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #665E53;
+  margin-bottom: 16pt;
+}
+
+.print-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26pt;
+  font-weight: 500;
+  color: #3A322C;
+  line-height: 1.1;
+  margin-bottom: 18pt;
+}
+
+.print-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12pt;
+  color: #665E53;
+  line-height: 1.5;
+  max-width: 3.8in;
+  margin-bottom: 28pt;
+}
+
+.print-rule {
+  width: 50pt;
+  height: 1px;
+  background: #B5A891;
+  margin: 0 auto 18pt;
+}
+
+.print-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  color: #665E53;
+  line-height: 1.6;
+  max-width: 3.8in;
+  text-align: center;
+}
+
+/* Títulos de sección imprimible */
+.print-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16pt;
+  font-weight: 500;
+  color: #3A322C;
+  margin-top: 0;
+  margin-bottom: 4pt;
+  padding-bottom: 4pt;
+  border-bottom: 1.5px solid #3A322C;
+}
+
+.print-subsection {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11pt;
+  font-weight: 500;
+  color: #4A5C4E;
+  margin-top: 10pt;
+  margin-bottom: 2pt;
+  border-bottom: 0.5px solid #B5A891;
+  padding-bottom: 2pt;
+}
+
+/* Listas imprimibles */
+ol.print-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 4pt 0 0 0;
+  counter-reset: print-counter calc(attr(start integer, 1) - 1);
+}
+
+ol.print-list[start="1"] { counter-reset: print-counter 0; }
+ol.print-list[start="2"] { counter-reset: print-counter 1; }
+ol.print-list[start="3"] { counter-reset: print-counter 2; }
+ol.print-list[start="4"] { counter-reset: print-counter 3; }
+ol.print-list[start="5"] { counter-reset: print-counter 4; }
+ol.print-list[start="6"] { counter-reset: print-counter 5; }
+ol.print-list[start="7"] { counter-reset: print-counter 6; }
+ol.print-list[start="8"] { counter-reset: print-counter 7; }
+ol.print-list[start="9"] { counter-reset: print-counter 8; }
+ol.print-list[start="10"] { counter-reset: print-counter 9; }
+ol.print-list[start="14"] { counter-reset: print-counter 13; }
+
+ol.print-list li {
+  counter-increment: print-counter;
+  padding-left: 18pt;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.45;
+  color: #3A322C;
+  margin-bottom: 2pt;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: block;
+}
+
+ol.print-list li::before {
+  content: counter(print-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: #4A5C4E;
+  font-size: 9pt;
+  font-weight: 500;
+}
+
+/* Tabla semana imprimible */
+.print-semana-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 6pt;
+  line-height: 1.3;
+  margin-top: 6pt;
+}
+
+.print-semana-tabla thead tr {
+  background: #DFE0DB;
+}
+
+.print-semana-tabla th {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 7pt;
+  padding: 3pt 4pt;
+  text-align: left;
+  border: 0.5px solid #B5A891;
+  color: #3A322C;
+}
+
+.print-semana-tabla td {
+  padding: 3pt 4pt;
+  border: 0.5px solid #B5A891;
+  vertical-align: top;
+  color: #3A322C;
+  font-family: 'Inter', sans-serif;
+  font-size: 6pt;
+}
+
+.print-semana-tabla td.pdia {
+  font-weight: 700;
+  color: #4A5C4E;
+  width: 20pt;
+  text-align: center;
+  font-size: 6pt;
+}
+
+.print-semana-tabla td.plibre {
+  font-style: italic;
+  color: #665E53;
+}
+
+.print-semana-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #665E53;
+  margin-bottom: 4pt;
+}
+
+.imprimible-portada-nota {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  color: var(--texto-2);
+  line-height: 1.55;
+  max-width: 4.2in;
+  margin: 12pt auto 0;
+  text-align: center;
+}
+
 /* === Piloto web (web/mesa.html) === */
 @media screen {
   body {
