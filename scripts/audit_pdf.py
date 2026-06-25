@@ -10,8 +10,10 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
-BACKUP = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL_backup.pdf"
+from paths import LIDERAR_PDF, LIDERAR_BACKUP
+
+PDF = LIDERAR_PDF
+BACKUP = LIDERAR_BACKUP
 
 PLACEHOLDER_RE = re.compile(
     r"FOTO\s*PORTADA|Foto\s+editorial|◇|PLACEHOLDER|\[imagen\]",

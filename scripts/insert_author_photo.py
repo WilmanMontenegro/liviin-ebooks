@@ -11,8 +11,10 @@ import fitz
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
-PHOTO = ROOT / "2023-09-11 17.36.28.jpg"
+from paths import LIDERAR_PDF, AUTORA_JPG
+
+PDF = LIDERAR_PDF
+PHOTO = AUTORA_JPG
 PAGE_INDEX = 89  # página 90
 
 # Caja interior (foto); marco punteado exterior se elimina al insertar

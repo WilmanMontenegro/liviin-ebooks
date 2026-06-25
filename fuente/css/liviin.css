@@ -1,0 +1,638 @@
+/* ============================================================
+   LIVIIN · SISTEMA EDITORIAL MAESTRO
+   Aplica a todas las piezas Liviin · Bonus Menús
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* === RESET === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === PALETA LIVIIN (8 colores oficiales) === */
+:root {
+  --fondo: #DFE0DB;
+  --crema: #FAF7F0;
+  --banda: #B7BDBB;
+  --olivo: #4A5C4E;
+  --texto: #3A322C;
+  --texto-2: #665E53;
+  --filete: #B5A891;
+  --taupe: #AB9E95;
+}
+
+/* === FORMATO 6x9 PULGADAS === */
+@page {
+  size: 6in 9in;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', 'Liberation Sans', system-ui, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+  font-size: 10.5pt;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* === PÁGINA BASE === */
+.page {
+  width: 6in;
+  height: 9in;
+  background: var(--fondo);
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: avoid; }
+
+.page-content {
+  padding: 0.75in 0.65in 0.85in 0.65in;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-content.with-band {
+  padding-bottom: calc(0.55in + 0.55in);
+}
+
+/* === BANDA INFERIOR (firma editorial Liviin) === */
+.banda-inferior {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.55in;
+  background: var(--banda);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.65in;
+}
+
+.banda-movimiento {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 7.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--olivo);
+}
+
+.banda-numero {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 0.15em;
+  color: var(--olivo);
+}
+
+/* === TIPOGRAFÍAS Y JERARQUÍA === */
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', 'Liberation Serif', Georgia, serif;
+  color: var(--texto);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.display-xxl {
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  color: var(--texto);
+  font-weight: 400;
+  font-size: 38pt;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  color: var(--texto);
+  font-weight: 400;
+  font-size: 28pt;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--texto);
+  font-weight: 500;
+  font-size: 22pt;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.display-md {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--texto);
+  font-weight: 500;
+  font-size: 16pt;
+  line-height: 1.25;
+}
+
+.display-sm {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--olivo);
+  font-weight: 500;
+  font-size: 12pt;
+  line-height: 1.3;
+  margin-top: 12pt;
+  margin-bottom: 4pt;
+}
+
+/* === ETIQUETAS LIVIIN === */
+.etiqueta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 7.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  margin-bottom: 8pt;
+}
+
+/* === PÁRRAFOS === */
+p {
+  margin-bottom: 8pt;
+  font-size: 10pt;
+  line-height: 1.7;
+  color: var(--texto);
+}
+
+p.lead {
+  font-size: 11.5pt;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+p.muted {
+  color: var(--texto-2);
+  font-size: 9.5pt;
+}
+
+strong {
+  color: var(--olivo);
+  font-weight: 600;
+}
+
+em {
+  color: var(--texto-2);
+  font-style: italic;
+}
+
+/* === FILETE DECORATIVO === */
+.filete {
+  height: 1px;
+  background: var(--filete);
+  width: 60px;
+  margin: 12pt 0;
+}
+
+.filete-center {
+  height: 1px;
+  background: var(--filete);
+  width: 60px;
+  margin: 14pt auto;
+}
+
+.filete-full {
+  height: 1px;
+  background: var(--filete);
+  width: 100%;
+  margin: 8pt 0;
+}
+
+/* === PÍLDORA REDONDEADA === */
+.pildora {
+  display: inline-block;
+  border-radius: 999px;
+  background: var(--olivo);
+  color: var(--crema);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 4pt 10pt;
+}
+
+.pildora-taupe {
+  background: var(--taupe);
+  color: var(--crema);
+}
+
+/* === CÍRCULO NUMERADO === */
+.circulo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22pt;
+  height: 22pt;
+  border-radius: 50%;
+  background: var(--olivo);
+  color: var(--crema);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 11pt;
+  line-height: 1;
+  margin-right: 8pt;
+  vertical-align: middle;
+}
+
+/* === RECUADRO CREMA (tips, notas, scripts) === */
+.recuadro-crema {
+  background: var(--crema);
+  border-radius: 4px;
+  padding: 0.9em 1.1em;
+  margin: 12pt 0;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  color: var(--texto);
+}
+
+.recuadro-crema .tip-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--olivo);
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+}
+
+/* === PULL QUOTE === */
+.pull-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13pt;
+  line-height: 1.45;
+  color: var(--olivo);
+  border-left: 1px solid var(--filete);
+  padding-left: 1em;
+  margin: 14pt 0;
+}
+
+/* === LISTAS === */
+ul, ol {
+  margin: 6pt 0 10pt 16pt;
+  font-size: 10pt;
+  line-height: 1.65;
+}
+
+ul li, ol li {
+  margin-bottom: 3pt;
+  color: var(--texto);
+}
+
+ul li::marker {
+  color: var(--filete);
+}
+
+/* Lista con círculo numerado inline */
+ol.numbered-circles {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: list-counter;
+}
+
+ol.numbered-circles li {
+  counter-increment: list-counter;
+  padding-left: 28pt;
+  position: relative;
+  margin-bottom: 8pt;
+  line-height: 1.5;
+}
+
+ol.numbered-circles li::before {
+  content: counter(list-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20pt;
+  height: 20pt;
+  border-radius: 50%;
+  background: var(--olivo);
+  color: var(--crema);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Lista numerada simple */
+ol.numbered {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: list-counter;
+}
+
+ol.numbered li {
+  counter-increment: list-counter;
+  padding-left: 20pt;
+  position: relative;
+  margin-bottom: 4pt;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: block;
+}
+
+ol.numbered li::before {
+  content: counter(list-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--olivo);
+  font-weight: 500;
+  font-size: 10pt;
+  width: 16pt;
+  display: inline-block;
+}
+
+/* === LAYOUTS ESPECÍFICOS === */
+
+/* PORTADA */
+.cover {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0.75in 0.65in;
+}
+
+.cover-marquilla {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  padding-top: 0.4in;
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.cover-title {
+  font-family: 'Cormorant SC', serif;
+  color: var(--texto);
+  font-weight: 400;
+  font-size: 30pt;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cover-bajada {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--texto);
+  font-size: 11pt;
+  line-height: 1.5;
+  margin-top: 24pt;
+  max-width: 4in;
+}
+
+.cover-autoria {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  margin-top: 24pt;
+}
+
+.cover-cargo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--texto-2);
+  font-size: 10pt;
+  margin-top: 6pt;
+}
+
+.cover-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4pt;
+  padding-bottom: 0.4in;
+}
+
+.cover-edition {
+  font-family: 'Inter', sans-serif;
+  font-size: 8pt;
+  color: var(--texto-2);
+  letter-spacing: 0.1em;
+}
+
+/* PORTADILLA (apertura de movimiento) */
+.portadilla {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.75in 0.65in;
+}
+
+.portadilla-numero {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 9pt;
+  letter-spacing: 0.3em;
+  color: var(--texto-2);
+  text-transform: uppercase;
+  margin-bottom: 24pt;
+}
+
+.portadilla-titulo {
+  font-family: 'Cormorant SC', serif;
+  color: var(--texto);
+  font-weight: 400;
+  font-size: 24pt;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 4in;
+}
+
+.portadilla-ancla {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--olivo);
+  font-size: 13pt;
+  line-height: 1.5;
+  margin-top: 36pt;
+  max-width: 3.8in;
+}
+
+/* RESPIRACIÓN */
+.respiracion {
+  height: 100%;
+  background: var(--crema);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.75in 0.85in;
+}
+
+.page.respiracion-page {
+  background: var(--crema);
+}
+
+.respiracion-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--olivo);
+  font-weight: 400;
+  font-size: 18pt;
+  line-height: 1.4;
+  max-width: 4.5in;
+}
+
+.respiracion-filete {
+  height: 1px;
+  width: 40pt;
+  background: var(--filete);
+  margin: 18pt 0;
+}
+
+/* CIERRE */
+.cierre {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0.75in 0.65in;
+}
+
+/* === TABLA SEMANA (para 8 semanas) === */
+.semana-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 6.5pt;
+  line-height: 1.35;
+  margin-top: 6pt;
+}
+
+.semana-tabla thead tr {
+  background: var(--banda);
+}
+
+.semana-tabla th {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--olivo);
+  font-weight: 500;
+  font-size: 8pt;
+  padding: 4pt 4pt;
+  text-align: left;
+  border: 0.5px solid var(--filete);
+}
+
+.semana-tabla td {
+  padding: 4pt 4pt;
+  border: 0.5px solid var(--filete);
+  vertical-align: top;
+  color: var(--texto);
+  font-size: 6.5pt;
+}
+
+.semana-tabla td.dia {
+  font-weight: 600;
+  color: var(--olivo);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.06em;
+  width: 24pt;
+  text-align: center;
+}
+
+.semana-tabla td.libre {
+  font-style: italic;
+  color: var(--texto-2);
+}
+
+/* === TABLA RESUMEN (anexo) === */
+.tabla-resumen {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin-top: 8pt;
+}
+
+.tabla-resumen thead tr {
+  background: var(--banda);
+}
+
+.tabla-resumen th {
+  padding: 5pt 7pt;
+  text-align: left;
+  border: 0.5px solid var(--filete);
+  color: var(--olivo);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10pt;
+  font-weight: 500;
+}
+
+.tabla-resumen td {
+  padding: 4pt 7pt;
+  border: 0.5px solid var(--filete);
+  color: var(--texto);
+  font-size: 8.5pt;
+}
+
+.tabla-resumen td.aspecto {
+  font-weight: 600;
+  color: var(--olivo);
+  width: 32%;
+}
+
+/* === GRID DE 2 COLUMNAS === */
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12pt;
+}
+
+/* === TÍTULO DE PÁGINA (tras la etiqueta) === */
+.titulo-pagina {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--texto);
+  font-weight: 500;
+  font-size: 20pt;
+  line-height: 1.15;
+  margin-bottom: 4pt;
+}
+
+.subtitulo-pagina {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--texto-2);
+  font-size: 11pt;
+  margin-bottom: 12pt;
+}

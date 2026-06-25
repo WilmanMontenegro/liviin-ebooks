@@ -11,8 +11,10 @@ import fitz
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
-QR_SRC = ROOT / "HOME EXCEL CODIGO QR.png"
+from paths import LIDERAR_PDF, QR_PNG
+
+PDF = LIDERAR_PDF
+QR_SRC = QR_PNG
 PAGE_INDEX = 88  # página 89
 
 # Caja blanca interior; marco punteado exterior se elimina al insertar

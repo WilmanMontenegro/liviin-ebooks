@@ -14,8 +14,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from build_liderar_html import extract_lines, is_margin_noise  # noqa: E402
 from html_blocks import group_has_pull_vline, pull_vlines_from_page  # noqa: E402
 
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
-HTML = ROOT / "web" / "liderar.html"
+from paths import LIDERAR_PDF, WEB
+
+PDF = LIDERAR_PDF
+HTML = WEB / "liderar.html"
 
 
 def _pdf_vline_quotes() -> list[tuple[int, str]]:

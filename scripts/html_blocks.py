@@ -163,7 +163,21 @@ def join_prose_lines(lines: list[TextLine]) -> str:
 
 def prose_line_html(ln: TextLine, esc: Callable[[str], str]) -> str:
     rich = getattr(ln, "rich_html", None)
-    return rich if rich else esc(ln.text)
+    if rich:
+        return rich
+    if getattr(ln, "italic", False) and not getattr(ln, "bold", False):
+        t = ln.text.strip()
+        # ponytail: itálica suelta en párrafo mixto — mismo criterio que spans PDF
+        if t and len(t) <= 52 and not t.startswith("—"):
+            return f"<em>{esc(t)}</em>"
+    return esc(ln.text)
+
+
+def paragraph_has_mixed_emphasis(g: list[TextLine]) -> bool:
+    if any(getattr(x, "rich_html", None) for x in g):
+        return True
+    italic = [x for x in g if getattr(x, "italic", False)]
+    return bool(italic) and len(italic) < len(g)
 
 
 def join_prose_html(lines: list[TextLine], esc: Callable[[str], str]) -> str:

@@ -57,7 +57,7 @@ case "$cmd" in
     bash scripts/restore_backup.sh
     ;;
   cover)
-    "$PY" insert_cover.py "$@"
+    "$PY" scripts/insert_cover.py "$@"
     ;;
   qr)
     "$PY" scripts/insert_qr.py
@@ -78,13 +78,13 @@ case "$cmd" in
     "$PY" scripts/fix_title_underlines.py "$@"
     ;;
   text)
-    pdftotext "${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}" -
+    pdftotext "${1:-fuente/pdf/4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}" -
     ;;
   png)
     page="${1:-1}"
     out="/tmp/libro-p${page}"
     pdftoppm -png -f "$page" -l "$page" -r 200 \
-      4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf "$out"
+      fuente/pdf/4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf "$out"
     echo "${out}-$(printf '%02d' "$page").png"
     ;;
   preview)
@@ -118,7 +118,7 @@ case "$cmd" in
     esac
     ;;
   optimize)
-    f="${1:-4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}"
+    f="${1:-fuente/pdf/4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf}"
   tmp="${f%.pdf}.opt.pdf"
   "$PY" -c "
 import pikepdf, sys

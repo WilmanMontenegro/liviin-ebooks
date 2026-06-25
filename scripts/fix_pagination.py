@@ -10,7 +10,9 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
+from paths import LIDERAR_PDF
+
+PDF = LIDERAR_PDF
 
 FOOTER_TEXT_COLOR = (250 / 255, 240 / 255, 240 / 255)  # #FAF0F0
 FOOTER_BAR = (0.671, 0.620, 0.584)

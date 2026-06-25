@@ -9,7 +9,9 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
+from paths import LIDERAR_PDF
+
+DEFAULT_PDF = LIDERAR_PDF
 
 PAGE_BG = (0.8745, 0.8784, 0.8588)
 WHITE_BG = (1.0, 1.0, 1.0)

@@ -20,6 +20,7 @@ from html_blocks import (
     is_section_subtitle,
     join_prose_html,
     join_prose_lines,
+    paragraph_has_mixed_emphasis,
     mov_cover_subtitle_lines,
     pull_vlines_from_page,
     horizontal_filetes_from_page,
@@ -50,8 +51,10 @@ from pdf_text import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
-OUT = ROOT / "web" / "liderar.html"
+from paths import LIDERAR_PDF, WEB
+
+PDF = LIDERAR_PDF
+OUT = WEB / "liderar.html"
 
 MOVIMIENTOS = [
     (11, "01 · LA FILOSOFÍA"),
@@ -329,7 +332,7 @@ def _render_prose_group(g: list[Line]) -> list[str]:
       <p class="con-carino">— María Teresa Espinosa</p>
       <p class="nombre">Interiorista y Home Coach · MTE</p>
     </div>"""]
-    if any(x.rich_html for x in g):
+    if any(x.rich_html for x in g) or paragraph_has_mixed_emphasis(g):
         return [f'<p class="body">{join_prose_html(g, esc)}</p>']
     if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
         return [f'<p class="closing-lead">{esc(text)}</p>']

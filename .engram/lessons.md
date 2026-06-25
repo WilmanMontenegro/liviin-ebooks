@@ -6,6 +6,16 @@
 - Commit git tras cada avance.
 - `./pdf doctor` antes y después.
 
+## Regla multi-libro (jun 2026 — obligatoria)
+
+**Toda corrección en un ebook → aplicar en los tres** (Liderar, Transformar, Bonus en `web/`), salvo que el PDF fuente de ese libro demuestre que no aplica.
+
+- Mismo criterio en builds (`build_liderar_html.py`, `build_transformar_html.py`), CSS compartido (`ebook.css`), y bloques comunes (`html_blocks.py`, `pdf_text.py`).
+- Con calma: pensamiento crítico, verificar PDF fuente de **cada** libro antes de portar; no copiar ciego.
+- Trabajo profesional: paridad sin prisa, sin romper lo que ya está bien en un título distinto.
+
+Checklist al cerrar un fix: ¿Liderar? ¿Transformar? ¿Bonus (si usa `ebook.css`)? ¿`./pdf html all` + audit?
+
 ## Producto principal vs PDF fuente (jun 2026 — decisión del cliente)
 
 **Los 3 productos publicados** son los ebooks en `web/`:
@@ -16,7 +26,7 @@
 | El arte de transformar tu hogar | `transformar.html` | `web/pdf/transformar.pdf` |
 | Las manos que sostienen tu hogar | `bonus.html` | `web/pdf/bonus.pdf` |
 
-**Los PDF en la raíz del repo** (`4_El_arte_de_liderar…_FINAL.pdf`, `El_arte_de_transformar…`, `Las_manos… BONUS 1.pdf`) son **solo material fuente**: extraer texto, estructura y referencia de diseño. **No son el entregable.**
+**Los PDF en `fuente/pdf/`** (`4_El_arte_de_liderar…_FINAL.pdf`, `El_arte_de_transformar…`, `Las_manos… BONUS 1.pdf`) son **solo material fuente**: extraer texto, estructura y referencia de diseño. **No son el entregable.**
 
 Pipeline del producto: `./pdf html all` → piloto web → `./pdf export all` (Playwright, WYSIWYG) → `web/pdf/` para el botón Descargar. CI Pages hace html + export en cada push a `main`.
 
@@ -36,7 +46,7 @@ Nunca confundirlas. El usuario lo marcó explícitamente.
 
 ## Entregables clave
 
-- Portada: `portada ebook 1.png`, gap 10pt.
+- Portada: `assets/pdf/portada ebook 1.png`, gap 10pt.
 - QR p.89, foto autora p.90.
 - Paginación pie derecho: 1–92.
 - Índice p.10: 05, 11, 24, 37, 58, 74, 87.
@@ -91,6 +101,15 @@ No reflow tipografía. No inventar elementos. Preguntar si hay duda.
 - **Pull-quote en step numérico**: p.78 — `_split_last_step_body` en `html_blocks.py`
 - **discovery-list p.27**: `.discovery-num` negrita `--texto`; sin `border-bottom` entre items (cliente rechazó rayas)
 - **Footer CIERRE en cuerpo p.88–89**: `(88, "BONUS")` en MOVIMIENTOS hacía banda BONUS pero PDF pie sigue CIERRE → `is_margin_noise` no filtraba; quitar entrada falsa y filtrar cualquier etiqueta conocida en zona pie (`_known_footer_keys`)
+- **Página legal subtítulo duplicado**: portada ya trae bajada → `legal_page()` sin `<p class="subtitle">`; label `MARÍA TERESA ESPINOSA` (no `UNA GUÍA DE…`). Transformar commit `6487f06`; Liderar igual jun 2026.
+- **Section-label mid-page**: `ENCUÉNTRAME EN`, `DESCARGA DIRECTA` = `.section-label`, no `.body`. Cortar chunks en `_is_section_label`. Filete `.rule` solo si PDF trae filete corto encima (`horizontal_filetes_from_page`, y label−30…40). Labels: x≤100, ≥2 palabras o 1 palabra ≥8 chars (filtra QR `ESCANEACON TU`).
+- **Énfasis inline cuerpo**: PDF mezcla LiberationSans + LiberationSerif-Italic **misma pt** → `<em>` con `font-size: inherit`. Detección: `spans_need_inline_html` + `paragraph_has_mixed_emphasis` para frases cortas itálicas sueltas. No confundir con `.body--italic` (párrafo entero).
+
+### Regla diseño ebooks web (jun 2026)
+
+- **Contenido**: verificar contra PDF fuente en `fuente/pdf/` (`4_El_arte_de_liderar…_FINAL.pdf`, etc.).
+- **Estilo/estructura visual**: tomar **Liderar** como referencia (barrita citas, filetes, section-label, banda, énfasis inline).
+- **No inventar** rayitas, centrados, ni labels en cuerpo si van en pie o como section-label.
 
 ### Export PDF descargable (jun 2026)
 

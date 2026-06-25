@@ -2,8 +2,10 @@
 
 **Cliente importante.** Solo hacer lo que piden. Sin “mejoras” no solicitadas.
 
-Ebook PDF: `4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf`  
-Backup original (no sobrescribir): `4_El_arte_de_liderar_tu_hogar_v11_FINAL_backup.pdf`
+Ebook PDF: `fuente/pdf/4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf`
+Backup original (no sobrescribir): `fuente/pdf/4_El_arte_de_liderar_tu_hogar_v11_FINAL_backup.pdf`
+
+Mapa completo: `ESTRUCTURA.md` · rutas en `scripts/paths.py`.
 
 ## Reglas de oro (leer siempre)
 
@@ -15,6 +17,7 @@ Backup original (no sobrescribir): `4_El_arte_de_liderar_tu_hogar_v11_FINAL_back
 4. **Paginación:** pie derecho = número **secuencial del PDF** (1–92), no 00/01 de capítulo (`./pdf paginate`).
 5. **Índice p.10:** números deben coincidir con página real del PDF (`./pdf index`).
 6. **Portada:** `COVER_GAP_PT = 10` en `insert_cover.py` — no cambiar sin pedirlo.
+7. **Paridad ebooks web:** fix en un libro → mismo fix en Liderar, Transformar y Bonus (salvo que el PDF de ese título no aplique). CSS/bloques comunes primero. Ver `.engram/lessons.md`.
 
 ## Modo de trabajo (obligatorio)
 
@@ -31,7 +34,7 @@ No restaurar backup salvo pedido explícito (`./pdf restore`).
 
 ```bash
 ./pdf doctor       # ¿PDF sano?
-./pdf cover        # portada → portada ebook 1.png
+./pdf cover        # portada → assets/pdf/portada ebook 1.png
 ./pdf qr           # QR p.89
 ./pdf photo        # foto autora p.90
 ./pdf paginate     # números 1–92 pie derecho
@@ -50,9 +53,9 @@ No restaurar backup salvo pedido explícito (`./pdf restore`).
 
 | Archivo | Uso |
 |---------|-----|
-| `portada ebook 1.png` | Portada p.1 |
-| `HOME EXCEL CODIGO QR.png` | QR p.89 |
-| `ebook 1.png` / `FOTO MTE 2.jpg` | Foto autora p.90 |
+| `assets/pdf/portada ebook 1.png` | Portada p.1 |
+| `assets/pdf/HOME EXCEL CODIGO QR.png` | QR p.89 |
+| `assets/pdf/ebook 1.png` / `assets/pdf/FOTO MTE 2.jpg` | Foto autora p.90 |
 
 ## Índice corregido (p.10)
 

@@ -26,11 +26,13 @@ from build_transformar_html import (  # noqa: E402
 from html_blocks import join_prose_lines, mov_cover_subtitle_lines  # noqa: E402
 from pdf_text import _label_words, _raw_has_merged_words  # noqa: E402
 
+from paths import LIDERAR_PDF, TRANSFORMAR_PDF, WEB
+
 BOOKS = (
     (
         "transformar",
-        ROOT / "El_arte_de_transformar_tu_hogar_v11.pdf",
-        ROOT / "web" / "transformar.html",
+        TRANSFORMAR_PDF,
+        WEB / "transformar.html",
         extract_transformar,
         is_mov_transformar,
         mov_tag_transformar,
@@ -38,8 +40,8 @@ BOOKS = (
     ),
     (
         "liderar",
-        ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf",
-        ROOT / "web" / "liderar.html",
+        LIDERAR_PDF,
+        WEB / "liderar.html",
         extract_liderar,
         is_mov_liderar,
         mov_tag_liderar,

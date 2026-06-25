@@ -9,7 +9,9 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "4_El_arte_de_liderar_tu_hogar_v11_FINAL.pdf"
+from paths import LIDERAR_PDF
+
+PDF = LIDERAR_PDF
 INDEX_PAGE = 9  # página 10
 
 # Pie de página = número PDF donde empieza cada movimiento.

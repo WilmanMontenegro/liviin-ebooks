@@ -99,19 +99,28 @@ body {
 .body--italic {
   font-style: italic;
 }
-.body em {
+.body em,
+.step-desc em,
+.step-prose em,
+.reminder-text em {
   font-family: var(--serif-text);
+  font-size: inherit;
   font-style: italic;
   font-weight: 400;
+  line-height: inherit;
 }
 .body strong {
   font-weight: 600;
 }
 .body strong em,
-.body em strong {
+.body em strong,
+.step-desc strong em,
+.step-desc em strong {
   font-family: var(--serif-text);
+  font-size: inherit;
   font-style: italic;
   font-weight: 600;
+  line-height: inherit;
 }
 .body-list {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;

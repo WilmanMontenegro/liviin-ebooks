@@ -21,6 +21,7 @@ from html_blocks import (
     is_section_subtitle,
     join_prose_html,
     join_prose_lines,
+    paragraph_has_mixed_emphasis,
     mov_cover_subtitle_lines,
     pull_vlines_from_page,
     horizontal_filetes_from_page,
@@ -50,8 +51,10 @@ from pdf_text import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "El_arte_de_transformar_tu_hogar_v11.pdf"
-OUT = ROOT / "web" / "transformar.html"
+from paths import TRANSFORMAR_PDF, WEB
+
+PDF = TRANSFORMAR_PDF
+OUT = WEB / "transformar.html"
 
 MOVIMIENTOS = [
     (11, "01 · EL CAMBIO DE VISIÓN"),
@@ -252,7 +255,7 @@ def _render_prose_group(g: list[Line]) -> list[str]:
       <p class="con-carino">— María Teresa Espinosa</p>
       <p class="nombre">Interiorista y Home Coach · MTE</p>
     </div>"""]
-    if any(x.rich_html for x in g):
+    if any(x.rich_html for x in g) or paragraph_has_mixed_emphasis(g):
         return [f'<p class="body">{join_prose_html(g, esc)}</p>']
     if any(x.bold for x in g) and len(g) == 1:
         return [f'<p class="body"><strong>{esc(text)}</strong></p>']
