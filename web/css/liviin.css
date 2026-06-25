@@ -376,6 +376,10 @@ ol.numbered li::before {
   position: relative;
 }
 
+.foto-portada--mesa {
+  height: 468px;
+}
+
 /* ponytail: desvanecido inferior en CSS — no en la imagen */
 .foto-portada--mesa::after {
   content: "";
@@ -402,13 +406,13 @@ ol.numbered li::before {
 }
 
 .portada-content {
-  padding: 18px 40px 56px 37px;
+  padding: 22px 40px 48px 37px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 0;
+  justify-content: flex-start;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .portada-colofon {
@@ -422,22 +426,22 @@ ol.numbered li::before {
 
 .portada-titulo {
   font-family: 'Cormorant SC', serif;
-  font-size: 56px;
+  font-size: 52px;
   font-weight: 500;
   color: var(--texto);
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .portada-subtitulo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 13.5px;
+  font-size: 13px;
   font-style: italic;
   color: var(--texto-2);
-  line-height: 1.5;
-  margin-bottom: 28px;
+  line-height: 1.45;
+  margin-bottom: 20px;
   max-width: 340px;
 }
 
@@ -446,6 +450,7 @@ ol.numbered li::before {
   flex-direction: column;
   align-items: flex-end;
   align-self: flex-end;
+  margin-top: auto;
   padding-bottom: 2px;
 }
 
