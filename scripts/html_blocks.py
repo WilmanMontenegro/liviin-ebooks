@@ -363,3 +363,22 @@ def render_tag_html(esc: Callable[[str], str], text: str, *, bold: bool = False)
     """Etiqueta de sección; el PDF marca algunas (p. ej. cierre editorial) en negrita."""
     inner = f"<strong>{esc(text)}</strong>" if bold else esc(text)
     return f'<span class="tag">{inner}</span>'
+
+
+ACTIVE_SOCIAL_HTML = (
+    '<ul class="body-list">'
+    "<li>Instagram · @mte_disenointerior</li>"
+    "<li>Instagram · @liviinhome</li>"
+    "</ul>"
+)
+
+
+def fix_active_social_handles(html: str) -> str:
+    """PDF fuente aún lista TikTok/web; cliente solo mantiene dos IG activos."""
+    return re.sub(
+        r'(<p class="section-label">ENCUÉNTRAME EN</p>\s*)<ul class="body-list">.*?</ul>',
+        rf"\1{ACTIVE_SOCIAL_HTML}",
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )

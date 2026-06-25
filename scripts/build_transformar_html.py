@@ -33,6 +33,7 @@ from html_blocks import (
     render_tag_html,
     render_title_block,
     split_numeric_steps,
+    fix_active_social_handles,
 )
 from pdf_text import (
     chars_to_line_text,
@@ -914,7 +915,7 @@ def build() -> str:
 
 
 def main() -> None:
-    html_out = build()
+    html_out = fix_active_social_handles(build())
     OUT.write_text(html_out, encoding="utf-8")
     print(f"OK {OUT} — {html_out.count('class=\"page')} páginas, {html_out.count('pull-page')} citas, {html_out.count('next-link')} sigue")
 
