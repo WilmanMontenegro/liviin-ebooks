@@ -10,16 +10,17 @@ Brief cliente (audios 24 jun 2026):
 
 Imagen = solo fotografía. Texto y degradado = **HTML/CSS** (`.foto-portada--mesa::after`).
 
-## Versión activa (v5 — arte cliente)
+## Versión activa (v4b)
 
-- **Estructura:** igual v4 — `foto-portada` + `portada-content` (paridad Liderar/Bonus)
-- **Asset:** `web/assets/mesa-portada-cliente.png` (desde `portada libro 4.png`)
-- **Fade:** gradiente CSS al fondo `#DFE0DB`, no quemado en el PNG
+- **Estructura:** `foto-portada` + `portada-content` (paridad Liderar/Bonus)
+- **Asset:** `web/assets/mesa-portada.jpg` (576×520) — misma cena v4 **sin vaso verde** (jun 2026)
+- **Backup con vaso:** `web/assets/mesa-portada-backup-con-vaso.jpg`
+- **Fade:** gradiente CSS al fondo `#DFE0DB`, no quemado en el JPG
+
+## Descartada (v5 — portada libro 4)
+
+- **Asset:** `web/assets/mesa-portada-cliente.png` — cliente no aprobó
 - **Referencia:** `assets/referencia/portada-libro-4-mesa.png`
-
-## Versión anterior (v4)
-
-- **Asset:** `web/assets/mesa-portada.jpg` (576×520)
 
 ## Rollbacks
 
