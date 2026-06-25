@@ -70,8 +70,8 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 }
 .pull-quote { border-left: 2px solid var(--filete); padding-left: 16px; margin: 28px 0; }
 .pull-quote p {
-  font-family: var(--serif-text); font-size: 14.5px; font-style: italic;
-  color: var(--secundario); line-height: 1.6;
+  font-family: var(--serif-text); font-size: 19px; font-weight: 300; font-style: italic;
+  color: var(--texto); line-height: 1.68;
 }
 
 .foto-portada {
@@ -101,19 +101,27 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
 .numbered-title .num { font-family: var(--serif-text); font-size: 12px; font-weight: 300; color: var(--secundario); letter-spacing: 0; }
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
-.exercise-prompt {
-  font-family: var(--serif-text); font-size: 17px; font-weight: 300;
-  font-style: italic; color: var(--texto); line-height: 1.68;
-  text-align: center; margin: 18px 0 22px;
-}
 
 .dedicatoria { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; text-align: center; gap: 4px; }
 .dedicatoria .dash { font-family: var(--sans); font-size: 8px; letter-spacing: 0.25em; color: var(--filete); text-transform: uppercase; margin-bottom: 28px; }
 .dedicatoria p { font-family: var(--serif-text); font-size: 17px; font-style: italic; font-weight: 300; color: var(--texto); line-height: 1.6; }
 
-.agradecimiento-item { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--texto); line-height: 1.75; margin-bottom: 14px; }
+.agradecimiento-lead {
+  font-family: var(--serif-text); font-size: 15px; font-weight: 300;
+  font-style: italic; color: var(--texto); line-height: 1.68;
+  text-align: center; margin: 0 0 32px;
+}
+.agradecimiento-item { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--texto); line-height: 1.75; margin-bottom: 14px; }
 .agradecimiento-item:last-child { margin-bottom: 0; }
 .agradecimiento-item strong { font-weight: 500; }
+.agradecimiento-note {
+  font-family: var(--serif-text); font-size: 15px; font-style: italic;
+  color: var(--texto); line-height: 1.68; text-align: center; margin: 0;
+}
+.agradecimiento-close {
+  font-family: var(--serif-text); font-size: 17px; font-weight: 300;
+  font-style: italic; color: var(--texto); text-align: center; margin: 0;
+}
 
 .next-link { text-align: right; margin-top: 28px; }
 .next-link .arrow-label { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; color: var(--secundario); text-transform: uppercase; display: block; margin-bottom: 4px; }
@@ -283,7 +291,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">EL RECORRIDO INVISIBLE</span>
     <p class="body">Cada asistente del hogar tiene un camino propio. Algunas son internas y dejaron su pueblo, su familia, su tierra para venir a vivir a una casa que no es suya. Otras viajan cada día desde lejos, en transporte público, atravesando ciudades que no siempre son seguras.</p>
     <p class="body">Y todas — todas — antes de entrar a tu casa, ya hicieron algo:</p>
-    <div class="text-center" style="margin:20px 0;"><span style="font-family:var(--serif-text);font-size:20px;font-style:italic;color:var(--texto);">Dejaron la suya.</span></div>
+    <div class="pull-quote"><p>Dejaron la suya.</p></div>
     <p class="body">Dejaron a sus hijos al cuidado de otros. Dejaron pendientes en su propia cocina, conversaciones sin terminar. Y aún así, llegan. Sonríen. Saludan. Empiezan a sostener tu hogar. Eso, antes de cualquier otra cosa, merece ser visto.</p>
   </div>
   <div class="banda"><span class="banda-texto">01 · PONERSE EN SUS ZAPATOS</span><span class="banda-texto">01</span></div>
@@ -320,7 +328,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="spacer-sm"></div>
     <p class="body">Mañana, antes de que ella llegue, regálate dos minutos.</p>
     <p class="body">Quédate quieta. Cierra los ojos si quieres. Y pregúntate:</p>
-    <p class="exercise-prompt">¿Qué tuvo que hacer ella esta mañana<br>para llegar puntual a mi casa?<br><br>¿Qué dejó atrás? ¿A quién dejó atrás?<br><br>¿Qué carga puede estar trayendo que yo no veo?</p>
+    <div class="pull-quote"><p>¿Qué tuvo que hacer ella esta mañana<br>para llegar puntual a mi casa?<br><br>¿Qué dejó atrás? ¿A quién dejó atrás?<br><br>¿Qué carga puede estar trayendo que yo no veo?</p></div>
     <p class="body">No tienes que adivinar. Solo tienes que recordar que existe ese mundo invisible que ella trae consigo. Cuando la recibas con esa conciencia adentro, todo cambia.</p>
     <div class="spacer-sm"></div>
     <span class="tag">CIERRE DEL MOVIMIENTO 01</span>
@@ -353,7 +361,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <div class="spacer-sm"></div>
     <p class="body">Sabemos su nombre. Su edad aproximada. De dónde es. Cuántos hijos tiene. Y creemos que con eso la conocemos.</p>
     <p class="body">Pero hay una pregunta que casi ninguna dueña le hace a su asistente — y es la que más cambia la relación cuando finalmente se hace:</p>
-    <div class="text-center" style="margin:24px 0;"><span style="font-family:var(--serif-text);font-size:24px;font-style:italic;color:var(--texto);">¿Qué sueñas tú?</span></div>
+    <div class="pull-quote"><p>¿Qué sueñas tú?</p></div>
     <p class="body">No es una pregunta de coach. Es una conversación humana que casi nadie tiene. Hemos heredado la idea de que las relaciones laborales en el hogar deben mantenerse en lo funcional.</p>
     <p class="body">Y yo te quiero proponer lo contrario: conocerla es respetarla. No invadirla — eso es distinto. Pero sí interesarte de verdad por la mujer completa que está sosteniendo tu hogar.</p>
   </div>
@@ -512,7 +520,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <p class="body"><em>Mal</em> — con un conflicto acumulado, una conversación tensa, y dos mujeres que después se cruzan en la calle y voltean la cara.</p>
     <p class="body"><em>O secas</em> — sin conflicto, pero también sin cierre. La relación que sostuvo años de vida cotidiana se evapora como si nunca hubiera existido.</p>
     <p class="body">Y yo te quiero proponer una tercera forma — la que más he aprendido a cuidar con los años:</p>
-    <div class="text-center" style="margin:24px 0;"><span style="font-family:var(--serif-text);font-size:18px;font-style:italic;color:var(--texto);">Que las relaciones terminen con las puertas abiertas.</span></div>
+    <div class="pull-quote"><p>Que las relaciones terminen con las puertas abiertas.</p></div>
   </div>
   <div class="banda"><span class="banda-texto">04 · PUERTAS ABIERTAS</span><span class="banda-texto">04</span></div>
 </div>
@@ -683,7 +691,7 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
     <span class="tag">UNA INVITACIÓN CONCRETA</span>
     <div class="spacer-sm"></div>
     <p class="body">Mañana, antes de que ella llegue, regálate un momento. Y haz una sola cosa:</p>
-    <p class="exercise-prompt">Recibe a tu asistente del hogar<br>mirándola a los ojos.<br><br>Pregúntale cómo está — ella, no la casa.<br><br>Y escucha la respuesta sin prisa.</p>
+    <div class="pull-quote"><p>Recibe a tu asistente del hogar<br>mirándola a los ojos.<br><br>Pregúntale cómo está — ella, no la casa.<br><br>Y escucha la respuesta sin prisa.</p></div>
     <p class="body">Es así de simple. Y es así de transformador. Ese gesto pequeño — sostenido en el tiempo — es el inicio de todo lo demás.</p>
     <div class="spacer-sm"></div>
     <span class="tag">PARA CERRAR</span>
@@ -702,15 +710,15 @@ body { background: #ECEDEA; font-family: var(--sans); color: var(--texto); }
   <div class="content">
     <div class="spacer-xl"></div>
     <div class="text-center" style="margin-bottom:32px;"><span style="font-family:var(--sans);font-size:8px;letter-spacing:0.25em;color:var(--filete);text-transform:uppercase;">— AGRADECIMIENTOS —</span></div>
-    <p style="font-family:var(--serif-text);font-size:14px;font-style:italic;color:var(--texto);line-height:1.6;text-align:center;margin-bottom:32px;">Este regalo no existiría sin las mujeres<br>que han pasado por mi hogar.</p>
+    <p class="agradecimiento-lead">Este regalo no existiría sin las mujeres<br>que han pasado por mi hogar.</p>
     <div class="agradecimiento-item"><strong>Glendis</strong>, que sostuvo mi casa mientras la suya quedaba a miles de kilómetros, en Venezuela.</div>
     <div class="agradecimiento-item"><strong>Karina</strong>, que me enseñó que detrás de cada llamada al teléfono hay una madre cuidando a los suyos a la distancia.</div>
     <div class="agradecimiento-item"><strong>Paola</strong>, que se atrevió a soñar con la enfermería y nos permitió acompañarla en ese camino.</div>
     <div class="agradecimiento-item"><strong>Wendy</strong>, que entró como niñera y hoy es parte de mi negocio — porque cuando hay vínculo real, la relación encuentra formas de continuar.</div>
     <div class="spacer-lg"></div>
-    <p style="font-family:var(--serif-text);font-size:13px;font-style:italic;color:var(--secundario);text-align:center;line-height:1.6;">Y a cada una de las mujeres que ha trabajado conmigo y con mi familia. Ustedes me enseñaron lo que está escrito aquí.</p>
+    <p class="agradecimiento-note">Y a cada una de las mujeres que ha trabajado conmigo y con mi familia. Ustedes me enseñaron lo que está escrito aquí.</p>
     <div class="spacer-md"></div>
-    <p style="font-family:var(--serif-text);font-size:15px;font-style:italic;color:var(--texto);text-align:center;">Este regalo es, también, suyo.</p>
+    <p class="agradecimiento-close">Este regalo es, también, suyo.</p>
     <div class="spacer-md"></div>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:0.2em;color:var(--filete);text-align:center;text-transform:uppercase;">— M T E —</p>
   </div>

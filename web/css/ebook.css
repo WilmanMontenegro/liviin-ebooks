@@ -135,7 +135,7 @@ body {
   margin: 28px 0 28px 14px;
 }
 .pull-quote p {
-  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
+  font-family: var(--serif-text); font-size: var(--fs-serif-lg); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-editorial); margin: 0; text-align: left;
 }
 
@@ -359,11 +359,6 @@ body {
 }
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
-.exercise-prompt {
-  font-family: var(--serif-text); font-size: var(--fs-section-sub); font-weight: 300;
-  font-style: italic; color: var(--texto); line-height: var(--lh-editorial);
-  text-align: center; margin: 18px 0 22px;
-}
 
 .dedicatoria {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -378,13 +373,26 @@ body {
   font-weight: 300; color: var(--texto); line-height: 1.6;
 }
 
+.agradecimiento-lead {
+  font-family: var(--serif-text); font-size: var(--fs-firma-line); font-weight: 300;
+  font-style: italic; color: var(--texto); line-height: var(--lh-editorial);
+  text-align: center; margin: 0 0 32px;
+}
 .agradecimiento-item {
-  font-family: var(--sans); font-size: var(--fs-body-sm); font-weight: 300;
-  color: var(--texto); line-height: var(--lh-body-tight);
+  font-family: var(--sans); font-size: 14px; font-weight: 300;
+  color: var(--texto); line-height: 1.75;
   margin-bottom: 14px;
 }
 .agradecimiento-item:last-child { margin-bottom: 0; }
 .agradecimiento-item strong { font-weight: 500; }
+.agradecimiento-note {
+  font-family: var(--serif-text); font-size: var(--fs-firma-line); font-style: italic;
+  color: var(--texto); line-height: var(--lh-editorial); text-align: center; margin: 0;
+}
+.agradecimiento-close {
+  font-family: var(--serif-text); font-size: var(--fs-section-sub); font-weight: 300;
+  font-style: italic; color: var(--texto); text-align: center; margin: 0;
+}
 
 .next-link { text-align: right; margin-top: 28px; }
 .next-link .arrow-label {
