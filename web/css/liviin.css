@@ -380,8 +380,8 @@ ol.numbered li::before {
   height: 468px;
 }
 
-/* ponytail: desvanecido inferior en CSS — no en la imagen */
-.foto-portada--mesa::after {
+/* ponytail: desvanecido en .foto-portada::after (compartido) */
+.foto-portada::after {
   content: "";
   position: absolute;
   left: 0;
@@ -806,7 +806,6 @@ ol.numbered li::before {
 .hub-link {
   position: fixed;
   top: 12px;
-  left: 12px;
   z-index: 9;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -818,6 +817,8 @@ ol.numbered li::before {
   text-decoration: none;
   border-radius: 2px;
 }
+.hub-link.hub-home { left: 12px; }
+.hub-link.hub-pdf { right: 12px; }
 @media print {
   .hub-link {
     display: none;

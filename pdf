@@ -112,9 +112,9 @@ case "$cmd" in
   export|webpdf)
     book="${1:-all}"
     case "$book" in
-      liderar|transformar|bonus) "$PY" scripts/html_to_pdf.py "$book" ;;
+      liderar|transformar|bonus|mesa) "$PY" scripts/html_to_pdf.py "$book" ;;
       all) "$PY" scripts/html_to_pdf.py all ;;
-      *) echo "Uso: ./pdf export [liderar|transformar|bonus|all]" >&2; exit 1 ;;
+      *) echo "Uso: ./pdf export [liderar|transformar|bonus|mesa|all]" >&2; exit 1 ;;
     esac
     ;;
   optimize)

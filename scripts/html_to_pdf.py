@@ -16,16 +16,23 @@ OUT_DIR = WEB / "pdf"
 PAGE_W_PX = 576
 PX_TO_PT = 72 / 96
 
-BOOKS: dict[str, str] = {
+BOOKS: dict[str, tuple[str, str]] = {
     "liderar": ("liderar.html", "liderar.pdf"),
     "transformar": ("transformar.html", "transformar.pdf"),
     "bonus": ("bonus.html", "bonus.pdf"),
+    "mesa": ("mesa.html", "mesa.pdf"),
+}
+
+# ponytail: mesa suma .page + .print-page en orden DOM
+PAGE_SELECTOR: dict[str, str] = {
+    "mesa.html": ".page, .print-page",
 }
 
 # Captura pantalla por .page — print PDF partía páginas altas y cortaba .banda.
 EXPORT_SCREEN_CSS = """
 body.pdf-export { background: #fff !important; margin: 0 !important; }
-body.pdf-export .page {
+body.pdf-export .page,
+body.pdf-export .print-page {
   margin: 0 !important;
   box-shadow: none !important;
 }
@@ -46,14 +53,18 @@ def _serve_web(port: int) -> None:
     http.server.HTTPServer(("127.0.0.1", port), handler).serve_forever()
 
 
-def _set_visible_page(page, index: int) -> None:
+def _selector(html_name: str) -> str:
+    return PAGE_SELECTOR.get(html_name, ".page")
+
+
+def _set_visible_page(page, selector: str, index: int) -> None:
     page.evaluate(
-        """(i) => {
-          document.querySelectorAll('.page').forEach((el, j) => {
+        """({ sel, i }) => {
+          document.querySelectorAll(sel).forEach((el, j) => {
             el.style.display = j === i ? 'flex' : 'none';
           });
         }""",
-        index,
+        {"sel": selector, "i": index},
     )
 
 
@@ -73,16 +84,17 @@ def export_one(base_url: str, html_name: str, out_path: Path) -> None:
         page.evaluate("() => document.body.classList.add('pdf-export')")
         page.add_style_tag(content=EXPORT_SCREEN_CSS)
 
-        n = page.locator(".page").count()
+        sel = _selector(html_name)
+        n = page.locator(sel).count()
         if not n:
             context.close()
             browser.close()
-            raise RuntimeError(f"Sin .page en {html_name}")
+            raise RuntimeError(f"Sin hojas ({sel}) en {html_name}")
 
         merged = fitz.open()
         for i in range(n):
-            _set_visible_page(page, i)
-            loc = page.locator(".page").nth(i)
+            _set_visible_page(page, sel, i)
+            loc = page.locator(sel).nth(i)
             box = loc.bounding_box()
             if not box:
                 continue
@@ -128,7 +140,7 @@ def main() -> None:
         nargs="*",
         choices=[*BOOKS.keys(), "all"],
         default=["all"],
-        help="liderar | transformar | bonus | all",
+        help="liderar | transformar | bonus | mesa | all",
     )
     args = ap.parse_args()
     keys = list(BOOKS.keys()) if not args.books or args.books == ["all"] else args.books
