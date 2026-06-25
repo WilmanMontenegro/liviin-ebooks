@@ -103,10 +103,10 @@ body {
 .step-desc em,
 .step-prose em,
 .reminder-text em {
-  font-family: var(--serif-text);
+  font-family: inherit;
   font-size: inherit;
   font-style: italic;
-  font-weight: 400;
+  font-weight: inherit;
   line-height: inherit;
 }
 .body strong {
@@ -116,7 +116,7 @@ body {
 .body em strong,
 .step-desc strong em,
 .step-desc em strong {
-  font-family: var(--serif-text);
+  font-family: inherit;
   font-size: inherit;
   font-style: italic;
   font-weight: 600;
@@ -225,11 +225,17 @@ body {
 
 .numbered-block { margin-bottom: 20px; }
 .numbered-title {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
   font-family: var(--sans); font-size: var(--fs-small); font-weight: 600;
   letter-spacing: var(--track-label); color: var(--texto); text-transform: uppercase;
   line-height: 1.35; margin-bottom: 6px;
 }
-.numbered-title .num { font-variant-numeric: var(--nums-tabular); }
+.numbered-title .num {
+  flex-shrink: 0;
+  font-variant-numeric: var(--nums-tabular);
+}
 .area-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   column-gap: 36px; row-gap: 14px;
@@ -353,6 +359,11 @@ body {
 }
 
 .caja-crema { background: var(--crema); padding: 20px 22px; margin: 20px 0; }
+.exercise-prompt {
+  font-family: var(--serif-text); font-size: var(--fs-section-sub); font-weight: 300;
+  font-style: italic; color: var(--texto); line-height: var(--lh-editorial);
+  text-align: center; margin: 18px 0 22px;
+}
 
 .dedicatoria {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -370,9 +381,9 @@ body {
 .agradecimiento-item {
   font-family: var(--sans); font-size: var(--fs-body-sm); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body-tight);
-  margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--filete);
+  margin-bottom: 14px;
 }
-.agradecimiento-item:last-child { border-bottom: none; }
+.agradecimiento-item:last-child { margin-bottom: 0; }
 .agradecimiento-item strong { font-weight: 500; }
 
 .next-link { text-align: right; margin-top: 28px; }
