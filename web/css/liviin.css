@@ -788,16 +788,32 @@ ol.numbered li::before {
 /* === ESTILOS EXCLUSIVOS DE LA SECCIÓN IMPRIMIBLE === */
 .print-page {
   width: 6in;
-  height: 9in;
+  min-height: 9in;
+  height: auto;
   background: #FFFFFF;
   page-break-after: always;
   position: relative;
-  overflow: hidden;
-  padding: 0.65in 0.6in 0.65in 0.6in;
+  overflow: visible;
+  padding: 0.72in 0.68in;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+}
+.print-page:has(> .print-cover) {
+  height: 9in;
+  overflow: hidden;
 }
 .print-page:last-child { page-break-after: avoid; }
+
+.print-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12pt;
+  margin-top: 4pt;
+}
+.print-grid-2col > ol.print-list {
+  min-width: 0;
+}
 
 .print-cover {
   height: 100%;
@@ -888,7 +904,7 @@ ol.numbered li::before {
   padding-bottom: 2pt;
 }
 
-/* Listas imprimibles */
+/* Listas imprimibles — grid por ítem (sangría francesa rompe en columnas 2-up) */
 ol.print-list {
   list-style: none;
   padding-left: 0;
@@ -910,73 +926,86 @@ ol.print-list[start="14"] { counter-reset: print-counter 13; }
 
 ol.print-list li {
   counter-increment: print-counter;
-  padding-left: 18pt;
-  position: relative;
-  font-family: 'Inter', sans-serif;
-  font-size: 8.5pt;
-  line-height: 1.45;
-  color: #3A322C;
-  margin-bottom: 2pt;
+  display: grid;
+  grid-template-columns: 26pt 1fr;
+  column-gap: 10pt;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 300;
+  line-height: var(--lh-step);
+  color: var(--texto);
+  margin-bottom: 4pt;
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
-  display: block;
 }
 
 ol.print-list li::before {
   content: counter(print-counter) ".";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-family: 'Cormorant Garamond', serif;
-  color: #4A5C4E;
+  grid-column: 1;
+  justify-self: end;
+  font-family: var(--sans);
   font-size: 9pt;
-  font-weight: 500;
+  font-weight: 400;
+  font-style: normal;
+  line-height: var(--lh-step);
+  color: var(--secundario);
+  font-variant-numeric: var(--nums-tabular);
 }
 
-/* Tabla semana imprimible */
+/* Tabla semana imprimible — paridad .semana-tabla (menús 8 semanas) */
 .print-semana-tabla {
   width: 100%;
   border-collapse: collapse;
-  font-size: 6pt;
-  line-height: 1.3;
+  font-size: 6.5pt;
+  line-height: 1.35;
   margin-top: 6pt;
 }
 
 .print-semana-tabla thead tr {
-  background: #DFE0DB;
+  background: var(--banda);
 }
 
 .print-semana-tabla th {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--serif-text);
   font-weight: 600;
-  font-size: 7pt;
-  padding: 3pt 4pt;
-  text-align: left;
-  border: 0.5px solid #B5A891;
-  color: #3A322C;
+  font-size: 8pt;
+  padding: 4pt 5pt;
+  text-align: center;
+  border: 0.5px solid var(--filete);
+  color: var(--texto);
+}
+
+.print-semana-tabla th:first-child {
+  width: 24pt;
 }
 
 .print-semana-tabla td {
-  padding: 3pt 4pt;
-  border: 0.5px solid #B5A891;
+  padding: 4pt 5pt;
+  border: 0.5px solid var(--filete);
   vertical-align: top;
-  color: #3A322C;
-  font-family: 'Inter', sans-serif;
-  font-size: 6pt;
+  text-align: left;
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 6.5pt;
+  font-weight: 400;
 }
 
 .print-semana-tabla td.pdia {
-  font-weight: 700;
-  color: #4A5C4E;
-  width: 20pt;
-  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
   font-size: 6pt;
+  letter-spacing: 0.06em;
+  color: var(--olivo);
+  width: 24pt;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .print-semana-tabla td.plibre {
   font-style: italic;
-  color: #665E53;
+  color: var(--secundario);
 }
 
 .print-semana-num {
