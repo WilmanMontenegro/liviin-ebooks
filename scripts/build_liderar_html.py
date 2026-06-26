@@ -305,7 +305,12 @@ def _mov_key_from_cover(lines: list[Line]) -> str | None:
     if "BONUS" in tag.upper():
         return "05"
     m = re.search(r"MOVIMIENTO\s+(\d+)", tag, re.I)
-    return f"{int(m.group(1)):02d}" if m else None
+    if m:
+        n = int(m.group(1))
+        if n <= 4:
+            return f"{n:02d}"
+        return None
+    return None
 
 
 def _note_section_start(
