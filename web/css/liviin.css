@@ -1044,6 +1044,11 @@ ol.print-list li::before {
   position: fixed;
   top: 12px;
   z-index: 9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  line-height: 1;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.12em;

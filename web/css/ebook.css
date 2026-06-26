@@ -595,6 +595,8 @@ body {
 }
 .hub-link {
   position: fixed; top: 12px; z-index: 9;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.35em;
+  line-height: 1;
   font-family: var(--sans); font-size: var(--fs-small); letter-spacing: 0.12em;
   text-transform: uppercase; background: rgba(58, 50, 44, 0.85); color: #fff;
   padding: 8px 12px; text-decoration: none; border-radius: 2px;
