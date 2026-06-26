@@ -125,7 +125,10 @@ body {
   line-height: inherit;
 }
 .body strong,
-.body-list strong,
+.body-list strong {
+  font-weight: var(--emph-inline-weight);
+  color: inherit;
+}
 .lista-mercado strong,
 .content ul li strong {
   font-weight: var(--emph-label-weight);
@@ -138,8 +141,8 @@ body {
   font-family: inherit;
   font-size: inherit;
   font-style: normal;
-  font-weight: var(--emph-label-weight);
-  color: var(--texto);
+  font-weight: var(--emph-inline-weight);
+  color: inherit;
   line-height: inherit;
 }
 .pull-quote strong {
@@ -259,7 +262,11 @@ body {
 /* ponytail: subtítulo pegado al bloque título+rule; en títulos cortos (Mesa) el spacer global se veía hueco */
 .movimiento-cover .rule { margin-bottom: 18px; }
 .movimiento-cover .spacer-sm { height: 0; }
-.movimiento-cover .subtitle { margin-top: 0; max-width: 400px; }
+.movimiento-cover .subtitle {
+  margin-top: 0; max-width: 400px;
+  font-size: var(--fs-movimiento-subtitle);
+  line-height: var(--lh-editorial);
+}
 
 .numbered-block { margin-bottom: 20px; }
 .numbered-title {

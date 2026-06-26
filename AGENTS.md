@@ -33,8 +33,8 @@ Mapa completo: `ESTRUCTURA.md` · rutas en `scripts/paths.py`.
 | Rol | Variables | Uso |
 |-----|-----------|-----|
 | Números estructurales | `--num-structural-*`, `--num-index-size`, `--num-bank-size` | Índice 01, pasos, bancos Mesa |
-| Énfasis frase | `--emph-inline-weight` + `<em>` | Cuerpo y viñetas |
-| Etiqueta / categoría | `--emph-label-*` + `<strong>` | Lista mercado, categorías banco |
+| Énfasis frase | `--emph-inline-weight` + `<em>` | Cuerpo y viñetas — sutil, sin verde |
+| Etiqueta / categoría | `--emph-label-*` + `<strong>` | Lista mercado, categorías banco, nombres |
 | Folio | `fmt_page()` en `pdf_text.py` | Pie banda e `index-page` (sin cero: 4, 8, 11) |
 | Sección | `fmt_structural()` | Índice 00/01, movimientos (con cero) |
 | Nombres PDF descarga | `PDF_DOWNLOAD_AS` en `paths.py` | Atributo `download` en enlaces |

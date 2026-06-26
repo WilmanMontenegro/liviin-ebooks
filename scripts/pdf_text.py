@@ -217,9 +217,9 @@ def render_spans_inline_html(spans: list[dict], esc: Callable[[str], str]) -> st
         if bold or italic:
             inner = esc(raw)
             if bold and italic:
-                chunk = f"<strong><em>{inner}</em></strong>"
+                chunk = f"<em>{inner}</em>"
             elif bold:
-                chunk = f"<strong>{inner}</strong>"
+                chunk = f"<em>{inner}</em>"
             elif len(raw.strip()) <= 3:
                 chunk = esc(raw)  # ponytail: PDF itálica en “es”, “la”… no aporta en web
             else:

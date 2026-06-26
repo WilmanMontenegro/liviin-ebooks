@@ -339,7 +339,7 @@ def _render_prose_group(g: list[Line]) -> list[str]:
     if all(x.italic for x in g) and all(s >= 13.5 for s in sizes):
         return [f'<p class="closing-lead">{esc(text)}</p>']
     if any(x.bold for x in g) and len(g) == 1:
-        return [f'<p class="body"><strong>{esc(text)}</strong></p>']
+        return [f'<p class="body"><em>{esc(text)}</em></p>']
     if all(x.italic for x in g) and all(9 <= s <= 12 for s in sizes):
         return [f'<p class="body body--italic">{esc(text)}</p>']
     return [f'<p class="body">{esc(text)}</p>']

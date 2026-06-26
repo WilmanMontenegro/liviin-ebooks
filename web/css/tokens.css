@@ -43,7 +43,7 @@
   --fs-h1-italic: 44px;
   --fs-h1: 52px;
   --fs-portada: 56px;
-  --fs-portada-sub: 15px;
+  --fs-portada-sub: 17px;
   --fs-legal-title: 36px;
   --fs-legal-body: 10px;
   --fs-legal-mark: 8.5px;
@@ -108,9 +108,9 @@
   --list-bank-lh: var(--lh-step);
   --list-bank-item-gap: 5px;
 
-  /* Énfasis inline vs etiqueta */
-  --emph-inline-weight: 500;
-  --emph-label-weight: 600;
+  /* Énfasis inline (frase estratégica) vs etiqueta (categoría, nombre) */
+  --emph-inline-weight: 400;
+  --emph-label-weight: 500;
   --emph-label-color: var(--olivo);
 
   /* Índice */
@@ -119,4 +119,7 @@
   --index-page-size: var(--fs-body-sm);
   --index-page-color: var(--secundario);
   --index-entry-gap: 24px;
+
+  /* Portada de movimiento / sección (MOVIMIENTO 04…) */
+  --fs-movimiento-subtitle: 19px;
 }
