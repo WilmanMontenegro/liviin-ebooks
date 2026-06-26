@@ -40,6 +40,8 @@ from pdf_text import (
     collapse_orphan_caps,
     collapse_spaced,
     extract_line_text,
+    fmt_inventory,
+    fmt_page,
     fmt_structural,
     is_orphan_caps_line,
     merge_orphan_caps_lines,
@@ -52,7 +54,7 @@ from pdf_text import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-from paths import TRANSFORMAR_PDF, WEB
+from paths import PDF_DOWNLOAD_AS, TRANSFORMAR_PDF, WEB
 
 PDF = TRANSFORMAR_PDF
 OUT = WEB / "transformar.html"
@@ -462,7 +464,7 @@ def pull_page(lines: list[Line], page_no: int) -> str:
 
 
 def index_item_html(num: str, title: str, page: int | None = None) -> str:
-    page_html = f'<span class="index-page">{page:02d}</span>' if page is not None else ""
+    page_html = f'<span class="index-page">{fmt_page(page)}</span>' if page is not None else ""
     return (
         f'<div class="index-entry">'
         f'<div class="index-line"><span class="index-num">{esc(fmt_structural(num))}</span>'
@@ -893,9 +895,9 @@ def build() -> str:
         + pages_after
     )
 
-    hub_body = """
+    hub_body = f"""
 <a class="hub-link hub-home" href="index.html">← Inicio</a>
-<a class="hub-link hub-pdf" href="pdf/transformar.pdf" download>Descargar PDF</a>
+<a class="hub-link hub-pdf" href="pdf/transformar.pdf" download="{PDF_DOWNLOAD_AS["transformar.pdf"]}">Descargar PDF</a>
 """
     body = "\n".join(pages_html)
     return f"""<!DOCTYPE html>

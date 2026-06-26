@@ -31,3 +31,12 @@ BONUS_BACKUP = FUENTE_PDF / "Las_manos_que_sostienen_tu_hogar- BONUS 1_backup.pd
 PORTADA_PNG = ASSETS_PDF / "portada ebook 1.png"
 QR_PNG = ASSETS_PDF / "HOME EXCEL CODIGO QR.png"
 AUTORA_JPG = ASSETS_PDF / "2023-09-11 17.36.28.jpg"
+
+# web/pdf/*.pdf → nombre al descargar (atributo download en HTML)
+PDF_DOWNLOAD_AS: dict[str, str] = {
+    "liderar.pdf": "El arte de liderar tu hogar.pdf",
+    "transformar.pdf": "El arte de transformar tu hogar.pdf",
+    "bonus.pdf": "Las manos que sostienen tu hogar.pdf",
+    "mesa.pdf": "El arte de liderar tu mesa.pdf",
+    "imprimible.pdf": "Asistente imprimible · Liderar tu mesa.pdf",
+}

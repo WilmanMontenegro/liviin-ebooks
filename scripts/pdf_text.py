@@ -333,8 +333,13 @@ def fmt_structural(n: str | int) -> str:
 
 
 def fmt_inventory(n: str | int) -> str:
-    """Mapas e inventarios largos: 1, 2, 13…"""
+    """Folio ebook, index-page y contadores sin cero: 4, 8, 11…"""
     return str(_digits(n))
+
+
+def fmt_page(n: str | int) -> str:
+    """Alias de fmt_inventory — pie de página e índice (mismo criterio)."""
+    return fmt_inventory(n)
 
 
 def fmt_prose_step(n: str | int) -> str:

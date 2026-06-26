@@ -3,22 +3,13 @@
    Aplica a todas las piezas Liviin · Bonus Menús
    ============================================================ */
 
+@import url("tokens.css");
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
 /* === RESET === */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* === PALETA LIVIIN (8 colores oficiales) === */
-:root {
-  --fondo: #DFE0DB;
-  --crema: #FAF7F0;
-  --banda: #B7BDBB;
-  --olivo: #4A5C4E;
-  --texto: #3A322C;
-  --texto-2: #665E53;
-  --filete: #B5A891;
-  --taupe: #AB9E95;
-}
+/* Paleta y escala: tokens.css (--fondo, --texto, --olivo, …) */
 
 /* === FORMATO 6x9 PULGADAS === */
 @page {
@@ -875,13 +866,25 @@ ol.numbered li::before {
 }
 
 .print-subsection {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--serif-text);
   font-size: 11pt;
   font-weight: 500;
-  color: #4A5C4E;
+  color: var(--olivo);
   margin-top: 10pt;
   margin-bottom: 2pt;
-  border-bottom: 0.5px solid #B5A891;
+  border-bottom: 0.5px solid var(--filete);
+  padding-bottom: 2pt;
+}
+
+/* Subtítulos dentro de grillas densas (ej. guarniciones 2 col) */
+.print-bank-label {
+  font-family: var(--serif-text);
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--texto);
+  margin: 7pt 0 3pt;
+  letter-spacing: 0.03em;
+  border-bottom: 0.5px solid var(--filete);
   padding-bottom: 2pt;
 }
 

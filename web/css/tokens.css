@@ -48,7 +48,8 @@
   --fs-legal-body: 10px;
   --fs-legal-mark: 8.5px;
   --fs-legal-edition: 11px;
-  --fs-bank-list: 9.5px;
+  --fs-bank-list: 10.5px;
+  --fs-index-num: 14px;
   --fs-bank-dense: 9px;
   --fs-lista-mercado: 8.5px;
 
@@ -87,5 +88,35 @@
   /* Mesa — bancos y columnas */
   --bank-col-gap: 20px;
   --bank-col-gap-wide: 36px;
-  --bank-num-col: 22px;
+  --bank-num-col: 24px;
+
+  /* --- Roles editoriales (ebook.css: un cambio → Liderar, Transformar, Bonus, Mesa) --- */
+
+  /* Números estructurales: índice 01, pasos, descubrimientos, bancos */
+  --num-structural-family: var(--serif-text);
+  --num-structural-weight: 500;
+  --num-structural-style: italic;
+  --num-structural-color: var(--texto);
+  --num-structural-lh: var(--lh-step);
+  --num-step-size: var(--fs-body);
+  --num-index-size: var(--fs-index-num);
+  --num-bank-size: var(--fs-bank-list);
+  --num-bank-lh: var(--lh-step);
+
+  /* Listas banco Mesa */
+  --list-bank-size: var(--fs-bank-list);
+  --list-bank-lh: var(--lh-step);
+  --list-bank-item-gap: 5px;
+
+  /* Énfasis inline vs etiqueta */
+  --emph-inline-weight: 500;
+  --emph-label-weight: 600;
+  --emph-label-color: var(--olivo);
+
+  /* Índice */
+  --index-title-size: var(--fs-body);
+  --index-title-lh: var(--lh-step);
+  --index-page-size: var(--fs-body-sm);
+  --index-page-color: var(--secundario);
+  --index-entry-gap: 24px;
 }

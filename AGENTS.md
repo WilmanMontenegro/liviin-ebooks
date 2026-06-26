@@ -17,7 +17,29 @@ Mapa completo: `ESTRUCTURA.md` · rutas en `scripts/paths.py`.
 4. **Paginación:** pie derecho = número **secuencial del PDF** (1–92), no 00/01 de capítulo (`./pdf paginate`).
 5. **Índice p.10:** números deben coincidir con página real del PDF (`./pdf index`).
 6. **Portada:** `COVER_GAP_PT = 10` en `insert_cover.py` — no cambiar sin pedirlo.
-7. **Paridad ebooks web:** fix en un libro → mismo fix en Liderar, Transformar y Bonus (salvo que el PDF de ese título no aplique). CSS/bloques comunes primero. Ver `.engram/lessons.md`.
+7. **Paridad ebooks web:** fix en un libro → mismo fix en Liderar, Transformar y Bonus (salvo que el PDF de ese título no aplique). **CSS compartido primero** — ver abajo. Ver `.engram/lessons.md`.
+
+## Sistema CSS web (única fuente de verdad)
+
+| Archivo | Qué cubre |
+|---------|-----------|
+| `web/css/tokens.css` | Colores, escala tipográfica, **roles editoriales** (`--num-*`, `--emph-*`, `--list-bank-*`, `--index-*`) |
+| `web/css/ebook.css` | Componentes — Liderar, Transformar, Bonus, Mesa (`@import tokens.css`) |
+| `web/css/liviin.css` | Imprimible (`@import tokens.css` + reglas print/pt) |
+| `web/css/hub.css` | Índice hub |
+
+**Regla:** cambio visual → editar `tokens.css` (o bloque compartido en `ebook.css`), no recorrer HTML libro por libro.
+
+| Rol | Variables | Uso |
+|-----|-----------|-----|
+| Números estructurales | `--num-structural-*`, `--num-index-size`, `--num-bank-size` | Índice 01, pasos, bancos Mesa |
+| Énfasis frase | `--emph-inline-weight` + `<em>` | Cuerpo y viñetas |
+| Etiqueta / categoría | `--emph-label-*` + `<strong>` | Lista mercado, categorías banco |
+| Folio | `fmt_page()` en `pdf_text.py` | Pie banda e `index-page` (sin cero: 4, 8, 11) |
+| Sección | `fmt_structural()` | Índice 00/01, movimientos (con cero) |
+| Nombres PDF descarga | `PDF_DOWNLOAD_AS` en `paths.py` | Atributo `download` en enlaces |
+
+HTML generado: `build_liderar_html.py`, `build_transformar_html.py`, bloques en `html_blocks.py`.
 
 ## Modo de trabajo (obligatorio)
 
