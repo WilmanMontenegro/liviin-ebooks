@@ -66,7 +66,7 @@ body {
 }
 .rule + .section-label { margin-top: 0; }
 .closing-lead {
-  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300; font-style: italic;
+  font-family: var(--serif-text); font-size: var(--fs-serif-lg); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-editorial); text-align: left;
   border-left: 1px solid var(--filete); padding-left: 20px;
   margin: 28px 0 28px 14px;
@@ -111,18 +111,24 @@ body {
 .body--italic {
   font-style: italic;
 }
+/* Énfasis inline en cuerpo: misma familia y tamaño — semibold, sin cambiar a serif ni itálica */
 .body em,
 .step-desc em,
 .step-prose em,
 .reminder-text em {
   font-family: inherit;
   font-size: inherit;
-  font-style: italic;
-  font-weight: inherit;
+  font-style: normal;
+  font-weight: 500;
+  color: inherit;
   line-height: inherit;
 }
-.body strong {
+.body strong,
+.body-list strong,
+.lista-mercado strong,
+.content ul li strong {
   font-weight: 600;
+  color: var(--olivo);
 }
 .body strong em,
 .body em strong,
@@ -130,16 +136,28 @@ body {
 .step-desc em strong {
   font-family: inherit;
   font-size: inherit;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
+  color: var(--texto);
   line-height: inherit;
+}
+.pull-quote strong {
+  font-family: inherit;
+  font-weight: 500;
+  color: inherit;
 }
 .body-list {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body-tight);
-  margin: 0 0 16px 1.15em; padding: 0;
+  margin: 0 0 16px 0;
+  padding-left: 1.35em;
+  list-style-position: outside;
 }
-.body-list li { margin-bottom: 10px; }
+.body-list li {
+  margin-bottom: 10px;
+  padding-left: 0.2em;
+  display: list-item;
+}
 .body-list li::marker { color: var(--secundario); }
 /* PDF Liderar: cita inline ≈13pt serif + filete vertical #B5A891 (x≈46.5) */
 .pull-quote {
@@ -253,6 +271,9 @@ body {
 }
 .numbered-title .num {
   flex-shrink: 0;
+  font-family: var(--serif-text);
+  font-style: italic;
+  font-weight: 400;
   font-variant-numeric: var(--nums-tabular);
 }
 .area-grid {
@@ -260,14 +281,14 @@ body {
   column-gap: 36px; row-gap: 14px;
   margin: 18px 0 22px; padding-left: 4px;
 }
-.area-item { display: flex; gap: 5px; align-items: baseline; }
+.area-item { display: flex; gap: 8px; align-items: baseline; }
 .area-num {
-  font-family: var(--sans); font-size: var(--fs-smallish); font-weight: 300;
-  color: var(--texto); flex-shrink: 0; min-width: 1.35em;
-  font-variant-numeric: var(--nums-tabular);
+  font-family: var(--serif-text); font-size: var(--fs-portada-sub); font-weight: 500;
+  font-style: italic; color: var(--texto); flex-shrink: 0; min-width: 1.75em;
+  font-variant-numeric: var(--nums-tabular); line-height: var(--lh-step);
 }
 .area-label {
-  font-family: var(--sans); font-size: var(--fs-smallish); font-weight: 300;
+  font-family: var(--sans); font-size: var(--fs-body-sm); font-weight: 300;
   color: var(--texto); line-height: 1.45;
 }
 .index-entry {
@@ -300,14 +321,14 @@ body {
 .discovery-item:last-child { margin-bottom: 0; }
 .discovery-num {
   grid-column: 1;
-  font-family: var(--serif-text); font-size: var(--fs-serif-md); font-weight: 600; font-style: normal;
-  color: var(--texto);
+  font-family: var(--serif-text); font-size: var(--fs-body); font-weight: 400;
+  font-style: italic; color: var(--texto); line-height: var(--lh-step);
   font-variant-numeric: var(--nums-tabular);
 }
 .discovery-text {
   grid-column: 2;
-  font-family: var(--sans); font-size: var(--fs-smallish); font-weight: 300;
-  color: var(--texto); line-height: 1.8; margin: 0;
+  font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-body); margin: 0;
 }
 .step-list { margin: 24px 0 18px; }
 .step-item {
@@ -417,15 +438,15 @@ body {
 .next-link .arrow-label {
   display: inline-flex; align-items: center; justify-content: flex-end;
   gap: 0.5em; width: 100%;
-  font-family: var(--sans); font-size: var(--fs-micro); letter-spacing: 0.2em;
-  color: var(--secundario); text-transform: uppercase; margin-bottom: 4px;
+  font-family: var(--sans); font-size: var(--fs-tag); letter-spacing: 0.2em;
+  color: var(--secundario); text-transform: uppercase; margin-bottom: 5px;
 }
 .next-link .arrow-icon {
-  font-size: var(--fs-small); letter-spacing: 0; line-height: 1; flex-shrink: 0;
+  font-size: var(--fs-smallish); letter-spacing: 0; line-height: 1; flex-shrink: 0;
   transform: translateY(-0.5px);
 }
 .next-link .arrow-title {
-  font-family: var(--serif-text); font-size: var(--fs-serif-md); font-style: italic;
+  font-family: var(--serif-text); font-size: var(--fs-portada-sub); font-style: italic;
   color: var(--secundario);
 }
 

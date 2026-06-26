@@ -220,6 +220,8 @@ def render_spans_inline_html(spans: list[dict], esc: Callable[[str], str]) -> st
                 chunk = f"<strong><em>{inner}</em></strong>"
             elif bold:
                 chunk = f"<strong>{inner}</strong>"
+            elif len(raw.strip()) <= 3:
+                chunk = esc(raw)  # ponytail: PDF itálica en “es”, “la”… no aporta en web
             else:
                 chunk = f"<em>{inner}</em>"
         else:

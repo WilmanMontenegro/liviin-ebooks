@@ -293,8 +293,8 @@ def _group_prose(lines: list[Line]) -> list[str]:
     return parts
 
 
-# PDF: texto de lista va ~x≥91; cuerpo al margen ~x≤55
-BULLET_TEXT_X_MIN = 85.0
+# PDF: texto de viñeta ~x≈59; cuerpo fuera de lista ~x≈47 — no cortar por x (rompía saltos de línea)
+BULLET_WRAP_Y_MAX = 34.0
 
 
 def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int]:
@@ -311,7 +311,7 @@ def _extract_bullet_items(lines: list[Line], start: int) -> tuple[list[str], int
                 cur = []
             i += 1
             continue
-        if cur and (ln.y - last_y > 34 or ln.x < BULLET_TEXT_X_MIN):
+        if cur and ln.y - last_y > BULLET_WRAP_Y_MAX:
             break
         cur.append(ln.text)
         last_y = ln.y
