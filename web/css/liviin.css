@@ -926,10 +926,8 @@ ol.print-list[start="14"] { counter-reset: print-counter 13; }
 
 ol.print-list li {
   counter-increment: print-counter;
-  display: grid;
-  grid-template-columns: 26pt 1fr;
-  column-gap: 10pt;
-  align-items: baseline;
+  position: relative;
+  padding-left: calc(var(--list-num-col-print) + var(--list-num-gap-print));
   font-family: var(--sans);
   font-size: 9pt;
   font-weight: 300;
@@ -943,8 +941,11 @@ ol.print-list li {
 
 ol.print-list li::before {
   content: counter(print-counter) ".";
-  grid-column: 1;
-  justify-self: end;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--list-num-col-print);
+  text-align: right;
   font-family: var(--sans);
   font-size: 9pt;
   font-weight: 400;
@@ -969,12 +970,13 @@ ol.print-list li::before {
 
 .print-semana-tabla th {
   font-family: var(--serif-text);
-  font-weight: 600;
-  font-size: 8pt;
+  font-weight: var(--table-head-weight);
+  font-size: 9pt;
+  letter-spacing: var(--table-head-track);
   padding: 4pt 5pt;
   text-align: center;
   border: 0.5px solid var(--filete);
-  color: var(--texto);
+  color: var(--table-head-color);
 }
 
 .print-semana-tabla th:first-child {

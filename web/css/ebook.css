@@ -255,17 +255,24 @@ body {
 }
 
 .movimiento-cover {
-  display: flex; flex-direction: column; justify-content: flex-start;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
   padding: var(--mov-cover-pt) var(--content-pr) var(--content-pb) var(--content-pl);
-  flex: 1;
+  flex: 1; text-align: left;
 }
 /* ponytail: subtítulo pegado al bloque título+rule; en títulos cortos (Mesa) el spacer global se veía hueco */
 .movimiento-cover .rule { margin-bottom: 18px; }
 .movimiento-cover .spacer-sm { height: 0; }
 .movimiento-cover .subtitle {
-  margin-top: 0; max-width: 400px;
+  margin-top: 0;
+  max-width: var(--mov-subtitle-max);
+  font-family: var(--serif-text);
   font-size: var(--fs-movimiento-subtitle);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--secundario);
   line-height: var(--lh-editorial);
+  text-wrap: balance;
+  hyphens: none;
 }
 
 .numbered-block { margin-bottom: 20px; }
@@ -321,16 +328,24 @@ body {
 }
 .overview-line { margin-bottom: 4px; }
 
-/* Números estructurales — tokens: --num-structural-* / --num-*-size */
-.step-num,
-.discovery-num,
-.index-num,
-.content ol.numbered li::before {
+/* Números estructurales — índice 00/01 */
+.index-num {
   font-family: var(--num-structural-family);
   font-weight: var(--num-structural-weight);
   font-style: var(--num-structural-style);
   color: var(--num-structural-color);
   line-height: var(--num-structural-lh);
+  font-variant-numeric: var(--nums-tabular);
+}
+
+/* Números en listas — pasos, descubrimientos (= bancos Mesa) */
+.step-num,
+.discovery-num {
+  font-family: var(--num-list-family);
+  font-weight: var(--num-list-weight);
+  font-style: var(--num-list-style);
+  color: var(--num-list-color);
+  line-height: inherit;
   font-variant-numeric: var(--nums-tabular);
 }
 
@@ -380,7 +395,7 @@ body {
 .step-item--question:last-child { margin-bottom: 0; }
 .step-question-row { display: contents; }
 .step-item--question .step-num {
-  grid-column: 1; font-size: var(--num-step-size); line-height: var(--num-structural-lh);
+  grid-column: 1; font-size: var(--num-step-size);
 }
 .step-item--question .step-question {
   grid-column: 2;
@@ -591,7 +606,7 @@ body {
 /* Mesa — bancos y tablas (contenido único; tokens ebook) */
 .display-sm {
   font-family: var(--serif-text); color: var(--olivo); font-weight: 500;
-  font-size: 12px; line-height: 1.3; margin-top: 12px; margin-bottom: 4px;
+  font-size: var(--fs-display-sm); line-height: 1.3; margin-top: 12px; margin-bottom: 4px;
   font-variant-numeric: var(--nums-title);
 }
 p.muted { color: var(--secundario); font-size: var(--fs-caption); }
@@ -608,27 +623,54 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
 }
 .content ol:not(.numbered):not(.numbered-circles) li { margin-bottom: 6px; }
 .semana-tabla {
-  width: 100%; border-collapse: collapse; font-size: 9px; line-height: 1.35; margin-top: 8px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-table-cell);
+  line-height: 1.35;
+  margin-top: 8px;
 }
 .semana-tabla thead tr { background: var(--banda); }
 .semana-tabla th {
-  font-family: var(--serif-text); color: var(--olivo); font-weight: 500; font-size: 11px;
-  padding: 4px; text-align: left; border: 0.5px solid var(--filete);
+  font-family: var(--serif-text);
+  font-weight: var(--table-head-weight);
+  font-size: var(--fs-table-head);
+  letter-spacing: var(--table-head-track);
+  padding: 5px 6px;
+  text-align: center;
+  border: 0.5px solid var(--filete);
+  color: var(--table-head-color);
 }
+.semana-tabla th:first-child { width: 28px; }
 .semana-tabla td {
-  padding: 4px; border: 0.5px solid var(--filete); vertical-align: top;
-  color: var(--texto); font-size: 9px;
+  padding: 5px 6px;
+  border: 0.5px solid var(--filete);
+  vertical-align: top;
+  text-align: left;
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: var(--fs-table-cell);
+  font-weight: 400;
 }
 .semana-tabla td.dia {
-  font-weight: 600; color: var(--olivo); font-family: var(--sans);
-  letter-spacing: 0.06em; width: 28px; text-align: center;
+  font-weight: 600;
+  font-size: var(--fs-table-dia);
+  color: var(--olivo);
+  font-family: var(--sans);
+  letter-spacing: 0.06em;
+  width: 28px;
+  text-align: center;
+  vertical-align: middle;
 }
 .semana-tabla td.libre { font-style: italic; color: var(--secundario); }
 .tabla-resumen { width: 100%; border-collapse: collapse; font-size: var(--fs-small); margin-top: 10px; }
 .tabla-resumen thead tr { background: var(--banda); }
 .tabla-resumen th {
   padding: 5px 7px; text-align: left; border: 0.5px solid var(--filete);
-  color: var(--olivo); font-family: var(--serif-text); font-size: var(--fs-body-sm); font-weight: 500;
+  font-family: var(--serif-text);
+  font-size: var(--fs-table-head);
+  font-weight: var(--table-head-weight);
+  letter-spacing: var(--table-head-track);
+  color: var(--table-head-color);
 }
 .tabla-resumen td {
   padding: 4px 7px; border: 0.5px solid var(--filete);
@@ -680,7 +722,7 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
 .filete-full--tight { margin: 2px 0 4px; }
 .filete-full--flush { margin: 1px 0 3px; }
 
-/* === Listas numeradas bancos (Mesa) — paridad step-num Liderar === */
+/* === Listas numeradas — número absoluto (grid rompe li con <em> + texto suelto) === */
 .content ol.numbered,
 .content ol.numbered-circles {
   list-style: none; padding-left: 0; margin: 12px 0 16px;
@@ -689,14 +731,18 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
 .content ol.numbered li {
   counter-increment: list-counter;
   position: relative;
-  padding-left: var(--bank-num-col);
+  padding-left: calc(var(--list-num-col) + var(--list-num-gap));
   margin-bottom: 6px;
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body-tight);
   break-inside: avoid; page-break-inside: avoid;
 }
 .content ol.numbered.numbered--2col li {
-  font-size: var(--list-bank-size); line-height: var(--list-bank-lh); margin-bottom: 4px;
+  font-size: var(--list-bank-size); line-height: var(--list-bank-lh);
+  margin-bottom: var(--list-bank-item-gap);
+}
+.content ol.numbered.numbered--bank {
+  margin: 3px 0 5px;
 }
 .content ol.numbered.numbered--bank li {
   font-size: var(--list-bank-size); line-height: var(--list-bank-lh);
@@ -705,22 +751,38 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
 .content ol.numbered.numbered--continue {
   counter-reset: list-counter var(--list-start, 0);
 }
-.content ol.numbered.numbered--bank li::before,
-.content ol.numbered.numbered--2col li::before {
-  font-size: var(--num-bank-size);
-  line-height: var(--num-bank-lh);
-}
 .content ol.numbered li::before {
   content: counter(list-counter) ".";
-  position: absolute; left: 0; top: 0;
-  width: var(--bank-num-col);
-  font-size: var(--num-step-size);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--list-num-col);
+  text-align: right;
+  font-family: var(--num-list-family);
+  font-size: 1em;
+  font-weight: var(--num-list-weight);
+  font-style: var(--num-list-style);
+  line-height: inherit;
+  color: var(--num-list-color);
+  font-variant-numeric: var(--nums-tabular);
+}
+.content ol.numbered.numbered--xs li {
+  padding-left: calc(20px + 6px);
+}
+.content ol.numbered.numbered--xs li::before {
+  width: 20px;
+}
+.content ol.numbered.numbered--sm li {
+  padding-left: calc(22px + var(--list-num-gap));
+}
+.content ol.numbered.numbered--sm li::before {
+  width: 22px;
 }
 .content ol.numbered.numbered--2col {
   columns: 2;
   column-gap: var(--bank-col-gap);
   column-fill: balance;
-  margin-top: 6px;
+  margin: 3px 0 5px;
 }
 .content ol.numbered.numbered--2col-wide { column-gap: var(--bank-col-gap-wide); }
 .content ol.numbered.numbered--dense li {
@@ -751,29 +813,55 @@ p.lista-mercado {
   font-family: var(--sans); font-size: var(--fs-lista-mercado); font-weight: 300;
   color: var(--texto); line-height: var(--lh-lista-mercado); margin: 0 0 6px;
 }
+.display-sm:has(+ .filete-full),
+.display-sm:has(+ .filete-full--tight) {
+  margin-top: 4px;
+  margin-bottom: 1px;
+}
 .bank-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 4px var(--bank-col-gap-wide);
 }
-.bank-grid .numbered { margin: 0; }
+.bank-grid .numbered {
+  margin: 3px 0 5px; min-width: 0;
+}
+.bank-grid .numbered li {
+  font-size: var(--list-bank-size);
+  line-height: var(--list-bank-lh);
+  margin-bottom: var(--list-bank-item-gap);
+}
 .muted--spaced { margin-top: 14px; }
 .text-center-block { text-align: center; }
 .text-center-narrow { text-align: center; max-width: 320px; margin: 24px auto; }
 .tag + .h2 { margin-top: 0; }
 .display-sm--flush { margin-top: 0; margin-bottom: 1px; }
 .display-sm--sub { margin-top: 6px; margin-bottom: 1px; }
-.display-sm--minor { margin-top: 4px; margin-bottom: 1px; font-size: var(--fs-small); }
-.content ol.numbered.numbered--xs li { font-size: 8px; line-height: 1.35; }
+.display-sm--minor { margin-top: 4px; margin-bottom: 1px; font-size: var(--fs-display-sm-minor); }
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px var(--bank-col-gap);
+}
+.content ol.numbered.numbered--xs {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.content ol.numbered.numbered--xs li {
+  font-size: var(--fs-bank-xs);
+  line-height: 1.32;
+  margin-bottom: 3px;
+}
 .content ol.numbered.numbered--sm li { font-size: var(--fs-bank-dense); line-height: var(--lh-bank-dense); }
 .content ol.numbered.numbered--2col-start { margin-top: 4px; }
 .bank-note {
-  font-family: var(--sans); font-size: var(--fs-small); color: var(--secundario);
-  font-style: italic; margin-top: 10px; line-height: 1.4;
+  font-family: var(--sans); font-size: var(--fs-bank-xs); color: var(--secundario);
+  font-style: italic; margin-top: 8px; line-height: 1.35;
 }
 .bank-note strong { color: var(--emph-label-color); font-weight: var(--emph-label-weight); }
 .kicker-serif--closing { margin-top: 12px; }
 .quote-center {
-  margin-top: 14px; font-family: var(--serif-text); font-style: italic;
-  color: var(--secundario); font-size: var(--fs-small); text-align: center;
+  margin-top: 14px; font-family: var(--serif-text); font-style: italic; font-weight: 300;
+  color: var(--secundario); font-size: var(--fs-quote-center);
+  line-height: var(--lh-editorial); text-align: center;
 }
 .social-handle {
   font-family: var(--sans); font-size: 9px; letter-spacing: 0.16em;
