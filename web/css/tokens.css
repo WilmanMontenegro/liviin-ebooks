@@ -61,7 +61,7 @@
   --table-head-color: var(--texto);     /* olivo sobre --banda pierde contraste */
   --table-head-weight: 600;
   --table-head-track: 0.03em;
-  --fs-quote-center: var(--fs-body); /* fuente 10pt ≈ 13px, no --fs-small 10px */
+  --fs-quote-center: var(--fs-serif-lead); /* cierre anexo Mesa — 17px, legible */
   --fs-display-sm: var(--fs-serif-ui); /* 12pt ≈ 16px, no 12px */
   --fs-display-sm-minor: var(--fs-body); /* 10pt ≈ 13px */
 

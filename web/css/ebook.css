@@ -859,8 +859,8 @@ p.lista-mercado {
 .bank-note strong { color: var(--emph-label-color); font-weight: var(--emph-label-weight); }
 .kicker-serif--closing { margin-top: 12px; }
 .quote-center {
-  margin-top: 14px; font-family: var(--serif-text); font-style: italic; font-weight: 300;
-  color: var(--secundario); font-size: var(--fs-quote-center);
+  margin-top: 14px; font-family: var(--serif-text); font-style: italic; font-weight: 400;
+  color: var(--texto); font-size: var(--fs-quote-center);
   line-height: var(--lh-editorial); text-align: center;
 }
 .social-handle {
