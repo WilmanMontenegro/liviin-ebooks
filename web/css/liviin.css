@@ -437,7 +437,7 @@ ol.numbered li::before {
 
 .portada-subtitulo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
+  font-size: 14px;
   font-style: italic;
   color: var(--texto-2);
   line-height: 1.45;

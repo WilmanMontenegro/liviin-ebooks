@@ -81,7 +81,7 @@ body {
 .rule { width: var(--rule-w); height: 1px; background: var(--filete); margin-bottom: 32px; }
 .rule--full { width: 100%; margin: 20px 0 28px; }
 .opening-lead {
-  font-family: var(--serif-text); font-size: var(--fs-body-sm); font-weight: 300; font-style: italic;
+  font-family: var(--serif-text); font-size: var(--fs-portada-sub); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-step); margin: 12px 0 0;
 }
 .subtitle {
@@ -162,6 +162,8 @@ body {
   width: 100%; height: 100%; object-fit: cover;
   object-position: center top; display: block;
 }
+.foto-portada--mesa { height: 468px; }
+.foto-portada--mesa img { object-position: center 35%; }
 
 .foto-placeholder {
   border: 1.5px dashed var(--filete); min-height: 200px;
@@ -502,3 +504,50 @@ body {
 .hub-link.hub-home { left: 12px; }
 .hub-link.hub-pdf { right: 12px; }
 @media print { .hub-link { display: none; } }
+
+/* Mesa — bancos y tablas (contenido único; tokens ebook) */
+.display-sm {
+  font-family: var(--serif-text); color: var(--olivo); font-weight: 500;
+  font-size: 12px; line-height: 1.3; margin-top: 12px; margin-bottom: 4px;
+}
+p.muted { color: var(--secundario); font-size: var(--fs-caption); }
+.content ul {
+  margin: 12px 0 16px 20px;
+  font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-body);
+}
+.content ul li { margin-bottom: 8px; }
+.content ol {
+  margin: 12px 0 16px 20px;
+  font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-body);
+}
+.content ol li { margin-bottom: 6px; }
+.semana-tabla {
+  width: 100%; border-collapse: collapse; font-size: 9px; line-height: 1.35; margin-top: 8px;
+}
+.semana-tabla thead tr { background: var(--banda); }
+.semana-tabla th {
+  font-family: var(--serif-text); color: var(--olivo); font-weight: 500; font-size: 11px;
+  padding: 4px; text-align: left; border: 0.5px solid var(--filete);
+}
+.semana-tabla td {
+  padding: 4px; border: 0.5px solid var(--filete); vertical-align: top;
+  color: var(--texto); font-size: 9px;
+}
+.semana-tabla td.dia {
+  font-weight: 600; color: var(--olivo); font-family: var(--sans);
+  letter-spacing: 0.06em; width: 28px; text-align: center;
+}
+.semana-tabla td.libre { font-style: italic; color: var(--secundario); }
+.tabla-resumen { width: 100%; border-collapse: collapse; font-size: var(--fs-small); margin-top: 10px; }
+.tabla-resumen thead tr { background: var(--banda); }
+.tabla-resumen th {
+  padding: 5px 7px; text-align: left; border: 0.5px solid var(--filete);
+  color: var(--olivo); font-family: var(--serif-text); font-size: var(--fs-body-sm); font-weight: 500;
+}
+.tabla-resumen td {
+  padding: 4px 7px; border: 0.5px solid var(--filete);
+  color: var(--texto); font-size: var(--fs-caption);
+}
+.tabla-resumen td.aspecto { font-weight: 600; color: var(--olivo); width: 32%; }
