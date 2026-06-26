@@ -113,9 +113,10 @@ def main() -> None:
     if not n:
         raise SystemExit("no encontré línea Actualizado: en web/index.html")
     INDEX.write_text(new, encoding="utf-8")
-    renumber_ebook_folio(WEB / "bonus.html")
+    for slug in ("bonus.html", "mesa.html"):
+        renumber_ebook_folio(WEB / slug)
     for slug, _ in BOOKS:
-        if slug in ("mesa.html", "imprimible.html"):
+        if slug == "imprimible.html":
             continue
         verify_band_folio(WEB / slug)
     print(f"OK index → {label}")

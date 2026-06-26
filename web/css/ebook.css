@@ -40,15 +40,18 @@ body {
   font-family: var(--serif-display); font-size: var(--fs-h1); font-weight: 500;
   color: var(--texto); line-height: 1.0; letter-spacing: 0.01em;
   text-transform: uppercase; margin-bottom: 20px;
+  font-variant-numeric: var(--nums-title);
 }
 .h1-italic {
   font-family: var(--serif-text); font-size: var(--fs-h1-italic); font-weight: 300;
   font-style: italic; color: var(--texto); line-height: 1.1; margin-bottom: 20px;
+  font-variant-numeric: var(--nums-title);
 }
 .h2 {
   font-family: var(--serif-display); font-size: var(--fs-h2); font-weight: 500;
   color: var(--texto); line-height: 1.15; text-transform: uppercase;
   letter-spacing: 0.02em; margin-bottom: 12px;
+  font-variant-numeric: var(--nums-title);
 }
 /* ponytail: PDF usa Liberation Serif 22pt + subtítulo; Garamond ≈ serif del PDF, no SC */
 .h2-section {
@@ -78,6 +81,12 @@ body {
   font-family: var(--sans); font-size: var(--fs-smallish); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body-tight); margin: 0;
 }
+/* Tips prácticos Mesa — caja crema, no pull-quote (citas ≠ consejos) */
+.caja-crema.guia-tip {
+  padding: 18px 22px; margin: 28px 0;
+}
+.caja-crema.guia-tip .section-label { margin: 0 0 10px; }
+.guia-tip + .guia-tip { margin-top: 16px; }
 .rule { width: var(--rule-w); height: 1px; background: var(--filete); margin-bottom: 32px; }
 .rule--full { width: 100%; margin: 20px 0 28px; }
 .opening-lead {
@@ -91,7 +100,10 @@ body {
 .section-subtitle {
   font-family: var(--serif-text); font-size: var(--fs-section-sub); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: 1.45; margin: 0 0 18px 0;
+  font-variant-numeric: var(--nums-title);
 }
+.h2:has(+ .section-subtitle) { margin-bottom: 6px; }
+.h2 + .section-subtitle { margin-top: 10px; margin-bottom: 22px; }
 .body {
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body); margin-bottom: 16px;
@@ -138,6 +150,7 @@ body {
   font-family: var(--serif-text); font-size: var(--fs-serif-lg); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-editorial); margin: 0; text-align: left;
 }
+.section-label + .pull-quote { margin-top: 0; }
 
 .foto-portada {
   width: 100%; height: 520px; background: var(--banda);
@@ -224,6 +237,10 @@ body {
   padding: var(--mov-cover-pt) var(--content-pr) var(--content-pb) var(--content-pl);
   flex: 1;
 }
+/* ponytail: subtítulo pegado al bloque título+rule; en títulos cortos (Mesa) el spacer global se veía hueco */
+.movimiento-cover .rule { margin-bottom: 18px; }
+.movimiento-cover .spacer-sm { height: 0; }
+.movimiento-cover .subtitle { margin-top: 0; max-width: 400px; }
 
 .numbered-block { margin-bottom: 20px; }
 .numbered-title {
@@ -449,6 +466,7 @@ body {
   font-family: var(--serif-display); font-size: var(--fs-portada); font-weight: 500;
   color: var(--texto); line-height: 0.95; text-transform: uppercase;
   letter-spacing: 0.01em; margin-bottom: 16px;
+  font-variant-numeric: var(--nums-title);
 }
 .portada-subtitulo {
   font-family: var(--serif-text); font-size: var(--fs-portada-sub); font-style: italic;
@@ -473,6 +491,32 @@ body {
   font-family: var(--serif-text); font-size: var(--fs-quote); font-weight: 300; font-style: italic;
   color: var(--texto); line-height: var(--lh-editorial); text-align: center;
   margin-bottom: 36px; max-width: 440px;
+}
+/* Contraportada Mesa — centrada (fuente .cierre; paridad cierre-final Liderar) */
+.contraportada {
+  display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+  text-align: center; min-height: 100%;
+}
+.contraportada-marca {
+  font-family: var(--sans); font-size: var(--fs-micro); letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--secundario); margin: 0;
+}
+.contraportada-body {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; width: 100%; padding: 12px 0;
+}
+.filete-center { width: 60px; height: 1px; background: var(--filete); margin: 18px auto; }
+.contraportada-lead {
+  font-family: var(--serif-text); font-size: var(--fs-editorial); font-weight: 300;
+  font-style: italic; color: var(--olivo); line-height: var(--lh-editorial);
+  max-width: 320px; margin: 0;
+}
+.contraportada .social-handle { margin-top: 20px; }
+.contraportada .social-handle--lead { margin-top: 32px; margin-bottom: 6px; }
+.contraportada .body--italic { color: var(--secundario); margin: 0; }
+.contraportada-edition {
+  font-family: var(--serif-text); font-size: var(--fs-legal-edition); font-style: italic;
+  color: var(--filete); margin: 0;
 }
 .liviin-footer-brand { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
 .liviin-footer-brand .marca-final {
@@ -509,6 +553,7 @@ body {
 .display-sm {
   font-family: var(--serif-text); color: var(--olivo); font-weight: 500;
   font-size: 12px; line-height: 1.3; margin-top: 12px; margin-bottom: 4px;
+  font-variant-numeric: var(--nums-title);
 }
 p.muted { color: var(--secundario); font-size: var(--fs-caption); }
 .content ul {
@@ -517,12 +562,12 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
   color: var(--texto); line-height: var(--lh-body);
 }
 .content ul li { margin-bottom: 8px; }
-.content ol {
+.content ol:not(.numbered):not(.numbered-circles) {
   margin: 12px 0 16px 20px;
   font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
   color: var(--texto); line-height: var(--lh-body);
 }
-.content ol li { margin-bottom: 6px; }
+.content ol:not(.numbered):not(.numbered-circles) li { margin-bottom: 6px; }
 .semana-tabla {
   width: 100%; border-collapse: collapse; font-size: 9px; line-height: 1.35; margin-top: 8px;
 }
@@ -551,3 +596,156 @@ p.muted { color: var(--secundario); font-size: var(--fs-caption); }
   color: var(--texto); font-size: var(--fs-caption);
 }
 .tabla-resumen td.aspecto { font-weight: 600; color: var(--olivo); width: 32%; }
+
+/* === Página legal / créditos (todos los ebooks) === */
+.content--legal {
+  display: flex; flex-direction: column; justify-content: center;
+}
+.h1--legal { font-size: var(--fs-legal-title); margin-bottom: 6px; }
+.legal-author {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 0.16em;
+  color: var(--secundario); text-transform: uppercase; margin: 0 0 6px;
+}
+.legal-role {
+  font-family: var(--serif-text); font-size: 12px; font-style: italic;
+  color: var(--secundario); margin: 0;
+}
+.legal-kicker {
+  font-family: var(--sans); font-size: var(--fs-legal-body);
+  color: var(--secundario); font-style: italic; margin: 0;
+}
+.legal-note {
+  font-family: var(--sans); font-size: var(--fs-legal-body); font-weight: 300;
+  color: var(--secundario); line-height: var(--lh-body-tight); margin: 0;
+}
+.legal-mark {
+  font-family: var(--sans); font-size: var(--fs-legal-mark); letter-spacing: 0.1em;
+  color: var(--filete); text-transform: uppercase; margin: 0;
+}
+.legal-edition {
+  font-family: var(--serif-text); font-size: var(--fs-legal-edition);
+  font-style: italic; color: var(--filete); margin: 4px 0 0;
+}
+
+/* === Cierres y filetes === */
+.kicker-serif {
+  margin-top: 18px; font-family: var(--serif-text); font-style: italic;
+  color: var(--olivo); font-size: var(--fs-serif-md);
+}
+.filete {
+  height: 1px; background: var(--filete); width: var(--rule-w); margin: 12px 0;
+}
+.filete--tight { margin: 6px 0; }
+.filete--snug { margin: 5px 0; }
+.filete-full { height: 1px; background: var(--filete); width: 100%; margin: 8px 0; }
+.filete-full--tight { margin: 2px 0 4px; }
+.filete-full--flush { margin: 1px 0 3px; }
+
+/* === Listas numeradas bancos (Mesa) — paridad step-num Liderar === */
+.content ol.numbered,
+.content ol.numbered-circles {
+  list-style: none; padding-left: 0; margin: 12px 0 16px;
+  counter-reset: list-counter;
+}
+.content ol.numbered li {
+  counter-increment: list-counter;
+  position: relative;
+  padding-left: var(--bank-num-col);
+  margin-bottom: 6px;
+  font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-body-tight);
+  break-inside: avoid; page-break-inside: avoid;
+}
+.content ol.numbered.numbered--2col li {
+  font-size: var(--fs-bank-list); line-height: var(--lh-step); margin-bottom: 4px;
+}
+.content ol.numbered.numbered--bank li {
+  font-size: var(--fs-bank-list); line-height: var(--lh-step); margin-bottom: 4px;
+}
+.content ol.numbered.numbered--continue {
+  counter-reset: list-counter var(--list-start, 0);
+}
+.content ol.numbered.numbered--bank li::before {
+  font-size: var(--fs-body-sm); line-height: var(--lh-step);
+}
+.content ol.numbered li::before {
+  content: counter(list-counter) ".";
+  position: absolute; left: 0; top: 0;
+  width: var(--bank-num-col);
+  font-family: var(--serif-text); font-size: var(--fs-body); font-weight: 400;
+  font-style: italic; color: var(--texto); line-height: var(--lh-body-tight);
+  font-variant-numeric: var(--nums-tabular);
+}
+.content ol.numbered.numbered--2col li::before {
+  font-size: var(--fs-body-sm); line-height: var(--lh-step);
+}
+.content ol.numbered.numbered--2col {
+  columns: 2;
+  column-gap: var(--bank-col-gap);
+  column-fill: balance;
+  margin-top: 6px;
+}
+.content ol.numbered.numbered--2col-wide { column-gap: var(--bank-col-gap-wide); }
+.content ol.numbered.numbered--dense li {
+  font-size: var(--fs-bank-dense); line-height: var(--lh-bank-dense);
+}
+.content ol.numbered-circles li {
+  counter-increment: list-counter;
+  padding-left: 28px; position: relative;
+  margin-bottom: 8px; line-height: var(--lh-step);
+  font-family: var(--sans); font-size: var(--fs-body); font-weight: 300;
+}
+.content ol.numbered-circles li::before {
+  content: counter(list-counter);
+  position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--olivo); color: var(--crema);
+  font-family: var(--serif-text); font-weight: 500; font-size: var(--fs-small);
+  font-style: normal; font-variant-numeric: var(--nums-tabular);
+  display: flex; align-items: center; justify-content: center; line-height: 1;
+}
+.content ol.numbered-circles--spaced { margin-top: 10px; }
+.display-sm--tight { margin-top: 2px; margin-bottom: 2px; }
+.display-sm--after-gap { margin-top: 8px; margin-bottom: 2px; }
+p.lead-bank {
+  font-family: var(--sans); font-size: var(--fs-bank-list); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-step); margin: 0 0 12px;
+}
+p.lista-mercado {
+  font-family: var(--sans); font-size: var(--fs-lista-mercado); font-weight: 300;
+  color: var(--texto); line-height: var(--lh-lista-mercado); margin: 0 0 6px;
+}
+.bank-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px var(--bank-col-gap-wide);
+}
+.bank-grid .numbered { margin: 0; }
+.muted--spaced { margin-top: 14px; }
+.text-center-block { text-align: center; }
+.text-center-narrow { text-align: center; max-width: 320px; margin: 24px auto; }
+.tag + .h2 { margin-top: 0; }
+.display-sm--flush { margin-top: 0; margin-bottom: 1px; }
+.display-sm--sub { margin-top: 6px; margin-bottom: 1px; }
+.display-sm--minor { margin-top: 4px; margin-bottom: 1px; font-size: var(--fs-small); }
+.content ol.numbered.numbered--xs li { font-size: 8px; line-height: 1.35; }
+.content ol.numbered.numbered--sm li { font-size: var(--fs-bank-dense); line-height: var(--lh-bank-dense); }
+.content ol.numbered.numbered--2col-start { margin-top: 4px; }
+.bank-note {
+  font-family: var(--sans); font-size: var(--fs-small); color: var(--secundario);
+  font-style: italic; margin-top: 10px; line-height: 1.4;
+}
+.bank-note strong { color: var(--olivo); font-weight: 600; }
+.kicker-serif--closing { margin-top: 12px; }
+.quote-center {
+  margin-top: 14px; font-family: var(--serif-text); font-style: italic;
+  color: var(--secundario); font-size: var(--fs-small); text-align: center;
+}
+.social-handle {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 0.16em;
+  color: var(--secundario); text-transform: uppercase; margin: 20px 0 0;
+}
+.social-handle--lead { margin-top: 24px; margin-bottom: 6px; }
+.legal-edition--spaced { margin-top: 24px; }
+.pull-quote--spaced { margin-top: 18px; }
+ul.list-compact {
+  font-family: var(--sans); font-size: var(--fs-bank-dense); font-weight: 300;
+  line-height: var(--lh-step); color: var(--texto);
+}
