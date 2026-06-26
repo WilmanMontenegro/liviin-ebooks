@@ -1046,12 +1046,11 @@ ol.print-list li::before {
   z-index: 9;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.35em;
+  gap: 0.4em;
   line-height: 1;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
-  letter-spacing: 0.12em;
+  font-weight: 500;
   text-transform: uppercase;
   background: rgba(58, 50, 44, 0.85);
   color: #fff;
@@ -1059,6 +1058,13 @@ ol.print-list li::before {
   text-decoration: none;
   border-radius: 2px;
 }
+.hub-link__arrow {
+  letter-spacing: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  transform: translateY(-0.5px);
+}
+.hub-link__label { letter-spacing: 0.12em; line-height: 1; }
 .hub-link.hub-home { left: 12px; }
 .hub-link.hub-pdf { right: 12px; }
 @media print {
