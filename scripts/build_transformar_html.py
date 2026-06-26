@@ -896,7 +896,7 @@ def build() -> str:
     )
 
     hub_body = f"""
-<a class="hub-link hub-home" href="index.html"><span class="hub-link__arrow" aria-hidden="true">←</span><span class="hub-link__label">Inicio</span></a>
+<a class="hub-link hub-home" href="index.html"><span class="hub-link__arrow" aria-hidden="true"></span><span class="hub-link__label">Inicio</span></a>
 <a class="hub-link hub-pdf" href="pdf/transformar.pdf" download="{PDF_DOWNLOAD_AS["transformar.pdf"]}"><span class="hub-link__label">Descargar PDF</span></a>
 """
     body = "\n".join(pages_html)
